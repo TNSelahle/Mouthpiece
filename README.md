@@ -1,7 +1,7 @@
 # Mouthpiece
 Android Mouthpiece Application (Omega)
 
-# Repository Layout
+## Repository Layout
 This is how the branches will be laid out
 ```
 master 
@@ -12,7 +12,7 @@ master
     └──── ui
 ```
 
-# Guidelines
+## Guidelines
 Here are a couple of guidelines for this repo
   - Create a branch from your module and work on that (e.g. Neural Network member will branch from neuralnetwork branch)
   - **PULL BEFORE PUSH**
