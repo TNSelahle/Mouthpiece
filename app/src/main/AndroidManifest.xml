@@ -10,12 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".openWebsiteActivity"
+            android:label="@string/title_activity_open_website"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--
+        <activity
             android:name=".mouthSelection"
             android:label="@string/title_activity_mouth_selection"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>-
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
+        -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
