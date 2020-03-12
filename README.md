@@ -22,30 +22,30 @@ Here are a couple of guidelines for this repo
   Profiles:
   Integration Team CV’s:
 
-https://kevin-d-h.github.io/
-https://rsl-student.github.io/
-https://tebogo.codes/
-https://anrich96.github.io/
-https://anikavanrensburg.github.io/
-http://linkedin.com/in/shaun-vermeulen-a617161a4
+[Kevin Huang](https://kevin-d-h.github.io/)
+(Ronald Looi)[https://rsl-student.github.io/]
+(Tebogo Selahle)[https://tebogo.codes/]
+(Anrich Hildebrand)[https://anrich96.github.io/]
+(Anika Van Rensburg)[https://anikavanrensburg.github.io/]
+(Shaun Vermeulen)[http://linkedin.com/in/shaun-vermeulen-a617161a4]
 
 
 Project management tools (Clubhouse):
 
 Integration:
-https://app.clubhouse.io/invite-link/5e5ea501-0921-4373-925f-6cef220c9aaf
+(Link)[https://app.clubhouse.io/invite-link/5e5ea501-0921-4373-925f-6cef220c9aaf]
 
 User Management:
-https://app.clubhouse.io/invite-link/5e681181-b82c-4197-b3cf-7aaffeb61d16
+(Link)[https://app.clubhouse.io/invite-link/5e681181-b82c-4197-b3cf-7aaffeb61d16]
 
 Converter:
-https://app.clubhouse.io/invite-link/5e67d027-f0e5-4307-8f82-edb2479c7153
+(Link)[https://app.clubhouse.io/invite-link/5e67d027-f0e5-4307-8f82-edb2479c7153]
 
 Web-Sharing:
-https://app.clubhouse.io/invite-link/5e674a86-61ed-4a64-bfa4-73b1720eb82e
+(Link)[https://app.clubhouse.io/invite-link/5e674a86-61ed-4a64-bfa4-73b1720eb82e]
 
 Sharing-API:
-https://app.clubhouse.io/invite-link/5e690707-5704-420c-bebb-4b8cc516ab7b
+(Link)[https://app.clubhouse.io/invite-link/5e690707-5704-420c-bebb-4b8cc516ab7b]
 
 
 Slack:
