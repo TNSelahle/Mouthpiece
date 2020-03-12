@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Mouthpiece</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="offline">Offline</string>
+    <string name="auto_sync">Auto Sync</string>
+    <string name="data_saving_mode">Data Saving Mode</string>
+    <string name="auto_update">Auto Update</string>
+    <string name="settings">Settings</string>
+    <string name="reset_to_default">Reset to Default</string>
 </resources>
