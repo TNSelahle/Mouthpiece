@@ -72,6 +72,22 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
+    private void pullNotification()
+    {
+        JSONObject json = getJSON();
+        Toast t = ToastNotification.createToast(json,getApplicationContext());
+        t.show();
+    }
+
+    private void NotificationCall(JSONObject json)
+    {
+        Toast t = ToastNotification.createToast(json,getApplicationContext());
+        t.show();
+    }
+
+    //a function on the server will call the notificationCall function with a json object to create a toast.
+    //the server will also be responsible for sending an email
+
     private boolean NewNotificationAvaiable(int lastNotificationID)//connects to the server and see if there is a new Notification waiting with a different timestamp
     {
         //try to establish connection (not possible if in ofline mode)
@@ -88,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
            JSONObject obj = new JSONObject();
 
            obj.put("User", "MadRabit");
-           obj.put("Email", "someEmail@emailService.com");
+           obj.put("Email", "u18140565@tuks.co.za");
            obj.put("NotificationId","1");
            obj.put("NotiType", "Toast");//email
            obj.put("Msg", "You uploaded a new moutpiece");
