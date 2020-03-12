@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView mouthImage = findViewById(R.id.img_mouth);
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
-            if(db >= 71) {
+            if(db >= 71.5) {
                 mouthImage.setBackgroundResource(R.drawable.open_mouth);
             }
             else {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
             MouthAnimation.start();
 
-            h2.postDelayed(this, 50);
+            h2.postDelayed(this, 30);
         }
     };
     //---------------------------------------------------------------------------------
@@ -105,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //---------------------------KEEP SCREEN ON------------------------------
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
         ImageView mouthImage = findViewById(R.id.img_mouth);
         mouthImage.setBackgroundResource(R.drawable.open_mouth);
