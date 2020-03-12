@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
            public void onClick(View v)
            {
                JSONObject json = getJSON();
-               EmailNotification.createEmail(json);
            }
        });
 
