@@ -1,14 +1,14 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
-    <item android:drawable="@drawable/R_Images/R_1" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_2" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_3" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_4" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_5" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_6" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_5" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_4" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_3" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_2" android:duration="0.025" />
-    <item android:drawable="@drawable/R_Images/R_1" android:duration="0.025" />
+  <!--  <item android:drawable="@drawable/r_images/R_1" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_2" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_3" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_4" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_5" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_6" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_5" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_4" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_3" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_2" android:duration="0.025" />
+    <item android:drawable="@drawable/r_images/R_1" android:duration="0.025" />-->
 </animation-list>
