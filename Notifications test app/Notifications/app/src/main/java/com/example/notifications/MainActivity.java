@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
            JSONObject obj = new JSONObject();
 
            obj.put("User", "MadRabit");
-           obj.put("Email", "u18140565@tuks.co.za");
+           obj.put("Email", "cosomegatest@gmail.com");
            obj.put("NotificationId","1");
            obj.put("NotiType", "Toast");//email
            obj.put("Msg", "You uploaded a new moutpiece");
@@ -117,4 +117,6 @@ public class MainActivity extends AppCompatActivity {
        return null;
 
     }
+
+
 }

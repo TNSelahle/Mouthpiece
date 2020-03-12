@@ -12,7 +12,11 @@
         android:layout_height="wrap_content"
         android:text="Toast"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="153dp" />
+        tools:layout_editor_absoluteY="153dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        />
 
     <Button
         android:id="@+id/email"
@@ -20,5 +24,9 @@
         android:layout_height="wrap_content"
         android:text="Email"
         tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="157dp" />
+        tools:layout_editor_absoluteY="157dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+
 </android.support.constraint.ConstraintLayout>
