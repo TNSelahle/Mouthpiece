@@ -14,7 +14,7 @@ import android.view.View;
 
 public class openWebsiteActivity extends AppCompatActivity {
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_website);
@@ -29,7 +29,7 @@ public class openWebsiteActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }*/
+    }
     public void openBrowser(View view)
     {
         Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"));

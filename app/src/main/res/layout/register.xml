@@ -24,7 +24,7 @@
         android:layout_marginTop="184dp"
         android:autofillHints="Name"
         android:ems="10"
-        android:hint="@string/revalPass"
+        android:hint="@string/revealPass"
         android:inputType="textPersonName"
         android:text="@string/users_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_marginTop="108dp"
         android:autofillHints="Name"
         android:ems="10"
-        android:hint="@string/revalPass"
+        android:hint="@string/revealPas"
         android:inputType="textPersonName"
         android:text="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +104,7 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/revalPass" />
+        tools:text="@string/revealPass" />
 
     <EditText
         android:id="@+id/reenteredPassw"
