@@ -17,5 +17,11 @@
     <string name="regViewer">Reg Viewer</string>
     <string name="first_fragment_label">First Fragment Label</string>
     <string name="second_fragment_label">Second Fragment Label</string>
+    <string name="trainAI">Train the AI</string>
+    <string name="trainButton">Click and Hold</string>
+    <string name="trainingSentence">Shaw, those twelve beige hooks are joined if I patch a young, gooey mouth.</string>
+    <string name="testTrainingButton">Test Training Activity</string>
+    <string name="testMouthpieceButton">Test Mouth Display</string>
+    <string name="testSettingsButton">Test Settings Activity</string>
 
 </resources>

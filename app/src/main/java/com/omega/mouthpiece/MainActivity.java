@@ -18,4 +18,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(this, openWebsiteActivity.class);
         startActivity(intent);
     }
+    public void goToTrainingPage(View view)
+    {
+        Intent intent= new Intent(this, trainingActivity.class);
+        startActivity(intent);
+    }
+    public void goToMouthpiecePage(View view)
+    {
+        Intent intent= new Intent(this, mouth_Display.class);
+        startActivity(intent);
+    }
+    public void goToSettingsPage(View view)
+    {
+        Intent intent= new Intent(this, Activity_Settings.class);
+        startActivity(intent);
+    }
 }
