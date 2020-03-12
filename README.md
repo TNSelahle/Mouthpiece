@@ -54,14 +54,14 @@ Sharing-API:
 
 
 Slack:
-https://join.slack.com/t/omega301/shared_invite/zt-ck83m1ly-cTjyhJ9DdJb9kyQRmLJdQw
+[Link](https://join.slack.com/t/omega301/shared_invite/zt-ck83m1ly-cTjyhJ9DdJb9kyQRmLJdQw)
 
 
 Other GitHubs:
 
 Sharing Web:
-https://github.com/CarelKemp/COS301_OmegaMouthPieceWeb
+[Link](https://github.com/CarelKemp/COS301_OmegaMouthPieceWeb)
 
 Sharing API:
-https://github.com/ShaunVermeulen/OmegaSharingAPI
+[Link](https://github.com/ShaunVermeulen/OmegaSharingAPI)
 
