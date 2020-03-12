@@ -23,11 +23,11 @@ Here are a couple of guidelines for this repo
   Integration Team CV’s:
 
 [Kevin Huang](https://kevin-d-h.github.io/)
-(Ronald Looi)[https://rsl-student.github.io/]
-(Tebogo Selahle)[https://tebogo.codes/]
-(Anrich Hildebrand)[https://anrich96.github.io/]
-(Anika Van Rensburg)[https://anikavanrensburg.github.io/]
-(Shaun Vermeulen)[http://linkedin.com/in/shaun-vermeulen-a617161a4]
+[Ronald Looi](https://rsl-student.github.io/)
+[Tebogo Selahle](https://tebogo.codes/)
+[Anrich Hildebrand](https://anrich96.github.io/)
+[Anika Van Rensburg](https://anikavanrensburg.github.io/)
+[Shaun Vermeulen](http://linkedin.com/in/shaun-vermeulen-a617161a4)
 
 
 Project management tools (Clubhouse):
