@@ -42,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         recorder.start();
     }
+
+    private void stopRecording()
+    {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
