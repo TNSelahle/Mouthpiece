@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mouthpiece</string>
+    <string name="Listening_Mode">Listening Mode</string>
+    <string name="Volume_based">Volume-based</string>
+    <string name="Formant_based">Volume-based</string>
+    <string name="BACK">BACK</string>
 </resources>
