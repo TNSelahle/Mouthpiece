@@ -4,4 +4,8 @@
     <string name="OMEGA">OMEGA</string>
     <string name="University_of_Pretoria">University of Pretoria</string>
     <string name="description">Logo</string>
+    <string name="regViewer">Register</string>
+    <string name="loginB">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
 </resources>
