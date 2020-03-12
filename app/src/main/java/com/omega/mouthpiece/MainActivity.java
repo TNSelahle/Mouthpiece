@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.IOException;
-import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //-----------------------------------------------------------------------------
-    boolean open = true;
     //-----------------------TIMER FUNCTIONS---------------------------------------
     Runnable measure = new Runnable() {
 
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView mouthImage = findViewById(R.id.img_mouth);
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
-            if(db >= 70) {
+            if(db >= 71) {
                 mouthImage.setBackgroundResource(R.drawable.open_mouth);
             }
             else {
@@ -98,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
             MouthAnimation.start();
 
-            h2.postDelayed(this, 0);
+            h2.postDelayed(this, 50);
         }
     };
     //---------------------------------------------------------------------------------
