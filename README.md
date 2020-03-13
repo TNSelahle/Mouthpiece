@@ -1,6 +1,16 @@
 # Android Mouthpiece Application (Omega)
 ## Neural Network branch
-This branch houses the neural network part of the Mouthpiece App. All input is recieved from the Converter section and all output is sent back to the Converter section. 
+This branch houses the neural network part of the Mouthpiece App. All input is recieved from the Converter section and all output is sent back to the Converter section. We will be using a Convolutional Neural Network as the archetecture for our neural network. 
+
+## Languages and Libraries
+1. Python
+2. TenserFlow
+3. Keras
+
+## External tools
+1. Draw.io
+2. Monday (project management tool)
+3. Slack
 
 ## Branch Layout
 This is how the neural network branch will be laid out
