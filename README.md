@@ -2,7 +2,7 @@
 Android Mouthpiece Application (Omega)
 
 ## Branch Layout
-This is how the branches will be laid out
+This is how the neural network branch will be laid out
 ```
 NNVersionGoogle
 └──── NNModule
