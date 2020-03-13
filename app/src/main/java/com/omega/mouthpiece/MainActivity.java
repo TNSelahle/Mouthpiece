@@ -1,34 +1,139 @@
 package com.omega.mouthpiece;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn;
+
+
+    private EditText Email;
+    private EditText Password;
+    private TextView Info;
+    private Button Login;
+    private Button Register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = (Button)findViewById(R.id.testButton);
+        Email =findViewById(R.id.username);
+        Password =findViewById(R.id.password);
+        Login = findViewById(R.id.loginButton);
+        Info = findViewById(R.id.textView3);
+        Register = findViewById(R.id.registerButton);
 
-        btn.setOnClickListener(new View.OnClickListener()
+        Login.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onClick(View view)
             {
-                openAct();
+                parseJSON();
+                validate(Email.getText().toString(),Password.getText().toString());
             }
         });
+
+        Register.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, RegisterPage.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+    String emailAPI;
+    String passwordAPI;
+
+    private RequestQueue mRequestQueue;
+    private StringRequest mStringRequest;
+    private String url = "http://102.133.170.83:3000/getUsers";
+
+    private void parseJSON() {
+
+        mRequestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                                emailAPI = response.getString("email");
+                                passwordAPI = response.getString("password");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        mRequestQueue.add(request);
     }
 
-    public void openAct()
-    {
-        Intent intent = new Intent(this,MouthSelection.class);
-        startActivity(intent);
+    private void postJSON() {
+
+        mRequestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                            emailAPI = response.getString("email");
+                            passwordAPI = response.getString("password");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        mRequestQueue.add(request);
     }
+
+
+    private void validate(String userName, String userPassword){
+        if((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))){
+            Intent intent = new Intent(MainActivity.this, LoadingPage.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Logged in Failed", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }
