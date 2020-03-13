@@ -19,8 +19,8 @@ Here are a couple of guidelines for this repo
   - Don't push to master, development, or any other branch that's unrelated to your module.
   - REMEMBER: **PULL BEFORE PUSH**
   
-  Profiles:
-  Integration Team CV’s:
+ # Profiles:
+  ##Integration Team CV’s:
 
 [Kevin Huang](https://kevin-d-h.github.io/)
 
@@ -35,7 +35,7 @@ Here are a couple of guidelines for this repo
 [Shaun Vermeulen](http://linkedin.com/in/shaun-vermeulen-a617161a4)
 
 
-Project management tools (Clubhouse):
+#Project management tools (Clubhouse):
 
 Integration:
 [Link](https://app.clubhouse.io/invite-link/5e5ea501-0921-4373-925f-6cef220c9aaf)
@@ -53,11 +53,11 @@ Sharing-API:
 [Link](https://app.clubhouse.io/invite-link/5e690707-5704-420c-bebb-4b8cc516ab7b)
 
 
-Slack:
+#Slack:
 [Link](https://join.slack.com/t/omega301/shared_invite/zt-ck83m1ly-cTjyhJ9DdJb9kyQRmLJdQw)
 
 
-Other GitHubs:
+#Other GitHubs:
 
 Sharing Web:
 [Link](https://github.com/CarelKemp/COS301_OmegaMouthPieceWeb)
@@ -65,3 +65,5 @@ Sharing Web:
 Sharing API:
 [Link](https://github.com/ShaunVermeulen/OmegaSharingAPI)
 
+User Management API:
+[Link](https://github.com/Kevin-D-H/Omega-User-Management-API)
