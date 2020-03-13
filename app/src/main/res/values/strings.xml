@@ -8,4 +8,6 @@
     <string name="loginB">Login</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="mpImage">University of Pretoria Logo</string>
 </resources>
