@@ -36,7 +36,7 @@ NNVersionGoogle
 * [Tapiwa Mazibuko, u18203541](https://Tapiwamazibuko.github.io)
 * [Luke Greenberg, u17131864](https://openbracketret.github.io)
 * [Bradley Mapstone, u16063458](https://bradez-of-map-n-stone.github.io/)
-* [Guan Uys, u18052569](https://mruys.github.io/)
+* [Gian Uys, u18052569](https://mruys.github.io/)
 
 ## Developer's emails
 * [Rani Arraf](mailto:u17184950@tuks.co.za?subject=[GitHub]%20Neural%20Network)
