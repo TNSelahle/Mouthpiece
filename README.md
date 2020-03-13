@@ -13,6 +13,11 @@ NNVersionGoogle
       └──── interface.ipynb
       └──── test_units.py
 ```
+
+## Folders
+
+[NNModule](https://github.com/RashFever/Mouthpiece/blob/NNVersionGoogle/NNModule)
+
 ## Developers CV's for Neural Networks
 * [Rani Arraf, u17184950](https://RaniArraf.github.io)
 * [Britney Chu, u18176951](https://BritneyChu.github.io)
