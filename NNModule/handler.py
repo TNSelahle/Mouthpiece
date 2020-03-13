@@ -7,7 +7,7 @@ class NN:
 
     def classifySegment(self, seg):
         # NN Implemented here
-        return rn.randint(0, 12)
+        return rn.randint(0, 11)
 
 
 class Phoneme:

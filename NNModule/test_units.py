@@ -1,6 +1,7 @@
 import unittest
 import random
 import SegmentNode
+import handler
 
 def getSegment():
     amps = []
@@ -10,9 +11,44 @@ def getSegment():
 
 print('Starting Unit Testing...\n\n')
 
-nodeSegment = SegmentNode.SegmentNode(getSegment())
+nodeHandler = handler.Handler()
 
+class UnitTester(unittest.TestCase):
 
+    def testInitialization(self):
+        print('\tTESTING INITIALIZATION')
+        self.assertTrue(nodeHandler != None)
+        
+    def testSegments(self):
+        print('\tTESTING SEGMENTS OUTPUT')
+        nodeSegment = SegmentNode.SegmentNode(getSegment())
+        nodeHandler.addSegment_V1(nodeSegment)
+        test = nodeHandler.getPhonetic_V1().phoneme
+        print(test)
+        self.assertTrue(0 <= test <= 11)
+        
+    def testSegments(self):
+        print('\tTESTING SEGMENTS OUTPUT')
+        nodeSegment = SegmentNode.SegmentNode(getSegment())
+        nodeHandler.addSegment_V1(nodeSegment)
+        test = nodeHandler.getPhonetic_V1().phoneme
+        print(test)
+        self.assertTrue(0 <= test <= 11)
+        
+    def testSegments(self):
+        print('\tTESTING SEGMENTS OUTPUT')
+        nodeSegment = SegmentNode.SegmentNode(getSegment())
+        nodeHandler.addSegment_V1(nodeSegment)
+        test = nodeHandler.getPhonetic_V1().phoneme
+        print(test)
+        self.assertTrue(0 <= test <= 11)
+        
+    def testSegments(self):
+        print('\tTESTING SEGMENTS OUTPUT')
+        nodeSegment = SegmentNode.SegmentNode(getSegment())
+        nodeHandler.addSegment_V1(nodeSegment)
+        test = nodeHandler.getPhonetic_V1().phoneme
+        print(test)
+        self.assertTrue(0 <= test <= 11)
 
-print(nodeSegment.getsomething())
-
+unittest.main()
