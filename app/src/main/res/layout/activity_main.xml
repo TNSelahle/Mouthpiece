@@ -20,13 +20,12 @@
 
     <ImageView
         android:id="@+id/img_mouth"
-        android:layout_width="399dp"
-        android:layout_height="653dp"
+        android:layout_width="419dp"
+        android:layout_height="659dp"
         android:layout_marginBottom="32dp"
         android:background="#272525"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
