@@ -11,12 +11,18 @@ class NN:
 
 
 class Phoneme:
+    """
+    var phoneme: the value of the phoneme
+    """
     def __init__(self):
         self.phoneme = 0
 
 
 class Handler:
-
+    """
+    var inputQueue: List implemented as a queue to store inputs
+    var network: An instance of the NN class
+    """
     # """Version 1"""
     def __init__(self):
         self.inputQueue = []
