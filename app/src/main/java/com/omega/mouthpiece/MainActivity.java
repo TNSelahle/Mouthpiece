@@ -11,11 +11,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_converter);
+        setContentView(R.layout.activity_main);
     }
     public void goToBrowserPage(View view)
     {
-        Intent intent= new Intent(this, openWebsiteActivity.class);
+        Intent intent= new Intent(this, Converter.class);
         startActivity(intent);
     }
 }

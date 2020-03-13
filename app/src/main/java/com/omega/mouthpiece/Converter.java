@@ -50,6 +50,7 @@ public class Converter extends AppCompatActivity{
     }
 
     private void startRecording() {
+
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -105,8 +106,9 @@ public class Converter extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_converter);
         //---------------------------KEEP SCREEN ON------------------------------
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
@@ -128,9 +130,11 @@ public class Converter extends AppCompatActivity{
             public void onClick(View view) {
 
                 if (mStartRecording) {//click to record
+
                     startRecording();
                     h2.postDelayed(measure,0);
                 } else {//click again to stop recording
+
                     stopRecording();
                     h2.removeCallbacks(measure);
                 }
