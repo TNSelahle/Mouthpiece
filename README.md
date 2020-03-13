@@ -45,4 +45,4 @@ NNVersionGoogle
 * [Tapiwa Mazibuko](mailto:u18203541@tuks.co.za?subject=[GitHub]%20Neural%20Network)
 * [Luke Greenberg](mailto:u17131864@tuks.co.za?subject=[GitHub]%20Neural%20Network)
 * [Bradley Mapstone](mailto:u16063458@tuks.co.za?subject=[GitHub]%20Neural%20Network)
-* [Guan Uys](mailto:u18052569@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Gian Uys](mailto:u18052569@tuks.co.za?subject=[GitHub]%20Neural%20Network)
