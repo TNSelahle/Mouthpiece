@@ -38,3 +38,11 @@ NNVersionGoogle
 * [Bradley Mapstone, u16063458](https://bradez-of-map-n-stone.github.io/)
 * [Guan Uys, u18052569](https://mruys.github.io/)
 
+## Developer's emails
+* [Rani Arraf](mailto:u17184950@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Britney Chu](mailto:u18176951@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Jason Lutz](mailto:u15323413@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Tapiwa Mazibuko](mailto:u18203541@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Luke Greenberg](mailto:u17131864@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Bradley Mapstone](mailto:u16063458@tuks.co.za?subject=[GitHub]%20Neural%20Network)
+* [Guan Uys](mailto:u18052569@tuks.co.za?subject=[GitHub]%20Neural%20Network)
