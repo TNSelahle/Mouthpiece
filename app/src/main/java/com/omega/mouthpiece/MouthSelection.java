@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -19,7 +20,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MouthSelection extends AppCompatActivity {
+public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnItemClickListener {
+    public static final String EXTRA_URL = "imageURL";
+    public static final String EXTRA_CREATOR = "creatorName";
+    public static final String EXTRA_LIKES = "ratings";
 
     private RecyclerView mRecyclerView;
     private DBAdapter mDBAdapter;
@@ -64,6 +68,7 @@ public class MouthSelection extends AppCompatActivity {
                             }
                             mDBAdapter = new DBAdapter(MouthSelection.this,mMouthList);
                             mRecyclerView.setAdapter(mDBAdapter);
+                            mDBAdapter.setOnItemClickListener(MouthSelection.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -76,6 +81,17 @@ public class MouthSelection extends AppCompatActivity {
             }
         });
         mRequestQueue.add(request);
+    }
+
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailActivity.class);
+        MouthItem clickedItem = mMouthList.get(position);
+
+        detailIntent.putExtra(EXTRA_URL, clickedItem.getImageURL());
+        detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
+        detailIntent.putExtra(EXTRA_LIKES, clickedItem.getRatings());
+
+        startActivity(detailIntent);
     }
 
 }

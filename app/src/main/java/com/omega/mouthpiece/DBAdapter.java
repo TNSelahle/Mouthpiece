@@ -16,6 +16,16 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
 
     private Context mContext;
     private ArrayList<MouthItem> mMouthList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
 
     public DBAdapter(Context context, ArrayList<MouthItem> mouthList)
     {
@@ -42,6 +52,7 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewRatings.setText("Ratings: " + ratings);
         Picasso.with(mContext).load(imageURL).fit().centerInside().into(holder.mImageView);
+
     }
 
     @Override
@@ -61,6 +72,18 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             mTextViewRatings = itemView.findViewById(R.id.text_view_rating);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
