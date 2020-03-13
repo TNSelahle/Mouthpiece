@@ -36,7 +36,8 @@ Here are a couple of guidelines for this repo
 
 # CV Directories
 
-Neural Network CV: Neural Network Branch
+Neural Network's CV's: [Link](https://github.com/RashFever/Mouthpiece/blob/NNVersionGoogle/README.md)
+
 Notification CV: Notification Branch
 Convertor CV: Convertor Branch
 User Management API CV: User-Management-API repository
