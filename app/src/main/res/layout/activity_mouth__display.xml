@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mouth_Display">
+    tools:context=".mouth_Display"
+    android:background="@drawable/wallpaper">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,5 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mouth" />
+        app:srcCompat="@drawable/mouth"
+        android:rotation="-90"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

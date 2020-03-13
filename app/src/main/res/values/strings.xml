@@ -12,9 +12,9 @@
     <string name="revealPass">Reveal Password</string>
     <string name="prompt_password">Prompt Password</string>
     <string name="submitButton">Submit</string>
-    <string name="dobEnter">Enter</string>
+    <string name="dobEnter">Date of Birth</string>
     <string name="dateB">Date</string>
-    <string name="regViewer">Reg Viewer</string>
+    <string name="regViewer">Register</string>
     <string name="first_fragment_label">First Fragment Label</string>
     <string name="second_fragment_label">Second Fragment Label</string>
     <string name="trainAI">Train the AI</string>
