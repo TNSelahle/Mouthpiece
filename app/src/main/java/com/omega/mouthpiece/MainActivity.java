@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Email =findViewById(R.id.username);
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
-        Info = findViewById(R.id.textView3);
         Register = findViewById(R.id.registerButton);
 
         Login.setOnClickListener(new View.OnClickListener()
