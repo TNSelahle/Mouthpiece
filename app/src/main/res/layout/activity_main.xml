@@ -13,7 +13,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:text="Volume"
+        android:text="@string/volume_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnFormant"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="16dp"
-        android:text="Formant"
+        android:text="@string/formant_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
