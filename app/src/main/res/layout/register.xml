@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wallpaper">
+
+    <TextView
+        android:id="@+id/name2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="56dp"
+        android:background="#E6373737"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toStartOf="@+id/enteredName2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/username" />
+
+    <EditText
+        android:id="@+id/enteredName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="60dp"
+        android:autofillHints="Name"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/revealPass"
+        android:inputType="textPersonName"
+        android:text="@string/users_name"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/enteredSurname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/enteredName2" />
+
+    <EditText
+        android:id="@+id/enteredName2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="56dp"
+        android:autofillHints="Name"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/revealPas"
+        android:inputType="textPersonName"
+        android:text="@string/username"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/enteredName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name2"
+        app:layout_constraintTop_toBottomOf="@+id/registerView" />
+
+    <EditText
+        android:id="@+id/enteredSurname"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="63dp"
+        android:autofillHints="Surna"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/userPassTextV"
+        android:inputType="textPersonName"
+        android:text="@string/users_surname"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/dobText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/surname"
+        app:layout_constraintTop_toBottomOf="@+id/enteredName" />
+
+    <TextView
+        android:id="@+id/surname"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="63dp"
+        android:background="#E6373737"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/Age"
+        app:layout_constraintEnd_toStartOf="@+id/enteredSurname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:text="@string/users_surname" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="60dp"
+        android:background="#E6373737"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/surname"
+        app:layout_constraintEnd_toStartOf="@+id/enteredName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name2"
+        tools:text="@string/users_name" />
+
+    <TextView
+        android:id="@+id/passw"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="76dp"
+        android:background="#E6373737"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/re-enterPass"
+        app:layout_constraintEnd_toStartOf="@+id/enteredPassw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Age"
+        tools:text="@string/userPassTextV" />
+
+    <TextView
+        android:id="@+id/re-enterPass"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="180dp"
+        android:background="#E6373737"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reenteredPassw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passw"
+        tools:text="@string/revealPass" />
+
+    <EditText
+        android:id="@+id/reenteredPassw"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
+        android:autofillHints="reentPass"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/userPassTextV"
+        android:inputType="textPassword"
+        android:text="@string/prompt_password"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/submitInfoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/re-enterPass"
+        app:layout_constraintTop_toBottomOf="@+id/enteredPassw" />
+
+    <EditText
+        android:id="@+id/enteredPassw"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="76dp"
+        android:autofillHints="Passw"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/userPassTextV"
+        android:inputType="textPassword"
+        android:text="@string/prompt_password"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/reenteredPassw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/passw"
+        app:layout_constraintTop_toBottomOf="@+id/dobText" />
+
+    <Button
+        android:id="@+id/submitInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="82dp"
+        android:background="#E6373737"
+        android:onClick="register"
+        android:text="@string/submitButton"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/re-enterPass"
+        app:layout_constraintTop_toBottomOf="@+id/reenteredPassw" />
+
+    <TextView
+        android:id="@+id/Age"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="68dp"
+        android:background="#E6373737"
+        android:text="@string/dobEnter"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/passw"
+        app:layout_constraintEnd_toStartOf="@+id/dobText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
+
+    <EditText
+        android:id="@+id/dobText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="68dp"
+        android:autofillHints="dob"
+        android:background="#E6373737"
+        android:ems="10"
+        android:hint="@string/dateB"
+        android:inputType="date"
+        android:text="@string/dateB"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/enteredPassw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Age"
+        app:layout_constraintTop_toBottomOf="@+id/enteredSurname" />
+
+    <TextView
+        android:id="@+id/registerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="50dp"
+        android:background="#E6373737"
+        android:text="@string/regViewer"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/enteredName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/regViewer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
