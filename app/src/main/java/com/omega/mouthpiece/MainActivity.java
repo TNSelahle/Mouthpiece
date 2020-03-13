@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword){
         if((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))){
-            Intent intent = new Intent(MainActivity.this, LoadingPage.class);
+            Intent intent = new Intent(MainActivity.this, MouthSelection.class);
             startActivity(intent);
         }
         else
