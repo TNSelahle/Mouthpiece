@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mouthpiece</string>
+    <string name="volume_button">Volume</string>
+    <string name="formant_button">Formant</string>
 </resources>
