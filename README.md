@@ -34,6 +34,15 @@ Here are a couple of guidelines for this repo
 [Shaun Vermeulen](http://linkedin.com/in/shaun-vermeulen-a617161a4)
 
 
+# CV Directories
+
+Neural Network CV: Neural Network Branch
+Notification CV: Notification Branch
+Convertor CV: Convertor Branch
+User Management API CV: User-Management-API repository
+Sharing API CV: Sharing-API repository
+Sharing Web CV: Sharing-Web repository
+
 # Project management tools (Clubhouse):
 
 Integration:
