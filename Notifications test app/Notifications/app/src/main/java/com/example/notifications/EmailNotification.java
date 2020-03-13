@@ -1,6 +1,9 @@
 package com.example.notifications;
 
         import com.sun.mail.smtp.SMTPTransport;
+
+        import org.json.JSONObject;
+
         import java.util.Properties;
         import javax.mail.*;
         import javax.mail.internet.AddressException;
@@ -14,8 +17,9 @@ public class EmailNotification {
 
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_AUTH_USER = "cosomegatest@gmail.com";
-    private static final String SMTP_AUTH_PWD  = "Omega321##";
-    public static void main(String[] args)  {
+    private static final String SMTP_AUTH_PWD  = "Omega312##";
+
+    public static void createEmail(JSONObject json){
 
         String to ="cosomegatest@gmail.com";
         String from ="cosomegatest@gmail.com";
