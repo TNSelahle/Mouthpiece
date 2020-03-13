@@ -29,7 +29,7 @@ NNVersionGoogle
 
 [NNModule](https://github.com/RashFever/Mouthpiece/blob/NNVersionGoogle/NNModule)
 
-## Developers CV's for Neural Networks
+## Developers CV's
 * [Rani Arraf, u17184950](https://RaniArraf.github.io)
 * [Britney Chu, u18176951](https://BritneyChu.github.io)
 * [Jason Lutz, u15323413](https://jay-lutz.github.io)
