@@ -10,23 +10,23 @@
         android:id="@+id/toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toast"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="153dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="Toast"
 
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="157dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        />
+        android:layout_alignParentBottom="true"
+        android:text="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toast" />
 
 </android.support.constraint.ConstraintLayout>
