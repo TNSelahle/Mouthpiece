@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Password;
     private TextView Info;
     private Button Login;
+    private Button Register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +41,29 @@ public class MainActivity extends AppCompatActivity {
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
         Info = findViewById(R.id.textView3);
-
-        parseJSON();
+        Register = findViewById(R.id.registerButton);
 
         Login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                sendAndRequestResponse();
+                parseJSON();
                 validate(Email.getText().toString(),Password.getText().toString());
             }
         });
+
+        Register.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, RegisterPage.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
     String emailAPI;
@@ -59,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "http://102.133.170.83:3000/download";
+    private String url = "http://102.133.170.83:3000/getUsers";
+
     private void parseJSON() {
 
         mRequestQueue = Volley.newRequestQueue(this);
@@ -68,19 +81,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray = response.getJSONArray("result");
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject result = jsonArray.getJSONObject(i);
-                                emailAPI = result.getString("_id");
-                                passwordAPI = result.getString("__v");
-                                Context context = getApplicationContext();
-                                CharSequence text = emailAPI;
-                                int duration = Toast.LENGTH_SHORT;
-
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
-                            }
+                                emailAPI = response.getString("email");
+                                passwordAPI = response.getString("password");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -92,40 +95,43 @@ public class MainActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
+        mRequestQueue.add(request);
     }
 
-    private void sendAndRequestResponse() {
+    private void postJSON() {
 
-        //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
 
-        //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+                            emailAPI = response.getString("email");
+                            passwordAPI = response.getString("password");
 
-                Toast.makeText(getApplicationContext(),"Response :" + response, Toast.LENGTH_LONG).show();//display the response on screen
-
-            }
-        }, new Response.ErrorListener() {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                error.printStackTrace();
             }
         });
-
-        mRequestQueue.add(mStringRequest);
+        mRequestQueue.add(request);
     }
 
 
     private void validate(String userName, String userPassword){
-        if((userName.equals("admin@gmail.com")) && (userPassword.equals("admin"))){
+        if((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))){
             Intent intent = new Intent(MainActivity.this, LoadingPage.class);
             startActivity(intent);
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Logged in Failed :", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Logged in Failed", Toast.LENGTH_LONG).show();
         }
     }
 
