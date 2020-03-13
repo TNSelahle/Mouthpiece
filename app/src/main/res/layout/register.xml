@@ -15,7 +15,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="username" />
+        tools:text="@string/username" />
 
     <EditText
         android:id="@+id/enteredName"
@@ -24,9 +24,9 @@
         android:layout_marginTop="184dp"
         android:autofillHints="Name"
         android:ems="10"
-        android:hint="revalPass"
+        android:hint="@string/revalPass"
         android:inputType="textPersonName"
-        android:text="users_name"
+        android:text="@string/users_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +39,9 @@
         android:layout_marginTop="108dp"
         android:autofillHints="Name"
         android:ems="10"
-        android:hint="revalPass"
+        android:hint="@string/revalPass"
         android:inputType="textPersonName"
-        android:text="username"
+        android:text="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +54,9 @@
         android:layout_marginBottom="444dp"
         android:autofillHints="Surna"
         android:ems="10"
-        android:hint="userPassTextV"
+        android:hint="@string/userPassTextV"
         android:inputType="textPersonName"
-        android:text="users_surname"
+        android:text="@string/users_surname"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"
@@ -71,7 +71,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="users_surname" />
+        tools:text="@string/users_surname" />
 
     <TextView
         android:id="@+id/name"
@@ -82,7 +82,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="users_name" />
+        tools:text="@string/users_name" />
 
     <TextView
         android:id="@+id/passw"
@@ -93,7 +93,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="userPassTextV" />
+        tools:text="@string/userPassTextV" />
 
     <TextView
         android:id="@+id/re-enterPass"
@@ -104,7 +104,7 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="revalPass" />
+        tools:text="@string/revalPass" />
 
     <EditText
         android:id="@+id/reenteredPassw"
@@ -114,9 +114,9 @@
         android:layout_marginBottom="180dp"
         android:autofillHints="reentPass"
         android:ems="10"
-        android:hint="userPassTextV"
+        android:hint="@string/userPassTextV"
         android:inputType="textPassword"
-        android:text="prompt_password"
+        android:text="@string/prompt_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -128,9 +128,9 @@
         android:layout_marginBottom="276dp"
         android:autofillHints="Passw"
         android:ems="10"
-        android:hint="userPassTextV"
+        android:hint="@string/userPassTextV"
         android:inputType="textPassword"
-        android:text="prompt_password"
+        android:text="@string/prompt_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="submitButton"
+        android:text="@string/submitButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -150,7 +150,7 @@
         android:layout_width="74dp"
         android:layout_height="67dp"
         android:layout_marginTop="320dp"
-        android:text="dobEnter"
+        android:text="@string/dobEnter"
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
@@ -164,9 +164,9 @@
         android:layout_marginBottom="364dp"
         android:autofillHints="dob"
         android:ems="10"
-        android:hint="dateB"
+        android:hint="@string/dateB"
         android:inputType="date"
-        android:text="dateB"
+        android:text="@string/dateB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"
@@ -177,13 +177,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="regViewer"
+        android:text="@string/regViewer"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="regViewer" />
+        tools:text="@string/regViewer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

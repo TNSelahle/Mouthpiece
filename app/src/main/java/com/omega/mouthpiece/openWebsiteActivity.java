@@ -3,6 +3,7 @@ package com.omega.mouthpiece;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -14,25 +15,24 @@ import android.view.View;
 
 public class openWebsiteActivity extends AppCompatActivity {
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_website);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }*/
+
+    }
     public void openBrowser(View view)
     {
-        Intent browserIntent= new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"));
+        String packageName = "com.android.browser";
+        String className = "com.android.browser.BrowserActivity";
+        Intent internetIntent = new Intent(Intent.ACTION_VIEW);
+        internetIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        internetIntent.setClassName(packageName, className);
+        String url = "http://www.example.com";
+        internetIntent.setData(Uri.parse(url));
+        openWebsiteActivity.this.startActivity(internetIntent);
     }
 
 }
