@@ -1,15 +1,17 @@
 # Mouthpiece
 Android Mouthpiece Application (Omega)
 
-## Repository Layout
+## Branch Layout
 This is how the branches will be laid out
 ```
-master 
-└── development
-    └──── neuralnetwork
-    └──── converter
-    └──── notification
-    └──── ui
+NNVersionGoogle
+└──── NNModule
+      └──── DeviceNNClassifier.py
+      └──── NNModule.drawio
+      └──── SegmentNode.py
+      └──── handler.py
+      └──── interface.ipynb
+      └──── test_units.py
 ```
 ## Developers CV's for Neural Networks
 * [Rani Arraf, u17184950](https://RaniArraf.github.io)
@@ -20,8 +22,3 @@ master
 * [Bradley Mapstone, u16063458](https://bradez-of-map-n-stone.github.io/)
 * [Guan Uys, u18052569](https://mruys.github.io/)
 
-
-## Guidelines
-Here are a couple of guidelines for this repo
-  - Create a branch from your module and work on that (e.g. Neural Network member will branch from neuralnetwork branch)
-  - **PULL BEFORE PUSH**
