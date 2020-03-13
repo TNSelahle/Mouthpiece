@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Mouthpiece</string>
+    <string name="From">From</string>
+    <string name="OMEGA">OMEGA</string>
+    <string name="University_of_Pretoria">University of Pretoria</string>
+    <string name="loginB">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="mpImage">University of Pretoria Logo</string>
     <string name="description">Add activity Mouth Display Description here</string>
     <string name="reset_to_default">Reset To Default</string>
+    <string name="mouth">Mouth</string>
     <string name="next">next</string>
     <string name="previous">previous</string>
     <string name="username">Username</string>
@@ -10,7 +18,7 @@
     <string name="userPassTextV">userPassTextV</string>
     <string name="users_surname">Users Surname</string>
     <string name="revealPass">Reveal Password</string>
-    <string name="prompt_password">Prompt Password</string>
+    <string name="prompt_password">Password</string>
     <string name="submitButton">Submit</string>
     <string name="dobEnter">Date of Birth</string>
     <string name="dateB">Date</string>

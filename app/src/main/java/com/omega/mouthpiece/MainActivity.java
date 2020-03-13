@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText Email;
     private EditText Password;
-    private TextView Info;
     private Button Login;
     private Button Register;
     @Override
@@ -98,31 +97,6 @@ public class MainActivity extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
-    private void postJSON() {
-
-        mRequestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            emailAPI = response.getString("email");
-                            passwordAPI = response.getString("password");
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mRequestQueue.add(request);
-    }
-
 
     private void validate(String userName, String userPassword){
         if((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))){
@@ -131,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Logged in Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Please Try Again", Toast.LENGTH_LONG).show();
         }
     }
 
