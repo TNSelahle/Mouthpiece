@@ -20,7 +20,6 @@ Here are a couple of guidelines for this repo
   - REMEMBER: **PULL BEFORE PUSH**
   
  # Profiles:
-  ##Integration Team CV’s:
 
 [Kevin Huang](https://kevin-d-h.github.io/)
 
