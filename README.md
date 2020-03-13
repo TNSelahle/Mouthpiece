@@ -1,5 +1,6 @@
-# Mouthpiece
-Android Mouthpiece Application (Omega)
+# Android Mouthpiece Application (Omega)
+## Neural Network branch
+This branch houses the neural network part of the Mouthpiece App. All input is recieved from the Converter section and all output is sent back to the Converter section. 
 
 ## Branch Layout
 This is how the neural network branch will be laid out
