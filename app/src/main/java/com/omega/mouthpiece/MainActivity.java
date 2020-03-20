@@ -79,6 +79,24 @@ public class MainActivity extends AppCompatActivity {
             return 0;
 
     }
+
+    //----------------------------------AUDIO SEGMENT------------------------------
+    public double getFormant() {
+        if (recorder != null)
+            int form = 0;
+            const segment = [];
+            recorder.ondataavailable = e => segment.push(e.data);
+            recorder.start(); // you don't need the timeslice argument
+            setInterval(()=>{
+                    //convert_audio is the neural network function that we will call
+                    form = convert_audio(new Blob(segment.splice(0,segment.length)))
+            }, 20);
+            return  form;
+        else
+            return 0;
+
+    }
+
     //-----------------------------------------------------------------------------
     //-----------------------TIMER FUNCTIONS---------------------------------------
     Runnable measure = new Runnable() {
@@ -98,6 +116,81 @@ public class MainActivity extends AppCompatActivity {
             MouthAnimation.start();
 
             h2.postDelayed(this, 30);
+        }
+    };
+    //---------------------------------------------------------------------------------
+    //-----------------------ANIMATION FUNCTIONS---------------------------------------
+    Runnable formant = new Runnable() {
+
+        @Override
+        public void run() {
+            ImageView mouthImage = findViewById(R.id.img_mouth);
+
+            int form = getFormant();
+
+            if(form == 0) {
+                mouthImage.setBackgroundResource(R.drawable.close_mouth);
+            }
+            else if(form == 1)
+            {
+                mouthImage.setBackgroundResource(R.drawable.aei_animation);
+            }
+            else if(form == 2)
+            {
+                mouthImage.setBackgroundResource(R.drawable.bmp_animation);
+            }
+            else if(form == 3)
+            {
+                mouthImage.setBackgroundResource(R.drawable.cdknstxyz_formation);
+            }
+            else if(form == 4)
+            {
+                mouthImage.setBackgroundResource(R.drawable.e_formation);
+            }
+            else if(form == 5)
+            {
+                mouthImage.setBackgroundResource(R.drawable.f_animation);
+            }
+            else if(form == 6)
+            {
+                mouthImage.setBackgroundResource(R.drawable.l_animation);
+            }
+            else if(form == 7)
+            {
+                mouthImage.setBackgroundResource(R.drawable.o_animation);
+            }
+            else if(form == 8)
+            {
+                mouthImage.setBackgroundResource(R.drawable.qw_animation);
+            }
+            else if(form == 9)
+            {
+                mouthImage.setBackgroundResource(R.drawable.r_animation);
+            }
+            else if(form == 10)
+            {
+                mouthImage.setBackgroundResource(R.drawable.sh_ch_j_formation);
+            }
+            else if(form == 11)
+            {
+                mouthImage.setBackgroundResource(R.drawable.th_animation);
+            }
+            else if(form == 12)
+            {
+                mouthImage.setBackgroundResource(R.drawable.m_animation);
+            }
+            else if(form == 13)
+            {
+                mouthImage.setBackgroundResource(R.drawable.u_formation);
+            }
+            else if(form == 14)
+            {
+                mouthImage.setBackgroundResource(R.drawable.v_animation);
+            }
+            MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
+            MouthAnimation.start();
+
+            h2.postDelayed(this, 20);
         }
     };
     //---------------------------------------------------------------------------------
@@ -132,6 +225,23 @@ public class MainActivity extends AppCompatActivity {
                 } else {//click again to stop recording
                     stopRecording();
                     h2.removeCallbacks(measure);
+                }
+                mStartRecording = !mStartRecording;
+            }
+        });
+
+        Button formant_based_btn = findViewById(R.id.btnFormant);
+        //Click on Formant button to start recording
+        formant_based_btn.setOnClickListener(new View.OnClickListener() {
+            boolean mStartRecording = true;
+            public void onClick(View view) {
+
+                if (mStartRecording) {//click to record
+                    startRecording();
+                    h2.postDelayed(formant,0);
+                } else {//click again to stop recording
+                    stopRecording();
+                    h2.removeCallbacks(formant);
                 }
                 mStartRecording = !mStartRecording;
             }
