@@ -7,6 +7,8 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +19,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import java.util.Random;
+
+import static android.os.Build.VERSION_CODES.N;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startRecording() {
+    private void startVolumeRecording() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -64,12 +69,41 @@ public class MainActivity extends AppCompatActivity {
         recorder.start();
     }
 
+
     private void stopRecording()
     {
         recorder.stop();
         recorder.release();
         recorder = null;
     }
+
+    private AudioRecord formRec = null;
+    public int i = 0;
+    public short[][]   buffers  = new short[256][160];
+
+    private void startFormantRecording()
+    {
+
+        int source = MediaRecorder.AudioSource.MIC;
+        int rate = 8000;
+        int config = AudioFormat.CHANNEL_IN_MONO;
+        int format = AudioFormat.ENCODING_PCM_16BIT;
+        int buffSize = AudioRecord.getMinBufferSize(rate, config, format) * 10;
+
+        formRec = new AudioRecord(source, rate, config, format, buffSize);
+
+        formRec.startRecording();
+
+    }
+
+
+    private void stopFormantRecording()
+    {
+        formRec.stop();
+        formRec.release();
+        formRec = null;
+    }
+
 
     //----------------------------------MEASURE AMP------------------------------
     public double getAmplitude() {
@@ -80,21 +114,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //----------------------------------AUDIO SEGMENT------------------------------
-    public double getFormant() {
-        if (recorder != null)
-            int form = 0;
-            const segment = [];
-            recorder.ondataavailable = e => segment.push(e.data);
-            recorder.start(); // you don't need the timeslice argument
-            setInterval(()=>{
-                    //convert_audio is the neural network function that we will call
-                    form = convert_audio(new Blob(segment.splice(0,segment.length)))
-            }, 20);
-            return  form;
-        else
-            return 0;
+    //----------------------------------MOCK NEURAL FUNCTION-----------------------
 
+    public int convert_audio(short[] buffer)
+    {
+        Random rand = new Random();
+        return rand.nextInt(15);
+    }
+
+    //----------------------------------AUDIO SEGMENT------------------------------
+    public int getFormant(short[] buffer) {
+        int form = 0;
+        form = convert_audio(buffer);
+        return form;
     }
 
     //-----------------------------------------------------------------------------
@@ -126,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             ImageView mouthImage = findViewById(R.id.img_mouth);
 
-            int form = getFormant();
+
+            short[] buff = buffers[i++ % buffers.length];
+            int form = getFormant(buff);
 
             if(form == 0) {
                 mouthImage.setBackgroundResource(R.drawable.close_mouth);
@@ -220,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mStartRecording) {//click to record
-                    startRecording();
+                    startVolumeRecording();
                     h2.postDelayed(measure,0);
                 } else {//click again to stop recording
                     stopRecording();
@@ -237,10 +271,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mStartRecording) {//click to record
-                    startRecording();
+                    startFormantRecording();
                     h2.postDelayed(formant,0);
                 } else {//click again to stop recording
-                    stopRecording();
+                    stopFormantRecording();
                     h2.removeCallbacks(formant);
                 }
                 mStartRecording = !mStartRecording;
