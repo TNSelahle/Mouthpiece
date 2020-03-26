@@ -313,6 +313,10 @@ public class MainActivity extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
+        Button formant_based_btn = findViewById(R.id.btnFormant);
+        Button volume_based_btn = findViewById(R.id.btn_record);
+        formant_based_btn.setVisibility(View.GONE);
+        volume_based_btn.setVisibility(View.GONE);
     }
 
     // Shows the system bars by removing all the flags
@@ -323,6 +327,11 @@ public class MainActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
+        Button formant_based_btn = findViewById(R.id.btnFormant);
+        Button volume_based_btn = findViewById(R.id.btn_record);
+        formant_based_btn.setVisibility(View.VISIBLE);
+        volume_based_btn.setVisibility(View.VISIBLE);
+
     }
     //---------------------------------------------------------------------------------
     @Override
@@ -331,30 +340,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //------------------------GESTURE DETECTOR-------------------------------
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-        //------------------------OnVisibility change listener--------------------
-        View decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                // Note that system bars will only be "visible" if none of the
-                // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
-                if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
-                    Button formant_based_btn = findViewById(R.id.btnFormant);
-                    Button volume_based_btn = findViewById(R.id.btn_record);
-                    formant_based_btn.setVisibility(View.VISIBLE);
-                    volume_based_btn.setVisibility(View.VISIBLE);
-                    // adjustments to your UI, such as showing the action bar or
-                    // other navigational controls.
-                } else {
-                    Button formant_based_btn = findViewById(R.id.btnFormant);
-                    Button volume_based_btn = findViewById(R.id.btn_record);
-                    formant_based_btn.setVisibility(View.GONE);
-                    volume_based_btn.setVisibility(View.GONE);
-                    // adjustments to your UI, such as hiding the action bar or
-                    // other navigational controls.
-                }
-            }
-        });
         //----------------------RESTORE STATE AFTER ROTATION---------------------
         if (savedInstanceState != null) {
 //            mCounter = savedInstanceState.getInt(STATE_COUNTER, 0);
