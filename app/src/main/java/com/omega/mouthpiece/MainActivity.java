@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
             recording = true;
         }catch(java.lang.IllegalStateException e){
 //            e.printStackTrace();
-        }catch(Exception e){
-//            e.printStackTrace();
         }
     }
 
@@ -95,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 if(h2 != null) h2.removeCallbacks(measure);
             }catch(java.lang.IllegalStateException e){
 //                e.printStackTrace();
-            }catch(Exception e){
-//                e.printStackTrace();
             }
             recorder = null;
         }
@@ -109,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startFormantRecording()
     {
+        if(recording && formants) stopFormantRecording();
 
         int source = MediaRecorder.AudioSource.MIC;
         int rate = 8000;
@@ -118,8 +115,19 @@ public class MainActivity extends AppCompatActivity {
 
         formRec = new AudioRecord(source, rate, config, format, buffSize);
 
-        formants = true;
-        formRec.startRecording();
+
+
+        if(h2 == null) h2 = new Handler();
+
+        try {
+            formRec.startRecording();
+            h2.postDelayed(formant,0);
+            recording = true;
+            formants = true;
+        }catch(java.lang.IllegalStateException e){
+//            e.printStackTrace();
+        }
+
 
     }
 
@@ -127,8 +135,13 @@ public class MainActivity extends AppCompatActivity {
     private void stopFormantRecording()
     {
         if(formRec != null) {
-            formRec.stop();
-            formRec.release();
+            try {
+                formRec.stop();
+                formRec.release();
+                if(h2 != null) h2.removeCallbacks(formant);
+            }catch(java.lang.IllegalStateException e){
+//                e.printStackTrace();
+            }
             formRec = null;
         }
         formants = false;
@@ -318,12 +331,10 @@ public class MainActivity extends AppCompatActivity {
             boolean mStartRecording = true;
             public void onClick(View view) {
 
-                if (mStartRecording) {//click to record
+                if ( !(recording && formants) ) {//click to record
                     startFormantRecording();
-                    h2.postDelayed(formant,0);
                 } else {//click again to stop recording
                     stopFormantRecording();
-                    h2.removeCallbacks(formant);
                 }
                 mStartRecording = !mStartRecording;
             }
@@ -357,7 +368,6 @@ public class MainActivity extends AppCompatActivity {
         if(recording){
             if(formants){
                 stopFormantRecording();
-                h2.removeCallbacks(formant);
             }else{
                 stopRecording();
             }
