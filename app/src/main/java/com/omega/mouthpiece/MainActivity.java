@@ -3,6 +3,8 @@ package com.omega.mouthpiece;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GestureDetectorCompat;
+import androidx.core.view.MotionEventCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -15,6 +17,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -272,10 +277,84 @@ public class MainActivity extends AppCompatActivity {
     };
     //---------------------------------------------------------------------------------
 
+    //-----------------------------FULLSCREEN------------------------------------------
+    private GestureDetectorCompat mDetector;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        private static final String DEBUG_TAG = "Gestures";
+
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
+                               float velocityX, float velocityY) {
+            Log.d(DEBUG_TAG, "onFling: " + event1.toString() + event2.toString());
+            showSystemUI();
+            return true;
+        }
+    }
+
+    private void hideSystemUI() {
+        // Enables regular immersive mode.
+        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE
+                        // Set the content to appear under the system bars so that the
+                        // content doesn't resize when the system bars hide and show.
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        // Hide the nav bar and status bar
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    // Shows the system bars by removing all the flags
+// except for the ones that make the content appear under the system bars.
+    private void showSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+    }
+    //---------------------------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //------------------------GESTURE DETECTOR-------------------------------
+        mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+        //------------------------OnVisibility change listener--------------------
+        View decorView = getWindow().getDecorView();
+        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+            @Override
+            public void onSystemUiVisibilityChange(int visibility) {
+                // Note that system bars will only be "visible" if none of the
+                // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+                if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                    Button formant_based_btn = findViewById(R.id.btnFormant);
+                    Button volume_based_btn = findViewById(R.id.btn_record);
+                    formant_based_btn.setVisibility(View.VISIBLE);
+                    volume_based_btn.setVisibility(View.VISIBLE);
+                    // adjustments to your UI, such as showing the action bar or
+                    // other navigational controls.
+                } else {
+                    Button formant_based_btn = findViewById(R.id.btnFormant);
+                    Button volume_based_btn = findViewById(R.id.btn_record);
+                    formant_based_btn.setVisibility(View.GONE);
+                    volume_based_btn.setVisibility(View.GONE);
+                    // adjustments to your UI, such as hiding the action bar or
+                    // other navigational controls.
+                }
+            }
+        });
         //----------------------RESTORE STATE AFTER ROTATION---------------------
         if (savedInstanceState != null) {
 //            mCounter = savedInstanceState.getInt(STATE_COUNTER, 0);
@@ -291,6 +370,7 @@ public class MainActivity extends AppCompatActivity {
             if(h2 == null) h2 = new Handler();
 
             if(recording){
+                hideSystemUI();
                 if(formants){
                     startFormantRecording();
                 }else{
@@ -319,8 +399,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!recording) {//click to record
                     startVolumeRecording();
+                    hideSystemUI();
                 } else {//click again to stop recording
                     stopRecording();
+                    ImageView mouthImage = findViewById(R.id.img_mouth);
+                    mouthImage.setBackgroundResource(R.drawable.m1);
                 }
             }
         });
@@ -333,17 +416,13 @@ public class MainActivity extends AppCompatActivity {
 
                 if ( !(recording && formants) ) {//click to record
                     startFormantRecording();
+                    hideSystemUI();
                 } else {//click again to stop recording
                     stopFormantRecording();
+                    ImageView mouthImage = findViewById(R.id.img_mouth);
+                    mouthImage.setBackgroundResource(R.drawable.m1);
                 }
                 mStartRecording = !mStartRecording;
-            }
-        });
-
-        //-------------------------TESTING--------------------------------
-        //Click On image to check animation
-        mouthImage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
             }
         });
 
