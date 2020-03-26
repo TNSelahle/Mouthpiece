@@ -1,15 +1,12 @@
-# Mouthpiece
+# Mouthpiece Converter Main Branch
 Android Mouthpiece Application (Omega)
 
 ## Repository Layout
-This is how the branches will be laid out
+This is how ther converter branch is futher branched
 ```
 master 
-└── development
-    └──── neuralnetwork
-    └──── converter
-    └──── notification
-    └──── ui
+└── converter
+    └──── Pierre_Interface_patch-1 (Fullscreen function with motion detection)
 ```
 
 ## Profiles
