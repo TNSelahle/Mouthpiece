@@ -13,7 +13,7 @@ master
 ```
 
 ## Profiles
-[Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)
+[Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)<br/>
 [Phillip Schulze](https://phillipstemmlar.github.io)
 
 ## Guidelines
