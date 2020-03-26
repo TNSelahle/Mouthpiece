@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private static String fileName = null;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
 
+    private boolean recording = false;
+    private boolean formants = false;
+
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
     private String [] permissions = {Manifest.permission.RECORD_AUDIO};
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startVolumeRecording() {
+        if(recording) stopRecording();
+
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -66,15 +72,35 @@ public class MainActivity extends AppCompatActivity {
             Log.e(LOG_TAG, "prepare() failed");
         }
 
-        recorder.start();
+        if(h2 == null) h2 = new Handler();
+
+        try {
+            recorder.start();
+            h2.postDelayed(measure,0);
+            recording = true;
+        }catch(java.lang.IllegalStateException e){
+//            e.printStackTrace();
+        }catch(Exception e){
+//            e.printStackTrace();
+        }
     }
 
 
     private void stopRecording()
     {
-        recorder.stop();
-        recorder.release();
-        recorder = null;
+        if(recorder != null) {
+            try {
+                recorder.stop();
+                recorder.release();
+                if(h2 != null) h2.removeCallbacks(measure);
+            }catch(java.lang.IllegalStateException e){
+//                e.printStackTrace();
+            }catch(Exception e){
+//                e.printStackTrace();
+            }
+            recorder = null;
+        }
+        recording = false;
     }
 
     private AudioRecord formRec = null;
@@ -92,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         formRec = new AudioRecord(source, rate, config, format, buffSize);
 
+        formants = true;
         formRec.startRecording();
 
     }
@@ -99,9 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void stopFormantRecording()
     {
-        formRec.stop();
-        formRec.release();
-        formRec = null;
+        if(formRec != null) {
+            formRec.stop();
+            formRec.release();
+            formRec = null;
+        }
+        formants = false;
     }
 
 
@@ -233,6 +263,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //----------------------RESTORE STATE AFTER ROTATION---------------------
+        if (savedInstanceState != null) {
+//            mCounter = savedInstanceState.getInt(STATE_COUNTER, 0);
+            System.out.println("Restore State");
+
+            fileName = savedInstanceState.getString("fileName", null);
+            permissionToRecordAccepted = savedInstanceState.getBoolean("permissionToRecordAccepted",false);
+            permissions = savedInstanceState.getStringArray("permissions");
+
+            recording = savedInstanceState.getBoolean("recording",false);
+            formants = savedInstanceState.getBoolean("formants",false);
+
+            if(h2 == null) h2 = new Handler();
+
+            if(recording){
+                if(formants){
+                    startFormantRecording();
+                }else{
+                    startVolumeRecording();
+                }
+            }
+
+        }else{
+            // Record to the external cache directory for visibility
+            fileName = getExternalCacheDir().getAbsolutePath();
+            fileName += "/voiceprofile_audio.3gp";
+
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        }
         //---------------------------KEEP SCREEN ON------------------------------
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
@@ -241,26 +300,15 @@ public class MainActivity extends AppCompatActivity {
         MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
 
         //---------------------------RECORDING SYSTEM-----------------------------
-        // Record to the external cache directory for visibility
-        fileName = getExternalCacheDir().getAbsolutePath();
-        fileName += "/voiceprofile_audio.3gp";
-
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
-
         Button volume_based_btn = findViewById(R.id.btn_record);
         //Click on Volume button to start recording
         volume_based_btn.setOnClickListener(new View.OnClickListener() {
-            boolean mStartRecording = true;
             public void onClick(View view) {
-
-                if (mStartRecording) {//click to record
+                if (!recording) {//click to record
                     startVolumeRecording();
-                    h2.postDelayed(measure,0);
                 } else {//click again to stop recording
                     stopRecording();
-                    h2.removeCallbacks(measure);
                 }
-                mStartRecording = !mStartRecording;
             }
         });
 
@@ -289,4 +337,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    //--------------------------AUTO-ROTATE-------------------------------
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+
+        System.out.println("Save State");
+
+        outState.putString("fileName",fileName);
+        outState.putBoolean("permissionToRecordAccepted",permissionToRecordAccepted);
+        outState.putStringArray("permissions",permissions);
+
+        outState.putBoolean("recording",recording);
+        outState.putBoolean("formants",formants);
+
+        if(recording){
+            if(formants){
+                stopFormantRecording();
+                h2.removeCallbacks(formant);
+            }else{
+                stopRecording();
+            }
+        }
+    }
+
 }
