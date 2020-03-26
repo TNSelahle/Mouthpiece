@@ -12,7 +12,7 @@ master
     └──── ui
 ```
 
-## Prodiles
+## Profiles
 [Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)
 
 ## Guidelines
