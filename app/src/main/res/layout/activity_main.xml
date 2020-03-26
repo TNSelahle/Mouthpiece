@@ -18,18 +18,36 @@
         app:layout_constraintEnd_toStartOf="@+id/btnFormant"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/img_mouth"
-        android:layout_width="419dp"
-        android:layout_height="659dp"
-        android:layout_marginBottom="32dp"
-        android:background="#272525"
+    <LinearLayout
+        android:id="@+id/img_mouth_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fbd80d"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_mouth"
+            android:layout_width="450dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="#272525"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@drawable/e3" />
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btnFormant"
