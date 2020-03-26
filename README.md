@@ -14,6 +14,7 @@ master
 
 ## Profiles
 [Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)
+[Phillip Schulze](https://phillipstemmlar.github.io)
 
 ## Guidelines
 Here are a couple of guidelines for this repo
