@@ -11,8 +11,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioFormat;
+import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.media.audiofx.AcousticEchoCanceler;
+import android.media.audiofx.AudioEffect;
+import android.media.audiofx.NoiseSuppressor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -27,13 +31,20 @@ import android.widget.ImageView;
 import java.io.IOException;
 import java.util.Random;
 
+
+
 import static android.os.Build.VERSION_CODES.N;
 
 public class MainActivity extends AppCompatActivity {
 
     AnimationDrawable MouthAnimation;
     //------------------------RECORDING VAR----------------------------------
-    private MediaRecorder recorder = null;
+    public static int RECORDER_SAMPLERATE = 8000;
+    public static int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
+    public static int RECORDER_AUDIO_ENDCODING = AudioFormat.ENCODING_PCM_16BIT;
+
+    private AudioRecord recorder = null;
+
     private static final String LOG_TAG = "AudioRecordTest";
     private static String fileName = null;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -62,30 +73,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startVolumeRecording() {
+
+    int bufferSizeInBytes, bufferSizeInShorts;
+    short[] audioBuffer;
+    private void startVolumeRecording()
+    {
         if(recording) stopRecording();
 
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(fileName);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
-        try {
-            recorder.prepare();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
-        }
+        bufferSizeInBytes = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENDCODING)*10;
 
-        if(h2 == null) h2 = new Handler();
+        bufferSizeInShorts = (bufferSizeInBytes / 4);
 
-        try {
-            recorder.start();
-            h2.postDelayed(measure,0);
+        recorder = new AudioRecord(MediaRecorder.AudioSource.VOICE_RECOGNITION, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENDCODING, bufferSizeInBytes);
+
+        audioBuffer = new short[bufferSizeInShorts];
+
+
+        try
+        {
+            recorder.startRecording();
             recording = true;
-        }catch(java.lang.IllegalStateException e){
-//            e.printStackTrace();
+            configureffects();
+            if(h2 == null) h2 = new Handler();
+            h2.postDelayed(measure,100);
+
+
         }
+    catch(java.lang.IllegalStateException e){
+//            e.printStackTrace();
+    }
+
     }
 
 
@@ -102,6 +120,24 @@ public class MainActivity extends AppCompatActivity {
             recorder = null;
         }
         recording = false;
+    }
+
+    private void configureffects()
+    {
+
+
+
+        if(AcousticEchoCanceler.isAvailable())
+        {
+            AcousticEchoCanceler echoCanceler = AcousticEchoCanceler.create(recorder.getAudioSessionId());
+
+        }
+
+        if(NoiseSuppressor.isAvailable())
+        {
+            NoiseSuppressor noiseSuppressor = NoiseSuppressor.create(recorder.getAudioSessionId());
+
+        }
     }
 
     private AudioRecord formRec = null;
@@ -126,12 +162,12 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             formRec.startRecording();
-            h2.postDelayed(formant,0);
+            h2.postDelayed(formant,5);
             recording = true;
             formants = true;
         }catch(java.lang.IllegalStateException e){
 //            e.printStackTrace();
-        }
+    }
 
 
     }
@@ -154,12 +190,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     //----------------------------------MEASURE AMP------------------------------
-    public double getAmplitude() {
-        if (recorder != null)
-            return  (recorder.getMaxAmplitude());
-        else
-            return 0;
 
+    long v = 0;
+    public double getAmplitude()
+    {
+        if(recorder != null) {
+            int r = recorder.read(audioBuffer, 0, bufferSizeInShorts);
+
+            v = audioBuffer[i] * audioBuffer[i];
+            double mean = v / (double) r;
+            double volume = 10 * Math.log10(mean);
+
+
+            return v;
+        }
+        else
+            return 10;
     }
 
     //----------------------------------MOCK NEURAL FUNCTION-----------------------
@@ -184,9 +230,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             ImageView mouthImage = findViewById(R.id.img_mouth);
+
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
-            if(db >= 71.5) {
+
+            if(db >= 130.5) {
                 mouthImage.setBackgroundResource(R.drawable.open_mouth);
             }
             else {
@@ -195,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
             MouthAnimation.start();
 
-            h2.postDelayed(this, 30);
+            h2.postDelayed(this, 0);
         }
     };
     //---------------------------------------------------------------------------------
