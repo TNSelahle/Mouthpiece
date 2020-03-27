@@ -12,8 +12,8 @@ master
 
 ## Profiles
 [Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)<br/>
-[Phillip Schulze](https://phillipstemmlar.github.io)
-[Steven Visser](https://vanillav.github.io/)
+[Phillip Schulze](https://phillipstemmlar.github.io)<br/>
+[Steven Visser](https://vanillav.github.io/)<br/>
 
 ## Guidelines
 Here are a couple of guidelines for this repo
