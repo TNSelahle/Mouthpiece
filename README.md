@@ -2,7 +2,7 @@
 Android Mouthpiece Application (Omega)
 
 ## Repository Layout
-This is how ther converter branch is futher branched
+This is how the converter branch is futher branched
 ```
 master 
 └── converter
@@ -14,6 +14,7 @@ master
 [Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)<br/>
 [Phillip Schulze](https://phillipstemmlar.github.io)<br/>
 [Steven Visser](https://vanillav.github.io/)<br/>
+[Munashe Mujaji](https://munasheghub.github.io/)<br/>
 
 ## Guidelines
 Here are a couple of guidelines for this repo
