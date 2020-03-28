@@ -8,6 +8,7 @@ master
 └── converter
     └──── Pierre_Interface_patch-1 (Fullscreen function with motion detection)
     └──── Munashe_voicetraining_patch-1
+    └──── Obakeng_Sound_Sensitivity_Patch-1
 ```
 
 ## Profiles
@@ -15,6 +16,8 @@ master
 [Phillip Schulze](https://phillipstemmlar.github.io)<br/>
 [Steven Visser](https://vanillav.github.io/)<br/>
 [Munashe Mujaji](https://munasheghub.github.io/)<br/>
+[Obakeng Seageng](http://obakengseageng.github.io/)<br/>
+[Nthabiseng Tia Mangena](https://tiamangena.github.io/)<br/>
 
 ## Guidelines
 Here are a couple of guidelines for this repo
