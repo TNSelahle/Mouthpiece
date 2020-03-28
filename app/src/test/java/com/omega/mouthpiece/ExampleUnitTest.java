@@ -56,4 +56,52 @@ public class ExampleUnitTest {
             System.out.println("error in formant");
         }
     }
+    /*
+    private static byte[] BitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(CompressFormat.PNG, 100, bos);
+        byte[] result = bos.toByteArray();
+        return result;
+    }
+
+    private static Bitmap getBitmapOfDrawable(Drawable drawable) {
+        BitmapDrawable bd = (BitmapDrawable) drawable;
+        Bitmap bitmap = bd.getBitmap();
+        return bitmap;
+    }
+
+    private boolean isImageEqual(ImageView actualImageView, int expectedDrawable) {
+
+        Drawable expected = getActivity().getResources().getDrawable( expectedDrawable);
+        Drawable actual = actualImageView.getDrawable();
+
+        if (expected != null && actual != null)
+        {
+            Bitmap expectedBitmap = getBitmapOfDrawable(expected);
+            Bitmap actualBitmap = getBitmapOfDrawable(actual);
+
+            byte[] array1 = BitmapToByteArray(expectedBitmap);
+            byte[] array2 = BitmapToByteArray(actualBitmap);
+            if (java.util.Arrays.equals(array1, array2)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void testImages()
+    {
+        ImageView mouthImage = (ImageView) getActivity().findViewById(R.id.img_mouth);
+        int resIdImage = R.drawable.aei_animation;
+
+        if (!isImagesEqual(mouthImage, resIdImage))
+        {
+            System.out.println("Incorrect mouth animation");
+        }else {
+            System.out.println("Correct mouth animation");
+        }
+    }
+
+
+     */
 }
