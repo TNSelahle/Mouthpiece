@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     //----------------------------------AUDIO SEGMENT------------------------------
     public int getFormant(short[] buffer) {
         int form = 0;
-        form = convert_audio(buffer);
+        //form = convert_audio(buffer);
         return form;
     }
 

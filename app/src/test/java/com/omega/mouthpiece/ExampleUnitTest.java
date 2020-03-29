@@ -4,7 +4,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import static org.junit.Assert.*;
+
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+
+import androidx.core.content.ContextCompat;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -25,8 +37,9 @@ public class ExampleUnitTest {
 
     @Test
     public void test() {
-        testGettingFormants();
-        testAmplitude();
+        //testGettingFormants();
+        //testAmplitude();
+        testImages();
     }
     public void testAmplitude() {
         double amplitude = mainActivity.getAmplitude();
@@ -41,7 +54,8 @@ public class ExampleUnitTest {
         // assertEquals("Not recording", 0, amplitude);
     }
 
-    public void testGettingFormants() {
+    /*public void testGettingFormants() {
+
         int formant = mainActivity.getFormant();
         if(formant == 0)
         {
@@ -56,10 +70,10 @@ public class ExampleUnitTest {
             System.out.println("error in formant");
         }
     }
-    /*
+    */
     private static byte[] BitmapToByteArray(Bitmap bitmap) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(CompressFormat.PNG, 100, bos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] result = bos.toByteArray();
         return result;
     }
@@ -72,7 +86,8 @@ public class ExampleUnitTest {
 
     private boolean isImageEqual(ImageView actualImageView, int expectedDrawable) {
 
-        Drawable expected = getActivity().getResources().getDrawable( expectedDrawable);
+        Context mContext = mainActivity.getApplicationContext();
+        Drawable expected = ContextCompat.getDrawable(mContext, expectedDrawable);
         Drawable actual = actualImageView.getDrawable();
 
         if (expected != null && actual != null)
@@ -91,10 +106,11 @@ public class ExampleUnitTest {
 
     public void testImages()
     {
-        ImageView mouthImage = (ImageView) getActivity().findViewById(R.id.img_mouth);
-        int resIdImage = R.drawable.aei_animation;
 
-        if (!isImagesEqual(mouthImage, resIdImage))
+        ImageView mouthImage = (ImageView) mainActivity.findViewById(R.id.img_mouth);
+        int resIdImage = R.drawable.close_mouth;
+
+        if (!isImageEqual(mouthImage, resIdImage))
         {
             System.out.println("Incorrect mouth animation");
         }else {
@@ -103,5 +119,5 @@ public class ExampleUnitTest {
     }
 
 
-     */
+
 }
