@@ -18,6 +18,7 @@ master
 [Munashe Mujaji](https://munasheghub.github.io/)<br/>
 [Obakeng Seageng](http://obakengseageng.github.io/)<br/>
 [Nthabiseng Tia Mangena](https://tiamangena.github.io/)<br/>
+[Vedha Krishna Velthapu](https://vedha286.github.io/)<br/>
 
 ## Guidelines
 Here are a couple of guidelines for this repo
