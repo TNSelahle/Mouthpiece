@@ -18,21 +18,22 @@ public class openWebsiteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_website);
+        setContentView(R.layout.content_open_website);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+//        FloatingActionButton fab = findViewById(R.id.fab);
 
     }
     public void openBrowser(View view)
     {
-        String packageName = "com.android.browser";
-        String className = "com.android.browser.BrowserActivity";
+//        String packageName = "com.android.browser";
+//        String className = "com.android.browser.BrowserActivity";
         Intent internetIntent = new Intent(Intent.ACTION_VIEW);
-        internetIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        internetIntent.setClassName(packageName, className);
-        String url = "http://www.example.com";
+//        internetIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+//        internetIntent.setClassName(packageName, className);
+        String url = "http://www.mouthpiece.tech";
         internetIntent.setData(Uri.parse(url));
         openWebsiteActivity.this.startActivity(internetIntent);
+
     }
 
 }
