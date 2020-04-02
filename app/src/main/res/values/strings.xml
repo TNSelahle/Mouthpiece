@@ -31,5 +31,9 @@
     <string name="testTrainingButton">Test Training Activity</string>
     <string name="testMouthpieceButton">Test Mouth Display</string>
     <string name="testSettingsButton">Test Settings Activity</string>
+    <string name="PleaseReadText">Please read the following text:</string>
+    <string name="Phonetic_Pangram_Read">That quick beige fox jumped in the air over each thin dog. Look out, I shout, for he\'s foiled you again, creating chaos</string>
+    <string name="PromptToTrain">Enable Voice Training</string>
+    <string name="StopRecord">Stop voice recording</string>
 
 </resources>
