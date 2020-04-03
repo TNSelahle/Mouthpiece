@@ -24,6 +24,7 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
     public static final String EXTRA_URL = "imageURL";
     public static final String EXTRA_CREATOR = "creatorName";
     public static final String EXTRA_LIKES = "ratings";
+    private static final String EXTRA_DOWNLOADS = "downloads";
 
     private RecyclerView mRecyclerView;
     private DBAdapter mDBAdapter;
@@ -59,12 +60,12 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
                             for(int i = 0; i < jsonArray.length();i++)
                             {
                                 JSONObject hit = jsonArray.getJSONObject(i);
-
                                 String creatorName = hit.getString("user");
                                 String imageURL = hit.getString("webformatURL");
                                 int ratings = hit.getInt("likes");
+                                int downloads = hit.getInt("downloads");
 
-                                mMouthList.add(new MouthItem(imageURL,creatorName,ratings));
+                                mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                             }
                             mDBAdapter = new DBAdapter(MouthSelection.this,mMouthList);
                             mRecyclerView.setAdapter(mDBAdapter);
@@ -90,6 +91,7 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
         detailIntent.putExtra(EXTRA_URL, clickedItem.getImageURL());
         detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
         detailIntent.putExtra(EXTRA_LIKES, clickedItem.getRatings());
+        detailIntent.putExtra(EXTRA_DOWNLOADS, clickedItem.getDownloads());
 
         startActivity(detailIntent);
     }
