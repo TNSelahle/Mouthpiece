@@ -6,6 +6,7 @@ package com.omega.mouthpiece;
 
 
         import android.Manifest;
+        import android.graphics.Color;
         import android.util.Log;
         import android.content.Intent;
         import android.content.pm.PackageManager;
@@ -57,20 +58,23 @@ public class TrainingPage extends AppCompatActivity {
 
         EnDisTrain = findViewById(R.id.enableTrainingButton);
         EnDisTrain.setEnabled(true);
+        EnDisTrain.setTextColor(Color.parseColor("#FFFFFFFF"));
         DisableTrainer = findViewById(R.id.stopVoiceRecording);
         DisableTrainer.setEnabled(false);
+        DisableTrainer.setTextColor(Color.parseColor("#FF424242"));
 
         /*mp3/ogg/wav*/
         outputF = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recording.mp3";
 
         //ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
+        /*Commented out due to functionality not working
         trainerAudio = new MediaRecorder();
         trainerAudio.setAudioSource(MediaRecorder.AudioSource.MIC);
         trainerAudio.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         trainerAudio.setOutputFile(outputF);
         trainerAudio.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
-
+        */
         EnDisTrain.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -79,24 +83,30 @@ public class TrainingPage extends AppCompatActivity {
 
 
                 try {
+                    /*Commented out due to functionality not working
                     trainerAudio.prepare();
                     trainerAudio.start();
+                    */
                     TextView textview= /*(TextView)*/findViewById(R.id.phonetic_Pangrams_Read_Text);
                     TextView prText= /*(TextView)*/findViewById(R.id.tvPleaseRead);
                     textview.setVisibility(View.VISIBLE);
                     prText.setVisibility(View.VISIBLE);
                     DisableTrainer.setEnabled(true);
+                    DisableTrainer.setTextColor(Color.parseColor("#FFFFFFFF"));
                     EnDisTrain.setEnabled(false);
+                    EnDisTrain.setTextColor(Color.parseColor("#FF424242"));
                     Toast.makeText(getApplicationContext(), "Recording your voice...", Toast.LENGTH_SHORT).show();
                 } catch (IllegalStateException ie) {
                     Toast.makeText(getApplicationContext(), "Illegal state", Toast.LENGTH_SHORT).show();
                     ie.printStackTrace();
 
-                } catch (IOException ioe) {
+                }
+                /*Commented out due to functionality not working
+                catch (IOException ioe) {
                     Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     //Log.e(LOG_TAG, "prepare() failed");
                     ioe.printStackTrace();
-                }
+                }*/
                 //trainerAudio.start();
 
             }
@@ -112,10 +122,14 @@ public class TrainingPage extends AppCompatActivity {
                 textview.setVisibility(View.INVISIBLE);
                 prText.setVisibility(View.INVISIBLE);
                 DisableTrainer.setEnabled(false);
+                DisableTrainer.setTextColor(Color.parseColor("#FF424242"));
                 EnDisTrain.setEnabled(true);
+                EnDisTrain.setTextColor(Color.parseColor("#FFFFFFFF"));
                 //problem with recording audio
+                /*Commented out due to functionality not working
                 trainerAudio.stop();
                 trainerAudio.release();
+               */
                 trainerAudio = null;
                 Toast.makeText(getApplicationContext(), "Voice recording disabled", Toast.LENGTH_SHORT).show();
             }
