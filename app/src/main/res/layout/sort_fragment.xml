@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fragment_text_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/fragmentSort"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_dropdown_sort"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_dropdown_sort"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fragment_text_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="38dp"
+        android:text="@string/fragmentType"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_dropdown_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_text_sort" />
+
+    <Button
+        android:id="@+id/fragment_button_apply"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="35dp"
+        android:text="@string/fragmentButtonApply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_button_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_type" />
+
+    <Button
+        android:id="@+id/fragment_button_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="35dp"
+        android:text="@string/fragmentButtonCancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_button_apply"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_sort" />
+
+    <Spinner
+        android:id="@+id/fragment_dropdown_sort"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="547dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_button_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_text_sort"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/fragment_dropdown_type"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_button_apply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_text_type"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_sort" />
+</androidx.constraintlayout.widget.ConstraintLayout>
