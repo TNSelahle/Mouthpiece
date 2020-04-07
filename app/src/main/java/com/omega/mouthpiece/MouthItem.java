@@ -4,12 +4,14 @@ public class MouthItem {
     private String mImageURL;
     private String mCreator;
     private int mRatings;
+    private int mDownloads;
 
-    public MouthItem(String imageURL, String creator,int ratings)
+    public MouthItem(String imageURL, String creator, int ratings, int downloads)
     {
         mImageURL = imageURL;
         mCreator = creator;
         mRatings = ratings;
+        mDownloads= downloads;
     }
 
     public String getImageURL()
@@ -28,4 +30,8 @@ public class MouthItem {
     }
 
 
+    public int getDownloads()
+    {
+        return mDownloads;
+    }
 }
