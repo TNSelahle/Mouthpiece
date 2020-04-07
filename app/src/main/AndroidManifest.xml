@@ -22,6 +22,9 @@
         <activity android:name=".TrainingPage"
             android:exported="true"
             />
+        <activity android:name=".UploadMouthsFrontPage"
+            android:exported="true"
+            />
         <activity android:name=".LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
