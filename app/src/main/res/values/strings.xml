@@ -35,5 +35,10 @@
     <string name="Phonetic_Pangram_Read">That quick beige fox jumped in the air over each thin dog. Look out, I shout, for he\'s foiled you again, creating chaos</string>
     <string name="PromptToTrain">Enable Voice Training</string>
     <string name="StopRecord">Stop voice recording</string>
+    <string name="fragmentSort">Sort by:</string>
+    <string name="fragmentType">Type:</string>
+    <string name="fragmentButtonApply">Apply</string>
+    <string name="fragmentButtonCancel">Cancel</string>
+    <string name="downloads">Downloads:</string>
 
 </resources>
