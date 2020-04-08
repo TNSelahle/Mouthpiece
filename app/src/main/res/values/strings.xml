@@ -42,5 +42,7 @@
     <string name="email_hint">mouthpiece@gmail.com</string>
     <string name="email_address">Email Address</string>
     <string name="emailAddress">emailAddress</string>
+    <string name="formant_based">Formant Based</string>
+    <string name="volume_based">Volume Based</string>
 
 </resources>
