@@ -44,5 +44,13 @@
     <string name="emailAddress">emailAddress</string>
     <string name="formant_based">Formant Based</string>
     <string name="volume_based">Volume Based</string>
+    <string name="start_creation">Start Creation</string>
+    <string name="mouth_creation">Mouth Creation</string>
+    <string name="fragmentSort">Sort by:</string>
+    <string name="fragmentType">Type:</string>
+    <string name="fragmentButtonApply">Apply</string>
+    <string name="fragmentButtonCancel">Cancel</string>
+    <string name="downloads">Downloads:</string>
+
 
 </resources>
