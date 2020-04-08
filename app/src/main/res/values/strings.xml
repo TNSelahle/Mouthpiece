@@ -35,12 +35,13 @@
     <string name="Phonetic_Pangram_Read">That quick beige fox jumped in the air over each thin dog. Look out, I shout, for he\'s foiled you again, creating chaos</string>
     <string name="PromptToTrain">Enable Voice Training</string>
     <string name="StopRecord">Stop voice recording</string>
+    <string name="start_creation">Start Creation</string>
+    <string name="mouth_creation">Mouth Creation</string>
     <string name="fragmentSort">Sort by:</string>
     <string name="fragmentType">Type:</string>
     <string name="fragmentButtonApply">Apply</string>
     <string name="fragmentButtonCancel">Cancel</string>
     <string name="downloads">Downloads:</string>
-
     <string name="Notice_pmpt">Notice:</string>
     <string name="NoticeText">In order to create a new mouth, 12 separate images need to be uploaded for each shape of the phonetic alphabet</string>
     <string name="AccecptTxt">Click the accept button if you are willing to upload the 12 images</string>
