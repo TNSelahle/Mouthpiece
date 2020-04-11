@@ -9,7 +9,8 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mouth_creation_image_upload);
+        setContentView(R.layout.mouth_creation_image_upload);
 
     }
+
 }
