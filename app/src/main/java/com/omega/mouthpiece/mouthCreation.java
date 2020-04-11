@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.Manifest;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class mouthCreation extends AppCompatActivity {
 
@@ -16,9 +18,13 @@ public class mouthCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mouth_creation);
 
-    }
-    public void clickHandler(View view){
-        Intent intent = new Intent(mouthCreation.this, mouthCreation_ImageUpload.class);
-        startActivity(intent);
+        btnStartUpload.findViewById(R.id.btnStart);
+        btnStartUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mouthCreation.this, mouthCreation_ImageUpload.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -10,7 +10,6 @@
         android:id="@+id/btnStart"
         android:layout_width="184dp"
         android:layout_height="63dp"
-        android:onClick="clickHandler"
         android:text="@string/start_creation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
