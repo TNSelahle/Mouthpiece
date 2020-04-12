@@ -5,8 +5,7 @@
     android:id="@+id/phonetic_Pangrams_Read"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF312E"
-    android:backgroundTint="#FF312E"
+    android:background="#EE1C31"
     tools:visibility="visible">
 
     <TextView
@@ -36,7 +35,8 @@
         android:layout_marginBottom="112dp"
         android:backgroundTint="#333138"
         android:text="@string/PromptToTrain"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
