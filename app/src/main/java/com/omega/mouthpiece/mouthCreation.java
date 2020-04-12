@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 public class mouthCreation extends AppCompatActivity {
 
-    private Button btnStartUpload;
+    private Button  btnStartUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mouth_creation);
 
-        btnStartUpload.findViewById(R.id.btnStart);
+        btnStartUpload = findViewById(R.id.btnStart);
         btnStartUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

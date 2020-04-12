@@ -42,6 +42,7 @@
     <string name="fragmentButtonApply">Apply</string>
     <string name="fragmentButtonCancel">Cancel</string>
     <string name="downloads">Downloads:</string>
+    <string name="place_holder">Place_holder</string>
 
 
 </resources>
