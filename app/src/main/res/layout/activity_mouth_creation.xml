@@ -7,7 +7,7 @@
     tools:context=".mouthCreation">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnStart"
         android:layout_width="184dp"
         android:layout_height="63dp"
         android:text="@string/start_creation"
@@ -35,8 +35,8 @@
         android:id="@+id/imageView3"
         android:layout_width="283dp"
         android:layout_height="133dp"
-        android:contentDescription="Place holder"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:contentDescription="@string/place_holder"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"

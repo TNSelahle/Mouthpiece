@@ -51,6 +51,7 @@
     <string name="fragmentButtonApply">Apply</string>
     <string name="fragmentButtonCancel">Cancel</string>
     <string name="downloads">Downloads:</string>
+    <string name="place_holder">Place_holder</string>
     <string name="Notice_pmpt">Notice:</string>
     <string name="NoticeText">In order to create a new mouth, 12 separate images need to be uploaded for each shape of the phonetic alphabet</string>
     <string name="AccecptTxt">Click the accept button if you are willing to upload the 12 images</string>
