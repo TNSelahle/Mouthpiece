@@ -1,0 +1,17 @@
+body{
+    background-color: gray;
+    color:black;
+}
+
+.heading{
+    text-decoration: underline;
+}
+
+#Profile{
+    border: 2%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2%;
+    width: 100%;
+    height:auto;
+}
