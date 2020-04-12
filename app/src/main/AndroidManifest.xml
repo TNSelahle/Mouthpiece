@@ -41,6 +41,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".imageConfirmation"
+            android:exported="true"/>
     </application>
 
 

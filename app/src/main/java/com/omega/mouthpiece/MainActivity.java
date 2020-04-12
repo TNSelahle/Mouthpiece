@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
-    private String url = "http://102.133.170.83:3000/getUsers";
+    private String url = "http://102.133.170.83:4000/getUsers";
 
     private void parseJSON() {
 
