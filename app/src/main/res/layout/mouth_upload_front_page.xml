@@ -30,8 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478"
-        app:srcCompat="@mipmap/ic_mouth_shapes" />
+        app:layout_constraintVertical_bias="0.565"
+        app:srcCompat="@drawable/mouths_shapes" />
 
     <Button
         android:id="@+id/Accept_button"
