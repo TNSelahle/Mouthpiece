@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Adding All fonts-->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_black" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_bold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_heavy" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_light" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_medium" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_regular" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/famosa_thin" />
+</font-family>
