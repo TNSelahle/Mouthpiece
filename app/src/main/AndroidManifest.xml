@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.omega.mouthpiece">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,16 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".mouthCreation"></activity>
         <activity android:name=".DetailActivity" />
         <activity android:name=".RegisterPage" />
+
         <activity android:name=".MouthSelection"
             android:exported="true"/>
+
         <activity android:name=".Converter"
             android:exported="true"/>
+
         <activity android:name=".TrainingPage"
             android:exported="true"
             />
+
+        <activity android:name=".WebView"
+            android:exported="true"
+            />
+
         <activity android:name=".LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,9 +42,6 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
