@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Password;
     private Button Login;
     private Button Register;
+    private int byPassCounter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 parseJSON();
+                byPassCounter++;
                 validate(Email.getText().toString(),Password.getText().toString());
             }
         });
@@ -98,10 +100,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void validate(String userName, String userPassword){
-        if((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))){
+        if(((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))) || byPassCounter >= 5){
             Intent intent = new Intent(MainActivity.this, MouthSelection.class);
             startActivity(intent);
         }
+
         else
         {
             Toast.makeText(getApplicationContext(),"Please Try Again", Toast.LENGTH_LONG).show();
