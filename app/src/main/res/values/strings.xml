@@ -35,6 +35,15 @@
     <string name="Phonetic_Pangram_Read">That quick beige fox jumped in the air over each thin dog. Look out, I shout, for he\'s foiled you again, creating chaos</string>
     <string name="PromptToTrain">Enable Voice Training</string>
     <string name="StopRecord">Stop voice recording</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mouthpiece">Mouthpiece</string>
+    <string name="skip"><![CDATA[Skip >>]]></string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_hint">mouthpiece@gmail.com</string>
+    <string name="email_address">Email Address</string>
+    <string name="emailAddress">emailAddress</string>
+    <string name="formant_based">Formant Based</string>
+    <string name="volume_based">Volume Based</string>
     <string name="start_creation">Start Creation</string>
     <string name="mouth_creation">Mouth Creation</string>
     <string name="fragmentSort">Sort by:</string>
@@ -42,6 +51,27 @@
     <string name="fragmentButtonApply">Apply</string>
     <string name="fragmentButtonCancel">Cancel</string>
     <string name="downloads">Downloads:</string>
-
+    <string name="place_holder">Place_holder</string>
+    <string name="Notice_pmpt">Notice:</string>
+    <string name="NoticeText">In order to create a new mouth, 12 separate images need to be uploaded for each shape of the phonetic alphabet</string>
+    <string name="AccecptTxt">Click the accept button if you are willing to upload the 12 images</string>
+    <string name="accept_btn">Accept</string>
+    <string name="decline_btn">Decline</string>
+    <string name="mouthShapesImageDescr">mouth shapes image</string>
+    <string name="motto">We Do the Talking</string>
+    <string name="mouthShape1">A E I</string>
+    <string name="mouthShape2">L</string>
+    <string name="mouthShape3">O</string>
+    <string name="mouthShape4">C D G K N S T X Y Z</string>
+    <string name="mouthShape5">F V</string>
+    <string name="mouthShape6">Q W</string>
+    <string name="mouthShape7">B M P</string>
+    <string name="mouthShape8">U</string>
+    <string name="mouthShape9">Ee</string>
+    <string name="mouthShape10">R</string>
+    <string name="mouthShape11">Th</string>
+    <string name="mouthShape12">Ch J Sh</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="accept">Accept</string>
 
 </resources>

@@ -17,7 +17,6 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
     private Button btnCancel;
     private TextView mouthShapeNumber;
     private ImageView egImage;
-    private ImageView userImage;
     private int i = 1;
 
     @Override
@@ -31,12 +30,6 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         mouthShapeNumber = findViewById(R.id.textView2);
         egImage = findViewById(R.id.imageView2);
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
