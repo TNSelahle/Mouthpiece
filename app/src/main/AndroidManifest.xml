@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.omega.mouthpiece">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,15 +23,31 @@
         </activity>
         <activity android:name=".mouthCreation"
             android:exported="true"/>
+        android:theme="@style/AppTheme">
+        <activity android:name=".Landing"></activity>
         <activity android:name=".DetailActivity" />
+        <activity android:name=".mouthCreation"></activity>
         <activity android:name=".RegisterPage" />
         <activity android:name=".MouthSelection" />
-        <activity
-            android:name=".Converter"
+        <activity android:name=".Converter"
             android:exported="true" />
         <activity
             android:name=".TrainingPage"
             android:exported="true" />
+
+        <activity android:name=".MouthSelection"
+            android:exported="true"/>
+
+        <activity android:name=".Converter"
+            android:exported="true"/>
+
+        <activity android:name=".UploadMouthsFrontPage"
+            android:exported="true"
+            />
+        <activity android:name=".WebView"
+            android:exported="true"
+            />
+
         <activity android:name=".LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +56,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".imageConfirmation"
+            android:exported="true"/>
     </application>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>
