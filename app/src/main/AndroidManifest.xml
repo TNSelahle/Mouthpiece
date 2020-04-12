@@ -3,9 +3,7 @@
     package="com.omega.mouthpiece">
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,36 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".mouthCreation_ImageUpload"
-            android:exported="true">
-        </activity>
-        <activity android:name=".mouthCreation"
-            android:exported="true"/>
-        android:theme="@style/AppTheme">
-        <activity android:name=".Landing"></activity>
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".mouthCreation"></activity>
-        <activity android:name=".RegisterPage" />
-        <activity android:name=".MouthSelection" />
-        <activity android:name=".Converter"
-            android:exported="true" />
-        <activity
-            android:name=".TrainingPage"
-            android:exported="true" />
-
-        <activity android:name=".MouthSelection"
-            android:exported="true"/>
-
-        <activity android:name=".Converter"
-            android:exported="true"/>
-
-        <activity android:name=".UploadMouthsFrontPage"
-            android:exported="true"
-            />
-        <activity android:name=".WebView"
-            android:exported="true"
-            />
-
+        <!--Main Activity (Splash Page)-->
         <activity android:name=".LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,8 +24,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".imageConfirmation"
-            android:exported="true"/>
+        <!--Login Page-->
+        <activity android:name=".MainActivity"></activity>
+        <!--Register Page-->
+        <activity android:name=".RegisterPage"></activity>
+        <!--MouthSelection-->
+        <activity android:name=".MouthSelection" android:exported="true"></activity>
+        <activity android:name=".DetailActivity"></activity>
+        <!--MouthCreation-->
+        <activity android:name=".UploadMouthsFrontPage" android:exported="true"></activity>
+        <activity android:name=".mouthCreation" android:exported="true"></activity>
+        <activity android:name=".mouthCreation_ImageUpload" android:exported="true"> </activity>
+        <activity android:name=".imageConfirmation" android:exported="true"></activity>
+        <!--Landing Page-->
+        <activity android:name=".Landing"></activity>
+        <!--Converter-->
+        <activity android:name=".Converter" android:exported="true"></activity>
+        <!--Training-->
+        <activity android:name=".TrainingPage" android:exported="true"></activity>
+        <!--Webview-->
+        <activity android:name=".WebView" android:exported="true"></activity>
     </application>
 </manifest>
