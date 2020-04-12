@@ -28,7 +28,9 @@
         <activity android:name=".TrainingPage"
             android:exported="true"
             />
-
+        <activity android:name=".UploadMouthsFrontPage"
+            android:exported="true"
+            />
         <activity android:name=".WebView"
             android:exported="true"
             />
