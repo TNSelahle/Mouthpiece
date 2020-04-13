@@ -19,7 +19,6 @@ public class main {
         
         EmailUnitTesting em = new EmailUnitTesting();
         em.createUnits();
-        
     }
     
 }
