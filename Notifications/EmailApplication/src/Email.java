@@ -69,17 +69,44 @@ public class Email {
         return json;
     } 
     
-       public static void createAndSendJsonObject(String email, String userName, String msgType, String subject)
+    public static void SendSecurityCodeEmail(String email, String userName, int SecurityCode )
     {
         JSONObject json = new JSONObject();
         json.put("UserEmail",email);
         json.put("UserName",userName);
-        json.put("MsgType", msgType);
-        json.put("Subject", subject);
-        
+        json.put("MsgType","SecurityCode");
+        json.put("Subject","Mouthpiece Security Code");
+        json.put("SecurityCode",SecurityCode);
+
         email(json);
     }
-       
+
+    public static void SendPasswordChangeEmail(String email, String userName , String changeLink,String notYouLink)
+    {
+        JSONObject json = new JSONObject();
+        json.put("UserEmail",email);
+        json.put("UserName", userName);
+        json.put("Subject","Moutpiece Password change");
+        json.put("MsgType","PasswordChange");
+        json.put("ChangeLink",changeLink);
+        json.put("ErrorLink",notYouLink);
+
+        email(json);
+    }
+
+    public static void SendSuccessfullUploadEmail(String email, String userName, String link, String ID)
+    {
+        JSONObject json = new JSONObject();
+        json.put("UserEmail",email);
+        json.put("UserName",userName);
+        json.put("MsgType","SuccessfullUpload");
+        json.put("Subject","Mouthpiece Upload Successfull");
+        json.put("ViewLink",link);
+        json.put("ID",ID);
+
+        email(json);
+    }
+
     public static Properties getProperties()
     {
         Properties prop = System.getProperties();

@@ -17,8 +17,7 @@ public class main {
 //        
 //        Email.email(json);
         
-        EmailUnitTesting em = new EmailUnitTesting();
-        em.createUnits();
+        Email.SendSuccessfullUploadEmail("jaco.fab4@gmail.com", "madBunny", "https://up.ac.co.za", "abcd123");
     }
     
 }

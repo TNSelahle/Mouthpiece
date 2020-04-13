@@ -1,4 +1,5 @@
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -44,15 +45,15 @@ public class Message {
         
         switch(type)
         {
-            case "validate":
-                    content= getValidateMessage(json);
+            case "SecurityCode":
+                    content= getSecurityCodeMessage(json);
                     break;
                     
-            case "passwordChange":
+            case "PasswordChange":
                     content=getPasswordChangeMessage(json);
                     break;
-            case "update":
-                    content= getUpdateMessage(json);
+            case "SuccessfullUpload":
+                    content= getSuccessfullUploadMessage(json);
                     break;
             default:
                 content="";
@@ -67,39 +68,68 @@ public class Message {
     // we can add messages here in the form of using htmlformat that would be
     //inside of the body tag 
     //must return a string containing this info 
-    public static String getValidateMessage(JSONObject json)
-    {
-        String msg ="<h3>Good Day @"+json.getString("UserName")+"</h3>";
-        msg+="<p>We at "+companyName+" would like to welcome you to our community.<br>";
-        msg+="We are almost done with, @"+json.getString("UserName")+". We Just need to verify your email <br>";
-        msg+=json.getString("UserEmail")+"</p>";
-        
-        msg+="<a href='"+VERIFY_EMAIL_URL+"'>click here</a>";
-        msg+="<p>Once verified you will be able to let your emagination fuel your creativity with boundless fun.</p>";
+   public static String getSecurityCodeMessage(JSONObject json)
+   {
+        String msg ="";
+        /*
+        <h3>Dear @Username<br></h3>
+        <h3>Before we welcome you to the mouth piece community</h3>
+        <h3>Help us secure your Mouthpiece account by verifying your email address(@emailAddresss)This lets you access all of Mouthpiece's features.</h3>
+        <h2>Your Mouthpiece Security Code:<br>639881</h2>
+        <h4>From<br>Mouthpiece Omega Team</h4>
+        */
+        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Before we welcome you to the mouth piece community</h3>";
+        msg+="<h3>Help us secure your Mouthpiece account by verifying your email address("+json.getString("UserEmail")+"). This lets you access all of Mouthpiece's features.</h3>";
+        msg+="<h2>Your Mouthpiece Security Code:<br>"+json.getInt("SecurityCode")+"</h2>";
+        msg+="<h4>From<br>Mouthpiece Omega Team</h4>";
         return msg;
-    }
-    public static String getPasswordChangeMessage(JSONObject json)
-    {
-     String msg ="<h3>Good Day @"+json.getString("UserName")+"</h3>";
-        msg+="<p>We at "+companyName+" will help you to change your password.<br>";
-        msg+="Pleas click on the link provided at the bottom to change the Login password for the following email address: ";
-        msg+=json.getString("UserEmail")+"</p>";
-        
-        msg+="<a href='"+PASSWORD_CHANGE_URL+"'>click here</a>";  
-        
-        msg+="<p>We hope that this helped you.</p>";
+   }
+
+   public static String getPasswordChangeMessage(JSONObject json)
+   {
+        String msg="";
+        /*
+            <h3>Dear @Username<br></h3>
+            <h3>We received a request to reset your Mouthpiece password. Click the link below to choose a new one:</h3>
+            <a href="url">Reset Your Password</a>
+            <h4>If you did not make this request or need assistance, please click <a href="url">here</a>.</h4>
+            <h4>From<br>Mouthpiece Omega Team</h4>
+        */
+        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>We recieved a request to reset your Mouthpiece password. Click the link bellow to choose a new one:</h3>";
+        msg+="<a href='"+json.getString("ChangeLink")+"' >Reset Your Password</a>";
+        msg+="<h4>If you did not make this request or need assistance, please click <a href='"+json.getString("ErrorLink")+"'>here</a>.</h4>";
+        msg+="<h4>From<br>Mouthpiece Omega Team</h4>";
+
         return msg;
-    }
-    public static String getUpdateMessage(JSONObject json)
-    {
-        String msg ="<h3>Good Day Comunity</h3>";
-        msg+="<p>We at "+companyName+" would like to inform you of the following update.<br>";
-        msg+=json.getString("Update");
-        
-        msg+="<br>Please visit our update page for the full scoop by clicking on the link bellow</p>";
-        msg+="<a href='"+UPDATES_PAGE_URL+"'>click here</a>";
+   }
+
+   public static String getSuccessfullUploadMessage(JSONObject json)
+   {
+        String msg="";
+        /*
+            <h3>Dear @Username<br></h3>
+            <h3>Your mouth piece has been successfully uploaded</h3>
+            <a href="url">View your upload</a>
+            <h4>Dates:04/04/2020 <br> ID:8bnj2983m582k4i76</h4>
+            <h4>From<br>Mouthpiece Omega Team</h4>
+        */
+        String date = getDate();
+        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Your mouth piece has been successfully uploaded</h3>";
+        msg+="<a href='"+json.getString("ViewLink")+"'>View your upload</a>";
+        msg+="<h4>Dates:"+date+" <br> ID:"+json.getString("ID")+"</h4>";
+        msg+="<h4>From<br>Mouthpiece Omega Team</h4>";
         return msg;
-    }
-    
+   }
+
+   private static String getDate()
+   {
+       Date date = new Date();
+       SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+       String sDate = formatter.format(date);
+       return sDate;
+   }
     
 }
