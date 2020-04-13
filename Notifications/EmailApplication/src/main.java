@@ -17,7 +17,7 @@ public class main {
 //        
 //        Email.email(json);
         
-        Email.SendSuccessfullUploadEmail("jaco.fab4@gmail.com", "madBunny", "https://up.ac.co.za", "abcd123");
+        
     }
     
 }
