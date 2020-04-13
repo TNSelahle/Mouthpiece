@@ -8,6 +8,15 @@
     android:background="#EE1C31"
     tools:visibility="visible">
 
+    <VideoView
+        android:id="@+id/videoGif"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="452dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/voiceTrainingHeading"
         android:layout_width="317dp"
@@ -99,11 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="396dp"
+        android:layout_marginTop="364dp"
         android:textColor="@android:color/background_light"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

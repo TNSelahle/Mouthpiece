@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.SystemClock;
 import android.util.Log;
 import android.content.Intent;
@@ -18,11 +19,15 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import java.io.IOException;
 
 public class TrainingPage extends AppCompatActivity {
     //features for audio recording
     private MediaRecorder trainerAudio = null;
+
+    private VideoView vw;
 
     private static final String LOG_TAG = "AudioRecTest";
     private static String outputF = null;
@@ -103,6 +108,11 @@ public class TrainingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_page);
 
+        vw = findViewById(R.id.videoGif);
+        vw.setVideoPath("https://i.gifer.com/Nt6v.mp4");
+        vw.setVisibility(View.INVISIBLE);
+
+
         //Enable the voice training button when first opened
         EnDisTrain = findViewById(R.id.enableTrainingButton);
         EnDisTrain.setEnabled(true);
@@ -137,6 +147,19 @@ public class TrainingPage extends AppCompatActivity {
                     //Commented out due to functionality not working
                     startRecording();
                     startChronometer(view);
+                    vw.setVisibility(View.VISIBLE);
+                    vw.start();
+
+                    /////////////
+                    vw.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mp) {
+                            mp.setLooping(true);
+                        }
+                    });
+
+                    /////////
+
 
                     //Display the phonetic pangrams text for the user to read
                     TextView textview = findViewById(R.id.phonetic_Pangrams_Read_Text);
@@ -170,6 +193,8 @@ public class TrainingPage extends AppCompatActivity {
             {
                 stopRecoring();
                 stopChronometer(view);
+                vw.setVisibility(View.INVISIBLE);
+                vw.stopPlayback();
 
                 //hide the phonetic pangrams text
                 TextView textview = findViewById(R.id.phonetic_Pangrams_Read_Text);
