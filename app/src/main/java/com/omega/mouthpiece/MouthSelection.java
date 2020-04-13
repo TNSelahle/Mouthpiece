@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,7 +32,7 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
     private DBAdapter mDBAdapter;
     private ArrayList<MouthItem> mMouthList;
     private RequestQueue mRequestQueue;
-
+    private Button btnFilter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +41,20 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        btnFilter=findViewById(R.id.filterButton);
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(getApplicationContext(), filter.class);
+                startActivity(intent);
+            }
+        });
         mMouthList = new ArrayList<>();
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
+
     }
 
     private void parseJSON()

@@ -48,6 +48,7 @@
     <string name="mouth_creation">Mouth Creation</string>
     <string name="fragmentSort">Sort by:</string>
     <string name="fragmentType">Type:</string>
+    <string name="Ratings">Ratings :</string>
     <string name="fragmentButtonApply">Apply</string>
     <string name="fragmentButtonCancel">Cancel</string>
     <string name="downloads">Downloads:</string>
@@ -73,5 +74,6 @@
     <string name="mouthShape12">Ch J Sh</string>
     <string name="confirmation">Confirmation</string>
     <string name="accept">Accept</string>
+    <string name="filter">Filter</string>
 
 </resources>

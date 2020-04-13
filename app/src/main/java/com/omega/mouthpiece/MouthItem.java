@@ -29,7 +29,6 @@ public class MouthItem {
         return mRatings;
     }
 
-
     public int getDownloads()
     {
         return mDownloads;

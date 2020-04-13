@@ -9,70 +9,69 @@
         android:id="@+id/fragment_text_sort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"
         android:text="@string/fragmentSort"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_dropdown_sort"
         app:layout_constraintEnd_toStartOf="@+id/fragment_dropdown_sort"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fragment_text_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="38dp"
-        android:text="@string/fragmentType"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/Ratings"
         app:layout_constraintEnd_toStartOf="@+id/fragment_dropdown_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_text_sort" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_text_sort"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"/>
 
     <Button
         android:id="@+id/fragment_button_apply"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"
+        android:layout_marginTop="100dp"
         android:text="@string/fragmentButtonApply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_button_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_type" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_type"/>
 
     <Button
         android:id="@+id/fragment_button_cancel"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="35dp"
+        android:layout_width="137dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"
         android:text="@string/fragmentButtonCancel"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_button_apply"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_sort" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_button_apply"/>
 
     <Spinner
         android:id="@+id/fragment_dropdown_sort"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="547dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_button_cancel"
+        android:layout_width="208dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_text_sort"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/fragment_dropdown_type"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_button_apply"
+        android:layout_width="207dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/famosa_heavy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_text_type"
         app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_sort" />
 </androidx.constraintlayout.widget.ConstraintLayout>
