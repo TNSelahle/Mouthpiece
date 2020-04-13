@@ -78,7 +78,7 @@ public class Message {
         <h2>Your Mouthpiece Security Code:<br>639881</h2>
         <h4>From<br>Mouthpiece Omega Team</h4>
         */
-        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
         msg+="<h3>Before we welcome you to the mouth piece community</h3>";
         msg+="<h3>Help us secure your Mouthpiece account by verifying your email address("+json.getString("UserEmail")+"). This lets you access all of Mouthpiece's features.</h3>";
         msg+="<h2>Your Mouthpiece Security Code:<br>"+json.getInt("SecurityCode")+"</h2>";
@@ -96,7 +96,7 @@ public class Message {
             <h4>If you did not make this request or need assistance, please click <a href="url">here</a>.</h4>
             <h4>From<br>Mouthpiece Omega Team</h4>
         */
-        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
         msg+="<h3>We recieved a request to reset your Mouthpiece password. Click the link bellow to choose a new one:</h3>";
         msg+="<a href='"+json.getString("ChangeLink")+"' >Reset Your Password</a>";
         msg+="<h4>If you did not make this request or need assistance, please click <a href='"+json.getString("ErrorLink")+"'>here</a>.</h4>";
@@ -116,7 +116,7 @@ public class Message {
             <h4>From<br>Mouthpiece Omega Team</h4>
         */
         String date = getDate();
-        msg+="<h3>Dear @"+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
         msg+="<h3>Your mouth piece has been successfully uploaded</h3>";
         msg+="<a href='"+json.getString("ViewLink")+"'>View your upload</a>";
         msg+="<h4>Dates:"+date+" <br> ID:"+json.getString("ID")+"</h4>";
