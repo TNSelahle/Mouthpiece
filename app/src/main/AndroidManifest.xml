@@ -15,6 +15,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".DetailActivity"/>
+        <activity android:name=".RegisterPage" />
+        <activity android:name=".MouthSelection" />
+        <activity android:name=".Converter"
+            android:exported="true"/>
+        <activity android:name=".TrainingPage"
+            android:exported="true"
+            />
+
         android:theme="@style/AppTheme" >
         <!--Main Activity (Splash Page)-->
         <activity android:name=".LoadingPage">
@@ -24,6 +35,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".webactivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
         <!--Login Page-->
         <activity android:name=".MainActivity"></activity>
         <!--Register Page-->
