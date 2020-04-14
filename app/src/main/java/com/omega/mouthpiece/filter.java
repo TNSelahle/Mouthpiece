@@ -58,8 +58,8 @@ public class filter extends AppCompatActivity
         List<String> sortList = new ArrayList<String>();
         sortList.add("Name");
         sortList.add("Downloads");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, sortList);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, sortList);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
         dropdownSortBy.setAdapter(dataAdapter);
 
         dropdownRatings = (Spinner) findViewById(R.id.fragment_dropdown_type);
@@ -74,8 +74,8 @@ public class filter extends AppCompatActivity
         ratingsList.add("8");
         ratingsList.add("9");
         ratingsList.add("10");
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, ratingsList);
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this,R.layout.spinner_item, ratingsList);
+        dataAdapter2.setDropDownViewResource(R.layout.spinner_item);
         dropdownRatings.setAdapter(dataAdapter2);
     }
 

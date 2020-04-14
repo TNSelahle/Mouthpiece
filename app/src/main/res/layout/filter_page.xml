@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#ee1c31">
     <Spinner
         android:id="@+id/filter_dropdown_sort1"
         android:layout_width="200dp"
@@ -12,7 +12,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/mybutton" />
 
     <!--<numberPicker
         android:id="@+id/filter_numeric_picker"
@@ -22,6 +23,16 @@
         android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter_dropdown_sort1" />-->
+
+    <Spinner
+        android:id="@+id/fragment_dropdown_type"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/mybutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_sort_name"
@@ -35,7 +46,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/famosa_heavy"/>
+        android:fontFamily="@font/famosa_heavy"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/text_sort_type"
@@ -48,26 +60,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_sort_name"
-        android:fontFamily="@font/famosa_heavy" />
+        android:fontFamily="@font/famosa_heavy"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_width="346dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/mybutton"
         android:text="@string/accept"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filter_dropdown_sort1" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_dropdown_type" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="346dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/mybutton"
         android:text="@android:string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:textColor="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
