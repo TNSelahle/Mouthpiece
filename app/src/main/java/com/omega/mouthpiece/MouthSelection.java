@@ -1,11 +1,14 @@
 package com.omega.mouthpiece;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -38,10 +41,43 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mouth_selection2);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         btnFilter=findViewById(R.id.filterButton);
+
+        mMouthList = new ArrayList<>();
+
+        mRequestQueue = Volley.newRequestQueue(this);
+        parseJSON();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.filterIcon:
+            openFilter();
+            return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void openFilter()
+    {
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -50,11 +86,6 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
                 startActivity(intent);
             }
         });
-        mMouthList = new ArrayList<>();
-
-        mRequestQueue = Volley.newRequestQueue(this);
-        parseJSON();
-
     }
 
     private void parseJSON()

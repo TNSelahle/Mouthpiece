@@ -42,7 +42,6 @@
         <!--Training-->
         <activity android:name=".TrainingPage" android:exported="true"/>
         <!--Webview-->
-        <activity android:name=".WebView" android:exported="true"/>
         <!--Filter-->
         <activity android:name=".filter" android:exported="true"/>
     </application>
