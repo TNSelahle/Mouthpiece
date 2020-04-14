@@ -8,67 +8,133 @@
     android:background="#EE1C31"
     tools:visibility="visible">
 
-    <TextView
-        android:id="@+id/phonetic_Pangrams_Read_Text"
-        android:layout_width="315dp"
-        android:layout_height="142dp"
-        android:ems="10"
-        android:gravity="start|top"
-
-        android:text="@string/Phonetic_Pangram_Read"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <VideoView
+        android:id="@+id/videoGif"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="168dp"
+        app:layout_constraintBottom_toTopOf="@+id/enableTrainingButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <TextView
+        android:id="@+id/voiceTrainingHeading"
+        android:layout_width="317dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/famosa_heavy"
+        android:text="@string/vTraining"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/vTraining"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/enableTrainingButton"
-        android:layout_width="wrap_content"
+        android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="112dp"
+        android:background="@drawable/button_border"
         android:backgroundTint="#333138"
+        android:fontFamily="@font/famosa_black"
         android:text="@string/PromptToTrain"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonetic_Pangrams_Read_Text"
+        app:layout_constraintVertical_bias="0.693" />
+
+    <Button
+        android:id="@+id/testAudioRec"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:backgroundTint="#333138"
+        android:fontFamily="@font/famosa_black"
+        android:text="@string/TestTXT"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopVoiceRecording"
+        tools:text="@string/TestTXT" />
+
+    <Button
+        android:id="@+id/stopVoiceRecording"
+        android:layout_width="359dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_border"
+        android:backgroundTint="#333138"
+        android:fontFamily="@font/famosa_black"
+        android:text="@string/StopRecord"
+        android:textColor="?android:attr/colorBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enableTrainingButton" />
 
     <TextView
         android:id="@+id/tvPleaseRead"
-        android:layout_width="323dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="272dp"
+        android:layout_width="317dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="530dp"
+        android:fontFamily="@font/famosa_heavy"
         android:text="@string/PleaseReadText"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voiceTrainingHeading"
+        app:layout_constraintVertical_bias="0.725"
         tools:text="@string/PleaseReadText"
         tools:visibility="visible" />
 
-    <Button
-        android:id="@+id/stopVoiceRecording"
-        android:layout_width="179dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#333138"
-        android:text="@string/StopRecord"
-        android:textColor="@color/cardview_dark_background"
+    <Chronometer
+        android:id="@+id/recordingTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="364dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enableTrainingButton" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/phonetic_Pangrams_Read_Text"
+        android:layout_width="312dp"
+        android:layout_height="153dp"
+        android:ems="10"
+        android:fontFamily="@font/famosa_regular"
+
+        android:gravity="start|top"
+        android:text="@string/Phonetic_Pangram_Read"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.373"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
