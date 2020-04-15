@@ -14,13 +14,15 @@ import java.util.List;
 public class filter extends AppCompatActivity
 {
     private Spinner dropdownSortBy, dropdownRatings;
-    public  String sortCriteria, ratingCriteria;
+    public static final String sortCriteria="sort criteria";
+    public static final String ratingCriteria="rating criteria";
     private Button apply, cancel;
+    private String selectedSort, selectedRatings;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        sortCriteria="none";
-        ratingCriteria="none";
+        selectedSort="none";
+        selectedRatings="none";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sort_fragment);
         setDropdownContents();
@@ -33,8 +35,8 @@ public class filter extends AppCompatActivity
             {
                 filter();//Set the public variables to the selected values
                 Intent intent = new Intent(getApplicationContext(), MouthSelection.class);
-                intent.putExtra("sort", sortCriteria);
-                intent.putExtra("rating", ratingCriteria);
+                intent.putExtra(sortCriteria, selectedSort);
+                intent.putExtra(ratingCriteria, selectedRatings);
                 //the two lines above provide extra content so we can access the filter variable data from the other screen.
                 startActivity(intent);
             }
@@ -43,8 +45,8 @@ public class filter extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                sortCriteria="none";
-                ratingCriteria="none";
+                selectedSort="none";
+                selectedRatings="none";
                 //Clear the criteria for any sorting and return to the mouth selection screen
                 Intent intent = new Intent(getApplicationContext(), MouthSelection.class);
                 startActivity(intent);
@@ -83,9 +85,9 @@ public class filter extends AppCompatActivity
     public void filter()
     {
         Spinner mySpinner = (Spinner) findViewById(R.id.fragment_dropdown_sort);
-        sortCriteria = mySpinner.getSelectedItem().toString();
+        selectedSort = mySpinner.getSelectedItem().toString();
         Spinner mySpinner2= (Spinner) findViewById(R.id.fragment_dropdown_type);
-        ratingCriteria = mySpinner2.getSelectedItem().toString();
+        selectedRatings = mySpinner2.getSelectedItem().toString();
     }
 
 }
