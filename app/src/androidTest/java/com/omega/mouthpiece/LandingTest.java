@@ -16,20 +16,21 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
-public class ConverterTest {
+public class LandingTest {
     @Rule
-    public ActivityTestRule displaysViewConv = new ActivityTestRule(Converter.class, true, false);
+    public ActivityTestRule displaysViewLanding = new ActivityTestRule(Landing.class, true, false);
 
     @Test
-    public void fomantButtonRead() throws Exception{
+    public void volumeButtonTest() throws Exception{
 
-        displaysViewConv.launchActivity(new Intent());
-        onView(withText("Formant")).check(matches(isDisplayed()));
+        displaysViewLanding.launchActivity(new Intent());
+        onView(withText(R.string.volume_based)).check(matches(isDisplayed()));
     }
     @Test
-    public void volumeButtonRead() throws Exception{
+    public void formantButtonTest() throws Exception{
 
-        displaysViewConv.launchActivity(new Intent());
-        onView(withText("Volume")).check(matches(isDisplayed()));
+        displaysViewLanding.launchActivity(new Intent());
+        onView(withText(R.string.formant_based)).check(matches(isDisplayed()));
     }
+
 }
