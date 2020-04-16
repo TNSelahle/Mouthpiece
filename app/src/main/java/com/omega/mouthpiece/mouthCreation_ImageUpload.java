@@ -1,6 +1,7 @@
 package com.omega.mouthpiece ;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class mouthCreation_ImageUpload extends AppCompatActivity {
@@ -20,7 +22,18 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
     private Button btnCancel;
     private TextView mouthShapeNumber;
     private ImageView egImage;
+    private ImageView userImage;
     private int i = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if( requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null)
+        {
+            Uri selectedImage = data.getData();
+            userImage.setImageURI(selectedImage);
+        }
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -32,6 +45,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnCancel = findViewById(R.id.btn_cancel);
         mouthShapeNumber = findViewById(R.id.textView2);
         egImage = findViewById(R.id.imageView2);
+        userImage = findViewById(R.id.imageView5);
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +55,8 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
             }
         });
+
+
 
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
