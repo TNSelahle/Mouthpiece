@@ -56,8 +56,8 @@ public class Message {
                     content= getSuccessfullUploadMessage(json);
                     break;
             default:
-                content="";
-                break;
+                content=json.getString("MsgType");
+            break;
         }
         
         
@@ -124,7 +124,7 @@ public class Message {
         return msg;
    }
 
-   private static String getDate()
+   static String getDate()
    {
        Date date = new Date();
        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
