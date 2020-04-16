@@ -115,51 +115,61 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                             egImage.setImageResource(R.drawable.mouth_formants_3);
                             userImage2.onVisibilityAggregated(false);
                             userImage3.onVisibilityAggregated(true);
+                            userImage3.bringToFront();
                             break;
                         case 4:
                             egImage.setImageResource(R.drawable.mouth_formants_4);
                             userImage3.onVisibilityAggregated(false);
                             userImage4.onVisibilityAggregated(true);
+                            userImage4.bringToFront();
                             break;
                         case 5:
                             egImage.setImageResource(R.drawable.mouth_formants_5);
                             userImage4.onVisibilityAggregated(false);
                             userImage5.onVisibilityAggregated(true);
+                            userImage5.bringToFront();
                             break;
                         case 6:
                             egImage.setImageResource(R.drawable.mouth_formants_6);
                             userImage5.onVisibilityAggregated(false);
                             userImage6.onVisibilityAggregated(true);
+                            userImage6.bringToFront();
                             break;
                         case 7:
                             egImage.setImageResource(R.drawable.mouth_formants_7);
                             userImage6.onVisibilityAggregated(false);
                             userImage7.onVisibilityAggregated(true);
+                            userImage7.bringToFront();
                             break;
                         case 8:
                             egImage.setImageResource(R.drawable.mouth_formants_8);
                             userImage7.onVisibilityAggregated(false);
                             userImage8.onVisibilityAggregated(true);
+                            userImage8.bringToFront();
                             break;
                         case 9:
                             egImage.setImageResource(R.drawable.mouth_formants_9);
                             userImage8.onVisibilityAggregated(false);
                             userImage9.onVisibilityAggregated(true);
+                            userImage9.bringToFront();
                             break;
                         case 10:
                             egImage.setImageResource(R.drawable.mouth_formants_10);
                             userImage9.onVisibilityAggregated(false);
                             userImage10.onVisibilityAggregated(true);
+                            userImage10.bringToFront();
                             break;
                         case 11:
                             egImage.setImageResource(R.drawable.mouth_formants_11);
                             userImage10.onVisibilityAggregated(false);
                             userImage11.onVisibilityAggregated(true);
+                            userImage11.bringToFront();
                             break;
                         case 12:
                             egImage.setImageResource(R.drawable.mouth_formants_12);
                             userImage11.onVisibilityAggregated(false);
                             userImage12.onVisibilityAggregated(true);
+                            userImage12.bringToFront();
                             break;
                     }
                 }
