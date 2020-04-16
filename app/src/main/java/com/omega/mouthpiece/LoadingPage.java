@@ -12,7 +12,7 @@ public class LoadingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_page);
-
+        //TODO: Implement actual loading and Redesign.
         Thread background = new Thread() {
             public void run() {
                 try {

@@ -17,6 +17,8 @@ import static com.omega.mouthpiece.MouthSelection.EXTRA_URL;
 public class DetailActivity extends AppCompatActivity {
     private Button btn;
     @Override
+
+    //Activity view for when clicked on mouth item in mouth selection
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);

@@ -16,7 +16,7 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
 
         Register = findViewById(R.id.registerButton);
-
+        //TODO: Implement API Call to register.
         Register.setOnClickListener(new View.OnClickListener()
         {
             @Override

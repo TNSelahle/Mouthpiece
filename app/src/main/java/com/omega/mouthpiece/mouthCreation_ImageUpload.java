@@ -69,6 +69,8 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         userImage11= findViewById(R.id.imageView14);
         userImage12 = findViewById(R.id.imageView15);
 
+        //Base64 file = Base64.Convert(userImage12.getDrawable());
+        //file uploaded to API
         userImage.onVisibilityAggregated(true);
         userImage.bringToFront();
         userImage2.onVisibilityAggregated(false);

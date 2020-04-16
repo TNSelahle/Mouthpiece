@@ -19,7 +19,6 @@ import androidx.appcompat.widget.Toolbar;
 public class NavigationDrawer extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

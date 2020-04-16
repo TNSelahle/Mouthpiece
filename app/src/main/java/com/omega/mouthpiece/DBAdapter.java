@@ -18,6 +18,7 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
     private ArrayList<MouthItem> mMouthList;
     private OnItemClickListener mListener;
 
+    //Activity for Mouth Items
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

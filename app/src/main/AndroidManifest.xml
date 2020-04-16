@@ -27,7 +27,9 @@
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"
+            />
         <activity android:name=".webactivity">
         </activity>
         <!--Login Page-->
