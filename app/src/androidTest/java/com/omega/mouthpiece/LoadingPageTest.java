@@ -18,36 +18,16 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class LoadingPageTest {
     @Rule
-    public ActivityTestRule displaysViewLoading = new ActivityTestRule(LoadingPage.class, true, false);
-
+    public ActivityTestRule displaysViewLoading = new ActivityTestRule(LoadingPage.class, true, true);
+    //this checks if everything is displayed from the loading page
     @Test
-    public void FromTest() throws Exception {
-
+    public void ViewTest() throws Exception {
         displaysViewLoading.launchActivity(new Intent());
         onView(withText(R.string.From)).check(matches(isDisplayed()));
-    }
-    @Test
-    public void OmegaTest() throws Exception {
-
-        displaysViewLoading.launchActivity(new Intent());
         onView(withText(R.string.OMEGA)).check(matches(isDisplayed()));
-    }
-    @Test
-    public void UniTest() throws Exception {
-
-        displaysViewLoading.launchActivity(new Intent());
         onView(withText(R.string.University_of_Pretoria)).check(matches(isDisplayed()));
-    }
-    @Test
-    public void titleTest() throws Exception {
-
-        displaysViewLoading.launchActivity(new Intent());
         onView(withText(R.string.app_name)).check(matches(isDisplayed()));
-    }
-    @Test
-    public void mottoTest() throws Exception {
-
-        displaysViewLoading.launchActivity(new Intent());
         onView(withText(R.string.motto)).check(matches(isDisplayed()));
     }
+
 }

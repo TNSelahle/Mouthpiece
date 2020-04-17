@@ -11,7 +11,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static org.junit.Assert.*;
@@ -25,12 +27,15 @@ public class LandingTest {
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.volume_based)).check(matches(isDisplayed()));
+        onView(withId(R.id.volume)).perform(click()).check(matches(isDisplayed()));
     }
     @Test
     public void formantButtonTest() throws Exception{
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.formant_based)).check(matches(isDisplayed()));
+        onView(withId(R.id.formant)).perform(click()).check(matches(isDisplayed()));
     }
+
 
 }
