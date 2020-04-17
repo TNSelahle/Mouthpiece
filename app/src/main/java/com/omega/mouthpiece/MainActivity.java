@@ -1,5 +1,4 @@
 package com.omega.mouthpiece;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -31,6 +30,8 @@ import static android.os.Build.VERSION_CODES.N;
 
 public class MainActivity extends AppCompatActivity {
 
+    //------------------------NN Handler-------------------------------------
+    NN_Handler nn_handler = new NN_Handler();
     AnimationDrawable MouthAnimation;
     //------------------------RECORDING VAR----------------------------------
     private MediaRecorder recorder = null;
@@ -171,9 +172,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //----------------------------------AUDIO SEGMENT------------------------------
-    public int getFormant(short[] buffer) {
+    public int getFormant(float[] buffer) {
         int form = 0;
-        //form = convert_audio(buffer);
+        SegmentNode node = new SegmentNode(buffer);
+        nn_handler.getPhonetic(node);
         return form;
     }
 
