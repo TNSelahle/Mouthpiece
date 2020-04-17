@@ -107,8 +107,6 @@ public class EmailTest {
         System.out.println("email");
         JSONObject json = units.get(3);
         Email.email(json);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
