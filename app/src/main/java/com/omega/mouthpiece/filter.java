@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +18,7 @@ public class filter extends AppCompatActivity
     public static final String sortCriteria="sort criteria";
     public static final String ratingCriteria="rating criteria";
     private Button apply, cancel;
-    private String selectedSort, selectedRatings;
+    public String selectedSort, selectedRatings;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +39,7 @@ public class filter extends AppCompatActivity
                 intent.putExtra(sortCriteria, selectedSort);
                 intent.putExtra(ratingCriteria, selectedRatings);
                 //the two lines above provide extra content so we can access the filter variable data from the other screen.
+                Log.d("OnCreateTest", selectedRatings+" "+selectedSort);
                 startActivity(intent);
             }
         });
@@ -79,6 +81,7 @@ public class filter extends AppCompatActivity
         ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this,R.layout.spinner_item, ratingsList);
         dataAdapter2.setDropDownViewResource(R.layout.spinner_item);
         dropdownRatings.setAdapter(dataAdapter2);
+        Log.d("eventClickedTest",selectedRatings+" "+selectedSort);
     }
 
 

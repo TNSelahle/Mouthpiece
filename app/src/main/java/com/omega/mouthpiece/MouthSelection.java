@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,7 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
     public static final String EXTRA_URL = "imageURL";
     public static final String EXTRA_CREATOR = "creatorName";
     public static final String EXTRA_LIKES = "ratings";
-    private static final String EXTRA_DOWNLOADS = "downloads";
+    public static final String EXTRA_DOWNLOADS = "downloads";
 
     //Base View to display items
     private RecyclerView mRecyclerView;
@@ -86,9 +87,6 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
         mRequestQueue = Volley.newRequestQueue(this);
         //Calling API call method, to get JSON and parse it.
         parseJSON(getSortDetails(), getSortRatingsDetails());
-
-
-
     }
 
     //Method for Toolbar
@@ -156,8 +154,8 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
                                 mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                             }
                             //Sorting
-                            sortBy();
-                            //sortRatings();//This function crashes app, still working on it - Anrich
+                            mMouthList=sortBy(mMouthList);
+                            mMouthList=sortRatings(mMouthList);//This function crashes app, still working on it - Anrich
                             //TODO:OK
                             mDBAdapter = new DBAdapter(MouthSelection.this,mMouthList);
                             mRecyclerView.setAdapter(mDBAdapter);
@@ -222,31 +220,33 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
                 return 0;
         }
     }
-    private void sortBy()
+    private ArrayList<MouthItem> sortBy(ArrayList<MouthItem> oldList)
     {
-        if(sortCriteria==null || sortCriteria=="none")
-            return;
+        if(getSortDetails()==null || getSortDetails()=="none")
+            return oldList;
         else
         {
             if(sortCriteria=="Name")
-                mMouthList.sort(new sortByName());
+                oldList.sort(new sortByName());
             else if(sortCriteria=="downloads")
-                mMouthList.sort(new sortByDownloads());
+                oldList.sort(new sortByDownloads());
         }
+        return oldList;
     }
-    private void sortRatings()//Sorts the data by rating, dividing by 100 since the data we're using is temporary and the likes are what we are using as the rating, so will fix when we use real data
+    private ArrayList<MouthItem> sortRatings(ArrayList<MouthItem> oldList)//Sorts the data by rating, dividing by 100 since the data we're using is temporary and the likes are what we are using as the rating, so will fix when we use real data
     {
-        if(ratingCriteria==null || ratingCriteria=="none")
-            return;
+        if(getSortRatingsDetails()==null || getSortRatingsDetails()=="none")
+            return oldList;
         else
         {
-            for(int x=0; x<mMouthList.size(); x++)
+            for(int x=0; x<oldList.size(); x++)
             {
-                if( (mMouthList.get(x).getRatings()/100) < Integer.parseInt(ratingCriteria))
+                if( (oldList.get(x).getRatings()/100) < Integer.parseInt(getSortRatingsDetails()))
                 {
-                    mMouthList.remove(x);
+                    oldList.remove(x);
                 }
             }
+            return oldList;
         }
     }
 }
