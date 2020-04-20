@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
+
+
 
         Login.setOnClickListener(new View.OnClickListener()
         {

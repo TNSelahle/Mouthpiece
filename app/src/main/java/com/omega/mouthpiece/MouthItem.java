@@ -1,5 +1,6 @@
 package com.omega.mouthpiece;
 
+//Template for each Mouth Shape Item in the Mouth Selection  View
 public class MouthItem {
     private String mImageURL;
     private String mCreator;
