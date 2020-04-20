@@ -2,7 +2,7 @@ package com.omega.mouthpiece;
 
 public class NNModel {
 
-    private VoiceProfile serverModel;
+    private VoiceProfile_Trainer serverModel;
     private TrainingAPI outsourceTrainingInterface;
     private SegmentNode TrainingDataQueue[];
     public NNModel()

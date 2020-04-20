@@ -2,7 +2,7 @@ package com.omega.mouthpiece;
 
 public class Classifier { //kept for the NN
 
-    public VoiceProfile userModel;
+    public VoiceProfile_Trainer userModel;
     public Classifier()
     {
         System.out.println("Classifier created!");
@@ -18,22 +18,22 @@ public class Classifier { //kept for the NN
         return null;
     }
 
-    public VoiceProfile getUserVoiceProfile()
+    public VoiceProfile_Trainer getUserVoiceProfile()
     {
         return null;
     }
 
-    public void replaceVoiceProfile(VoiceProfile updatedVoiceProfile)
+    public void replaceVoiceProfile(VoiceProfile_Trainer updatedVoiceProfile)
     {
 
     }
 
-    public VoiceProfile getFilter() ///???!!!!
+    public VoiceProfile_Trainer getFilter() ///???!!!!
     {
         //more a concept
         return null;
     }
-    public String trainFilter(VoiceProfile updatedModel) ///???!!!!
+    public String trainFilter(VoiceProfile_Trainer updatedModel) ///???!!!!
     {
         //after the NN
         //training the filter

@@ -45,7 +45,7 @@ public class NN_Handler {
         return null;
     }
 
-    public VoiceProfile getUserVoiceProfile()
+    public VoiceProfile_Trainer getUserVoiceProfile()
     {   /*BritneyChu -- User Management Module needs this
         Returns the current Voice Profile only if it has been calibrated correctly
         It will be exported in a format (some file) for the User Management Module
@@ -54,7 +54,7 @@ public class NN_Handler {
         return null;
     }
 
-    public String replaceUserVoiceProfile(VoiceProfile backupProfile) 
+    public String replaceUserVoiceProfile(VoiceProfile_Trainer backupProfile)
     {   /*BritneyChu -- User Management Module needs this
         Use this received file format to change or "replace" the current voice profile.  
         */
