@@ -1,6 +1,8 @@
 package com.omega.mouthpiece;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,8 +25,8 @@ public class UploadMouthsFrontPage extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                //Intent intent = new Intent(RegisterPage.this, MouthSelection.class);
-                //startActivity(intent);
+                Intent intent = new Intent(UploadMouthsFrontPage.this, mouthCreation_ImageUpload.class);
+                startActivity(intent);
             }
         });
         Decline.setOnClickListener(new View.OnClickListener()

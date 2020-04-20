@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,10 +11,11 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class imageConfirmation extends AppCompatActivity {
+    public class imageConfirmation extends AppCompatActivity {
     private String mExampleString; //
     private int mExampleColor = Color.RED; //
     private float mExampleDimension = 0; //
@@ -23,10 +25,49 @@ public class imageConfirmation extends AppCompatActivity {
     private float mTextWidth;
     private float mTextHeight;
 
+    //imageView Variables
+    private ImageView vImage1_AEI;
+    private ImageView vImage2_L;
+    private ImageView vImage3_O;
+    private ImageView vImage4_CDGKNSTXYZ;
+    private ImageView vImage5_FV;
+    private ImageView vImage6_QW;
+    private ImageView vImage7_BMP;
+    private ImageView vImage8_U;
+    private ImageView vImage9_Ee;
+    private ImageView vImage10_R;
+    private ImageView vImage11_Th;
+    private ImageView vImage12_Ch_J_Sh;
+
+    //bitmap - from previous activities
+    //Bitmap bmImageAEI = (Bitmap) intent.getParcelableExtra("BitmapImage-AEI");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_image_confirmation);
+
+        Bundle bundle = getIntent().getExtras();
+
+        vImage1_AEI = findViewById(R.id.image1_AEI);
+        vImage1_AEI.setImageResource(R.drawable.mouth);
+        vImage2_L = findViewById(R.id.image2_L);
+        vImage3_O = findViewById(R.id.image3_O);
+        vImage4_CDGKNSTXYZ = findViewById(R.id.image4_CDGKNSTXYZ);
+        vImage5_FV = findViewById(R.id.image5_FV);
+        vImage6_QW = findViewById(R.id.image6_QW);
+        vImage7_BMP = findViewById(R.id.image7_BMP);
+        vImage8_U = findViewById(R.id.image8_U);
+        vImage9_Ee = findViewById(R.id.image9_Ee);
+        vImage10_R = findViewById(R.id.image10_R);
+        vImage11_Th = findViewById(R.id.image11_Th);
+        vImage12_Ch_J_Sh = findViewById(R.id.image12_ChJSh);
+
+        if(bundle != null)
+        {
+            int imgID = bundle.getInt("imgID");
+            vImage1_AEI.setImageResource(imgID);
+        }
     }
 
     public void accept()
@@ -40,6 +81,7 @@ public class imageConfirmation extends AppCompatActivity {
     public void mouth1_AEI()
     {
         //TODO: implement function to change mouth shape A,E,I
+
     }
     public void mouth2_L()
     {

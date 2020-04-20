@@ -62,6 +62,21 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
             app:layout_constraintVertical_bias="1.0" />
 
+        <Button
+            android:id="@+id/btn_go_to_img_confirm"
+            android:layout_width="402dp"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="sans-serif"
+            android:text="Click to Confirm"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
+            app:layout_constraintVertical_bias="0.0" />
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="178dp"
@@ -76,7 +91,7 @@
             app:srcCompat="@drawable/mouth_formants_1" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/uImage1"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +102,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/uImage2"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +113,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/uImage3"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +124,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/uImage4"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +135,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/uImage5"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -131,7 +146,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/uImage6"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +157,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/uImage7"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -153,7 +168,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/uImage8"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -164,7 +179,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/uImage9"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -175,7 +190,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/uImage10"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -186,7 +201,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/uImage11"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -197,7 +212,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/uImage12"
             android:layout_width="204dp"
             android:layout_height="139dp"
             app:layout_constraintBottom_toBottomOf="parent"
