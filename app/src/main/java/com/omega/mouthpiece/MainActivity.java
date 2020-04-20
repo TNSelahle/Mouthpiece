@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         int source = MediaRecorder.AudioSource.MIC;
         int rate = 8000;
         int config = AudioFormat.CHANNEL_IN_MONO;
-        int format = AudioFormat.ENCODING_PCM_16BIT;
+        int format = AudioFormat.ENCODING_PCM_FLOAT;
         int buffSize = AudioRecord.getMinBufferSize(rate, config, format) * 10;
 
         formRec = new AudioRecord(source, rate, config, format, buffSize);
@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
     public int getFormant(float[] buffer) {
         int form = 0;
         SegmentNode node = new SegmentNode(buffer);
-        nn_handler.getPhonetic(node);
-        return form;
+        node = nn_handler.getPhonetic(node);
+        return node.getLabel();
     }
 
     //-----------------------------------------------------------------------------
@@ -208,9 +208,16 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             ImageView mouthImage = findViewById(R.id.img_mouth);
 
-
-            short[] buff = buffers[i++ % buffers.length];
-            int form = getFormant(buff);
+            //Get buffer values
+            short[] buff_short = buffers[i++ % buffers.length];
+            float[] buff_float = new float[buff_short.length];
+            int index = 0;
+            //convert short to float
+            for (short x: buff_short) {
+                buff_float[index] = x;
+                index++;
+            }
+            int form = getFormant(buff_float);
 
             if(form == 0) {
                 mouthImage.setBackgroundResource(R.drawable.close_mouth);
