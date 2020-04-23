@@ -22,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Random;
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         node = nn_handler.getPhonetic(node);
         return node.getLabel();
     }
-
+    private String open = "";
     //-----------------------------------------------------------------------------
     //-----------------------TIMER FUNCTIONS---------------------------------------
     Runnable measure = new Runnable() {
@@ -188,11 +189,21 @@ public class MainActivity extends AppCompatActivity {
             ImageView mouthImage = findViewById(R.id.img_mouth);
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
-            if(db >= 71.5) {
+            if(db >= 77) {
+                mouthImage.setBackgroundResource(R.drawable.open_mouth_big);
+                open = "big";
+            }
+            else if(db >=71.5) {
                 mouthImage.setBackgroundResource(R.drawable.open_mouth);
+                open = "small";
             }
             else {
-                mouthImage.setBackgroundResource(R.drawable.close_mouth);
+               if(open == "small")
+              // if(mouthImage.getBackground().equals(R.drawable.open_mouth))
+                    mouthImage.setBackgroundResource(R.drawable.close_mouth);
+                else if(open == "big")
+                    mouthImage.setBackgroundResource(R.drawable.close_big_mouth);
+                open = "close";
             }
             MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
             MouthAnimation.start();
