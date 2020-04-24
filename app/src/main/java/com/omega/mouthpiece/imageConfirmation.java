@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
     private float mTextHeight;
 
     //imageView Variables
+    private ImageView helperIV;
     private ImageView vImage1_AEI;
     private ImageView vImage2_L;
     private ImageView vImage3_O;
@@ -40,13 +41,20 @@ import androidx.appcompat.app.AppCompatActivity;
     private ImageView vImage12_Ch_J_Sh;
 
     //bitmap - from previous activities
-    //Bitmap bmImageAEI = (Bitmap) intent.getParcelableExtra("BitmapImage-AEI");
+    Bitmap bmImage;
+
+    public imageConfirmation()
+    {
+        //bmImage = null;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_image_confirmation);
-        vImage1_AEI.setImageResource(R.drawable.mouth);
+
+        vImage1_AEI = findViewById(R.id.image1_AEI);
         vImage2_L = findViewById(R.id.image2_L);
         vImage3_O = findViewById(R.id.image3_O);
         vImage4_CDGKNSTXYZ = findViewById(R.id.image4_CDGKNSTXYZ);
@@ -59,7 +67,6 @@ import androidx.appcompat.app.AppCompatActivity;
         vImage11_Th = findViewById(R.id.image11_Th);
         vImage12_Ch_J_Sh = findViewById(R.id.image12_ChJSh);
 
-
     }
 
     public void accept()
@@ -71,10 +78,10 @@ import androidx.appcompat.app.AppCompatActivity;
     {
         //TODO: implement functionality for if button 'Cancel' is clicked
     }
-    public void mouth1_AEI(Bitmap bVar)
+    public void mouth1_AEI(Bitmap bI_AEI)
     {
         //TODO: implement function to change mouth shape A,E,I
-        
+        vImage1_AEI.setImageBitmap(bI_AEI);
     }
     public void mouth2_L()
     {

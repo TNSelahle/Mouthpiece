@@ -2,6 +2,8 @@ package com.omega.mouthpiece ;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class mouthCreation_ImageUpload extends AppCompatActivity {
 
     private static final int RESULT_LOAD_IMAGE = 1;
@@ -22,8 +26,10 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
     private Button btnNext;
     private Button btnConfirm;
     private Button btnCancel;
+
     private TextView mouthShapeNumber;
     private ImageView egImage;
+
     private ImageView userImage;
     private ImageView userImage2;
     private ImageView userImage3;
@@ -39,54 +45,61 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
     private int i = 1;
 
+    //
+    imageConfirmation var1 = new imageConfirmation();
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
+            try {
+                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
+                switch (i) {
+                    case 1:
+                        userImage.setImageURI(selectedImage);
+                        userImage.setImageBitmap(bSelectedImage);
+                        userImage.setDrawingCacheEnabled(true);
+                        bSelectedImage = userImage.getDrawingCache();
+                        
 
-            switch (i) {
-                case 1:
-                    userImage.setImageURI(selectedImage);
-                    //userImage.buildDrawingCache();
-                    //Bitmap bitmapAEI = userImage.getDrawingCache();
-                    //Intent intent = new Intent(this, imageConfirmation.class);
-                    //intent.putExtra("BitmapImage-AEI", bitmapAEI);
-                    break;
-                case 2:
-                    userImage2.setImageURI(selectedImage);
-                    break;
-                case 3:
-                    userImage3.setImageURI(selectedImage);
-                    break;
-                case 4:
-                    userImage4.setImageURI(selectedImage);
-                    break;
-                case 5:
-                    userImage5.setImageURI(selectedImage);
-                    break;
-                case 6:
-                    userImage6.setImageURI(selectedImage);
-                    break;
-                case 7:
-                    userImage7.setImageURI(selectedImage);
-                    break;
-                case 8:
-                    userImage8.setImageURI(selectedImage);
-                    break;
-                case 9:
-                    userImage9.setImageURI(selectedImage);
-                    break;
-                case 10:
-                    userImage10.setImageURI(selectedImage);
-                    break;
-                case 11:
-                    userImage11.setImageURI(selectedImage);
-                    break;
-                case 12:
-                    userImage12.setImageURI(selectedImage);
-                    break;
+                        break;
+                    case 2:
+                        userImage2.setImageURI(selectedImage);
+                        break;
+                    case 3:
+                        userImage3.setImageURI(selectedImage);
+                        break;
+                    case 4:
+                        userImage4.setImageURI(selectedImage);
+                        break;
+                    case 5:
+                        userImage5.setImageURI(selectedImage);
+                        break;
+                    case 6:
+                        userImage6.setImageURI(selectedImage);
+                        break;
+                    case 7:
+                        userImage7.setImageURI(selectedImage);
+                        break;
+                    case 8:
+                        userImage8.setImageURI(selectedImage);
+                        break;
+                    case 9:
+                        userImage9.setImageURI(selectedImage);
+                        break;
+                    case 10:
+                        userImage10.setImageURI(selectedImage);
+                        break;
+                    case 11:
+                        userImage11.setImageURI(selectedImage);
+                        break;
+                    case 12:
+                        userImage12.setImageURI(selectedImage);
+                        break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -103,7 +116,9 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnConfirm = findViewById(R.id.btn_click_to_confirm);
         btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = findViewById(R.id.btn_cancel);
+
         mouthShapeNumber = findViewById(R.id.textView2);
+
         egImage = findViewById(R.id.imageView2);
         userImage = findViewById(R.id.uImage1);
         userImage2 = findViewById(R.id.uImage2);
@@ -142,13 +157,13 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             }
         });
 
-        /*btnConfirm.setOnClickListener(new View.OnClickListener() {
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
+                Intent intent = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -157,18 +172,16 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                 if(i == 12) {
                     btnNext.setVisibility(btnNext.INVISIBLE);
                     btnConfirm.setVisibility(btnConfirm.VISIBLE);
-                    //Bundle bundle = new Bundle();
-                    //imageConfirmation var1 = new imageConfirmation();
-                    //var1.mouth1_AEI();
-                    //Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
-                    //startActivity(intent);
                 }
                 else {
                     i = i + 1;
                     mouthShapeNumber.setText("Mouth Shape " + i + "/12");
                     switch(i)
                     {
+                        case 1:
+
                         case 2:
+                            //var1.mouth1_AEI(userImage);
                             egImage.setImageResource(R.drawable.mouth_formants_2);
                             userImage.setVisibility(userImage.INVISIBLE);
                             userImage2.setVisibility(userImage2.VISIBLE);
@@ -248,12 +261,5 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
-                startActivity(intent);
-            }
-        });
     }
 }
