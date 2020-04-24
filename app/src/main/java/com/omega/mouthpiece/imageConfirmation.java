@@ -46,10 +46,6 @@ import androidx.appcompat.app.AppCompatActivity;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_image_confirmation);
-
-        Bundle bundle = getIntent().getExtras();
-
-        vImage1_AEI = findViewById(R.id.image1_AEI);
         vImage1_AEI.setImageResource(R.drawable.mouth);
         vImage2_L = findViewById(R.id.image2_L);
         vImage3_O = findViewById(R.id.image3_O);

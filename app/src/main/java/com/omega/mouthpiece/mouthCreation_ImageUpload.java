@@ -50,9 +50,9 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                 case 1:
                     userImage.setImageURI(selectedImage);
                     userImage.buildDrawingCache();
-                    Bitmap bitmapAEI = userImage.getDrawingCache();
-                    Intent intent = new Intent(this, imageConfirmation.class);
-                    intent.putExtra("BitmapImage-AEI", bitmapAEI);
+                    //Bitmap bitmapAEI = userImage.getDrawingCache();
+                    //Intent intent = new Intent(this, imageConfirmation.class);
+                    //intent.putExtra("BitmapImage-AEI", bitmapAEI);
                     break;
                 case 2:
                     userImage2.setImageURI(selectedImage);
@@ -157,8 +157,8 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                 if(i == 12) {
                     //btnNext.setVisibility(btnNext.INVISIBLE);
                     //btnConfirm.setVisibility(btnConfirm.VISIBLE);
-                    Bundle bundle = new Bundle();
-                    imageConfirmation var1 = new imageConfirmation();
+                    //Bundle bundle = new Bundle();
+                    //imageConfirmation var1 = new imageConfirmation();
                     //var1.mouth1_AEI();
                     Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
                     startActivity(intent);
