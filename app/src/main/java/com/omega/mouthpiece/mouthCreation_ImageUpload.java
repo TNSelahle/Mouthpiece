@@ -20,7 +20,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
     private Button btnUpload;
     private Button btnNext;
-    //private Button btnConfirm;
+    private Button btnConfirm;
     private Button btnCancel;
     private TextView mouthShapeNumber;
     private ImageView egImage;
@@ -49,7 +49,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             switch (i) {
                 case 1:
                     userImage.setImageURI(selectedImage);
-                    userImage.buildDrawingCache();
+                    //userImage.buildDrawingCache();
                     //Bitmap bitmapAEI = userImage.getDrawingCache();
                     //Intent intent = new Intent(this, imageConfirmation.class);
                     //intent.putExtra("BitmapImage-AEI", bitmapAEI);
@@ -100,8 +100,8 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnUpload = findViewById(R.id.btn_choose_image);
         btnNext = findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-        //btnConfirm = findViewById(R.id.btn_go_to_img_confirm);
-        //btnConfirm.setVisibility(btnConfirm.INVISIBLE);
+        btnConfirm = findViewById(R.id.btn_click_to_confirm);
+        btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = findViewById(R.id.btn_cancel);
         mouthShapeNumber = findViewById(R.id.textView2);
         egImage = findViewById(R.id.imageView2);
@@ -155,13 +155,13 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(i == 12) {
-                    //btnNext.setVisibility(btnNext.INVISIBLE);
-                    //btnConfirm.setVisibility(btnConfirm.VISIBLE);
+                    btnNext.setVisibility(btnNext.INVISIBLE);
+                    btnConfirm.setVisibility(btnConfirm.VISIBLE);
                     //Bundle bundle = new Bundle();
                     //imageConfirmation var1 = new imageConfirmation();
                     //var1.mouth1_AEI();
-                    Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
-                    startActivity(intent);
+                    //Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
+                    //startActivity(intent);
                 }
                 else {
                     i = i + 1;
@@ -233,7 +233,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                             userImage11.setVisibility(userImage11.INVISIBLE);
                             userImage12.setVisibility(userImage12.VISIBLE);
                             userImage12.bringToFront();
-                            btnNext.setText("Click to Confirm");
+                            //btnNext.setText("Click to Confirm");
                             break;
                     }
                 }
@@ -248,6 +248,12 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             }
         });
 
-
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
+                startActivity(intent);
+            }
+        });
     }
 }
