@@ -63,25 +63,22 @@ import androidx.appcompat.app.AppCompatActivity;
         vImage11_Th = findViewById(R.id.image11_Th);
         vImage12_Ch_J_Sh = findViewById(R.id.image12_ChJSh);
 
-        if(bundle != null)
-        {
-            int imgID = bundle.getInt("imgID");
-            vImage1_AEI.setImageResource(imgID);
-        }
+
     }
 
     public void accept()
     {
         //TODO: implement the functionality for if button 'Accept' is clicked
+
     }
     public void cancel()
     {
         //TODO: implement functionality for if button 'Cancel' is clicked
     }
-    public void mouth1_AEI()
+    public void mouth1_AEI(Bitmap bVar)
     {
         //TODO: implement function to change mouth shape A,E,I
-
+        
     }
     public void mouth2_L()
     {

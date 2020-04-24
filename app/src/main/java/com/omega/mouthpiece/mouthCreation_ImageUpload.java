@@ -142,6 +142,14 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             }
         });
 
+        /*btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
+                startActivity(intent);
+            }
+        });*/
+
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +159,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                     //btnConfirm.setVisibility(btnConfirm.VISIBLE);
                     Bundle bundle = new Bundle();
                     imageConfirmation var1 = new imageConfirmation();
-                    var1.mouth1_AEI();
+                    //var1.mouth1_AEI();
                     Intent intent = new Intent(mouthCreation_ImageUpload.this, imageConfirmation.class);
                     startActivity(intent);
                 }
@@ -242,6 +250,4 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
 
     }
-
-
 }
