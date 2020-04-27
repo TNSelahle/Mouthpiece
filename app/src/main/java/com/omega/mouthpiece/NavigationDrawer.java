@@ -36,6 +36,10 @@ public class NavigationDrawer extends AppCompatActivity {
 //            }
 //        });
 
+        Fragment fragment;
+        fragment = new TrainingPage();
+
+        loadFragment(fragment);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -46,9 +50,9 @@ public class NavigationDrawer extends AppCompatActivity {
                 R.id.companion_website, R.id.help, R.id.feedback, R.id.sign_out)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     private void loadFragment(Fragment fragment) {
