@@ -3,7 +3,11 @@ package com.omega.mouthpiece;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import android.Manifest;
+import android.app.Activity;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.SystemClock;
@@ -14,7 +18,9 @@ import android.media.MediaRecorder;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -23,7 +29,7 @@ import android.widget.VideoView;
 
 import java.io.IOException;
 
-public class TrainingPage extends AppCompatActivity {
+public class TrainingPage extends Fragment {
     //features for audio recording
     private MediaRecorder trainerAudio = null;
 
@@ -51,7 +57,8 @@ public class TrainingPage extends AppCompatActivity {
                 permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if (!permissionToRecordAccepted ) finish();
+        //if (!permissionToRecordAccepted ) finish();
+        if (!permissionToRecordAccepted ) getActivity().getFragmentManager().popBackStack();
 
     }
 
@@ -90,13 +97,13 @@ public class TrainingPage extends AppCompatActivity {
 
     ///////////////////////////
     public void startChronometer(View view) {
-        ((Chronometer) findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
-        ((Chronometer) findViewById(R.id.recordingTimer)).start();
+        ((Chronometer) view.findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
+        ((Chronometer) view.findViewById(R.id.recordingTimer)).start();
     }
 
     public void stopChronometer(View view) {
-        ((Chronometer) findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
-        ((Chronometer) findViewById(R.id.recordingTimer)).stop();
+        ((Chronometer) view.findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
+        ((Chronometer) view.findViewById(R.id.recordingTimer)).stop();
     }
 
 
@@ -104,43 +111,46 @@ public class TrainingPage extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.training_page);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.training_page, container, false);
+    }
 
-        vw = findViewById(R.id.videoGif);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        View v = getView();
+        FragmentActivity a = getActivity();
+        vw = v.findViewById(R.id.videoGif);
         vw.setVideoPath("https://i.gifer.com/Nt6v.mp4");
         vw.setVisibility(View.INVISIBLE);
 
 
         //Enable the voice training button when first opened
-        EnDisTrain = findViewById(R.id.enableTrainingButton);
+        EnDisTrain = v.findViewById(R.id.enableTrainingButton);
         EnDisTrain.setEnabled(true);
         EnDisTrain.setTextColor(Color.parseColor("#FFFFFFFF"));
 
         //disable the disable voice training button when page is first opened
-        DisableTrainer = findViewById(R.id.stopVoiceRecording);
+        DisableTrainer = v.findViewById(R.id.stopVoiceRecording);
         DisableTrainer.setEnabled(false);
         DisableTrainer.setTextColor(Color.parseColor("#FF424242"));
 
-        PlayRecording = findViewById(R.id.testAudioRec);
+        PlayRecording = v.findViewById(R.id.testAudioRec);
         PlayRecording.setEnabled(false);
         PlayRecording.setTextColor(Color.parseColor("#FF424242"));
 
-        ( findViewById(R.id.recordingTimer)).setVisibility(View.INVISIBLE);
+        (v.findViewById(R.id.recordingTimer)).setVisibility(View.INVISIBLE);
 
 
         /*mp3/ogg/wav*/
-        outputF = getExternalCacheDir().getAbsolutePath();
+        outputF = a.getExternalCacheDir().getAbsolutePath();
         outputF += "/voice_trainer_recorder_audio.wav";
 
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        ActivityCompat.requestPermissions(a, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        EnDisTrain.setOnClickListener(new View.OnClickListener()
-        {
+        EnDisTrain.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
 
 
                 try {
@@ -160,14 +170,16 @@ public class TrainingPage extends AppCompatActivity {
 
                     /////////
 
+                    View v = getView();
+                    FragmentActivity a = getActivity();
 
                     //Display the phonetic pangrams text for the user to read
-                    TextView textview = findViewById(R.id.phonetic_Pangrams_Read_Text);
-                    TextView prText = findViewById(R.id.tvPleaseRead);
+                    TextView textview = v.findViewById(R.id.phonetic_Pangrams_Read_Text);
+                    TextView prText = v.findViewById(R.id.tvPleaseRead);
                     textview.setVisibility(View.VISIBLE);
                     prText.setVisibility(View.VISIBLE);
 
-                    ( findViewById(R.id.recordingTimer)).setVisibility(View.VISIBLE);
+                    (v.findViewById(R.id.recordingTimer)).setVisibility(View.VISIBLE);
 
                     //enable the disable voice training button for recording
                     DisableTrainer.setEnabled(true);
@@ -177,32 +189,31 @@ public class TrainingPage extends AppCompatActivity {
                     EnDisTrain.setEnabled(false);
                     EnDisTrain.setTextColor(Color.parseColor("#FF424242"));
 
-                    Toast.makeText(getApplicationContext(), "Recording your voice...", Toast.LENGTH_SHORT).show();
-                }
-                catch (IllegalStateException ie) {
-                    Toast.makeText(getApplicationContext(), "Illegal state", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a.getApplicationContext(), "Recording your voice...", Toast.LENGTH_SHORT).show();
+                } catch (IllegalStateException ie) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Illegal state", Toast.LENGTH_SHORT).show();
                     ie.printStackTrace();
                 }
             }
         });
 
-        DisableTrainer.setOnClickListener(new View.OnClickListener()
-        {
+        DisableTrainer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 stopRecoring();
                 stopChronometer(view);
                 vw.setVisibility(View.INVISIBLE);
                 vw.stopPlayback();
 
+                View v = getView();
+
                 //hide the phonetic pangrams text
-                TextView textview = findViewById(R.id.phonetic_Pangrams_Read_Text);
-                TextView prText = findViewById(R.id.tvPleaseRead);
+                TextView textview = v.findViewById(R.id.phonetic_Pangrams_Read_Text);
+                TextView prText = v.findViewById(R.id.tvPleaseRead);
                 textview.setVisibility(View.INVISIBLE);
                 prText.setVisibility(View.INVISIBLE);
 
-                ( findViewById(R.id.recordingTimer)).setVisibility(View.INVISIBLE);
+                (v.findViewById(R.id.recordingTimer)).setVisibility(View.INVISIBLE);
 
                 //since disable buton already clicked on, disable it
                 DisableTrainer.setEnabled(false);
@@ -215,20 +226,16 @@ public class TrainingPage extends AppCompatActivity {
                 PlayRecording.setEnabled(true);
                 PlayRecording.setTextColor(Color.parseColor("#FFFFFFFF"));
 
-                Toast.makeText(getApplicationContext(), "Voice recording disabled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Voice recording disabled", Toast.LENGTH_SHORT).show();
             }
         });
 
-        PlayRecording.setOnClickListener(new View.OnClickListener()
-        {
+        PlayRecording.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-               playRecording();
+            public void onClick(View view) {
+                playRecording();
             }
         });
-
-
 
 
     }
