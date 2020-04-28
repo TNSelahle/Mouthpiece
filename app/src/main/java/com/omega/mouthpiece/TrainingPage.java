@@ -97,13 +97,13 @@ public class TrainingPage extends Fragment {
 
     ///////////////////////////
     public void startChronometer(View view) {
-        ((Chronometer) view.findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
-        ((Chronometer) view.findViewById(R.id.recordingTimer)).start();
+        ((Chronometer) getView().findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
+        ((Chronometer) getView().findViewById(R.id.recordingTimer)).start();
     }
 
     public void stopChronometer(View view) {
-        ((Chronometer) view.findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
-        ((Chronometer) view.findViewById(R.id.recordingTimer)).stop();
+        ((Chronometer) getView().findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
+        ((Chronometer) getView().findViewById(R.id.recordingTimer)).stop();
     }
 
 
@@ -112,7 +112,9 @@ public class TrainingPage extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.training_page, container, false);
+        View view = inflater.inflate(R.layout.training_page, container, false);
+
+        return view;
     }
 
     @Override
@@ -155,6 +157,7 @@ public class TrainingPage extends Fragment {
 
                 try {
                     //Commented out due to functionality not working
+
                     startRecording();
                     startChronometer(view);
                     vw.setVisibility(View.VISIBLE);
