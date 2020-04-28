@@ -53,6 +53,8 @@
         <!--Webview-->
         <!--Filter-->
         <activity android:name=".filter" android:exported="true"/>
+        <!--Feedback page-->
+        <activity android:name=".FeedbackPage" android:exported="true"/>
     </application>
 
 

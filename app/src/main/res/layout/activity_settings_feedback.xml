@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/phonetic_Pangrams_Read_Text2"
+        android:layout_width="348dp"
+        android:layout_height="96dp"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+
+        android:gravity="start|top"
+        android:text="@string/FeedbackInstructions"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/nameOfUser"
+        android:layout_width="86dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="208dp"
+        android:text="@string/Name"
+        android:textColor="#EE1C31"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/Name" />
+
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameOfUser" />
+
+    <EditText
+        android:id="@+id/descriptionFeedback"
+        android:layout_width="331dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descrtiptionTextView" />
+
+    <TextView
+        android:id="@+id/descrtiptionTextView"
+        android:layout_width="139dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/DescriptionText"
+        android:textColor="#EE1C31"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectsDropdown"
+        tools:text="@string/DescriptionText" />
+
+    <Spinner
+        android:id="@+id/subjectsDropdown"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#ee1c31"
+        android:entries="@array/feedback_choices"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectText" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="286dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#ee1c31"
+        android:text="@string/submitButton"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionFeedback"
+        tools:text="@string/submitButton" />
+
+    <TextView
+        android:id="@+id/subjectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/Subject"
+        android:textColor="#EE1C31"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInput"
+        tools:text="@string/Subject" />
+
+    <TextView
+        android:id="@+id/nameOfUser3"
+        android:layout_width="222dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/FeedbackText"
+        android:textColor="#EE1C31"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/FeedbackText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

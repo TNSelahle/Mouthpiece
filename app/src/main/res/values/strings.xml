@@ -98,5 +98,20 @@
     <string name="menu_feedback">Feedback</string>
     <string name="menu_sign_out">Sign Out</string>
     <string name="menu_manage">Manage</string>
+    <string name="Name">Name:</string>
+    <string name="Subject">Subject:</string>
+    <string name="DescriptionText">Description:</string>
+    <string name="FeedbackInstructions">This page is to report any errors in the application or to tell us what you think of our app. If you wish to write anonymously, just write Anon in the name description.</string>
+    <string name="FeedbackText">Feedback Page</string>
+
+    <string-array name="feedback_choices">
+        <item></item>
+        <item>Design Feedback</item>
+        <item>Application Bugs</item>
+        <item>Errors</item>
+        <item>Application Review</item>
+        <item>Companion Website</item>
+        <item>Other</item>
+    </string-array>
 
 </resources>
