@@ -26,6 +26,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.omega.mouthpiece.localNotification.makeToast;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -120,8 +122,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void changeTextStatus(boolean isConnected) {
-        if (!isConnected) {
-            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        if (!isConnected)
+        {
+            makeToast(getBaseContext(), "No Internet Connection");
+            //Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
         }
     }
 
