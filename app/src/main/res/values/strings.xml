@@ -101,8 +101,12 @@
     <string name="Name">Name:</string>
     <string name="Subject">Subject:</string>
     <string name="DescriptionText">Description:</string>
-    <string name="FeedbackInstructions">This page is to report any errors in the application or to tell us what you think of our app. If you wish to write anonymously, just write Anon in the name description.</string>
+    <string name="FeedbackInstructions">This page is to report any errors in the application or to tell us what you think of our app. If you wish to write anonymously, just tick the anonymous box below.</string>
     <string name="FeedbackText">Feedback Page</string>
+    <string name="Feedback">Feedback</string>
+    <string name="emailTxt">Email:</string>
+    <string name="anonymousTxt">Anonymous</string>
+    <string name="urlSite">http://102.133.170.83:5000/addFeedback</string>
 
     <string-array name="feedback_choices">
         <item></item>
