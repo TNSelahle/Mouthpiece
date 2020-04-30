@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -44,6 +48,16 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
+
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            changeTextStatus(true);
+        } else {
+            changeTextStatus(false);
+        }
     }
 
     private void parseJSON()
@@ -95,5 +109,9 @@ public class MouthSelection extends AppCompatActivity  implements DBAdapter.OnIt
 
         startActivity(detailIntent);
     }
-
+    public void changeTextStatus(boolean isConnected) {
+        if (!isConnected) {
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
+    }
 }

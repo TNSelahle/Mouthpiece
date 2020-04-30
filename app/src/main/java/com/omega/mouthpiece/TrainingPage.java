@@ -6,7 +6,10 @@ package com.omega.mouthpiece;
 
 
         import android.Manifest;
+        import android.content.Context;
         import android.graphics.Color;
+        import android.net.ConnectivityManager;
+        import android.net.NetworkInfo;
         import android.util.Log;
         import android.content.Intent;
         import android.content.pm.PackageManager;
@@ -134,7 +137,19 @@ public class TrainingPage extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Voice recording disabled", Toast.LENGTH_SHORT).show();
             }
         });
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            changeTextStatus(true);
+        } else {
+            changeTextStatus(false);
+        }
 
-
+    }
+    public void changeTextStatus(boolean isConnected) {
+        if (!isConnected) {
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

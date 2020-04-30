@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,7 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            changeTextStatus(true);
+        } else {
+            changeTextStatus(false);
+        }
 
 
     }
@@ -110,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Please Try Again", Toast.LENGTH_LONG).show();
         }
     }
+    public void changeTextStatus(boolean isConnected) {
+        if (!isConnected) {
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyApp.activityPaused();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApp.activityResumed();
+    }
 
 }
