@@ -13,23 +13,30 @@
 
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_select_mouth"
         android:name="com.omega.mouthpiece.SelectionFragment"
         android:label="@string/menu_select_mouth"
         tools:layout="@layout/fragment_selection" />
 
+
+
     <fragment
         android:id="@+id/nav_create_mouth"
-        android:name="com.omega.mouthpiece.UploadFragmentFrontFragment"
+        android:name="com.omega.mouthpiece.UploadMouthFrontFragment"
         android:label="@string/menu_create_mouth"
         tools:layout="@layout/fragment_mouthupload_front" />
 
     <fragment
+        android:id="@+id/nav_image_upload"
+        android:name="com.omega.mouthpiece.ImageUploadFragment"
+        android:label="@string/menu_image_upload"
+        tools:layout="@layout/fragment_mouthupload_image" />
+
+    <fragment
         android:id="@+id/nav_training"
         android:name="com.omega.mouthpiece.TrainingFragment"
-        android:label="@string/menu_create_mouth"
+        android:label="@string/menu_training"
         tools:layout="@layout/fragment_training" />
 
     <fragment
@@ -40,7 +47,7 @@
 
     <fragment
         android:id="@+id/nav_feedback"
-        android:name="com.omega.mouthpiece.FeedFragment"
+        android:name="com.omega.mouthpiece.FeedbackFragment"
         android:label="@string/menu_feedback"
         tools:layout="@layout/fragment_feedback" />
 
@@ -49,5 +56,11 @@
         android:name="com.omega.mouthpiece.HelpFragment"
         android:label="@string/menu_help"
         tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.omega.mouthpiece.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
 
 </navigation>

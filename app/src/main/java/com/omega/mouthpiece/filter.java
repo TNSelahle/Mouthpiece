@@ -35,7 +35,7 @@ public class filter extends AppCompatActivity
             public void onClick(View view)
             {
                 filter();//Set the public variables to the selected values
-                Intent intent = new Intent(getApplicationContext(), MouthSelection.class);
+                Intent intent = new Intent(getApplicationContext(), SelectionFragment.class);
                 intent.putExtra(sortCriteria, selectedSort);
                 intent.putExtra(ratingCriteria, selectedRatings);
                 //the two lines above provide extra content so we can access the filter variable data from the other screen.
@@ -50,7 +50,7 @@ public class filter extends AppCompatActivity
                 selectedSort="none";
                 selectedRatings="none";
                 //Clear the criteria for any sorting and return to the mouth selection screen
-                Intent intent = new Intent(getApplicationContext(), MouthSelection.class);
+                Intent intent = new Intent(getApplicationContext(), SelectionFragment.class);
                 startActivity(intent);
             }
         });

@@ -90,6 +90,8 @@
     <string name="menu_create_mouth">Create Mouth</string>
     <string name="menu_training">Training</string>
     <string name="menu_help">Help</string>
+    <string name="menu_image_upload">Image Upload</string>
+    <string name="menu_setting">Setting</string>
     <string name="menu_companion_website">Companion Website</string>
     <string name="menu_feedback">Feedback</string>
     <string name="menu_sign_out">Sign Out</string>

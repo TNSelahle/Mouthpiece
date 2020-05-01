@@ -1,4 +1,6 @@
 package com.omega.mouthpiece;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -6,20 +8,21 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-
-public class WebFragment extends Fragment {
-
-    private WebView mywebview;
+public class SettingFragment extends Fragment {
+    private Button feedback;
+//    Switch simpleSwitch1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_website, container, false);
-        mywebview = root.findViewById(R.id.webView);
-        mywebview.loadUrl("http://www.mouthpiece.tech/");
+        View root = inflater.inflate(R.layout.fragment_setting, container, false);
+
         return root;
     }
 
@@ -34,4 +37,17 @@ public class WebFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
     }
-}
+
+//        // initiate view's
+
+//        simpleSwitch1 = (Switch) findViewById(R.id.switch2);
+//        simpleSwitch1.setOnCheckedChangeListener(new Switch().OnCheckedChangeListener()) {
+//            if (simpleSwitch1.isChecked()){
+////
+//            }
+//            else{
+//
+//            }
+//        });
+   }
+

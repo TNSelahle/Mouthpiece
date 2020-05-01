@@ -10,12 +10,19 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-    public class imageConfirmation extends AppCompatActivity {
+public class imageConfirmationFragment extends Fragment {
     private String mExampleString; //
     private int mExampleColor = Color.RED; //
     private float mExampleDimension = 0; //
@@ -43,30 +50,31 @@ import androidx.appcompat.app.AppCompatActivity;
     //bitmap - from previous activities
     Bitmap bmImage;
 
-    public imageConfirmation()
+    public imageConfirmationFragment()
     {
         //bmImage = null;
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_image_confirmation);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-        vImage1_AEI = findViewById(R.id.image1_AEI);
-        vImage2_L = findViewById(R.id.image2_L);
-        vImage3_O = findViewById(R.id.image3_O);
-        vImage4_CDGKNSTXYZ = findViewById(R.id.image4_CDGKNSTXYZ);
-        vImage5_FV = findViewById(R.id.image5_FV);
-        vImage6_QW = findViewById(R.id.image6_QW);
-        vImage7_BMP = findViewById(R.id.image7_BMP);
-        vImage8_U = findViewById(R.id.image8_U);
-        vImage9_Ee = findViewById(R.id.image9_Ee);
-        vImage10_R = findViewById(R.id.image10_R);
-        vImage11_Th = findViewById(R.id.image11_Th);
-        vImage12_Ch_J_Sh = findViewById(R.id.image12_ChJSh);
+        View root = inflater.inflate(R.layout.fragment_mouthupload_confirmation, container, false);
 
+        vImage1_AEI = root.findViewById(R.id.image1_AEI);
+        vImage2_L = root.findViewById(R.id.image2_L);
+        vImage3_O = root.findViewById(R.id.image3_O);
+        vImage4_CDGKNSTXYZ = root.findViewById(R.id.image4_CDGKNSTXYZ);
+        vImage5_FV = root.findViewById(R.id.image5_FV);
+        vImage6_QW = root.findViewById(R.id.image6_QW);
+        vImage7_BMP = root.findViewById(R.id.image7_BMP);
+        vImage8_U = root.findViewById(R.id.image8_U);
+        vImage9_Ee = root.findViewById(R.id.image9_Ee);
+        vImage10_R = root.findViewById(R.id.image10_R);
+        vImage11_Th = root.findViewById(R.id.image11_Th);
+        vImage12_Ch_J_Sh = root.findViewById(R.id.image12_ChJSh);
+
+        return root;
     }
 
     public void accept()
@@ -128,6 +136,22 @@ import androidx.appcompat.app.AppCompatActivity;
         //TODO: implement function to change mouth shape Ch,J,Sh
     }
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Image Confirmation");
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+    }
 
 
 

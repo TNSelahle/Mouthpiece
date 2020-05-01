@@ -5,17 +5,24 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
 
-public class mouthCreation_ImageUpload extends AppCompatActivity {
+public class ImageUploadFragment extends Fragment {
 
     private static final int RESULT_LOAD_IMAGE = 1;
 
@@ -43,92 +50,33 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
     private int i = 1;
 
     //
-    imageConfirmation var1 = new imageConfirmation();
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
-            Uri selectedImage = data.getData();
-            try {
-                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
-                switch (i) {
-                    case 1:
-                        userImage.setImageURI(selectedImage);
-                        userImage.setImageBitmap(bSelectedImage);
-                        userImage.setDrawingCacheEnabled(true);
-                        bSelectedImage = userImage.getDrawingCache();
-                        
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-                        break;
-                    case 2:
-                        userImage2.setImageURI(selectedImage);
-                        break;
-                    case 3:
-                        userImage3.setImageURI(selectedImage);
-                        break;
-                    case 4:
-                        userImage4.setImageURI(selectedImage);
-                        break;
-                    case 5:
-                        userImage5.setImageURI(selectedImage);
-                        break;
-                    case 6:
-                        userImage6.setImageURI(selectedImage);
-                        break;
-                    case 7:
-                        userImage7.setImageURI(selectedImage);
-                        break;
-                    case 8:
-                        userImage8.setImageURI(selectedImage);
-                        break;
-                    case 9:
-                        userImage9.setImageURI(selectedImage);
-                        break;
-                    case 10:
-                        userImage10.setImageURI(selectedImage);
-                        break;
-                    case 11:
-                        userImage11.setImageURI(selectedImage);
-                        break;
-                    case 12:
-                        userImage12.setImageURI(selectedImage);
-                        break;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-    @Override
-    protected void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.mouth_creation_image_upload);
-
-        btnUpload = findViewById(R.id.btn_choose_image);
-        btnNext = findViewById(R.id.btn_nxt);
+        View root = inflater.inflate(R.layout.fragment_mouthupload_image, container, false);
+        btnUpload = root.findViewById(R.id.btn_choose_image);
+        btnNext = root.findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-        //btnConfirm = findViewById(R.id.btn_click_to_confirm);
+        btnConfirm = root.findViewById(R.id.btn_click_to_confirm);
         btnConfirm.setVisibility(btnConfirm.INVISIBLE);
-        btnCancel = findViewById(R.id.btn_cancel);
+        btnCancel = root.findViewById(R.id.btn_cancel);
 
-        mouthShapeNumber = findViewById(R.id.textView2);
+        mouthShapeNumber = root.findViewById(R.id.textView2);
 
-        egImage = findViewById(R.id.imageView2);
-        userImage = findViewById(R.id.uImage1);
-        userImage2 = findViewById(R.id.uImage2);
-        userImage3 = findViewById(R.id.uImage3);
-        userImage4 = findViewById(R.id.uImage4);
-        userImage5 = findViewById(R.id.uImage5);
-        userImage6 = findViewById(R.id.uImage6);
-        userImage7 = findViewById(R.id.uImage7);
-        userImage8 = findViewById(R.id.uImage8);
-        userImage9 = findViewById(R.id.uImage9);
-        userImage10 = findViewById(R.id.uImage10);
-        userImage11= findViewById(R.id.uImage11);
-        userImage12 = findViewById(R.id.uImage12);
+        egImage = root.findViewById(R.id.imageView2);
+        userImage = root.findViewById(R.id.uImage1);
+        userImage2 = root.findViewById(R.id.uImage2);
+        userImage3 = root.findViewById(R.id.uImage3);
+        userImage4 = root.findViewById(R.id.uImage4);
+        userImage5 = root.findViewById(R.id.uImage5);
+        userImage6 = root.findViewById(R.id.uImage6);
+        userImage7 = root.findViewById(R.id.uImage7);
+        userImage8 = root.findViewById(R.id.uImage8);
+        userImage9 = root.findViewById(R.id.uImage9);
+        userImage10 = root.findViewById(R.id.uImage10);
+        userImage11= root.findViewById(R.id.uImage11);
+        userImage12 = root.findViewById(R.id.uImage12);
 
         userImage.setVisibility(userImage.VISIBLE);
         userImage.bringToFront();
@@ -157,8 +105,12 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
-                startActivity(intent);
+                imageConfirmationFragment fragment2 = new imageConfirmationFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
@@ -253,10 +205,93 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mouthCreation_ImageUpload.this, UploadMouthsFrontPage.class);
-                startActivity(intent);
+
+                UploadMouthFrontFragment fragment2 = new UploadMouthFrontFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
             }
         });
 
+        return root;
     }
+
+
+    imageConfirmationFragment var1 = new imageConfirmationFragment();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == getActivity().RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            try {
+                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+
+                switch (i) {
+                    case 1:
+                        userImage.setImageURI(selectedImage);
+                        userImage.setImageBitmap(bSelectedImage);
+                        userImage.setDrawingCacheEnabled(true);
+                        bSelectedImage = userImage.getDrawingCache();
+                        
+
+                        break;
+                    case 2:
+                        userImage2.setImageURI(selectedImage);
+                        break;
+                    case 3:
+                        userImage3.setImageURI(selectedImage);
+                        break;
+                    case 4:
+                        userImage4.setImageURI(selectedImage);
+                        break;
+                    case 5:
+                        userImage5.setImageURI(selectedImage);
+                        break;
+                    case 6:
+                        userImage6.setImageURI(selectedImage);
+                        break;
+                    case 7:
+                        userImage7.setImageURI(selectedImage);
+                        break;
+                    case 8:
+                        userImage8.setImageURI(selectedImage);
+                        break;
+                    case 9:
+                        userImage9.setImageURI(selectedImage);
+                        break;
+                    case 10:
+                        userImage10.setImageURI(selectedImage);
+                        break;
+                    case 11:
+                        userImage11.setImageURI(selectedImage);
+                        break;
+                    case 12:
+                        userImage12.setImageURI(selectedImage);
+                        break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Image Upload");
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+    }
+
 }
