@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.omega.mouthpiece">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -16,44 +17,57 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-      
-        <activity android:name=".LoadingPage">
 
+        <activity android:name=".LoadingPage">
         </activity>
+        <!--Navigation Page-->
         <activity
-            android:name=".NavigationDrawer"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true" >
+            android:name="com.omega.mouthpiece.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".webactivity"></activity>
+        <!--Login Page-->
+        <activity android:name=".LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".webactivity">
-        </activity>
-        <!--Login Page-->
-        <activity android:name=".MainActivity"/>
         <!--Register Page-->
-        <activity android:name=".RegisterPage"/>
+        <activity android:name=".RegisterPage" />
         <!--MouthSelection-->
-        <activity android:name=".MouthSelection" android:exported="true"/>
-        <activity android:name=".DetailActivity"/>
+        <activity
+            android:name=".MouthSelection"
+            android:exported="true" />
+        <activity android:name=".DetailActivity" />
         <!--MouthCreation-->
-        <activity android:name=".UploadMouthsFrontPage" android:exported="true"/>
-        <activity android:name=".mouthCreation" android:exported="true"/>
-        <activity android:name=".mouthCreation_ImageUpload" android:exported="true"/>
-        <activity android:name=".imageConfirmation" android:exported="true"/>
+        <activity
+            android:name=".UploadMouthsFrontPage"
+            android:exported="true" />
+        <activity
+            android:name=".mouthCreation_ImageUpload"
+            android:exported="true" />
+        <activity
+            android:name=".imageConfirmation"
+            android:exported="true" />
         <!--Landing Page-->
-        <activity android:name=".Landing"/>
         <!--Converter-->
-        <activity android:name=".Converter" android:exported="true"/>
+        <activity
+            android:name=".Converter"
+            android:exported="true" />
         <!--Training-->
-        <activity android:name=".TrainingPage" android:exported="true"/>
+        <activity
+            android:name=".TrainingPage"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <!--Webview-->
         <!--Filter-->
-        <activity android:name=".filter" android:exported="true"/>
+        <activity
+            android:name=".filter"
+            android:exported="true" />
     </application>
 
 
