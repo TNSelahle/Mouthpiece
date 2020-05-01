@@ -110,7 +110,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnUpload = findViewById(R.id.btn_choose_image);
         btnNext = findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-        btnConfirm = findViewById(R.id.btn_click_to_confirm);
+        //btnConfirm = findViewById(R.id.btn_click_to_confirm);
         btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = findViewById(R.id.btn_cancel);
 
