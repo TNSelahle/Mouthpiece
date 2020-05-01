@@ -108,7 +108,7 @@ public class Converter extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_converter);
+        setContentView(R.layout.fragment_landing);
         //---------------------------KEEP SCREEN ON------------------------------
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
