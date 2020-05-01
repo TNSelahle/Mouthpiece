@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class settingpage extends AppCompatActivity {
     private Button feedback;
 //    Switch simpleSwitch1;
+
 @Override
    protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,10 +28,11 @@ public class settingpage extends AppCompatActivity {
     });
 
 //        // initiate view's
+
 //        simpleSwitch1 = (Switch) findViewById(R.id.switch2);
-//        simpleSwitch1.setOnCheckedChangeListener(new Switch().OnCheckedChangeListener() {
+//        simpleSwitch1.setOnCheckedChangeListener(new Switch().OnCheckedChangeListener()) {
 //            if (simpleSwitch1.isChecked()){
-//
+////
 //            }
 //            else{
 //

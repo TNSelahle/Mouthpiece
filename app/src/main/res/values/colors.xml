@@ -8,4 +8,8 @@
     <color name="grey">#333138</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="main1">#000000</color>
+    <color name="main2">#FFFFFF</color>
+    <color name="main3">#ee1c31</color>
+
 </resources>
