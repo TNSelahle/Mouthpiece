@@ -79,17 +79,10 @@ public class FeedbackPage extends AppCompatActivity {
                 jsonDescr = descriptionFeedback.getText().toString();
                 jsonOption = optionVal.getSelectedItem().toString();
                 jsonEmail = email.getText().toString();
-                /*
-                String jsonParse = "{" +
-                        "\"name\"" + "\"" + jsonName + "\"," +
-                        "\"subject\"" + "\"" + jsonOption + "\"," +
-                        "\"description\"" + "\"" + jsonDescr + "\"" +
-                        "}";
 
-                 */
                 sendJsonFeedback();
-                //Toast.makeText(getApplicationContext(), jsonBodyParse, Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(FeedbackPage.this, settingpage.class));
+                startActivity(new Intent(FeedbackPage.this, settingpage.class));
+
             }
         });
 
