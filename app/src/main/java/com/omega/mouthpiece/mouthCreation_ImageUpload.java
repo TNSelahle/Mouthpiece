@@ -2,8 +2,6 @@ package com.omega.mouthpiece ;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,7 +110,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnUpload = findViewById(R.id.btn_choose_image);
         btnNext = findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-        btnConfirm = findViewById(R.id.btn_click_to_confirm);
+        //btnConfirm = findViewById(R.id.btn_click_to_confirm);
         btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = findViewById(R.id.btn_cancel);
 
