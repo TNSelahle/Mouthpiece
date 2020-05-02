@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 
 import com.squareup.picasso.Picasso;
-import static com.omega.mouthpiece.MouthSelection.EXTRA_CREATOR;
-import static com.omega.mouthpiece.MouthSelection.EXTRA_LIKES;
-import static com.omega.mouthpiece.MouthSelection.EXTRA_URL;
-import static com.omega.mouthpiece.MouthSelection.EXTRA_DOWNLOADS;
+import static com.omega.mouthpiece.SelectionFragment.EXTRA_CREATOR;
+import static com.omega.mouthpiece.SelectionFragment.EXTRA_LIKES;
+import static com.omega.mouthpiece.SelectionFragment.EXTRA_URL;
+import static com.omega.mouthpiece.SelectionFragment.EXTRA_DOWNLOADS;
 
 public class DetailActivity extends AppCompatActivity {
     private Button btn;

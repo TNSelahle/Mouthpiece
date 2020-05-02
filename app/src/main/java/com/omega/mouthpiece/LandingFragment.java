@@ -1,25 +1,32 @@
-
 package com.omega.mouthpiece;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+
+import com.omega.mouthpiece.R;
+
 import java.io.IOException;
 
-public class Converter extends AppCompatActivity{
+
+public class LandingFragment extends Fragment {
 
     AnimationDrawable MouthAnimation;
     //------------------------RECORDING VAR----------------------------------
@@ -45,7 +52,7 @@ public class Converter extends AppCompatActivity{
                 permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if (!permissionToRecordAccepted ) finish();
+        if (!permissionToRecordAccepted ) getActivity().finish();
 
     }
 
@@ -87,7 +94,7 @@ public class Converter extends AppCompatActivity{
 
         @Override
         public void run() {
-            ImageView mouthImage = findViewById(R.id.img_mouth);
+            ImageView mouthImage = getView().findViewById(R.id.img_mouth);
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
             if(db >= 71.5) {
@@ -104,26 +111,27 @@ public class Converter extends AppCompatActivity{
     };
     //---------------------------------------------------------------------------------
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_landing);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_landing, container, false);
+
+
         //---------------------------KEEP SCREEN ON------------------------------
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
-        ImageView mouthImage = findViewById(R.id.img_mouth);
+        ImageView mouthImage = root.findViewById(R.id.img_mouth);
         mouthImage.setBackgroundResource(R.drawable.open_mouth);
         MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
 
         //---------------------------RECORDING SYSTEM-----------------------------
         // Record to the external cache directory for visibility
-        fileName = getExternalCacheDir().getAbsolutePath();
+        fileName = getActivity().getExternalCacheDir().getAbsolutePath();
         fileName += "/voiceprofile_audio.3gp";
 
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        ActivityCompat.requestPermissions(getActivity(), permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        Button volume_based_btn = findViewById(R.id.btn_record);
+        Button volume_based_btn = root.findViewById(R.id.btn_record);
         //Click on Volume button to start recording
         volume_based_btn.setOnClickListener(new View.OnClickListener() {
             boolean mStartRecording = true;
@@ -149,5 +157,19 @@ public class Converter extends AppCompatActivity{
             }
         });
 
+        return root;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
     }
 }

@@ -1,118 +1,65 @@
 package com.omega.mouthpiece;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import android.os.Bundle;
+import android.view.Menu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AppBarConfiguration mAppBarConfiguration;
 
-    private EditText Email;
-    private EditText Password;
-    private Button Login;
-    private Button Register;
-    private int byPassCounter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Email =findViewById(R.id.username);
-        Password =findViewById(R.id.password);
-        Login = findViewById(R.id.loginButton);
-        Register = findViewById(R.id.registerButton);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_select_mouth, R.id.nav_create_mouth, R.id.nav_training,R.id.nav_website,R.id.nav_help,R.id.nav_feedback,R.id.nav_settings)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
-        Login.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                parseJSON();
-                byPassCounter++;
-                validate(Email.getText().toString(),Password.getText().toString());
-            }
-        });
-
-        Register.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(MainActivity.this, RegisterPage.class);
-                startActivity(intent);
-            }
-        });
 
 
 
     }
-    String emailAPI;
-    String passwordAPI;
 
-    private RequestQueue mRequestQueue;
-    private StringRequest mStringRequest;
-    private String url = "http://102.133.170.83:4000/getUsers";
-
-    private void parseJSON() {
-
-        mRequestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                                emailAPI = response.getString("email");
-                                passwordAPI = response.getString("password");
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mRequestQueue.add(request);
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
 
-    private void validate(String userName, String userPassword){
-        if(((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))) || byPassCounter >= 5){
-            Intent intent = new Intent(MainActivity.this, MouthSelection.class);
-            startActivity(intent);
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(),"Please Try Again", Toast.LENGTH_LONG).show();
-        }
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 
 }

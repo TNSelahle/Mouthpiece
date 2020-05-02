@@ -7,37 +7,60 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.omega.mouthpiece.ui.home.HomeFragment"
+        android:name="com.omega.mouthpiece.LandingFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_landing">
 
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.omega.mouthpiece.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.omega.mouthpiece.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_select_mouth"
+        android:name="com.omega.mouthpiece.SelectionFragment"
+        android:label="@string/menu_select_mouth"
+        tools:layout="@layout/fragment_selection" />
+
+
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.omega.mouthpiece.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_create_mouth"
+        android:name="com.omega.mouthpiece.UploadMouthFrontFragment"
+        android:label="@string/menu_create_mouth"
+        tools:layout="@layout/fragment_mouthupload_front" />
+
+    <fragment
+        android:id="@+id/nav_image_upload"
+        android:name="com.omega.mouthpiece.ImageUploadFragment"
+        android:label="@string/menu_image_upload"
+        tools:layout="@layout/fragment_mouthupload_image" />
+
+    <fragment
+        android:id="@+id/nav_training"
+        android:name="com.omega.mouthpiece.TrainingFragment"
+        android:label="@string/menu_training"
+        tools:layout="@layout/fragment_training" />
+
+    <fragment
+        android:id="@+id/nav_website"
+        android:name="com.omega.mouthpiece.WebFragment"
+        android:label="@string/menu_companion_website"
+        tools:layout="@layout/fragment_website" />
+
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.omega.mouthpiece.FeedbackFragment"
+        android:label="@string/menu_feedback"
+        tools:layout="@layout/fragment_feedback" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.omega.mouthpiece.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.omega.mouthpiece.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
+
 </navigation>
