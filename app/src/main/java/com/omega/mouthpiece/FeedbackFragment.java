@@ -56,8 +56,6 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        //find all the data in the layout and convert it to variables
-
         View root = inflater.inflate(R.layout.fragment_feedback, container, false);
 
         submitButton = root.findViewById(R.id.submitBtn);
@@ -72,7 +70,7 @@ public class FeedbackFragment extends Fragment {
         nameHeader = root.findViewById(R.id.nameOfUser);
 
 
-        //send JSON data through to the database
+
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){
@@ -86,14 +84,13 @@ public class FeedbackFragment extends Fragment {
 
             }
         });
-        //exit button to close the feedback page
+
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), SettingFragment.class));
             }
         });
-        //enable user to be anonymous and to enter anonymous data
         anon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                             @Override
@@ -118,12 +115,9 @@ public class FeedbackFragment extends Fragment {
         return root;
     }
 
-
-    //function to make an API call through Volley to the database using user data
     private void sendJsonFeedback() {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        //convert string to JSON data
         try {
 
             jsonBodyParse = new JSONObject();
@@ -136,7 +130,7 @@ public class FeedbackFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //Make API request and check the server response
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBodyParse,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -150,7 +144,6 @@ public class FeedbackFragment extends Fragment {
                 Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        //Add the JSON request to the Volley queue
         requestQueue.add(jsonObjectRequest);
 
     }
