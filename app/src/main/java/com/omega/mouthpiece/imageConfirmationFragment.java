@@ -1,12 +1,14 @@
 package com.omega.mouthpiece;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -49,11 +51,13 @@ public class imageConfirmationFragment extends Fragment {
 
     //bitmap - from previous activities
     Bitmap bmImage;
+    Uri imageUri;
 
     public imageConfirmationFragment()
     {
         //bmImage = null;
     }
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -77,64 +81,34 @@ public class imageConfirmationFragment extends Fragment {
         return root;
     }
 
-    public void accept()
-    {
-        //TODO: implement the functionality for if button 'Accept' is clicked
-
-    }
-    public void cancel()
-    {
-        //TODO: implement functionality for if button 'Cancel' is clicked
-    }
-    public void mouth1_AEI(Bitmap bI_AEI)
-    {
-        //TODO: implement function to change mouth shape A,E,I
-        vImage1_AEI.setImageBitmap(bI_AEI);
-    }
-    public void mouth2_L()
-    {
-        //TODO: implement function to change mouth shape L
-    }
-    public void mouth3_O()
-    {
-        //TODO: implement function to change mouth shape O
-    }
-    public void mouth4_CDGK()
-    {
-        //TODO: implement function to change mouth shape C,D,G,K,N,S,T,X,Y,Z
-    }
-    public void mouth5_FV()
-    {
-        //TODO: implement function to change mouth shape F,V
-    }
-    public void mouth6_QW()
-    {
-        //TODO: implement function to change mouth shape Q,W
-    }
-    public void mouth7_BMP()
-    {
-        //TODO: implement function to change mouth shape B,M,P
-    }
-    public void mouth8_U()
-    {
-        //TODO: implement function to change mouth shape U
-    }
-    public void mouth9_Ee()
-    {
-        //TODO: implement function to change mouth shape Ee
-    }
-    public void mouth10_R()
-    {
-        //TODO: implement function to change mouth shape R
-    }
-    public void mouth11_Th()
-    {
-        //TODO: implement function to change mouth shape Th
-    }
-    public void mouth12_ChJSh()
-    {
-        //TODO: implement function to change mouth shape Ch,J,Sh
-    }
+        //sets the image from the mouth creation activity.
+        if(getIntent().getExtras() != null)
+        {
+            imageUri = Uri.parse(getIntent().getStringExtra("imageAEI"));
+            vImage1_AEI.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageL"));
+            vImage2_L.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageO"));
+            vImage3_O.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageCDGKNSTXYZ"));
+            vImage4_CDGKNSTXYZ.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageFV"));
+            vImage5_FV.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageQW"));
+            vImage6_QW.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageBMP"));
+            vImage7_BMP.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageU"));
+            vImage8_U.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageEe"));
+            vImage9_Ee.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageR"));
+            vImage10_R.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageTh"));
+            vImage11_Th.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageChJSh"));
+            vImage12_Ch_J_Sh.setImageURI(imageUri);
+        }
 
 
     @Override

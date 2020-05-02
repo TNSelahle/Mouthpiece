@@ -1,7 +1,12 @@
 package com.omega.mouthpiece ;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +27,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class ImageUploadFragment extends Fragment {
 
@@ -28,13 +36,13 @@ public class ImageUploadFragment extends Fragment {
 
     private Button btnUpload;
     private Button btnNext;
-    private Button btnConfirm;
+    //private Button btnConfirm;
     private Button btnCancel;
 
     private TextView mouthShapeNumber;
     private ImageView egImage;
 
-    private ImageView userImage;
+    public ImageView userImage;
     private ImageView userImage2;
     private ImageView userImage3;
     private ImageView userImage4;
@@ -50,6 +58,94 @@ public class ImageUploadFragment extends Fragment {
     private int i = 1;
 
     //
+    imageConfirmation var1 = new imageConfirmation();
+    Bundle bundle = new Bundle();
+    ArrayList<Bitmap> arrIMG = new ArrayList<>();
+    public Uri imageUri, imageUriL, imageUriO, imageUriCDGKNSTXYZ, imageUriFV, imageUriQW;
+    Uri imageUriBMP, imageUriU, imageUriEe, imageUriR, imageUriTh, imageUriChJSh;
+
+    Intent intentImage;
+    Bitmap bitmapImage;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            try {
+                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+
+                switch (i) {
+                    case 1:
+                        userImage.setImageURI(selectedImage);
+                        userImage.setImageBitmap(bSelectedImage);
+                        userImage.setDrawingCacheEnabled(true);
+
+                        //get uri for image
+                        imageUri = data.getData();
+                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        int nh = (int) (bitmapImage.getHeight() * (1024.0 / bitmapImage.getWidth()));
+                        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1024, nh, true);
+                        userImage.setImageBitmap(scaled);
+                        //var1.mouth1_AEI(imageUri);
+                        //userImage.crea
+
+                        break;
+                    case 2:
+                        userImage2.setImageURI(selectedImage);
+                        imageUriL = data.getData();
+                        Bitmap bitmapImage2 = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        int nh2 = (int) (bitmapImage2.getHeight() * (1024.0 / bitmapImage2.getWidth()));
+                        Bitmap scaled2 = Bitmap.createScaledBitmap(bitmapImage2, 1024, nh2, true);
+                        userImage2.setImageBitmap(scaled2);
+                        break;
+                    case 3:
+                        userImage3.setImageURI(selectedImage);
+                        imageUriO = data.getData();
+                        break;
+                    case 4:
+                        userImage4.setImageURI(selectedImage);
+                        imageUriCDGKNSTXYZ = data.getData();
+                        break;
+                    case 5:
+                        userImage5.setImageURI(selectedImage);
+                        imageUriFV = data.getData();
+                        break;
+                    case 6:
+                        userImage6.setImageURI(selectedImage);
+                        imageUriQW = data.getData();
+                        break;
+                    case 7:
+                        userImage7.setImageURI(selectedImage);
+                        imageUriBMP = data.getData();
+                        break;
+                    case 8:
+                        userImage8.setImageURI(selectedImage);
+                        imageUriU = data.getData();
+                        break;
+                    case 9:
+                        userImage9.setImageURI(selectedImage);
+                        imageUriEe = data.getData();
+                        break;
+                    case 10:
+                        userImage10.setImageURI(selectedImage);
+                        imageUriR = data.getData();
+                        break;
+                    case 11:
+                        userImage11.setImageURI(selectedImage);
+                        imageUriTh = data.getData();
+                        break;
+                    case 12:
+                        userImage12.setImageURI(selectedImage);
+                        imageUriChJSh = data.getData();
+                        break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -96,21 +192,10 @@ public class ImageUploadFragment extends Fragment {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+                Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), RESULT_LOAD_IMAGE);
 
-            }
-        });
-
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageConfirmationFragment fragment2 = new imageConfirmationFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
             }
         });
 
@@ -119,8 +204,22 @@ public class ImageUploadFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(i == 12) {
-                    btnNext.setVisibility(btnNext.INVISIBLE);
-                    btnConfirm.setVisibility(btnConfirm.VISIBLE);
+                    intentImage = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
+                    intentImage.putExtra("imageAEI", imageUri.toString());
+                    intentImage.putExtra("imageL", imageUriL.toString());
+                    intentImage.putExtra("imageO", imageUriO.toString());
+                    intentImage.putExtra("imageCDGKNSTXYZ", imageUriCDGKNSTXYZ.toString());
+                    intentImage.putExtra("imageFV", imageUriFV.toString());
+                    intentImage.putExtra("imageQW", imageUriQW.toString());
+                    intentImage.putExtra("imageBMP", imageUriBMP.toString());
+                    intentImage.putExtra("imageU", imageUriU.toString());
+                    intentImage.putExtra("imageEe", imageUriEe.toString());
+                    intentImage.putExtra("imageR", imageUriR.toString());
+                    intentImage.putExtra("imageTh", imageUriTh.toString());
+                    intentImage.putExtra("imageChJSh", imageUriChJSh.toString());
+                    startActivity(intentImage);
+                    //btnNext.setVisibility(btnNext.INVISIBLE);
+                    //btnConfirm.setVisibility(btnConfirm.VISIBLE);
                 }
                 else {
                     i = i + 1;
@@ -216,82 +315,5 @@ public class ImageUploadFragment extends Fragment {
             }
         });
 
-        return root;
     }
-
-
-    imageConfirmationFragment var1 = new imageConfirmationFragment();
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == getActivity().RESULT_OK && data != null) {
-            Uri selectedImage = data.getData();
-            try {
-                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-
-                switch (i) {
-                    case 1:
-                        userImage.setImageURI(selectedImage);
-                        userImage.setImageBitmap(bSelectedImage);
-                        userImage.setDrawingCacheEnabled(true);
-                        bSelectedImage = userImage.getDrawingCache();
-                        
-
-                        break;
-                    case 2:
-                        userImage2.setImageURI(selectedImage);
-                        break;
-                    case 3:
-                        userImage3.setImageURI(selectedImage);
-                        break;
-                    case 4:
-                        userImage4.setImageURI(selectedImage);
-                        break;
-                    case 5:
-                        userImage5.setImageURI(selectedImage);
-                        break;
-                    case 6:
-                        userImage6.setImageURI(selectedImage);
-                        break;
-                    case 7:
-                        userImage7.setImageURI(selectedImage);
-                        break;
-                    case 8:
-                        userImage8.setImageURI(selectedImage);
-                        break;
-                    case 9:
-                        userImage9.setImageURI(selectedImage);
-                        break;
-                    case 10:
-                        userImage10.setImageURI(selectedImage);
-                        break;
-                    case 11:
-                        userImage11.setImageURI(selectedImage);
-                        break;
-                    case 12:
-                        userImage12.setImageURI(selectedImage);
-                        break;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-
-        ((MainActivity) getActivity())
-                .setActionBarTitle("Image Upload");
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
-    }
-
 }
