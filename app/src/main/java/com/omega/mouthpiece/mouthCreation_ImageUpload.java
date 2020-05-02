@@ -196,20 +196,10 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
             }
         });
 
-        /*btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
-                startActivity(intent);
-            }
-        });*/
-
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Drawable drawVarImage =
-
 
                 if(i == 12) {
                     intentImage = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);

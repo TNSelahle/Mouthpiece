@@ -46,13 +46,6 @@ import androidx.appcompat.app.AppCompatActivity;
     Bitmap bmImage;
     Uri imageUri;
 
-    public imageConfirmation()
-    {
-        //bmImage = null;
-        imageUri = null;
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,68 +93,5 @@ import androidx.appcompat.app.AppCompatActivity;
             vImage12_Ch_J_Sh.setImageURI(imageUri);
         }
     }
-
-    public void accept()
-    {
-        //TODO: implement the functionality for if button 'Accept' is clicked
-
-    }
-    public void cancel()
-    {
-        //TODO: implement functionality for if button 'Cancel' is clicked
-    }
-    public void mouth1_AEI()
-    {
-        //TODO: implement function to change mouth shape A,E,I
-        //vImage1_AEI.setImageURI(egUri);
-
-    }
-    public void mouth2_L()
-    {
-        //TODO: implement function to change mouth shape L
-    }
-    public void mouth3_O()
-    {
-        //TODO: implement function to change mouth shape O
-    }
-    public void mouth4_CDGK()
-    {
-        //TODO: implement function to change mouth shape C,D,G,K,N,S,T,X,Y,Z
-    }
-    public void mouth5_FV()
-    {
-        //TODO: implement function to change mouth shape F,V
-    }
-    public void mouth6_QW()
-    {
-        //TODO: implement function to change mouth shape Q,W
-    }
-    public void mouth7_BMP()
-    {
-        //TODO: implement function to change mouth shape B,M,P
-    }
-    public void mouth8_U()
-    {
-        //TODO: implement function to change mouth shape U
-    }
-    public void mouth9_Ee()
-    {
-        //TODO: implement function to change mouth shape Ee
-    }
-    public void mouth10_R()
-    {
-        //TODO: implement function to change mouth shape R
-    }
-    public void mouth11_Th()
-    {
-        //TODO: implement function to change mouth shape Th
-    }
-    public void mouth12_ChJSh()
-    {
-        //TODO: implement function to change mouth shape Ch,J,Sh
-    }
-
-
-
 
 }
