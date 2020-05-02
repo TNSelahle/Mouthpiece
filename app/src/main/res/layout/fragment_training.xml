@@ -8,37 +8,9 @@
 
 
     <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
-
-
-    <VideoView
-        android:id="@+id/videoGif"
-        android:layout_width="195dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="168dp"
-        app:layout_constraintBottom_toTopOf="@+id/enableTrainingButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
-
-    <TextView
         android:id="@+id/voiceTrainingHeading"
         android:layout_width="317dp"
         android:layout_height="57dp"
-        android:layout_marginTop="72dp"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
         android:text="@string/vTraining"
@@ -48,10 +20,86 @@
         android:textSize="42sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/vTraining"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.373" />
+
+    <Chronometer
+        android:id="@+id/recordingTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonetic_Pangrams_Read_Text" />
+
+    <VideoView
+        android:id="@+id/videoGif"
+        android:layout_width="195dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recordingTimer" />
+
+    <TextView
+        android:id="@+id/phonetic_Pangrams_Read_Text"
+        android:layout_width="312dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+
+        android:fontFamily="sans-serif"
+        android:gravity="start|top"
+        android:text="@string/Phonetic_Pangram_Read"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPleaseRead"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvPleaseRead"
+        android:layout_width="357dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="@string/PleaseReadText"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#EE1C31"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voiceTrainingHeading"
+        tools:text="@string/PleaseReadText"
         tools:visibility="visible" />
 
     <Button
@@ -98,57 +146,4 @@
         app:layout_constraintTop_toBottomOf="@+id/stopVoiceRecording"
         tools:text="@string/TestTXT" />
 
-    <TextView
-        android:id="@+id/tvPleaseRead"
-        android:layout_width="357dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="530dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/PleaseReadText"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#EE1C31"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voiceTrainingHeading"
-        app:layout_constraintVertical_bias="0.666"
-        tools:text="@string/PleaseReadText"
-        tools:visibility="visible"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/phonetic_Pangrams_Read_Text"
-        android:layout_width="312dp"
-        android:layout_height="153dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-
-        android:gravity="start|top"
-        android:text="@string/Phonetic_Pangram_Read"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382"
-        tools:visibility="visible" />
-
-    <Chronometer
-        android:id="@+id/recordingTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="372dp"
-        android:textColor="@color/black"
-        android:textSize="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
