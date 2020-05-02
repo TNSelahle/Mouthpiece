@@ -19,6 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +43,9 @@ public class LoginPage extends AppCompatActivity {
     private Button Register;
     private String jsonEmail;
     private String jsonPassword;
+    private CheckBox rememberMe;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +56,33 @@ public class LoginPage extends AppCompatActivity {
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
+        rememberMe = findViewById(R.id.rememberMe);
+
+        sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+
+        //Store auto login preferences:
+        String mail=sharedPreferences.getString("Email","");
+        String password=sharedPreferences.getString("Password","");
+        Boolean checked=sharedPreferences.getBoolean("Remember",false);
+
+        Email.setText(mail);
+        Password.setText(password);
+        rememberMe.setChecked(checked);
 
         Login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                //If remember me is checked, auto fill email and password
+                if(rememberMe.isChecked())
+                {
+                    editor.putString("Email",Email.getText().toString());
+                    editor.putString("Password",Password.getText().toString());
+                    editor.putBoolean("Remember",rememberMe.isChecked());
+                    editor.commit();
+                }
                 jsonEmail = Email.getText().toString();
                 jsonPassword = Password.getText().toString();
 

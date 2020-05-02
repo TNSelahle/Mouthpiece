@@ -17,15 +17,33 @@
         android:id="@+id/registerButton"
         android:layout_width="350dp"
         android:layout_height="66dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="96dp"
         android:background="@drawable/mybutton"
         android:text="@string/regViewer"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.386"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/regViewer" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="346dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mybutton"
+        android:text="@string/loginB"
+        android:textColor="@color/white"
+
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="@string/loginB" />
 
     <TextView
         android:id="@+id/textView4"
@@ -67,24 +85,6 @@
         app:layout_constraintVertical_bias="0.389" />
 
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="346dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/mybutton"
-        android:text="@string/loginB"
-        android:textColor="@color/white"
-
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.765"
-        tools:text="@string/loginB" />
-
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -92,10 +92,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="UPW"
-        android:textSize="15sp"
         android:fontFamily="@font/famosa"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,5 +146,19 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title" />
+
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/remember"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        android:fontFamily="@font/famosa_bold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
