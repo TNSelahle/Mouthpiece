@@ -1,6 +1,8 @@
 package com.omega.mouthpiece;
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -25,9 +27,9 @@ public class Receiver extends BroadcastReceiver {
                 NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
                 if (networkInfo != null && networkInfo.isConnected()) {
-                    new MainActivity().changeTextStatus(true);
+                    //new MainActivity().changeTextStatus(true);
                 } else {
-                    new MainActivity().changeTextStatus(false);
+                    //new MainActivity().changeTextStatus(false);
                 }
             }
         } catch (Exception e) {

@@ -58,7 +58,7 @@ public class ImageUploadFragment extends Fragment {
     private int i = 1;
 
     //
-    imageConfirmation var1 = new imageConfirmation();
+   // imageConfirmation var1 = new imageConfirmation();
     Bundle bundle = new Bundle();
     ArrayList<Bitmap> arrIMG = new ArrayList<>();
     public Uri imageUri, imageUriL, imageUriO, imageUriCDGKNSTXYZ, imageUriFV, imageUriQW;
@@ -69,12 +69,12 @@ public class ImageUploadFragment extends Fragment {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == getActivity().RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             try {
-                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
 
                 switch (i) {
                     case 1:
@@ -84,7 +84,7 @@ public class ImageUploadFragment extends Fragment {
 
                         //get uri for image
                         imageUri = data.getData();
-                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
                         int nh = (int) (bitmapImage.getHeight() * (1024.0 / bitmapImage.getWidth()));
                         Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1024, nh, true);
                         userImage.setImageBitmap(scaled);
@@ -95,7 +95,7 @@ public class ImageUploadFragment extends Fragment {
                     case 2:
                         userImage2.setImageURI(selectedImage);
                         imageUriL = data.getData();
-                        Bitmap bitmapImage2 = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        Bitmap bitmapImage2 = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
                         int nh2 = (int) (bitmapImage2.getHeight() * (1024.0 / bitmapImage2.getWidth()));
                         Bitmap scaled2 = Bitmap.createScaledBitmap(bitmapImage2, 1024, nh2, true);
                         userImage2.setImageBitmap(scaled2);
@@ -154,8 +154,8 @@ public class ImageUploadFragment extends Fragment {
         btnUpload = root.findViewById(R.id.btn_choose_image);
         btnNext = root.findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-        btnConfirm = root.findViewById(R.id.btn_click_to_confirm);
-        btnConfirm.setVisibility(btnConfirm.INVISIBLE);
+       // btnConfirm = root.findViewById(R.id.btn_click_to_confirm);
+        //btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = root.findViewById(R.id.btn_cancel);
 
         mouthShapeNumber = root.findViewById(R.id.textView2);
@@ -204,7 +204,7 @@ public class ImageUploadFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(i == 12) {
-                    intentImage = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
+                    intentImage = new Intent( getActivity(), imageConfirmationFragment.class);
                     intentImage.putExtra("imageAEI", imageUri.toString());
                     intentImage.putExtra("imageL", imageUriL.toString());
                     intentImage.putExtra("imageO", imageUriO.toString());
@@ -314,6 +314,9 @@ public class ImageUploadFragment extends Fragment {
 
             }
         });
+
+
+        return root;
 
     }
 }
