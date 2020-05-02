@@ -63,6 +63,8 @@ public class LoginPage extends AppCompatActivity {
 
                 login();
 
+                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
