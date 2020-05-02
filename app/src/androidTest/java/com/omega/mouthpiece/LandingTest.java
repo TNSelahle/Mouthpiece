@@ -27,14 +27,14 @@ public class LandingTest {
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.volume_based)).check(matches(isDisplayed()));
-        onView(withId(R.id.volume)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_record)).perform(click()).check(matches(isDisplayed()));
     }
     @Test
     public void formantButtonTest() throws Exception{
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.formant_based)).check(matches(isDisplayed()));
-        onView(withId(R.id.formant)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.btnFormant)).perform(click()).check(matches(isDisplayed()));
     }
 
 
