@@ -1,9 +1,12 @@
 package com.omega.mouthpiece ;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class mouthCreation_ImageUpload extends AppCompatActivity {
 
@@ -24,13 +29,13 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
     private Button btnUpload;
     private Button btnNext;
-    private Button btnConfirm;
+    //private Button btnConfirm;
     private Button btnCancel;
 
     private TextView mouthShapeNumber;
     private ImageView egImage;
 
-    private ImageView userImage;
+    public ImageView userImage;
     private ImageView userImage2;
     private ImageView userImage3;
     private ImageView userImage4;
@@ -47,6 +52,15 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
 
     //
     imageConfirmation var1 = new imageConfirmation();
+    Bundle bundle = new Bundle();
+    ArrayList<Bitmap> arrIMG = new ArrayList<>();
+    public Uri imageUri, imageUriL, imageUriO, imageUriCDGKNSTXYZ, imageUriFV, imageUriQW;
+    Uri imageUriBMP, imageUriU, imageUriEe, imageUriR, imageUriTh, imageUriChJSh;
+
+    Intent intentImage;
+    Bitmap bitmapImage;
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -60,42 +74,64 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                         userImage.setImageURI(selectedImage);
                         userImage.setImageBitmap(bSelectedImage);
                         userImage.setDrawingCacheEnabled(true);
-                        bSelectedImage = userImage.getDrawingCache();
-                        
+
+                        //get uri for image
+                        imageUri = data.getData();
+                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        int nh = (int) (bitmapImage.getHeight() * (1024.0 / bitmapImage.getWidth()));
+                        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1024, nh, true);
+                        userImage.setImageBitmap(scaled);
+                        //var1.mouth1_AEI(imageUri);
+                        //userImage.crea
 
                         break;
                     case 2:
                         userImage2.setImageURI(selectedImage);
+                        imageUriL = data.getData();
+                        Bitmap bitmapImage2 = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        int nh2 = (int) (bitmapImage2.getHeight() * (1024.0 / bitmapImage2.getWidth()));
+                        Bitmap scaled2 = Bitmap.createScaledBitmap(bitmapImage2, 1024, nh2, true);
+                        userImage2.setImageBitmap(scaled2);
                         break;
                     case 3:
                         userImage3.setImageURI(selectedImage);
+                        imageUriO = data.getData();
                         break;
                     case 4:
                         userImage4.setImageURI(selectedImage);
+                        imageUriCDGKNSTXYZ = data.getData();
                         break;
                     case 5:
                         userImage5.setImageURI(selectedImage);
+                        imageUriFV = data.getData();
                         break;
                     case 6:
                         userImage6.setImageURI(selectedImage);
+                        imageUriQW = data.getData();
                         break;
                     case 7:
                         userImage7.setImageURI(selectedImage);
+                        imageUriBMP = data.getData();
                         break;
                     case 8:
                         userImage8.setImageURI(selectedImage);
+                        imageUriU = data.getData();
                         break;
                     case 9:
                         userImage9.setImageURI(selectedImage);
+                        imageUriEe = data.getData();
                         break;
                     case 10:
                         userImage10.setImageURI(selectedImage);
+                        imageUriR = data.getData();
                         break;
                     case 11:
                         userImage11.setImageURI(selectedImage);
+                        imageUriTh = data.getData();
                         break;
                     case 12:
                         userImage12.setImageURI(selectedImage);
+                        imageUriChJSh = data.getData();
                         break;
                 }
             } catch (IOException e) {
@@ -110,11 +146,13 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mouth_creation_image_upload);
 
+        InputStream open = null;
+
         btnUpload = findViewById(R.id.btn_choose_image);
         btnNext = findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
         //btnConfirm = findViewById(R.id.btn_click_to_confirm);
-        btnConfirm.setVisibility(btnConfirm.INVISIBLE);
+        //btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = findViewById(R.id.btn_cancel);
 
         mouthShapeNumber = findViewById(R.id.textView2);
@@ -151,27 +189,45 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+                Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), RESULT_LOAD_IMAGE);
 
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
+        /*btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         mouthShapeNumber.setText("Mouth Shape " + i + "/12");
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Drawable drawVarImage =
+
+
                 if(i == 12) {
-                    btnNext.setVisibility(btnNext.INVISIBLE);
-                    btnConfirm.setVisibility(btnConfirm.VISIBLE);
+                    intentImage = new Intent( mouthCreation_ImageUpload.this, imageConfirmation.class);
+                    intentImage.putExtra("imageAEI", imageUri.toString());
+                    intentImage.putExtra("imageL", imageUriL.toString());
+                    intentImage.putExtra("imageO", imageUriO.toString());
+                    intentImage.putExtra("imageCDGKNSTXYZ", imageUriCDGKNSTXYZ.toString());
+                    intentImage.putExtra("imageFV", imageUriFV.toString());
+                    intentImage.putExtra("imageQW", imageUriQW.toString());
+                    intentImage.putExtra("imageBMP", imageUriBMP.toString());
+                    intentImage.putExtra("imageU", imageUriU.toString());
+                    intentImage.putExtra("imageEe", imageUriEe.toString());
+                    intentImage.putExtra("imageR", imageUriR.toString());
+                    intentImage.putExtra("imageTh", imageUriTh.toString());
+                    intentImage.putExtra("imageChJSh", imageUriChJSh.toString());
+                    startActivity(intentImage);
+                    //btnNext.setVisibility(btnNext.INVISIBLE);
+                    //btnConfirm.setVisibility(btnConfirm.VISIBLE);
                 }
                 else {
                     i = i + 1;
@@ -179,13 +235,20 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                     switch(i)
                     {
                         case 1:
-
+                            //Intent iAEI = new Intent(view.getContext(), imageConfirmation.class);
+                            //iAEI.putExtra
+                            //Bitmap bitmapImages = BitmapFactory.decodeResource(getResources(), R.);
+                            //drawVarImage = userImage.getDrawable();
+                            //intentImage.putExtra("imageUri", imageUri.toString());
+                            //var1.mouth1_AEI();
+                            break;
                         case 2:
-                            //var1.mouth1_AEI(userImage);
+                            //var1.mouth1_AEI(userImage.);
                             egImage.setImageResource(R.drawable.mouth_formants_2);
                             userImage.setVisibility(userImage.INVISIBLE);
                             userImage2.setVisibility(userImage2.VISIBLE);
                             userImage2.bringToFront();
+                            //intentImage.putExtra("imageUri", imageUri.toString());
                             break;
                         case 3:
                             egImage.setImageResource(R.drawable.mouth_formants_3);
@@ -246,7 +309,7 @@ public class mouthCreation_ImageUpload extends AppCompatActivity {
                             userImage11.setVisibility(userImage11.INVISIBLE);
                             userImage12.setVisibility(userImage12.VISIBLE);
                             userImage12.bringToFront();
-                            //btnNext.setText("Click to Confirm");
+                            btnNext.setText("Click to Confirm");
                             break;
                     }
                 }

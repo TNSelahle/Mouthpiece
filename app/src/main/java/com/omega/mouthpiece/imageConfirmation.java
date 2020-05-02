@@ -1,12 +1,14 @@
 package com.omega.mouthpiece;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -42,10 +44,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
     //bitmap - from previous activities
     Bitmap bmImage;
+    Uri imageUri;
 
     public imageConfirmation()
     {
         //bmImage = null;
+        imageUri = null;
     }
 
 
@@ -54,7 +58,7 @@ import androidx.appcompat.app.AppCompatActivity;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_image_confirmation);
 
-        vImage1_AEI = findViewById(R.id.image1_AEI);
+        vImage1_AEI = (ImageView) findViewById(R.id.image1_AEI);
         vImage2_L = findViewById(R.id.image2_L);
         vImage3_O = findViewById(R.id.image3_O);
         vImage4_CDGKNSTXYZ = findViewById(R.id.image4_CDGKNSTXYZ);
@@ -67,6 +71,34 @@ import androidx.appcompat.app.AppCompatActivity;
         vImage11_Th = findViewById(R.id.image11_Th);
         vImage12_Ch_J_Sh = findViewById(R.id.image12_ChJSh);
 
+        //sets the image from the mouth creation activity.
+        if(getIntent().getExtras() != null)
+        {
+            imageUri = Uri.parse(getIntent().getStringExtra("imageAEI"));
+            vImage1_AEI.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageL"));
+            vImage2_L.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageO"));
+            vImage3_O.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageCDGKNSTXYZ"));
+            vImage4_CDGKNSTXYZ.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageFV"));
+            vImage5_FV.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageQW"));
+            vImage6_QW.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageBMP"));
+            vImage7_BMP.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageU"));
+            vImage8_U.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageEe"));
+            vImage9_Ee.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageR"));
+            vImage10_R.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageTh"));
+            vImage11_Th.setImageURI(imageUri);
+            imageUri = Uri.parse(getIntent().getStringExtra("imageChJSh"));
+            vImage12_Ch_J_Sh.setImageURI(imageUri);
+        }
     }
 
     public void accept()
@@ -78,10 +110,11 @@ import androidx.appcompat.app.AppCompatActivity;
     {
         //TODO: implement functionality for if button 'Cancel' is clicked
     }
-    public void mouth1_AEI(Bitmap bI_AEI)
+    public void mouth1_AEI()
     {
         //TODO: implement function to change mouth shape A,E,I
-        vImage1_AEI.setImageBitmap(bI_AEI);
+        //vImage1_AEI.setImageURI(egUri);
+
     }
     public void mouth2_L()
     {
