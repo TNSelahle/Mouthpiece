@@ -3,6 +3,7 @@ package com.omega.mouthpiece;
 import android.Manifest;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -27,6 +29,10 @@ import java.io.IOException;
 
 
 public class LandingFragment extends Fragment {
+
+    private ConstraintLayout landingLayout;
+    private Button record;
+    private Button formant;
 
     AnimationDrawable MouthAnimation;
     //------------------------RECORDING VAR----------------------------------
@@ -117,6 +123,10 @@ public class LandingFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_landing, container, false);
 
 
+        record = root.findViewById(R.id.btn_record);
+        formant = root.findViewById(R.id.btnFormant);
+        landingLayout = root.findViewById(R.id.landingLayout);
+        setTheme();
         //---------------------------KEEP SCREEN ON------------------------------
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
@@ -158,6 +168,32 @@ public class LandingFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public void setTheme() {
+        if(GlobalVariableMode.mode == true){
+
+            landingLayout.setBackgroundColor(Color.parseColor("#000000"));
+
+            record.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            record.setTextColor(Color.parseColor("#000000"));
+            //button colours
+            formant.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            formant.setTextColor(Color.parseColor("#000000"));
+
+        }
+        else{
+
+            landingLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            //button colours
+            record.setBackgroundColor(Color.parseColor("#000000"));
+            record.setTextColor(Color.parseColor("#FFFFFF"));
+            //button colours
+            formant.setBackgroundColor(Color.parseColor("#000000"));
+            formant.setTextColor(Color.parseColor("#FFFFFF"));
+
+        }
+
     }
 
     @Override
