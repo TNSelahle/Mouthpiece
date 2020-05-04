@@ -21,6 +21,7 @@
                 android:layout_height="46dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/FeedbackText"
                 android:textColor="#EE1C31"
                 android:textSize="30sp"
@@ -49,10 +50,10 @@
                 android:layout_width="348dp"
                 android:layout_height="96dp"
                 android:layout_gravity="center"
-                android:ems="10"
                 android:layout_marginTop="50dp"
+                android:ems="10"
 
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/abeezee"
                 android:gravity="start|top"
                 android:text="@string/FeedbackInstructions"
                 android:textColor="@color/black"
@@ -70,16 +71,18 @@
                 android:id="@+id/anonCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/anonymousTxt" />
 
             <TextView
                 android:id="@+id/nameOfUser"
                 android:layout_width="86dp"
                 android:layout_height="27dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/Name"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -103,13 +106,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameOfUser" />
 
 
-
             <TextView
                 android:id="@+id/emailText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/emailTxt"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -138,8 +141,9 @@
                 android:id="@+id/subjectText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/Subject"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -164,14 +168,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/subjectText" />
 
 
-
-
             <TextView
                 android:id="@+id/descrtiptionTextView"
                 android:layout_width="139dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/DescriptionText"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -201,7 +204,9 @@
                 android:layout_height="52dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="28dp"
-                android:backgroundTint="#ee1c31"
+                android:background="@drawable/mybutton"
+                android:backgroundTint="@color/main3"
+                android:fontFamily="@font/abeezee"
                 android:text="@string/submitButton"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -210,7 +215,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionFeedback"
                 tools:text="@string/submitButton" />
-
 
 
         </LinearLayout>
