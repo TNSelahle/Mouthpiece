@@ -24,7 +24,6 @@ public class SettingFragment extends Fragment {
 
     private Switch simpleSwitch1;
     private ConstraintLayout mLinearLayout;
-    private ConstraintLayout mLinearLayout2;
     private Button deleteBtn;
     private Button signIn;
     private Button signOut;

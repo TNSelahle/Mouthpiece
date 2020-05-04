@@ -1,6 +1,7 @@
 package com.omega.mouthpiece;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -43,12 +44,14 @@ public class FeedbackFragment extends Fragment {
     private CheckBox anon;
     private Boolean isAnon;
     private EditText email;
+    private TextView instruct;
     private TextView emailHeader;
     private TextView nameHeader;
 
     private RequestQueue feedbackRequestQueue;
     private StringRequest feedbackStringRequest;
     private JSONObject jsonBodyParse;
+    private ConstraintLayout FeedbackConstr;
    // private String url = "102.133.170.83:5000/getFeedback";
     private String url = "http://102.133.170.83:5000/addFeedback";
 
@@ -68,7 +71,9 @@ public class FeedbackFragment extends Fragment {
         isAnon = anon.isChecked();
         emailHeader = root.findViewById(R.id.emailText);
         nameHeader = root.findViewById(R.id.nameOfUser);
-
+        FeedbackConstr = root.findViewById(R.id.feedbackLayout);
+        instruct = root.findViewById(R.id.feedbackInstr);
+        setTheme();
 
 
         submitButton.setOnClickListener(new View.OnClickListener(){
@@ -97,8 +102,8 @@ public class FeedbackFragment extends Fragment {
                                             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
                                                 if (isChecked){
                                                     email.setEnabled(false);
-                                                    emailHeader.setTextColor(Color.parseColor("#333138"));
-                                                    nameHeader.setTextColor(Color.parseColor("#333138"));
+                                                    emailHeader.setTextColor(Color.parseColor("#aaaaaa"));
+                                                    nameHeader.setTextColor(Color.parseColor("#aaaaaa"));
                                                     nameUser.setText("Anonymous");
                                                     nameUser.setEnabled(false);
                                                 }
@@ -145,6 +150,34 @@ public class FeedbackFragment extends Fragment {
             }
         });
         requestQueue.add(jsonObjectRequest);
+
+    }
+
+    public void setTheme() {
+        if(GlobalVariableMode.mode == true){
+
+            FeedbackConstr.setBackgroundColor(Color.parseColor("#000000"));
+            //button colours
+            instruct.setTextColor(Color.parseColor("#FFFFFF"));
+            email.setTextColor(Color.parseColor("#FFFFFF"));
+            descriptionFeedback.setTextColor(Color.parseColor("#FFFFFF"));
+            nameUser.setTextColor(Color.parseColor("#FFFFFF"));
+            anon.setTextColor(Color.parseColor("#FFFFFF"));
+            //button colours
+
+        }
+        else{
+
+            FeedbackConstr.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            //button colours
+            instruct.setTextColor(Color.parseColor("#000000"));
+            email.setTextColor(Color.parseColor("#000000"));
+            descriptionFeedback.setTextColor(Color.parseColor("#000000"));
+            nameUser.setTextColor(Color.parseColor("#000000"));
+            anon.setTextColor(Color.parseColor("#000000"));
+            //button colours
+
+        }
 
     }
 
