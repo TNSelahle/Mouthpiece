@@ -1,3 +1,120 @@
 <resources>
     <string name="app_name">Mouthpiece</string>
+    <string name="From">From</string>
+    <string name="OMEGA">OMEGA</string>
+    <string name="University_of_Pretoria">University of Pretoria</string>
+    <string name="loginB">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="mpImage">University of Pretoria Logo</string>
+    <string name="description">Add activity Mouth Display Description here</string>
+    <string name="reset_to_default">Reset To Default</string>
+    <string name="mouth">Mouth</string>
+    <string name="next">next</string>
+    <string name="previous">previous</string>
+    <string name="username">Username</string>
+    <string name="revealPas">Show Password</string>
+    <string name="users_name">Users Names</string>
+    <string name="userPassTextV">userPassTextV</string>
+    <string name="users_surname">Users Surname</string>
+    <string name="revealPass">Reveal Password</string>
+    <string name="prompt_password">Password</string>
+    <string name="submitButton">Submit</string>
+    <string name="dobEnter">Date of Birth</string>
+    <string name="dateB">Date</string>
+    <string name="regViewer">Register</string>
+    <string name="first_fragment_label">First Fragment Label</string>
+    <string name="second_fragment_label">Second Fragment Label</string>
+    <string name="trainAI">Train the AI</string>
+    <string name="trainButton">Click and Hold</string>
+    <string name="trainingSentence">Shaw, those twelve beige hooks are joined if I patch a young, gooey mouth.</string>
+    <string name="testTrainingButton">Test Training Activity</string>
+    <string name="testMouthpieceButton">Test Mouth Display</string>
+    <string name="testSettingsButton">Test Settings Activity</string>
+    <string name="PleaseReadText">Please read the following text:</string>
+    <string name="Phonetic_Pangram_Read">That quick beige fox jumped in the air over each thin dog. Look out, I shout, for he\'s foiled you again, creating chaos</string>
+    <string name="PromptToTrain">Enable Voice Training</string>
+    <string name="StopRecord">Stop voice recording</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mouthpiece">Mouthpiece</string>
+    <string name="skip"><![CDATA[Skip >>]]></string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_hint">mouthpiece@gmail.com</string>
+    <string name="email_address">Email Address</string>
+    <string name="emailAddress">emailAddress</string>
+    <string name="formant_based">Formant Based</string>
+    <string name="volume_based">Volume Based</string>
+    <string name="start_creation">Start Creation</string>
+    <string name="mouth_creation">Mouth Creation</string>
+    <string name="fragmentSort">Sort by:</string>
+    <string name="fragmentType">Type:</string>
+    <string name="Ratings">Ratings :</string>
+    <string name="fragmentButtonApply">Apply</string>
+    <string name="fragmentButtonCancel">Cancel</string>
+    <string name="downloads">Downloads:</string>
+    <string name="place_holder">Place_holder</string>
+    <string name="Notice_pmpt">Notice:</string>
+    <string name="NoticeText">In order to create a new mouth, 12 separate images need to be uploaded for each shape of the phonetic alphabet</string>
+    <string name="AccecptTxt">Click the accept button if you are willing to upload the 12 images</string>
+    <string name="accept_btn">Accept</string>
+    <string name="decline_btn">Decline</string>
+    <string name="mouthShapesImageDescr">mouth shapes image</string>
+    <string name="motto">We Do the Talking</string>
+    <string name="mouthShape1">A E I</string>
+    <string name="mouthShape2">L</string>
+    <string name="mouthShape3">O</string>
+    <string name="mouthShape4">C D G K N S T X Y Z</string>
+    <string name="mouthShape5">F V</string>
+    <string name="mouthShape6">Q W</string>
+    <string name="mouthShape7">B M P</string>
+    <string name="mouthShape8">U</string>
+    <string name="mouthShape9">Ee</string>
+    <string name="mouthShape10">R</string>
+    <string name="mouthShape11">Th</string>
+    <string name="mouthShape12">Ch J Sh</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="accept">Accept</string>
+    <string name="filter">Filter</string>
+    <string name="TestTXT">Test recorded audio</string>
+    <string name="vTraining">Voice Training</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Techies</string>
+    <string name="nav_header_subtitle">techies@demolition.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_select_mouth">Select Mouth</string>
+    <string name="menu_create_mouth">Create Mouth</string>
+    <string name="menu_training">Training</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_image_upload">Image Upload</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_companion_website">Companion Website</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_sign_out">Sign Out</string>
+    <string name="menu_manage">Manage</string>
+    <string name="Name">Name:</string>
+    <string name="Subject">Subject:</string>
+    <string name="DescriptionText">Description:</string>
+    <string name="FeedbackInstructions">This page is to report any errors in the application or to tell us what you think of our app. If you wish to write anonymously, just tick the anonymous box below.</string>
+    <string name="FeedbackText">Feedback Page</string>
+    <string name="Feedback">Feedback</string>
+    <string name="emailTxt">Email:</string>
+    <string name="anonymousTxt">Anonymous</string>
+    <string name="urlSite">http://102.133.170.83:5000/addFeedback</string>
+    <string name="remember">Remember Me</string>
+
+    <string-array name="feedback_choices">
+        <item></item>
+        <item>Design Feedback</item>
+        <item>Application Bugs</item>
+        <item>Errors</item>
+        <item>Application Review</item>
+        <item>Companion Website</item>
+        <item>Other</item>
+    </string-array>
+
 </resources>
