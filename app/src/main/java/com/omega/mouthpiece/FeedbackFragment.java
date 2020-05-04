@@ -3,6 +3,7 @@ package com.omega.mouthpiece;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -59,6 +60,8 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        final FragmentManager fm = getFragmentManager();
+
         View root = inflater.inflate(R.layout.fragment_feedback, container, false);
 
         submitButton = root.findViewById(R.id.submitBtn);
@@ -85,7 +88,14 @@ public class FeedbackFragment extends Fragment {
                 jsonEmail = email.getText().toString();
 
                 sendJsonFeedback();
-                startActivity(new Intent(getContext(), SettingFragment.class));
+                if(fm.getBackStackEntryCount() > 0){
+                    fm.popBackStack();
+                }
+                else{
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                }
+
+                //
 
             }
         });
@@ -93,7 +103,13 @@ public class FeedbackFragment extends Fragment {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), SettingFragment.class));
+                if(fm.getBackStackEntryCount() > 0){
+                    fm.popBackStack();
+                }
+                else{
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                }
+                //startActivity(new Intent(getContext(), SettingFragment.class));
             }
         });
         anon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -163,6 +179,7 @@ public class FeedbackFragment extends Fragment {
             descriptionFeedback.setTextColor(Color.parseColor("#FFFFFF"));
             nameUser.setTextColor(Color.parseColor("#FFFFFF"));
             anon.setTextColor(Color.parseColor("#FFFFFF"));
+            //optionVal.setForeground(Color.parseColor("#FFFFFF"));
             //button colours
 
         }

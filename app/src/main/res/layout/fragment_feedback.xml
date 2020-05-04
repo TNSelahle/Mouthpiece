@@ -162,6 +162,7 @@
                 android:backgroundTint="#ee1c31"
                 android:entries="@array/feedback_choices"
                 android:spinnerMode="dropdown"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.281"
                 app:layout_constraintStart_toStartOf="parent"
