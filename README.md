@@ -31,7 +31,7 @@ Here are a couple of guidelines for this repo
 
 [Anika Van Rensburg](https://anikavanrensburg.github.io/)
 
-[Shaun Vermeulen](http://linkedin.com/in/shaun-vermeulen-a617161a4)
+[Shaun Vermeulen](https://ShaunVermeulen.github.io)
 
 
 # CV Directories
