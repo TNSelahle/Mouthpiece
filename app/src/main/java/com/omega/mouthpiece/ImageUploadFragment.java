@@ -55,95 +55,84 @@ public class ImageUploadFragment extends Fragment {
     private ImageView userImage11;
     private ImageView userImage12;
 
+    //Int var used to go through the example images and cycle between images the user needs to upload
     private int i = 1;
-
-    //
-   // imageConfirmation var1 = new imageConfirmation();
-    Bundle bundle = new Bundle();
-    ArrayList<Bitmap> arrIMG = new ArrayList<>();
+    // Uri var used store user's selected images
     public Uri imageUri, imageUriL, imageUriO, imageUriCDGKNSTXYZ, imageUriFV, imageUriQW;
-    Uri imageUriBMP, imageUriU, imageUriEe, imageUriR, imageUriTh, imageUriChJSh;
+    public Uri imageUriBMP, imageUriU, imageUriEe, imageUriR, imageUriTh, imageUriChJSh;
 
-    Intent intentImage;
-    Bitmap bitmapImage;
-
+    ArrayList<Uri> imageUriList = new ArrayList<Uri>();
+    Bundle imageBundle = new Bundle(12);
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == getActivity().RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
-            try {
-                Bitmap bSelectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
 
-                switch (i) {
-                    case 1:
-                        userImage.setImageURI(selectedImage);
-                        userImage.setImageBitmap(bSelectedImage);
-                        userImage.setDrawingCacheEnabled(true);
-
-                        //get uri for image
-                        imageUri = data.getData();
-                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
-                        int nh = (int) (bitmapImage.getHeight() * (1024.0 / bitmapImage.getWidth()));
-                        Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 1024, nh, true);
-                        userImage.setImageBitmap(scaled);
-                        //var1.mouth1_AEI(imageUri);
-                        //userImage.crea
-
-                        break;
-                    case 2:
-                        userImage2.setImageURI(selectedImage);
-                        imageUriL = data.getData();
-                        Bitmap bitmapImage2 = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
-                        int nh2 = (int) (bitmapImage2.getHeight() * (1024.0 / bitmapImage2.getWidth()));
-                        Bitmap scaled2 = Bitmap.createScaledBitmap(bitmapImage2, 1024, nh2, true);
-                        userImage2.setImageBitmap(scaled2);
-                        break;
-                    case 3:
-                        userImage3.setImageURI(selectedImage);
-                        imageUriO = data.getData();
-                        break;
-                    case 4:
-                        userImage4.setImageURI(selectedImage);
-                        imageUriCDGKNSTXYZ = data.getData();
-                        break;
-                    case 5:
-                        userImage5.setImageURI(selectedImage);
-                        imageUriFV = data.getData();
-                        break;
-                    case 6:
-                        userImage6.setImageURI(selectedImage);
-                        imageUriQW = data.getData();
-                        break;
-                    case 7:
-                        userImage7.setImageURI(selectedImage);
-                        imageUriBMP = data.getData();
-                        break;
-                    case 8:
-                        userImage8.setImageURI(selectedImage);
-                        imageUriU = data.getData();
-                        break;
-                    case 9:
-                        userImage9.setImageURI(selectedImage);
-                        imageUriEe = data.getData();
-                        break;
-                    case 10:
-                        userImage10.setImageURI(selectedImage);
-                        imageUriR = data.getData();
-                        break;
-                    case 11:
-                        userImage11.setImageURI(selectedImage);
-                        imageUriTh = data.getData();
-                        break;
-                    case 12:
-                        userImage12.setImageURI(selectedImage);
-                        imageUriChJSh = data.getData();
-                        break;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            switch (i) {
+                case 1:
+                    userImage.setImageURI(selectedImage);
+                    imageUri = data.getData();
+                    imageUriList.add(imageUri);
+                    break;
+                case 2:
+                    userImage2.setImageURI(selectedImage);
+                    imageUriL = data.getData();
+                    imageUriList.add(imageUriL);
+                    break;
+                case 3:
+                    userImage3.setImageURI(selectedImage);
+                    imageUriO = data.getData();
+                    imageUriList.add(imageUriO);
+                    break;
+                case 4:
+                    userImage4.setImageURI(selectedImage);
+                    imageUriCDGKNSTXYZ = data.getData();
+                    imageUriList.add(imageUriCDGKNSTXYZ);
+                    break;
+                case 5:
+                    userImage5.setImageURI(selectedImage);
+                    imageUriFV = data.getData();
+                    imageUriList.add(imageUriFV);
+                    break;
+                case 6:
+                    userImage6.setImageURI(selectedImage);
+                    imageUriQW = data.getData();
+                    imageUriList.add(imageUriQW);
+                    break;
+                case 7:
+                    userImage7.setImageURI(selectedImage);
+                    imageUriBMP = data.getData();
+                    imageUriList.add(imageUriBMP);
+                    break;
+                case 8:
+                    userImage8.setImageURI(selectedImage);
+                    imageUriU = data.getData();
+                    imageUriList.add(imageUriU);
+                    break;
+                case 9:
+                    userImage9.setImageURI(selectedImage);
+                    imageUriEe = data.getData();
+                    imageUriList.add(imageUriEe);
+                    break;
+                case 10:
+                    userImage10.setImageURI(selectedImage);
+                    imageUriR = data.getData();
+                    imageUriList.add(imageUriR);
+                    break;
+                case 11:
+                    userImage11.setImageURI(selectedImage);
+                    imageUriTh = data.getData();
+                    imageUriList.add(imageUriTh);
+                    break;
+                case 12:
+                    userImage12.setImageURI(selectedImage);
+                    imageUriChJSh = data.getData();
+                    imageUriList.add(imageUriChJSh);
+                    break;
             }
+
         }
     }
 
@@ -154,8 +143,6 @@ public class ImageUploadFragment extends Fragment {
         btnUpload = root.findViewById(R.id.btn_choose_image);
         btnNext = root.findViewById(R.id.btn_nxt);
         btnNext.bringToFront();
-       // btnConfirm = root.findViewById(R.id.btn_click_to_confirm);
-        //btnConfirm.setVisibility(btnConfirm.INVISIBLE);
         btnCancel = root.findViewById(R.id.btn_cancel);
 
         mouthShapeNumber = root.findViewById(R.id.textView2);
@@ -189,13 +176,14 @@ public class ImageUploadFragment extends Fragment {
         userImage12.setVisibility(userImage12.INVISIBLE);
 
 
+
+
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
                 startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), RESULT_LOAD_IMAGE);
-
             }
         });
 
@@ -203,23 +191,28 @@ public class ImageUploadFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(i == 12) {
-                    intentImage = new Intent( getActivity(), imageConfirmationFragment.class);
-                    intentImage.putExtra("imageAEI", imageUri.toString());
-                    intentImage.putExtra("imageL", imageUriL.toString());
-                    intentImage.putExtra("imageO", imageUriO.toString());
-                    intentImage.putExtra("imageCDGKNSTXYZ", imageUriCDGKNSTXYZ.toString());
-                    intentImage.putExtra("imageFV", imageUriFV.toString());
-                    intentImage.putExtra("imageQW", imageUriQW.toString());
-                    intentImage.putExtra("imageBMP", imageUriBMP.toString());
-                    intentImage.putExtra("imageU", imageUriU.toString());
-                    intentImage.putExtra("imageEe", imageUriEe.toString());
-                    intentImage.putExtra("imageR", imageUriR.toString());
-                    intentImage.putExtra("imageTh", imageUriTh.toString());
-                    intentImage.putExtra("imageChJSh", imageUriChJSh.toString());
-                    startActivity(intentImage);
-                    //btnNext.setVisibility(btnNext.INVISIBLE);
-                    //btnConfirm.setVisibility(btnConfirm.VISIBLE);
+
+                    imageConfirmationFragment fragment2 = new imageConfirmationFragment();
+                    imageBundle.putParcelable("imageAEI", imageUri);
+                    imageBundle.putParcelable("imageL", imageUriL);
+                    imageBundle.putParcelable("imageO", imageUriO);
+                    imageBundle.putParcelable("imageCDGKNSTXYZ", imageUriCDGKNSTXYZ);
+                    imageBundle.putParcelable("imageFV", imageUriFV);
+                    imageBundle.putParcelable("imageQW", imageUriQW);
+                    imageBundle.putParcelable("imageBMP", imageUriBMP);
+                    imageBundle.putParcelable("imageU", imageUriU);
+                    imageBundle.putParcelable("imageEe", imageUriEe);
+                    imageBundle.putParcelable("imageR", imageUriR);
+                    imageBundle.putParcelable("imageTh", imageUriTh);
+                    imageBundle.putParcelable("imageChJSh", imageUriChJSh);
+                    fragment2.setArguments(imageBundle);
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
                 else {
                     i = i + 1;
@@ -227,9 +220,10 @@ public class ImageUploadFragment extends Fragment {
                     switch(i)
                     {
                         case 1:
-
+                            egImage.setImageResource(R.drawable.mouth_formants_1);
+                            userImage.setVisibility(userImage.VISIBLE);
+                                break;
                         case 2:
-                            //var1.mouth1_AEI(userImage);
                             egImage.setImageResource(R.drawable.mouth_formants_2);
                             userImage.setVisibility(userImage.INVISIBLE);
                             userImage2.setVisibility(userImage2.VISIBLE);
@@ -294,7 +288,7 @@ public class ImageUploadFragment extends Fragment {
                             userImage11.setVisibility(userImage11.INVISIBLE);
                             userImage12.setVisibility(userImage12.VISIBLE);
                             userImage12.bringToFront();
-                            //btnNext.setText("Click to Confirm");
+                            btnNext.setText("Click to Confirm");
                             break;
                     }
                 }
