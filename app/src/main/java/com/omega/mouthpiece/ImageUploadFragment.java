@@ -175,9 +175,7 @@ public class ImageUploadFragment extends Fragment {
         userImage11.setVisibility(userImage11.INVISIBLE);
         userImage12.setVisibility(userImage12.INVISIBLE);
 
-
-
-
+        // this button loads up an activity for resting - allowing user to select images to upload
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

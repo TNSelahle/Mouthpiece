@@ -34,6 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class imageConfirmationFragment extends Fragment {
@@ -119,15 +120,16 @@ public class imageConfirmationFragment extends Fragment {
             vImage12_Ch_J_Sh.setImageURI(imageUri);
         }
 
+        //File file = new File(getActivity().getFilesDir(), vImage1_AEI.get);
+
+
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
         btnCancel = root.findViewById(R.id.confirmButtonCancel);
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            // TODO: upload to ShareAPI
-            // TODO: Access Internal Storage
-            // TODO: find a way to create and access to app specific folder
+
             }
         });
 
@@ -142,15 +144,12 @@ public class imageConfirmationFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
-
         /*getParentFragmentManager().setFragmentResultListner("key",this, new FragmentResultListner()
             @Override
             public void onFragmentResult(@NonNull String key, @NonNull Bundle buundle){
 
             }
         )*/
-
         return root;
     }
 
