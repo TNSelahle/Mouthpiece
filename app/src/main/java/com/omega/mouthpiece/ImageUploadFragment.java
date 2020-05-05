@@ -58,7 +58,7 @@ public class ImageUploadFragment extends Fragment {
     private int i = 1;
 
     //
-    imageConfirmation var1 = new imageConfirmation();
+    //imageConfirmation var1 = new imageConfirmation();
     Bundle bundle = new Bundle();
     ArrayList<Bitmap> arrIMG = new ArrayList<>();
     public Uri imageUri, imageUriL, imageUriO, imageUriCDGKNSTXYZ, imageUriFV, imageUriQW;

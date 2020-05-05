@@ -34,7 +34,9 @@
         <!--Login Page-->
         <activity
             android:name=".LoginPage"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"
+            />
         <activity android:name=".SettingFragment"/>
         <!--Register Page-->
         <activity
@@ -60,9 +62,11 @@
         <activity
             android:name=".filter"
             android:exported="true" />
+        <!--
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+            -->
         <!--Feedback page-->
         <!--Setting page-->
 

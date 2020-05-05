@@ -81,6 +81,7 @@ public class imageConfirmationFragment extends Fragment {
         return root;
     }
 
+    /*
         //sets the image from the mouth creation activity.
         if(getIntent().getExtras() != null)
         {
@@ -109,6 +110,7 @@ public class imageConfirmationFragment extends Fragment {
             imageUri = Uri.parse(getIntent().getStringExtra("imageChJSh"));
             vImage12_Ch_J_Sh.setImageURI(imageUri);
         }
+        */
 
 
     @Override
