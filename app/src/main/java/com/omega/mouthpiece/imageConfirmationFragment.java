@@ -35,6 +35,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.io.File;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+//send date to database
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.ArrayList;
 
 public class imageConfirmationFragment extends Fragment {
@@ -69,6 +84,23 @@ public class imageConfirmationFragment extends Fragment {
     Button btnAccept;
     Button btnCancel;
     String encodeImage; // converts image(s) to base64
+
+    //API variables
+    private RequestQueue feedbackRequestQueue;
+    private StringRequest feedbackStringRequest;
+    private JSONObject jsonBodyParse;
+    private JSONObject jsonMouthpieceParse;
+    //private String urlGetUsers = "http://102.133.170.83:5000/getUsers";
+    private String urlUpload = "http://102.133.170.83:3000/sharingapi/mouthpiece/upload";
+
+    private String email;
+    private String username;
+    private Integer mouthpieceID;
+    //private String[] mouthpiecesArr;
+    String[] mouthpiecesArr;
+    private Integer rating;
+    private Integer downloads;
+    private String dateTime;
 
 
 
@@ -120,15 +152,25 @@ public class imageConfirmationFragment extends Fragment {
             vImage12_Ch_J_Sh.setImageURI(imageUri);
         }
 
-        //File file = new File(getActivity().getFilesDir(), vImage1_AEI.get);
-
-
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
         btnCancel = root.findViewById(R.id.confirmButtonCancel);
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            // TODO: upload to ShareAPI
+            // TODO: Access Internal Storage
+            // TODO: find a way to create and access to app specific folder
+
+                getUserInfo();
+                uploadMouthPieces();
+
+                UploadMouthFrontFragment fragment4 = new UploadMouthFrontFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment4);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
             }
         });
@@ -144,13 +186,96 @@ public class imageConfirmationFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+
         /*getParentFragmentManager().setFragmentResultListner("key",this, new FragmentResultListner()
             @Override
             public void onFragmentResult(@NonNull String key, @NonNull Bundle buundle){
 
             }
         )*/
+
         return root;
+    }
+    //function for retrieving the user's username and email for uploading
+    public void getUserInfo(){
+        //mock data for now
+
+        username = "tester";
+        email = "testing@gmail.com";
+
+        //real parse data
+        mouthpieceID = 0;
+        downloads = 0;
+        rating = 0;
+        //dateTime = "08:00 Mon";
+
+        //set mouthpieces (mock data for now)
+        mouthpiecesArr = new String[12];
+        for (int i = 0; i < 12; i++){
+            mouthpiecesArr[i] = "testBase64Code" + i;
+        }
+
+
+        try {
+            jsonMouthpieceParse = new JSONObject();
+            jsonMouthpieceParse.put("f0", mouthpiecesArr[0]);
+            jsonMouthpieceParse.put("f1", mouthpiecesArr[1]);
+            jsonMouthpieceParse.put("f2", mouthpiecesArr[2]);
+            jsonMouthpieceParse.put("f3", mouthpiecesArr[3]);
+            jsonMouthpieceParse.put("f4", mouthpiecesArr[4]);
+            jsonMouthpieceParse.put("f5", mouthpiecesArr[5]);
+            jsonMouthpieceParse.put("f6", mouthpiecesArr[6]);
+            jsonMouthpieceParse.put("f7", mouthpiecesArr[7]);
+            jsonMouthpieceParse.put("f8", mouthpiecesArr[8]);
+            jsonMouthpieceParse.put("f9", mouthpiecesArr[9]);
+            jsonMouthpieceParse.put("f10", mouthpiecesArr[10]);
+            jsonMouthpieceParse.put("f11", mouthpiecesArr[11]);
+            final String uploadRequestBody = jsonMouthpieceParse.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+    //function for uploading the user created mouthpieces
+    public void uploadMouthPieces(){
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        //send info through
+
+        try {
+            jsonBodyParse = new JSONObject();
+            jsonBodyParse.put("name", username);
+            jsonBodyParse.put("email", email);
+            jsonBodyParse.put("mouthpiece_id", mouthpieceID);
+            jsonBodyParse.put("downloads", downloads);
+            jsonBodyParse.put("rating", rating);
+            //jsonBodyParse.put("dataTime", rating);
+            jsonBodyParse.put("formants", jsonMouthpieceParse);
+            //jsonBodyParse.put("formants", jsonMouthpieceParse);
+            final String uploadRequestBody = jsonBodyParse.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlUpload, jsonBodyParse,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getActivity(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
     }
 
     private void requestStoragePermission(){

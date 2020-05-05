@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 import android.os.Build;
 import android.os.StrictMode;
+import android.util.Log;
 
 import org.json.*;
 
@@ -15,8 +16,8 @@ import javax.mail.internet.AddressException;
 
 public class Email {
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
-    private static final String SMTP_AUTH_USER="MouthpieceTeam@gmail.com";
-    private static final String SMTP_AUTH_PASSWORD="Omega312##";
+    private static final String SMTP_AUTH_USER="omega301team@gmail.com";
+    private static final String SMTP_AUTH_PASSWORD="Omega3012020";
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
     public static void email(JSONObject json)
@@ -24,6 +25,10 @@ public class Email {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD) {
             StrictMode.ThreadPolicy tp = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(tp);
+        }
+        else
+        {
+            Log.e("sendingEmail","Email error");
         }
 
         //System.out.println("Preparing the data to be email");
@@ -45,21 +50,23 @@ public class Email {
             MimeMessage message = Message.createMessage(json,session);
 
             //send  message that we will send a email
+            Log.e("sendingEmail","Sending Email now");
             //System.out.println("Sending the email");
             Transport t = session.getTransport();
             t.connect();
             t.sendMessage(message,message.getRecipients(javax.mail.Message.RecipientType.TO));
             t.close();
-
             //System.out.println("Email sent");
 
         }catch (AddressException e)
         {
             e.printStackTrace();
+            Log.e("sendingEmail",e.toString());
         }
         catch (MessagingException | JSONException e)
         {
             e.printStackTrace();
+            Log.e("sendingEmail",e.toString());
         }
     }
 
@@ -132,4 +139,3 @@ public class Email {
         return SMTP_AUTH_PASSWORD;
     }
 }
-
