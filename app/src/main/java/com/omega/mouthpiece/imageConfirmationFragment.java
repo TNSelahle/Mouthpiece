@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -19,10 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
 
 public class imageConfirmationFragment extends Fragment {
     private String mExampleString; //
@@ -49,16 +53,8 @@ public class imageConfirmationFragment extends Fragment {
     private ImageView vImage11_Th;
     private ImageView vImage12_Ch_J_Sh;
 
-    //bitmap - from previous activities
-    Bitmap bmImage;
     Uri imageUri;
-
-    public imageConfirmationFragment()
-    {
-        //bmImage = null;
-    }
-
-
+    Bundle imageBundle = new Bundle();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,39 +74,46 @@ public class imageConfirmationFragment extends Fragment {
         vImage11_Th = root.findViewById(R.id.image11_Th);
         vImage12_Ch_J_Sh = root.findViewById(R.id.image12_ChJSh);
 
+        //sets the image from the mouth creation activity.
+        if(imageBundle != null)
+        {
+            imageBundle = getArguments();
+            imageUri = imageBundle.getParcelable("imageAEI");
+            vImage1_AEI.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageL");
+            vImage2_L.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageO");
+            vImage3_O.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageCDGKNSTXYZ");
+            vImage4_CDGKNSTXYZ.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageFV");
+            vImage5_FV.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageQW");
+            vImage6_QW.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageBMP");
+            vImage7_BMP.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageU");
+            vImage8_U.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageEe");
+            vImage9_Ee.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageR");
+            vImage10_R.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageTh");
+            vImage11_Th.setImageURI(imageUri);
+            imageUri = imageBundle.getParcelable("imageChJSh");
+            vImage12_Ch_J_Sh.setImageURI(imageUri);
+
+        }
+
+        /*getParentFragmentManager().setFragmentResultListner("key",this, new FragmentResultListner()
+            @Override
+            public void onFragmentResult(@NonNull String key, @NonNull Bundle buundle){
+
+            }
+        )*/
+
         return root;
     }
-
-    /*
-        //sets the image from the mouth creation activity.
-        if(getIntent().getExtras() != null)
-        {
-            imageUri = Uri.parse(getIntent().getStringExtra("imageAEI"));
-            vImage1_AEI.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageL"));
-            vImage2_L.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageO"));
-            vImage3_O.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageCDGKNSTXYZ"));
-            vImage4_CDGKNSTXYZ.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageFV"));
-            vImage5_FV.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageQW"));
-            vImage6_QW.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageBMP"));
-            vImage7_BMP.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageU"));
-            vImage8_U.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageEe"));
-            vImage9_Ee.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageR"));
-            vImage10_R.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageTh"));
-            vImage11_Th.setImageURI(imageUri);
-            imageUri = Uri.parse(getIntent().getStringExtra("imageChJSh"));
-            vImage12_Ch_J_Sh.setImageURI(imageUri);
-        }
-        */
 
 
     @Override

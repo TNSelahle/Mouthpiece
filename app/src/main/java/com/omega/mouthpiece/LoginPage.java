@@ -5,25 +5,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginPage extends AppCompatActivity {
@@ -33,7 +25,12 @@ public class LoginPage extends AppCompatActivity {
     private EditText Password;
     private Button Login;
     private Button Register;
-    private int byPassCounter = 0;
+    private String jsonEmail;
+    private String jsonPassword;
+    private CheckBox rememberMe;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +40,39 @@ public class LoginPage extends AppCompatActivity {
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
+        rememberMe = findViewById(R.id.rememberMe);
 
+        sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
+        editor=sharedPreferences.edit();
 
+        //Store auto login preferences:
+        String mail=sharedPreferences.getString("Email","");
+        String password=sharedPreferences.getString("Password","");
+        Boolean checked=sharedPreferences.getBoolean("Remember",false);
+
+        Email.setText(mail);
+        Password.setText(password);
+        rememberMe.setChecked(checked);
 
         Login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                parseJSON();
-                byPassCounter++;
-                validate(Email.getText().toString(),Password.getText().toString());
+                //If remember me is checked, auto fill email and password
+                if(rememberMe.isChecked())
+                {
+                    editor.putString("Email",Email.getText().toString());
+                    editor.putString("Password",Password.getText().toString());
+                    editor.putBoolean("Remember",rememberMe.isChecked());
+                    editor.commit();
+                }
+                jsonEmail = Email.getText().toString();
+                jsonPassword = Password.getText().toString();
+                login();
+
+                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -70,49 +89,39 @@ public class LoginPage extends AppCompatActivity {
 
 
     }
-    String emailAPI;
-    String passwordAPI;
 
-    private RequestQueue mRequestQueue;
-    private StringRequest mStringRequest;
-    private String url = "http://102.133.170.83:4000/getUsers";
+    private String url = "http://102.133.170.83:4000/login";
+    private JSONObject jsonBodyParse;
 
-    private void parseJSON() {
+    private void login()
+    {
 
-        mRequestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        try {
+
+            jsonBodyParse = new JSONObject();
+            jsonBodyParse.put("email", jsonEmail);
+            jsonBodyParse.put("password", jsonPassword);
+            final String loginRequestBody = jsonBodyParse.toString();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBodyParse,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
-
-                            emailAPI = response.getString("email");
-                            passwordAPI = response.getString("password");
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
+                        //resultTextView.setText("String Response : "+ response.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        mRequestQueue.add(request);
-    }
-
-
-    private void validate(String userName, String userPassword){
-        if(((userName.equals(emailAPI)) && (userPassword.equals(passwordAPI))) || byPassCounter >= 5){
-            Intent intent = new Intent(LoginPage.this, MainActivity.class);
-            startActivity(intent);
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(),"Please Try Again", Toast.LENGTH_LONG).show();
-        }
+        requestQueue.add(jsonObjectRequest);
     }
 
 

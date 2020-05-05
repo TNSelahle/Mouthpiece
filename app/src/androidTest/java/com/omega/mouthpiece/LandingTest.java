@@ -20,21 +20,21 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class LandingTest {
     @Rule
-    public ActivityTestRule displaysViewLanding = new ActivityTestRule(Landing.class, true, false);
+    public ActivityTestRule displaysViewLanding = new ActivityTestRule(LandingFragment.class, true, false);
 
     @Test
     public void volumeButtonTest() throws Exception{
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.volume_based)).check(matches(isDisplayed()));
-        onView(withId(R.id.volume)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.btn_record)).perform(click()).check(matches(isDisplayed()));
     }
     @Test
     public void formantButtonTest() throws Exception{
 
         displaysViewLanding.launchActivity(new Intent());
         onView(withText(R.string.formant_based)).check(matches(isDisplayed()));
-        onView(withId(R.id.formant)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.btnFormant)).perform(click()).check(matches(isDisplayed()));
     }
 
 

@@ -34,9 +34,7 @@
         <!--Login Page-->
         <activity
             android:name=".LoginPage"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true"
-            />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".SettingFragment"/>
         <!--Register Page-->
         <activity

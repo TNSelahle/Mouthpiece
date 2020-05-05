@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feedbackLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -53,7 +55,7 @@
                 android:layout_marginTop="50dp"
                 android:ems="10"
 
-                android:fontFamily="@font/ab_new"
+                android:fontFamily="sans-serif"
                 android:gravity="start|top"
                 android:text="@string/FeedbackInstructions"
                 android:textColor="@color/black"
@@ -96,8 +98,10 @@
                 android:id="@+id/nameInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="30dp"
+                android:backgroundTint="#ee1c31"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,8 +131,10 @@
                 android:id="@+id/emailInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:backgroundTint="#ee1c31"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -157,11 +163,12 @@
                 android:id="@+id/subjectsDropdown"
                 android:layout_width="307dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="24dp"
                 android:backgroundTint="#ee1c31"
                 android:entries="@array/feedback_choices"
                 android:spinnerMode="dropdown"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.281"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,8 +195,10 @@
                 android:id="@+id/descriptionFeedback"
                 android:layout_width="331dp"
                 android:layout_height="78dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginLeft="30dp"
+                android:backgroundTint="#ee1c31"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
@@ -215,6 +224,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionFeedback"
                 tools:text="@string/submitButton" />
+
 
 
         </LinearLayout>
