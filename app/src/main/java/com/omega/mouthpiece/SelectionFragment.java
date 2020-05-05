@@ -45,6 +45,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     public static final String EXTRA_LIKES = "ratings";
     public static final String EXTRA_DOWNLOADS = "downloads";
 
+
+
     //Base View to display items
     private RecyclerView mRecyclerView;
     //To get list of items/MouthList

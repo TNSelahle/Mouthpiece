@@ -42,6 +42,9 @@ public class LoginPage extends AppCompatActivity {
     private Button Register;
     private String jsonEmail;
     private String jsonPassword;
+    private String APIKey = "";
+    private boolean valid = false;
+    private String Message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +66,18 @@ public class LoginPage extends AppCompatActivity {
 
                 login();
 
-                Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                startActivity(intent);
+                if(valid==true && !APIKey.isEmpty())
+                {
+                    Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), Message, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-
         Register.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -100,11 +110,28 @@ public class LoginPage extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBodyParse,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
+                        try {
+                            valid = response.getBoolean("logged");
+
+                            if(valid)
+                            {
+                                APIKey = response.getString("key");
+                            }
+                            else
+                            {
+                                Message = response.getString("details");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         //resultTextView.setText("String Response : "+ response.toString());
                     }
                 }, new Response.ErrorListener() {
