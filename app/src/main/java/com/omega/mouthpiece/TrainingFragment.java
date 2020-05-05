@@ -20,6 +20,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -43,6 +44,10 @@ public class TrainingFragment extends Fragment  {
     private Button DisableTrainer;
 
     private Button PlayRecording;
+
+    private ConstraintLayout trainingPageConstraint;
+    private TextView readText;
+    private Chronometer timerC;
 
 
     @Override
@@ -69,6 +74,10 @@ public class TrainingFragment extends Fragment  {
         PlayRecording = root.findViewById(R.id.testAudioRec);
         PlayRecording.setEnabled(false);
         PlayRecording.setTextColor(Color.parseColor("#FF424242"));
+        trainingPageConstraint = root.findViewById(R.id.trainingConstraint);
+        readText = root.findViewById(R.id.phonetic_Pangrams_Read_Text);
+        timerC = root.findViewById(R.id.recordingTimer);
+        setTheme();
 
         ( root.findViewById(R.id.recordingTimer)).setVisibility(View.INVISIBLE);
 
@@ -119,6 +128,7 @@ public class TrainingFragment extends Fragment  {
                     //disable the enable voice training button for recording since it is opened
                     EnDisTrain.setEnabled(false);
                     EnDisTrain.setTextColor(Color.parseColor("#FF424242"));
+
 
                     Toast.makeText(getActivity(), "Recording your voice...", Toast.LENGTH_SHORT).show();
                 }
@@ -239,6 +249,29 @@ public class TrainingFragment extends Fragment  {
     public void stopChronometer(View view) {
         ((Chronometer) getView().findViewById(R.id.recordingTimer)).setBase(SystemClock.elapsedRealtime());
         ((Chronometer) getView().findViewById(R.id.recordingTimer)).stop();
+    }
+
+    public void setTheme() {
+        if(GlobalVariableMode.mode == true){
+
+            trainingPageConstraint.setBackgroundColor(Color.parseColor("#000000"));
+            //button colours
+            timerC.setTextColor(Color.parseColor("#FFFFFF"));
+            readText.setTextColor(Color.parseColor("#FFFFFF"));
+
+            //button colours
+
+        }
+        else{
+
+            trainingPageConstraint.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            //button colours
+            timerC.setTextColor(Color.parseColor("#000000"));
+            readText.setTextColor(Color.parseColor("#000000"));
+            //button colours
+
+        }
+
     }
 
 

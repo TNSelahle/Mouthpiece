@@ -105,6 +105,7 @@
     <string name="emailTxt">Email:</string>
     <string name="anonymousTxt">Anonymous</string>
     <string name="urlSite">http://102.133.170.83:5000/addFeedback</string>
+    <string name="remember">Remember Me</string>
 
     <string-array name="feedback_choices">
         <item></item>
