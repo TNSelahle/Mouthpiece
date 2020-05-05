@@ -2,7 +2,11 @@ package com.omega.mouthpiece;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -58,6 +63,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     //TODO: Test Filter
     private Button btnFilter;
     private View temp;
+    Image preview;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -73,6 +79,21 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         mRequestQueue = Volley.newRequestQueue(getActivity());
         //Calling API call method, to get JSON and parse it.
         parseJSON(getSortDetails(), getSortRatingsDetails());
+
+        //TODO: Finish Implement base64 conversion
+
+        /*
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.m1);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        //decode base64 string to image
+        imageBytes = Base64.decode(imageString, Base64.DEFAULT);
+        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        image.setImageBitmap(decodedImage);
+         */
+
 
         return root;
     }
@@ -94,7 +115,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private void parseJSON(String sortCriteria,String ratingsCriteria)
     {
         //TODO: Use our own hosted API.
-        String url = "https://pixabay.com/api/?key=15576743-14f7b7e30a703aaa50377d29d&q=dog&image_type=photo&pretty=true";
+        String url = "http://102.133.170.83:3000/sharingapi/mouthpiece/downloadAll";
 
         //GET request
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -103,12 +124,14 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                     public void onResponse(JSONObject response) {
                         try {
                             //getting JSON
-                            JSONArray jsonArray = response.getJSONArray("hits");
+                            JSONArray jsonArray = response.getJSONArray("result");
 
                             for(int i = 0; i < jsonArray.length();i++)
                             {
                                 //Parsing JSON
                                 JSONObject hit = jsonArray.getJSONObject(i);
+                                JSONArray array  =  hit.getJSONArray("formants");
+
                                 String creatorName = hit.getString("user");
                                 String imageURL = hit.getString("webformatURL");
                                 int ratings = hit.getInt("likes");

@@ -72,6 +72,9 @@ public class imageConfirmationFragment extends Fragment {
 
         ImageView image =(ImageView)root.findViewById(R.id.image);
 
+
+        //TODO:Add Upload Push Function
+
         vImage1_AEI = root.findViewById(R.id.image1_AEI);
         vImage2_L = root.findViewById(R.id.image2_L);
         vImage3_O = root.findViewById(R.id.image3_O);
