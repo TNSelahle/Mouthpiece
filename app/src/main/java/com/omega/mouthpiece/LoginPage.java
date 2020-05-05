@@ -12,11 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static com.omega.mouthpiece.Email.SendSuccessfullUploadEmail;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -107,7 +110,15 @@ public class LoginPage extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        //Just a test to see if emails are sending
+        /*try
+        {
+            SendSuccessfullUploadEmail("anrich96@gmail.com","Anrich96","www.google.com","my ID");
+        }
+        catch (JSONException e)
+        {
+            Log.e("sendingEmail",e.toString());
+        }*/
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBodyParse,
                 new Response.Listener<JSONObject>() {
                     @Override
