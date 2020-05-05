@@ -1,7 +1,9 @@
 package com.omega.mouthpiece;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,18 +15,24 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -37,6 +45,8 @@ public class imageConfirmationFragment extends Fragment {
     private TextPaint mTextPaint;
     private float mTextWidth;
     private float mTextHeight;
+
+    private static final int STORAGE_PERMISSION_CODE = 2342;
 
     //imageView Variables
     private ImageView helperIV;
@@ -55,6 +65,11 @@ public class imageConfirmationFragment extends Fragment {
 
     Uri imageUri;
     Bundle imageBundle = new Bundle();
+    Button btnAccept;
+    Button btnCancel;
+    String encodeImage; // converts image(s) to base64
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -102,8 +117,32 @@ public class imageConfirmationFragment extends Fragment {
             vImage11_Th.setImageURI(imageUri);
             imageUri = imageBundle.getParcelable("imageChJSh");
             vImage12_Ch_J_Sh.setImageURI(imageUri);
-
         }
+
+        btnAccept = root.findViewById(R.id.confrimButtonAccept);
+        btnCancel = root.findViewById(R.id.confirmButtonCancel);
+
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            // TODO: upload to ShareAPI
+            // TODO: Access Internal Storage
+            // TODO: find a way to create and access to app specific folder
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UploadMouthFrontFragment fragment3 = new UploadMouthFrontFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment3);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
 
         /*getParentFragmentManager().setFragmentResultListner("key",this, new FragmentResultListner()
             @Override
@@ -115,6 +154,18 @@ public class imageConfirmationFragment extends Fragment {
         return root;
     }
 
+    private void requestStoragePermission(){
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+            return;
+        ActivityCompat.requestPermissions(getActivity(),new String []{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        //if()
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

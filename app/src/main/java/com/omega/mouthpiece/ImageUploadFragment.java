@@ -191,7 +191,6 @@ public class ImageUploadFragment extends Fragment {
             public void onClick(View view) {
 
                 if(i == 12) {
-
                     imageConfirmationFragment fragment2 = new imageConfirmationFragment();
                     imageBundle.putParcelable("imageAEI", imageUri);
                     imageBundle.putParcelable("imageL", imageUriL);
@@ -296,19 +295,14 @@ public class ImageUploadFragment extends Fragment {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 UploadMouthFrontFragment fragment2 = new UploadMouthFrontFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
             }
         });
-
-
         return root;
-
     }
 }
