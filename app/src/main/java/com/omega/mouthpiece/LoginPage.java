@@ -5,32 +5,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginPage extends AppCompatActivity {
@@ -42,9 +27,9 @@ public class LoginPage extends AppCompatActivity {
     private Button Register;
     private String jsonEmail;
     private String jsonPassword;
-    private String APIKey = "";
-    private boolean valid = false;
-    private String Message;
+    private CheckBox rememberMe;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,29 +40,42 @@ public class LoginPage extends AppCompatActivity {
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
+        rememberMe = findViewById(R.id.rememberMe);
+
+        sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+
+        //Store auto login preferences:
+        String mail=sharedPreferences.getString("Email","");
+        String password=sharedPreferences.getString("Password","");
+        Boolean checked=sharedPreferences.getBoolean("Remember",false);
+
+        Email.setText(mail);
+        Password.setText(password);
+        rememberMe.setChecked(checked);
 
         Login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                //If remember me is checked, auto fill email and password
+                if(rememberMe.isChecked())
+                {
+                    editor.putString("Email",Email.getText().toString());
+                    editor.putString("Password",Password.getText().toString());
+                    editor.putBoolean("Remember",rememberMe.isChecked());
+                    editor.commit();
+                }
                 jsonEmail = Email.getText().toString();
                 jsonPassword = Password.getText().toString();
-
                 login();
 
-                if(valid==true && !APIKey.isEmpty())
-                {
-                    Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), Message, Toast.LENGTH_SHORT).show();
-                }
-
+                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(intent);
             }
         });
+
         Register.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -110,28 +108,11 @@ public class LoginPage extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBodyParse,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
-                        try {
-                            valid = response.getBoolean("logged");
-
-                            if(valid)
-                            {
-                                APIKey = response.getString("key");
-                            }
-                            else
-                            {
-                                Message = response.getString("details");
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
                         //resultTextView.setText("String Response : "+ response.toString());
                     }
                 }, new Response.ErrorListener() {

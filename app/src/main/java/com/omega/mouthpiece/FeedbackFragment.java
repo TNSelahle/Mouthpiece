@@ -1,7 +1,9 @@
 package com.omega.mouthpiece;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,18 +45,22 @@ public class FeedbackFragment extends Fragment {
     private CheckBox anon;
     private Boolean isAnon;
     private EditText email;
+    private TextView instruct;
     private TextView emailHeader;
     private TextView nameHeader;
 
     private RequestQueue feedbackRequestQueue;
     private StringRequest feedbackStringRequest;
     private JSONObject jsonBodyParse;
+    private ConstraintLayout FeedbackConstr;
    // private String url = "102.133.170.83:5000/getFeedback";
     private String url = "http://102.133.170.83:5000/addFeedback";
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        final FragmentManager fm = getFragmentManager();
 
         View root = inflater.inflate(R.layout.fragment_feedback, container, false);
 
@@ -68,7 +74,9 @@ public class FeedbackFragment extends Fragment {
         isAnon = anon.isChecked();
         emailHeader = root.findViewById(R.id.emailText);
         nameHeader = root.findViewById(R.id.nameOfUser);
-
+        FeedbackConstr = root.findViewById(R.id.feedbackLayout);
+        instruct = root.findViewById(R.id.feedbackInstr);
+        setTheme();
 
 
         submitButton.setOnClickListener(new View.OnClickListener(){
@@ -80,7 +88,14 @@ public class FeedbackFragment extends Fragment {
                 jsonEmail = email.getText().toString();
 
                 sendJsonFeedback();
-                startActivity(new Intent(getContext(), SettingFragment.class));
+                if(fm.getBackStackEntryCount() > 0){
+                    fm.popBackStack();
+                }
+                else{
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                }
+
+                //
 
             }
         });
@@ -88,7 +103,13 @@ public class FeedbackFragment extends Fragment {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), SettingFragment.class));
+                if(fm.getBackStackEntryCount() > 0){
+                    fm.popBackStack();
+                }
+                else{
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                }
+                //startActivity(new Intent(getContext(), SettingFragment.class));
             }
         });
         anon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -97,8 +118,8 @@ public class FeedbackFragment extends Fragment {
                                             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
                                                 if (isChecked){
                                                     email.setEnabled(false);
-                                                    emailHeader.setTextColor(Color.parseColor("#333138"));
-                                                    nameHeader.setTextColor(Color.parseColor("#333138"));
+                                                    emailHeader.setTextColor(Color.parseColor("#aaaaaa"));
+                                                    nameHeader.setTextColor(Color.parseColor("#aaaaaa"));
                                                     nameUser.setText("Anonymous");
                                                     nameUser.setEnabled(false);
                                                 }
@@ -145,6 +166,35 @@ public class FeedbackFragment extends Fragment {
             }
         });
         requestQueue.add(jsonObjectRequest);
+
+    }
+
+    public void setTheme() {
+        if(GlobalVariableMode.mode == true){
+
+            FeedbackConstr.setBackgroundColor(Color.parseColor("#000000"));
+            //button colours
+            instruct.setTextColor(Color.parseColor("#FFFFFF"));
+            email.setTextColor(Color.parseColor("#FFFFFF"));
+            descriptionFeedback.setTextColor(Color.parseColor("#FFFFFF"));
+            nameUser.setTextColor(Color.parseColor("#FFFFFF"));
+            anon.setTextColor(Color.parseColor("#FFFFFF"));
+            //optionVal.setForeground(Color.parseColor("#FFFFFF"));
+            //button colours
+
+        }
+        else{
+
+            FeedbackConstr.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            //button colours
+            instruct.setTextColor(Color.parseColor("#000000"));
+            email.setTextColor(Color.parseColor("#000000"));
+            descriptionFeedback.setTextColor(Color.parseColor("#000000"));
+            nameUser.setTextColor(Color.parseColor("#000000"));
+            anon.setTextColor(Color.parseColor("#000000"));
+            //button colours
+
+        }
 
     }
 
