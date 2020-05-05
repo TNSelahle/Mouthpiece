@@ -176,6 +176,8 @@ public class ImageUploadFragment extends Fragment {
         userImage12.setVisibility(userImage12.INVISIBLE);
 
 
+
+
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
