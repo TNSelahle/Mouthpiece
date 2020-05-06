@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -80,6 +81,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         //Calling API call method, to get JSON and parse it.
         parseJSON(getSortDetails(), getSortRatingsDetails());
 
+
+
         //TODO: Finish Implement base64 conversion
 
         /*
@@ -130,12 +133,11 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                             {
                                 //Parsing JSON
                                 JSONObject hit = jsonArray.getJSONObject(i);
-                                JSONArray array  =  hit.getJSONArray("formants");
-                                String imageUrl = array.getString(1);
-
-                                String creatorName = hit.getString("user");
-                                String imageURL = hit.getString("webformatURL");
-                                int ratings = hit.getInt("likes");
+                                JSONObject array  =  hit.getJSONObject("formants");
+                                String imageURL = array.getString("f0");
+                                System.out.println(imageURL);
+                                String creatorName = hit.getString("name");
+                                int ratings = hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
                                 mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));

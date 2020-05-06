@@ -64,7 +64,6 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
 
     public class DBViewHolder extends RecyclerView.ViewHolder
     {
-
         public ImageView mImageView;
         public TextView mTextViewCreator;
         public TextView mTextViewRatings;

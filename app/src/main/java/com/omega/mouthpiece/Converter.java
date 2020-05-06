@@ -93,7 +93,6 @@ public class Converter extends AppCompatActivity{
             double amp = getAmplitude();
             double db = 20 * Math.log10(amp / 0.447);
             if(db >= 71.5) {
-                mouthImage.setBackgroundResource(R.drawable.open_mouth);
             }
             else {
                 mouthImage.setBackgroundResource(R.drawable.close_mouth);
