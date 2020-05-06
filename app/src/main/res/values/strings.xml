@@ -106,6 +106,20 @@
     <string name="anonymousTxt">Anonymous</string>
     <string name="urlSite">http://102.133.170.83:5000/addFeedback</string>
     <string name="remember">Remember Me</string>
+    <string name="help">Do you need Help?</string>
+    <string name="frequently_asked">Here are some frequently asked questions:</string>
+    <string name="question1">How do I create an account?</string>
+    <string name="answer1">Answer: On opening the app, click the Register button, enter the necessary information and click Sign Up.</string>
+    <string name="question2">How to upload mouth pieces?</string>
+    <string name="answer2">answer</string>
+    <string name="question3">Is it necessary to update the app?</string>
+    <string name="answer3">answer</string>
+    <string name="question4">question</string>
+    <string name="answer4">answer</string>
+    <string name="question5">question</string>
+    <string name="answer5">answer</string>
+
+
 
     <string-array name="feedback_choices">
         <item></item>
