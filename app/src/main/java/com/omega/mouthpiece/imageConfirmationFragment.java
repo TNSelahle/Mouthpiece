@@ -106,7 +106,6 @@ public class imageConfirmationFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_mouthupload_confirmation, container, false);
 
         vImage1_AEI = root.findViewById(R.id.image1_AEI);

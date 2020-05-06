@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class TrainingPageTest {
     @Rule
-    public ActivityTestRule displaysView = new ActivityTestRule(TrainingPage.class, true, false);
+    public ActivityTestRule displaysView = new ActivityTestRule(getClass(), true, false);
 
     //Checks if the heading is displayed
     @Test
