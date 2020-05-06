@@ -79,8 +79,8 @@ public class imageConfirmationFragment extends Fragment {
     private ImageView vImage11_Th;
     private ImageView vImage12_Ch_J_Sh;
 
-    Uri imageUri;
-    Bundle imageBundle = new Bundle();
+    Uri imageUri; // store image data
+    Bundle imageBundle = new Bundle(); // retrieve image data from previous activity
     Button btnAccept;
     Button btnCancel;
     String encodeImage; // converts image(s) to base64
@@ -187,7 +187,6 @@ public class imageConfirmationFragment extends Fragment {
             }
         });
 
-
         /*getParentFragmentManager().setFragmentResultListner("key",this, new FragmentResultListner()
             @Override
             public void onFragmentResult(@NonNull String key, @NonNull Bundle buundle){
@@ -197,6 +196,7 @@ public class imageConfirmationFragment extends Fragment {
 
         return root;
     }
+
     //function for retrieving the user's username and email for uploading
     public void getUserInfo(){
         //mock data for now
@@ -215,7 +215,6 @@ public class imageConfirmationFragment extends Fragment {
         for (int i = 0; i < 12; i++){
             mouthpiecesArr[i] = "testBase64Code" + i;
         }
-
 
         try {
             jsonMouthpieceParse = new JSONObject();
@@ -236,9 +235,6 @@ public class imageConfirmationFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
     //function for uploading the user created mouthpieces

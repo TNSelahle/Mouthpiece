@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
         File folder = new File(getFilesDir() + "MouthpiecesTest");
         if(!folder.exists())
         {
-            Toast.makeText(this, "Root file does not exists", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Root file does not exists", Toast.LENGTH_SHORT).show();
             folder.mkdir();
         }
         else
         {
-            Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
