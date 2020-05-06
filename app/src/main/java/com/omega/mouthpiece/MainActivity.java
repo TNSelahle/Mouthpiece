@@ -1,7 +1,11 @@
 package com.omega.mouthpiece;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,6 +16,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +31,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Creates a folder to store users mouth images for upload and download
+        File folder = new File(getFilesDir() + "/MouthpiecesTest");
+        if(!folder.exists())
+        {
+            //Toast.makeText(this, "Root file does not exists", Toast.LENGTH_SHORT).show();
+            folder.mkdir();
+        }
+        else
+        {
+            //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

@@ -10,6 +10,7 @@ import android.graphics.drawable.DrawableContainer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -63,6 +65,9 @@ public class ImageUploadFragment extends Fragment {
 
     ArrayList<Uri> imageUriList = new ArrayList<Uri>();
     Bundle imageBundle = new Bundle(12);
+
+    //bitmap for converting images to base64 to upload to server and store into internal storage
+    //Bit
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -175,9 +180,10 @@ public class ImageUploadFragment extends Fragment {
         userImage11.setVisibility(userImage11.INVISIBLE);
         userImage12.setVisibility(userImage12.INVISIBLE);
 
+        //textView.setText(imageString);
 
 
-
+        // this button loads up an activity for resting - allowing user to select images to upload
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -193,7 +199,6 @@ public class ImageUploadFragment extends Fragment {
             public void onClick(View view) {
 
                 if(i == 12) {
-
                     imageConfirmationFragment fragment2 = new imageConfirmationFragment();
                     imageBundle.putParcelable("imageAEI", imageUri);
                     imageBundle.putParcelable("imageL", imageUriL);
@@ -298,19 +303,14 @@ public class ImageUploadFragment extends Fragment {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 UploadMouthFrontFragment fragment2 = new UploadMouthFrontFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment2);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
             }
         });
-
-
         return root;
-
     }
 }

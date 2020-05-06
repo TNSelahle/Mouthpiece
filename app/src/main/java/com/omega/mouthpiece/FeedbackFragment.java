@@ -86,7 +86,6 @@ public class FeedbackFragment extends Fragment {
                 jsonDescr = descriptionFeedback.getText().toString();
                 jsonOption = optionVal.getSelectedItem().toString();
                 jsonEmail = email.getText().toString();
-
                 sendJsonFeedback();
                 if(fm.getBackStackEntryCount() > 0){
                     fm.popBackStack();

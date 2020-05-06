@@ -107,9 +107,30 @@
     <string name="urlSite">http://102.133.170.83:5000/addFeedback</string>
     <string name="remember">Remember Me</string>
     <string name="password_mismatch">Passwords do not match</string>
+    <string name="username_example">Talker#1</string>
+    <string name="choose">Choose Image</string>
+    <string name="TODO">Need to add @string here</string>
+    <string name="ms1">Mouth Shape 1/12</string>
+    <string name="ms2">Mouth Shape 2/12</string>
+    <string name="ms3">Mouth Shape 3/12</string>
+    <string name="ms4">Mouth Shape 4/12</string>
+    <string name="ms5">Mouth Shape 5/12</string>
+    <string name="ms6">Mouth Shape 6/12</string>
+    <string name="ms7">Mouth Shape 7/12</string>
+    <string name="ms8">Mouth Shape 8/12</string>
+    <string name="ms9">Mouth Shape 9/12</string>
+    <string name="ms10">Mouth Shape 10/12</string>
+    <string name="ms11">Mouth Shape 11/12</string>
+    <string name="ms12">Mouth Shape 12/12</string>
+    <string name="yours">Your Image:</string>
+    <string name="makeSure">Make sure to upload the right picture.</string>
+    <string name="shapeUp">Shape to upload:</string>
+    <string name="creator">Creator Name</string>
+    <string name="likes">Likes: </string>
+    <string name="select">Select</string>
+    <string name="title">Title</string>
 
     <string-array name="feedback_choices">
-        <item></item>
         <item>Design Feedback</item>
         <item>Application Bugs</item>
         <item>Errors</item>
