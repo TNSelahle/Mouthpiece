@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class RegisterPage extends AppCompatActivity {
     private EditText password;
     private EditText password2;
     private TextView errorField;
+    private ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,8 @@ public class RegisterPage extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         password2 = (EditText)findViewById(R.id.password2);
         errorField = (TextView)findViewById(R.id.errorView);
-        //TODO: Implement API Call to register.
+        loading = (ProgressBar)findViewById(R.id.pBar);
+
         Register.setOnClickListener(new View.OnClickListener()
         {
             @SuppressLint("ShowToast")
@@ -55,20 +58,14 @@ public class RegisterPage extends AppCompatActivity {
             public void onClick(View view)
             {
 
-
                 String emailText = email.getText().toString();
                 String passwordText = password.getText().toString();
                 String password2Text = password2.getText().toString();
 
-                if (passwordText.equals(password2Text)) {
-                    Toast.makeText(getApplicationContext(), "Registering", Toast.LENGTH_SHORT);
-                    System.out.println("Registering");
-                    register();
-                }
-                else {
-                    passwordMismatch();
-                }
-
+                Toast.makeText(getApplicationContext(), "Registering", Toast.LENGTH_SHORT);
+                loading.setVisibility(View.VISIBLE);
+                errorField.setText("");
+                register();
             }
         });
 
@@ -135,18 +132,37 @@ public class RegisterPage extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("LOG_RESPONSE", "Registered");
-                        Intent login = new Intent(getApplicationContext(), LoginPage.class);
-                        getApplicationContext().startActivity(login);
+
+                        if (response.has("key")) {
+                            loading.setVisibility(View.GONE);
+                            Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                            Intent login = new Intent(RegisterPage.this, LoginPage.class);
+                            RegisterPage.this.startActivity(login);
+                        }
+                        else
+                        {
+                            String msg = null;
+                            try {
+                                msg = response.getString("message");
+                                Toast.makeText(RegisterPage.this, msg, Toast.LENGTH_SHORT).show();
+                                errorField.setText(msg);
+                                loading.setVisibility(View.GONE);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "Error getting response: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                System.out.println("Failed");
             }
         });
 
-
+        queue.add(JSONRequest);
 
     }
 }
