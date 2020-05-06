@@ -127,35 +127,57 @@ public class imageConfirmationFragment extends Fragment {
         vImage11_Th = root.findViewById(R.id.image11_Th);
         vImage12_Ch_J_Sh = root.findViewById(R.id.image12_ChJSh);
 
-        //sets the image from the mouth creation activity.
+        //sets the image from the mouth creation activity to allow these images to uploaded into  the DB.
         if(imageBundle != null)
         {
             imageBundle = getArguments();
             imageUri = imageBundle.getParcelable("imageAEI");
             vImage1_AEI.setImageURI(imageUri);
-            writeToStorage(vImage1_AEI);
+            writeToStorage(vImage1_AEI, "mouth1");
+
             imageUri = imageBundle.getParcelable("imageL");
             vImage2_L.setImageURI(imageUri);
+            writeToStorage(vImage2_L, "mouth2");
+
             imageUri = imageBundle.getParcelable("imageO");
             vImage3_O.setImageURI(imageUri);
+            writeToStorage(vImage3_O, "mouth3");
+
             imageUri = imageBundle.getParcelable("imageCDGKNSTXYZ");
             vImage4_CDGKNSTXYZ.setImageURI(imageUri);
+            writeToStorage(vImage4_CDGKNSTXYZ, "mouth4");
+
             imageUri = imageBundle.getParcelable("imageFV");
             vImage5_FV.setImageURI(imageUri);
+            writeToStorage(vImage5_FV, "mouth5");
+
             imageUri = imageBundle.getParcelable("imageQW");
             vImage6_QW.setImageURI(imageUri);
+            writeToStorage(vImage6_QW, "mouth6");
+
             imageUri = imageBundle.getParcelable("imageBMP");
             vImage7_BMP.setImageURI(imageUri);
+            writeToStorage(vImage7_BMP, "mouth7");
+
             imageUri = imageBundle.getParcelable("imageU");
             vImage8_U.setImageURI(imageUri);
+            writeToStorage(vImage8_U, "mouth8");
+
             imageUri = imageBundle.getParcelable("imageEe");
             vImage9_Ee.setImageURI(imageUri);
+            writeToStorage(vImage9_Ee, "mouth9");
+
             imageUri = imageBundle.getParcelable("imageR");
             vImage10_R.setImageURI(imageUri);
+            writeToStorage(vImage10_R, "mouth10");
+
             imageUri = imageBundle.getParcelable("imageTh");
             vImage11_Th.setImageURI(imageUri);
+            writeToStorage(vImage11_Th, "mouth11");
+
             imageUri = imageBundle.getParcelable("imageChJSh");
             vImage12_Ch_J_Sh.setImageURI(imageUri);
+            writeToStorage(vImage12_Ch_J_Sh, "mouth12");
         }
 
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
@@ -391,31 +413,19 @@ public class imageConfirmationFragment extends Fragment {
     }
 
 
-    public void writeToStorage(ImageView iV_Var)
+    //function to store images into internal storage before uploading for the apps specific use only
+    public void writeToStorage(ImageView iV_Var,String fileName)
     {
-        //Drawable drawable = getResources().getDrawable(R.drawable.mouth_formants_2);
-        //Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-
-
-        /*
-        BitmapDrawable drawable11 = (BitmapDrawable) vImage11_Th.getDrawable();
-        Bitmap bitmap11 = drawable11.getBitmap();
-        ByteArrayOutputStream bos11 = new ByteArrayOutputStream();
-        bitmap11.compress(Bitmap.CompressFormat.PNG,100,bos11);
-        byte[] bb11 = bos11.toByteArray();
-        mouthpiecesArr[10] = Base64.encodeToString(bb11, Base64.DEFAULT);
-         */
-        //Button save = findViewById(R.id.confrimButtonAccept);
 
         BitmapDrawable bitmapDraw = (BitmapDrawable) iV_Var.getDrawable();
         Bitmap bitmap = bitmapDraw.getBitmap();
 
-
-
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
-        File directory = cw.getDir("MouthpiecesTest", Context.MODE_PRIVATE);
-        //File directory = new File(getFilesDir() + "/MouthpiecesTest");
-        File file = new File(directory, "mouth1" + ".jpg");
+        File directory = new File(cw.getFilesDir() + "/MouthpiecesTest"); // get main folder
+
+        // TODO: get a new subfolder for each new upload
+        File file = new File(directory, fileName + ".jpg");
+
         if (!file.exists()) {
             Log.d("path", file.toString());
             FileOutputStream fos = null;

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
+            //check what user is logged in and download necessary folder
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
