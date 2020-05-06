@@ -70,7 +70,7 @@ public class Email {
         }
     }
 
-    public static JSONObject createJSON(String email, String userName, String msgType, String subject) throws JSONException {
+    public static JSONObject createJSON(String email,String userName, String msgType, String subject) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("UserEmail",email);
         json.put("UserName",userName);
@@ -79,7 +79,7 @@ public class Email {
         return json;
     }
 
-    public static void SendSecurityCodeEmail(String email, String userName, int SecurityCode ) throws JSONException {
+    public static void SendSecurityCodeEmail(String email,String userName, int SecurityCode ) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("UserEmail",email);
         json.put("UserName",userName);
@@ -90,7 +90,7 @@ public class Email {
         email(json);
     }
 
-    public static void SendPasswordChangeEmail(String email, String userName , String changeLink,String notYouLink) throws JSONException {
+    public static void SendPasswordChangeEmail(String email,String userName, String changeLink,String notYouLink) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("UserEmail",email);
         json.put("UserName", userName);
@@ -102,7 +102,7 @@ public class Email {
         email(json);
     }
 
-    public static void SendSuccessfullUploadEmail(String email, String userName, String link, String ID) throws JSONException {
+    public static void SendSuccessfullUploadEmail(String email,String userName, String link, String ID) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("UserEmail",email);
         json.put("UserName",userName);
@@ -110,6 +110,16 @@ public class Email {
         json.put("Subject","Mouthpiece Upload Successfull");
         json.put("ViewLink",link);
         json.put("ID",ID);
+
+        email(json);
+    }
+
+    public static void SendNewUserCreated(String email,String userName) throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("UserEmail",email);
+        json.put("UserName",userName);
+        json.put("MsgType","NewUser");
+        json.put("Subject","Welcome to Mouthpiece!");
 
         email(json);
     }

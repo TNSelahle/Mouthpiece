@@ -20,7 +20,7 @@ public class Message {
     
     public static MimeMessage createMessage(JSONObject json,Session session) throws AddressException, MessagingException, JSONException {
         //set to from the json data
-        String to=json.getString("UserEmail");        
+        String to=json.getString("UserEmail");
         String subject=json.getString("Subject");
         String MessageType=json.getString("MsgType");      
         
@@ -56,6 +56,9 @@ public class Message {
             case "SuccessfullUpload":
                     content= getSuccessfullUploadMessage(json);
                     break;
+            case "NewUser":
+                content= getNewUserMessage(json);
+                break;
             default:
                 content=json.getString("MsgType");
             break;
@@ -71,13 +74,6 @@ public class Message {
     //must return a string containing this info 
    public static String getSecurityCodeMessage(JSONObject json) throws JSONException {
         String msg ="";
-        /*
-        <h3>Dear @Username<br></h3>
-        <h3>Before we welcome you to the mouth piece community</h3>
-        <h3>Help us secure your Mouthpiece account by verifying your email address(@emailAddresss)This lets you access all of Mouthpiece's features.</h3>
-        <h2>Your Mouthpiece Security Code:<br>639881</h2>
-        <h4>From<br>Mouthpiece Omega Team</h4>
-        */
         msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
         msg+="<h3>Before we welcome you to the mouth piece community</h3>";
         msg+="<h3>Help us secure your Mouthpiece account by verifying your email address("+json.getString("UserEmail")+"). This lets you access all of Mouthpiece's features.</h3>";
@@ -106,13 +102,6 @@ public class Message {
 
    public static String getSuccessfullUploadMessage(JSONObject json) throws JSONException {
         String msg="";
-        /*
-            <h3>Dear @Username<br></h3>
-            <h3>Your mouth piece has been successfully uploaded</h3>
-            <a href="url">View your upload</a>
-            <h4>Dates:04/04/2020 <br> ID:8bnj2983m582k4i76</h4>
-            <h4>From<br>Mouthpiece Omega Team</h4>
-        */
         String date = getDate();
         msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
         msg+="<h3>Your mouth piece has been successfully uploaded</h3>";
@@ -121,6 +110,18 @@ public class Message {
         msg+="<h4>From<br>Mouthpiece Omega Team</h4>";
         return msg;
    }
+
+    public static String getNewUserMessage(JSONObject json) throws JSONException {
+        String msg="";
+        String date = getDate();
+        msg+="<h3>Dear "+json.getString("UserName")+"<br></h3>";
+        msg+="<h3>Thank you for registering with Mouthpiece!</h3>";
+        msg+="We hope this app works for you in every way you want it to, if not please feel free to use the built in feedback tool in the app if there is anything you want to tell us.";
+        msg+="<h4>Now you get to do some talking too!</h4>";
+        msg+="<h4>Dates:"+date+" <br></h4>";
+        msg+="<h4>From<br>Mouthpiece Omega Team</h4>";
+        return msg;
+    }
 
    static String getDate()
    {

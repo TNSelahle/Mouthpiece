@@ -39,7 +39,7 @@ public class MessageTest {
         a =new String[]{"cosomegatest@gmail.com", "MadMan3", "SuccessfullUpload", "SuccessfullUpload"};
 
         test.add(a);
-        a =new String[]{"cosomegatest@gmail.com", "MadMan4", "<h3>user inputed mesige body<h3>", "user inputed mesige hding"};
+        a =new String[]{"cosomegatest@gmail.com", "MadMan4", "<h3>user inputted message body<h3>", "user inputted message"};
         test.add(a);
         test.forEach(new Consumer<String[]>() {
             @Override
@@ -114,6 +114,25 @@ public class MessageTest {
         expResult+="<h4>From<br>Mouthpiece Omega Team</h4>";
 
         String result = Message.getSuccessfullUploadMessage(json);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getNewUserMessage method, of class Message.
+     */
+    @Test
+    public void testGetNewUserMessage() throws JSONException {
+        System.out.println("getNewUserMessage");
+        JSONObject json = units.get(2);
+        String expResult = "";
+        String date = Message.getDate();
+        expResult+="<h3>Dear MadMan3<br></h3>";
+        expResult+="<h3>Thank you for registering with Mouthpiece!</h3>";
+        expResult+="We hope this app works for you in every way you want it to, if not please feel free to use the built in feedback tool in the app if there is anything you want to tell us.";
+        expResult+="<h4>Now you get to do some talking too!</h4>";
+        expResult+="<h4>Dates:"+date+" <br></h4>";
+        expResult+="<h4>From<br>Mouthpiece Omega Team</h4>";
+        String result = Message.getNewUserMessage(json);
         assertEquals(expResult, result);
     }
 

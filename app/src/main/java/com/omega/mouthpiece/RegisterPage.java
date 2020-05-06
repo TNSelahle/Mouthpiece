@@ -30,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import static com.omega.mouthpiece.Email.SendNewUserCreated;
+
 
 public class RegisterPage extends AppCompatActivity {
     private Button Register;
@@ -136,6 +138,12 @@ public class RegisterPage extends AppCompatActivity {
                         if (response.has("key")) {
                             loading.setVisibility(View.GONE);
                             Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                            try {
+                                /*!!!!!!!NEED TO UPDATE THE LINE BELOW TO ADD THE USERNAME ONCE IT IS ADDED TO REGISTER PAGE!!!*/
+                                SendNewUserCreated(email.getText().toString(),"Username Here");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             Intent login = new Intent(RegisterPage.this, LoginPage.class);
                             RegisterPage.this.startActivity(login);
                         }
@@ -165,4 +173,5 @@ public class RegisterPage extends AppCompatActivity {
         queue.add(JSONRequest);
 
     }
+
 }

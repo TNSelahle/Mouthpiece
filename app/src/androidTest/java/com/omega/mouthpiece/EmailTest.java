@@ -30,7 +30,7 @@ public class EmailTest {
         a =new String[]{"cosomegatest@gmail.com", "MadMan3", "SuccessfullUpload", "SuccessfullUpload"};
 
         test.add(a);
-        a =new String[]{"cosomegatest@gmail.com", "MadMan4", "<h3>user inputed mesige body<h3>", "user inputed mesige hding"};
+        a =new String[]{"cosomegatest@gmail.com", "MadMan4", "<h3>user inputted message body<h3>", "user inputted message"};
         test.add(a);
         test.forEach(new Consumer<String[]>() {
             @Override
@@ -105,6 +105,18 @@ public class EmailTest {
         String link = units.get(2).getString("ViewLink");
         String ID = units.get(2).getString("ID");
         Email.SendSuccessfullUploadEmail(email, userName, link, ID);
+    }
+    /**
+     * Test of SendSendNewUserCreated method, of class Email.
+     */
+    @Test
+    public void testSendNewUserCreated() throws JSONException {
+        System.out.println("SendNewUserCreatedEmail");
+        String email = units.get(2).getString("UserEmail");
+        String userName = units.get(2).getString("UserName");
+        String link = units.get(2).getString("ViewLink");
+        String ID = units.get(2).getString("ID");
+        Email.SendNewUserCreated(email,userName);
     }
     /**
      * Test of email method, of class Email.
