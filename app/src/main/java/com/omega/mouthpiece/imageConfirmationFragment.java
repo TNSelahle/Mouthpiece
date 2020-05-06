@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.os.Parcelable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,6 +37,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -151,7 +155,9 @@ public class imageConfirmationFragment extends Fragment {
             imageUri = imageBundle.getParcelable("imageChJSh");
             vImage12_Ch_J_Sh.setImageURI(imageUri);
         }
-
+        //
+        //convertImages();
+        //
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
         btnCancel = root.findViewById(R.id.confirmButtonCancel);
 
@@ -164,14 +170,15 @@ public class imageConfirmationFragment extends Fragment {
 
                 getUserInfo();
                 uploadMouthPieces();
-
+                startActivity(new Intent(getContext(), MainActivity.class));
+                /*
                 UploadMouthFrontFragment fragment4 = new UploadMouthFrontFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment4);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
+                */
             }
         });
 
@@ -197,6 +204,112 @@ public class imageConfirmationFragment extends Fragment {
 
         return root;
     }
+    //convert an image to base64
+    public void convertImages(){
+
+        //String code1, code2, code3, code4, code5, code6, code7, code8, code9, code10, code11, code12;
+        mouthpiecesArr = new String[12];
+
+        //image 1 conversion to base 64
+        BitmapDrawable drawable = (BitmapDrawable) vImage1_AEI.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        byte[] bb = bos.toByteArray();
+        mouthpiecesArr[0] = Base64.encodeToString(bb, Base64.DEFAULT);
+
+
+        //image 2 conversion
+        BitmapDrawable drawable2 = (BitmapDrawable) vImage2_L.getDrawable();
+        Bitmap bitmap2 = drawable2.getBitmap();
+        ByteArrayOutputStream bos2 = new ByteArrayOutputStream();
+        bitmap2.compress(Bitmap.CompressFormat.PNG,100,bos2);
+        byte[] bb2 = bos2.toByteArray();
+        mouthpiecesArr[1] = Base64.encodeToString(bb2, Base64.DEFAULT);
+
+        //image 3 conversion
+        BitmapDrawable drawable3 = (BitmapDrawable) vImage3_O.getDrawable();
+        Bitmap bitmap3 = drawable3.getBitmap();
+        ByteArrayOutputStream bos3 = new ByteArrayOutputStream();
+        bitmap3.compress(Bitmap.CompressFormat.PNG,100,bos3);
+        byte[] bb3 = bos3.toByteArray();
+        mouthpiecesArr[2] = Base64.encodeToString(bb3, Base64.DEFAULT);
+
+        //image 4 conversion
+        BitmapDrawable drawable4 = (BitmapDrawable) vImage4_CDGKNSTXYZ.getDrawable();
+        Bitmap bitmap4 = drawable4.getBitmap();
+        ByteArrayOutputStream bos4 = new ByteArrayOutputStream();
+        bitmap4.compress(Bitmap.CompressFormat.PNG,100,bos4);
+        byte[] bb4 = bos4.toByteArray();
+        mouthpiecesArr[3] = Base64.encodeToString(bb4, Base64.DEFAULT);
+
+        //image 5 conversion
+        BitmapDrawable drawable5 = (BitmapDrawable) vImage5_FV.getDrawable();
+        Bitmap bitmap5 = drawable5.getBitmap();
+        ByteArrayOutputStream bos5 = new ByteArrayOutputStream();
+        bitmap5.compress(Bitmap.CompressFormat.PNG,100,bos5);
+        byte[] bb5 = bos5.toByteArray();
+        mouthpiecesArr[4] = Base64.encodeToString(bb5, Base64.DEFAULT);
+
+        //image 6 conversion
+        BitmapDrawable drawable6 = (BitmapDrawable) vImage6_QW.getDrawable();
+        Bitmap bitmap6 = drawable6.getBitmap();
+        ByteArrayOutputStream bos6 = new ByteArrayOutputStream();
+        bitmap6.compress(Bitmap.CompressFormat.PNG,100,bos6);
+        byte[] bb6 = bos6.toByteArray();
+        mouthpiecesArr[5] = Base64.encodeToString(bb6, Base64.DEFAULT);
+
+        //image 7 conversion
+        BitmapDrawable drawable7 = (BitmapDrawable) vImage7_BMP.getDrawable();
+        Bitmap bitmap7 = drawable7.getBitmap();
+        ByteArrayOutputStream bos7 = new ByteArrayOutputStream();
+        bitmap7.compress(Bitmap.CompressFormat.PNG,100,bos7);
+        byte[] bb7 = bos7.toByteArray();
+        mouthpiecesArr[6] = Base64.encodeToString(bb7, Base64.DEFAULT);
+
+        //image 8 conversion
+        BitmapDrawable drawable8 = (BitmapDrawable) vImage8_U.getDrawable();
+        Bitmap bitmap8 = drawable8.getBitmap();
+        ByteArrayOutputStream bos8 = new ByteArrayOutputStream();
+        bitmap8.compress(Bitmap.CompressFormat.PNG,100,bos8);
+        byte[] bb8 = bos8.toByteArray();
+        mouthpiecesArr[7] = Base64.encodeToString(bb8, Base64.DEFAULT);
+
+        //image 9 conversion
+        BitmapDrawable drawable9 = (BitmapDrawable) vImage9_Ee.getDrawable();
+        Bitmap bitmap9 = drawable9.getBitmap();
+        ByteArrayOutputStream bos9 = new ByteArrayOutputStream();
+        bitmap9.compress(Bitmap.CompressFormat.PNG,100,bos9);
+        byte[] bb9 = bos9.toByteArray();
+        mouthpiecesArr[8] = Base64.encodeToString(bb9, Base64.DEFAULT);
+
+        //image 10 conversion
+        BitmapDrawable drawable10 = (BitmapDrawable) vImage10_R.getDrawable();
+        Bitmap bitmap10 = drawable10.getBitmap();
+        ByteArrayOutputStream bos10 = new ByteArrayOutputStream();
+        bitmap10.compress(Bitmap.CompressFormat.PNG,100,bos10);
+        byte[] bb10 = bos10.toByteArray();
+        mouthpiecesArr[9] = Base64.encodeToString(bb10, Base64.DEFAULT);
+
+        //image 11 conversion
+        BitmapDrawable drawable11 = (BitmapDrawable) vImage11_Th.getDrawable();
+        Bitmap bitmap11 = drawable11.getBitmap();
+        ByteArrayOutputStream bos11 = new ByteArrayOutputStream();
+        bitmap11.compress(Bitmap.CompressFormat.PNG,100,bos11);
+        byte[] bb11 = bos11.toByteArray();
+        mouthpiecesArr[10] = Base64.encodeToString(bb11, Base64.DEFAULT);
+
+        BitmapDrawable drawable12 = (BitmapDrawable) vImage12_Ch_J_Sh.getDrawable();
+        Bitmap bitmap12 = drawable12.getBitmap();
+        ByteArrayOutputStream bos12 = new ByteArrayOutputStream();
+        bitmap12.compress(Bitmap.CompressFormat.PNG,100,bos12);
+        byte[] bb12 = bos12.toByteArray();
+        mouthpiecesArr[11] = Base64.encodeToString(bb12, Base64.DEFAULT);
+
+
+        //Log.d("Base64OfImage",mouthpiecesArr[0] + "ENDSHERE");
+
+    }
     //function for retrieving the user's username and email for uploading
     public void getUserInfo(){
         //mock data for now
@@ -208,14 +321,14 @@ public class imageConfirmationFragment extends Fragment {
         mouthpieceID = 0;
         downloads = 0;
         rating = 0;
-        //dateTime = "08:00 Mon";
 
-        //set mouthpieces (mock data for now)
+        convertImages();
+        /*
         mouthpiecesArr = new String[12];
         for (int i = 0; i < 12; i++){
             mouthpiecesArr[i] = "testBase64Code" + i;
         }
-
+        */
 
         try {
             jsonMouthpieceParse = new JSONObject();
