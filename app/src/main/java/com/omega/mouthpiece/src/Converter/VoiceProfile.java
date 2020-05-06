@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 
 public class VoiceProfile {
-    
+
     private SegmentNode nodes[] = new SegmentNode[12];
     private String id;
 
@@ -24,7 +24,7 @@ public class VoiceProfile {
         }
 
         for (int i = 0; i < nodes.length; i++){
-            // This should more than likely be replaced with a deep copy to ensure that we 
+            // This should more than likely be replaced with a deep copy to ensure that we
             // will not replace the nodes data on accident
             // But fuck it.
             this.nodes[i] = given[i];
