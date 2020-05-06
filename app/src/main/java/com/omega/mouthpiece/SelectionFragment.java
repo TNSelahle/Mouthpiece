@@ -131,6 +131,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 //Parsing JSON
                                 JSONObject hit = jsonArray.getJSONObject(i);
                                 JSONArray array  =  hit.getJSONArray("formants");
+                                String imageUrl = array.getString(1);
 
                                 String creatorName = hit.getString("user");
                                 String imageURL = hit.getString("webformatURL");

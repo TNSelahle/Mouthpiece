@@ -129,8 +129,6 @@ public class LoginPage extends AppCompatActivity {
 
             // Display the progress bar.
             findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
-            findViewById(R.id.loginButton).setVisibility(View.GONE);
-            findViewById(R.id.registerButton).setVisibility(View.GONE);
         }
 
         @Override
@@ -201,9 +199,6 @@ public class LoginPage extends AppCompatActivity {
                 e.printStackTrace();
             }
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
-                findViewById(R.id.loginButton).setVisibility(View.VISIBLE);
-                findViewById(R.id.registerButton).setVisibility(View.VISIBLE);
-
 
         }
     }

@@ -81,6 +81,8 @@ public class Converter extends AppCompatActivity{
             return 0;
 
     }
+
+
     //-----------------------------------------------------------------------------
     //-----------------------TIMER FUNCTIONS---------------------------------------
     Runnable measure = new Runnable() {
