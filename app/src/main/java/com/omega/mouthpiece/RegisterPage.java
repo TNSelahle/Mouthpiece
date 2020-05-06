@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 public class RegisterPage extends AppCompatActivity {
     private Button Register;
+    private String email;
+    private String username;
+    private String password1;
+    private String password2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +25,8 @@ public class RegisterPage extends AppCompatActivity {
 
         Register = findViewById(R.id.registerButton);
         //TODO: Implement API Call to register.
-        Register.setOnClickListener(new View.OnClickListener()
+        //this code commented below crashes the app...
+        /*Register.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -29,7 +34,7 @@ public class RegisterPage extends AppCompatActivity {
                 //Intent intent = new Intent(RegisterPage.this, MouthSelection.class);
                 //startActivity(intent);
             }
-        });
+        });*/
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
