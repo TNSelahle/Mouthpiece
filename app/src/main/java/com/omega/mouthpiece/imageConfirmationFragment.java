@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
@@ -51,6 +52,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 //send date to database
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -132,6 +134,7 @@ public class imageConfirmationFragment extends Fragment {
             imageBundle = getArguments();
             imageUri = imageBundle.getParcelable("imageAEI");
             vImage1_AEI.setImageURI(imageUri);
+            writeToStorage(vImage1_AEI);
             imageUri = imageBundle.getParcelable("imageL");
             vImage2_L.setImageURI(imageUri);
             imageUri = imageBundle.getParcelable("imageO");
@@ -167,7 +170,6 @@ public class imageConfirmationFragment extends Fragment {
             // TODO: upload to ShareAPI
             // TODO: Access Internal Storage
             // TODO: find a way to create and access to app specific folder
-
                 getUserInfo();
                 uploadMouthPieces();
                 startActivity(new Intent(getContext(), MainActivity.class));
@@ -351,9 +353,6 @@ public class imageConfirmationFragment extends Fragment {
             e.printStackTrace();
         }
 
-
-
-
     }
     //function for uploading the user created mouthpieces
     public void uploadMouthPieces(){
@@ -392,6 +391,46 @@ public class imageConfirmationFragment extends Fragment {
 
     }
 
+
+    public void writeToStorage(ImageView iV_Var)
+    {
+        //Drawable drawable = getResources().getDrawable(R.drawable.mouth_formants_2);
+        //Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+
+
+        /*
+        BitmapDrawable drawable11 = (BitmapDrawable) vImage11_Th.getDrawable();
+        Bitmap bitmap11 = drawable11.getBitmap();
+        ByteArrayOutputStream bos11 = new ByteArrayOutputStream();
+        bitmap11.compress(Bitmap.CompressFormat.PNG,100,bos11);
+        byte[] bb11 = bos11.toByteArray();
+        mouthpiecesArr[10] = Base64.encodeToString(bb11, Base64.DEFAULT);
+         */
+        //Button save = findViewById(R.id.confrimButtonAccept);
+
+        BitmapDrawable bitmapDraw = (BitmapDrawable) iV_Var.getDrawable();
+        Bitmap bitmap = bitmapDraw.getBitmap();
+
+
+
+        ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
+        File directory = cw.getDir("MouthpiecesTest", Context.MODE_PRIVATE);
+        //File directory = new File(getFilesDir() + "/MouthpiecesTest");
+        File file = new File(directory, "mouth1" + ".jpg");
+        if (!file.exists()) {
+            Log.d("path", file.toString());
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                fos.flush();
+                fos.close();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void requestStoragePermission(){
         if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return;
@@ -420,7 +459,5 @@ public class imageConfirmationFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
     }
-
-
 
 }

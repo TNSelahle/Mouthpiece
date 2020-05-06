@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Creates a folder to store users mouth images for upload and download
-        File folder = new File(getFilesDir() + "MouthpiecesTest");
+        File folder = new File(getFilesDir() + "/MouthpiecesTest");
         if(!folder.exists())
         {
             //Toast.makeText(this, "Root file does not exists", Toast.LENGTH_SHORT).show();
