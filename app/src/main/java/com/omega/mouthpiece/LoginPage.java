@@ -33,6 +33,7 @@ public class LoginPage extends AppCompatActivity {
     private String jsonEmail;
     private String jsonPassword;
     private CheckBox rememberMe;
+    private  Intent intent;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -70,13 +71,20 @@ public class LoginPage extends AppCompatActivity {
                     editor.putString("Email",Email.getText().toString());
                     editor.putString("Password",Password.getText().toString());
                     editor.putBoolean("Remember",rememberMe.isChecked());
-                    editor.commit();
+                    editor.apply();
+                    intent= new Intent(LoginPage.this, Converter.class);
+                }
+                else
+                {
+                    //Supposed to be First time user, but for now it's based on if "remember me" is clicked since waiting for user management API to finish
+                    intent = new Intent(LoginPage.this, MainActivity.class);
                 }
                 jsonEmail = Email.getText().toString();
                 jsonPassword = Password.getText().toString();
                 login();
 
-                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                //Will need to check if it is a new user instead of using the "remember me functionality
+                //But once the API is up and running we can change this functionality (line 74 and 80)
                 startActivity(intent);
             }
         });
