@@ -1,12 +1,16 @@
 package com.omega.mouthpiece;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +71,11 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private Button btnFilter;
     private View temp;
     Image preview;
+
+    String base64Image;
+    Bitmap decodedByte;
+    ImageView img;
+   // private ProgressBar loadingSpinner;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -81,8 +90,13 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         //creating list and queue for API Calss
         mMouthList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(getActivity());
+
+        //loadingSpinner = root.findViewById(R.id.progressBarFragSelection);
+
         //Calling API call method, to get JSON and parse it.
+//        loadingSpinner.setVisibility(View.VISIBLE);
         parseJSON(getSortDetails(), getSortRatingsDetails());
+    //    loadingSpinner.setVisibility(View.GONE);
 
 
 
@@ -105,6 +119,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
         return root;
     }
+
+
 
 
     //TODO: Test Filter
@@ -143,10 +159,24 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
                                 System.out.println(imageURL);
+
+                                base64Image = imageURL;
+                                convertBase64ToImage();
+
+                                Log.d("Before URI test", "YE");
+
+                                Uri imageU = getImageUri(/*this.getContext(), */decodedByte);
+
+                                imageURL = imageU.toString();
+
+                                Log.d("URL:", imageURL);
+
                                 String creatorName = hit.getString("name");
                                 int ratings = hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
+
+                                //mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                                 mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                             }
 
@@ -170,6 +200,25 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             }
         });
         mRequestQueue.add(request);
+    }
+
+    public void convertBase64ToImage(){
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+    }
+    public Uri getImageUri(/*Context inContext, */Bitmap inImage) {
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+
+        Log.d("Testing:", "123");
+
+        String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), inImage, "your_title", null);
+        //String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 
