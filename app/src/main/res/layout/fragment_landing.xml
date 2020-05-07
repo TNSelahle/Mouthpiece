@@ -10,23 +10,24 @@
 
     <ImageView
         android:id="@+id/icon4"
-        android:layout_width="375dp"
-        android:layout_height="255dp"
+        android:layout_width="374dp"
+        android:layout_height="206dp"
         android:background="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/icon01" />
 
+
     <TextView
         android:id="@+id/title3"
-        android:layout_width="258dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="164dp"
+        android:layout_width="245dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="132dp"
         android:fontFamily="@font/blackbill"
         android:text="@string/app_name"
         android:textAlignment="center"
@@ -43,45 +44,45 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="150dp"
         android:layout_height="44dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="@string/volume_based"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintEnd_toStartOf="@+id/btnFormant"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintTop_toBottomOf="@+id/img_mouth"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnFormant"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="150dp"
         android:layout_height="44dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="@string/formant_based"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.795"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
-
+        app:layout_constraintStart_toEndOf="@+id/btn_record"
+        app:layout_constraintTop_toBottomOf="@+id/img_mouth"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/img_mouth"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/image_border"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57"
+        app:layout_constraintTop_toBottomOf="@+id/icon4"
         tools:srcCompat="@drawable/a0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

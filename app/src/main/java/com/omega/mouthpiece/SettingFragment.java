@@ -1,21 +1,21 @@
 package com.omega.mouthpiece;
 
-import android.content.Context;
+//import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
+//import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+//import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -107,9 +107,5 @@ public class SettingFragment extends Fragment {
         menu.clear();
     }
 
-//    public void goToHelp(View view) {
-//        Intent intent = new Intent(SettingFragment.this.getActivity(), HelpFragment.class);
-//        startActivity(intent);
-//    }
    }
 

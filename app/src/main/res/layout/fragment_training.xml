@@ -49,7 +49,7 @@
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="@string/PromptToTrain"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textColorHint="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +68,7 @@
         android:backgroundTint="@color/main3"
         android:fontFamily="@font/ab_new"
         android:text="@string/StopRecord"
-        android:textColor="?android:attr/colorBackground"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enableTrainingButton" />

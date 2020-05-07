@@ -23,26 +23,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/deleteProfileBtn"
+        android:id="@+id/logOutBtn"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="206dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
         android:background="@drawable/mybutton"
+        android:backgroundTint="@color/main3"
         android:fontFamily="@font/ab_new"
-        android:text="Delete voice profile"
+        android:text="LOG OUT"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/themeSwitch" />
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn2" />
 
     <Button
         android:id="@+id/signInBtn2"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="62dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="sign in"
@@ -53,35 +54,19 @@
         app:layout_constraintTop_toBottomOf="@+id/deleteProfileBtn" />
 
     <Button
-        android:id="@+id/logOutBtn"
+        android:id="@+id/deleteProfileBtn"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:background="@drawable/mybutton"
-        android:backgroundTint="@color/main3"
-        android:fontFamily="@font/ab_new"
-        android:text="LOG OUT"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helpbtn" />
-
-    <Button
-        android:id="@+id/helpbtn"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="162dp"
+        android:layout_width="178dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="118dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
-        android:text="Help"
+        android:text="Delete voice profile"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn2" />
+        app:layout_constraintTop_toBottomOf="@+id/themeSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
