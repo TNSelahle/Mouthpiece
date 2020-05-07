@@ -1,5 +1,6 @@
 package com.omega.mouthpiece ;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -28,6 +29,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -152,7 +154,10 @@ public class ImageUploadFragment extends Fragment {
 
         mouthShapeNumber = root.findViewById(R.id.textView2);
 
+        //Uri uriStreamImage = Uri.parse(getContext().getFilesDir() + "/MouthpiecesTest/mouth1.png");
+
         egImage = root.findViewById(R.id.imageView2);
+        //egImage.setImageURI(uriStreamImage);
         userImage = root.findViewById(R.id.uImage1);
         userImage2 = root.findViewById(R.id.uImage2);
         userImage3 = root.findViewById(R.id.uImage3);
