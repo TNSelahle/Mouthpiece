@@ -64,11 +64,10 @@
             android:name=".filter"
             android:exported="true" />
 
-        <!--
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-            -->
         <!--Feedback page-->
         <!--Setting page-->
 <!--        <activity-->
