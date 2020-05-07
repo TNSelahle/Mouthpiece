@@ -1,6 +1,9 @@
 # Mouthpiece Converter Main Branch
 Android Mouthpiece Application (Omega)
 
+## Project Management Tool
+https://app.clubhouse.io/cos-301-team-converter/stories/space/9/everything
+
 ## Repository Layout
 This is how the converter branch is futher branched
 ```
