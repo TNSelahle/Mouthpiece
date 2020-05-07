@@ -52,6 +52,7 @@ public class RegisterPage extends AppCompatActivity {
         password2 = (EditText)findViewById(R.id.password2);
         errorField = (TextView)findViewById(R.id.errorView);
         loading = (ProgressBar)findViewById(R.id.pBar);
+        Button btnSkip = findViewById(R.id.skip);
 
         Register.setOnClickListener(new View.OnClickListener()
         {
@@ -106,6 +107,13 @@ public class RegisterPage extends AppCompatActivity {
             changeTextStatus(false);
         }
 
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegisterPage.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void passwordMismatch() {
