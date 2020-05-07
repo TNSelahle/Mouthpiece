@@ -416,15 +416,36 @@ public class imageConfirmationFragment extends Fragment {
     //function to store images into internal storage before uploading for the apps specific use only
     public void writeToStorage(ImageView iV_Var,String fileName)
     {
+//        int folderNum = 0;
+//        String folderName = "Mouthpieces " + folderNum;
+//        boolean fileCreated = false;
 
         BitmapDrawable bitmapDraw = (BitmapDrawable) iV_Var.getDrawable();
         Bitmap bitmap = bitmapDraw.getBitmap();
 
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
         File directory = new File(cw.getFilesDir() + "/MouthpiecesTest"); // get main folder
+//      File imageFolder = new File(directory.getPath() + "/" + folderName );
+        File file = new File(directory, fileName + ".jpg");
+/*
+        Toast.makeText(getActivity(), directory.getPath(), Toast.LENGTH_SHORT).show();
+
+        if(!imageFolder.exists())
+        {
+            imageFolder.mkdir();
+            fileCreated = true;
+        }
+        else
+        {
+
+            folderNum++;
+            folderName = "Mouthpieces " + folderNum;
+            imageFolder = new File(directory.getPath() + "/" + folderName);
+        }
+
+*/
 
         // TODO: get a new subfolder for each new upload
-        File file = new File(directory, fileName + ".jpg");
 
         if (!file.exists()) {
             Log.d("path", file.toString());

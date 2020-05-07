@@ -41,6 +41,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -74,6 +76,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
     String base64Image;
     Bitmap decodedByte;
+    //ArrayList<Bitmap> decodedImages;
     ImageView img;
    // private ProgressBar loadingSpinner;
     @Override
@@ -118,6 +121,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         //TODO: Use our own hosted API.
         String url = "http://102.133.170.83:3000/sharingapi/mouthpiece/downloadAll";
 
+        final ArrayList<String> batchImageUri = new ArrayList<String>();
+
         //GET request
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -136,10 +141,11 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
 
+                                getAllImageUriIntoArray(batchImageUri, array);// gets all mouth shapes
 
                                 base64Image = imageURL;
                                 convertBase64ToImage();
-
+                                convertAllBase64ToImage(batchImageUri);
 
 
                                 String creatorName = hit.getString("name");
@@ -181,19 +187,125 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-
     }
+
     public Uri getImageUri(Bitmap inImage, String n) {
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
 
+        //storess image to media store/gallery
         String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), inImage, n, null);
         return Uri.parse(path);
     }
 
+    public void getAllImageUriIntoArray(ArrayList<String> arr, JSONObject jObj) throws JSONException {
+        String imageUri = "";
+
+        for(int i = 0; i < 12; i++)
+        {
+            //String imageURL0 = array.getString("f0");
+            switch(i)
+            {
+                case 0:
+                    imageUri = jObj.getString("f" + i);
+                    arr.add(imageUri);
+                    break;
+                case 1:
+                    imageUri = jObj.getString("f1");
+                    arr.add(imageUri);
+                    break;
+                case 2:
+                    imageUri = jObj.getString("f2");
+                    arr.add(imageUri);
+                    break;
+                case 3:
+                    imageUri = jObj.getString("f3");
+                    arr.add(imageUri);
+                    break;
+                case 4:
+                    imageUri = jObj.getString("f4");
+                    arr.add(imageUri);
+                    break;
+                case 5:
+                    imageUri = jObj.getString("f5");
+                    arr.add(imageUri);
+                    break;
+                case 6:
+                    imageUri = jObj.getString("f6");
+                    arr.add(imageUri);
+                    break;
+                case 7:
+                    imageUri = jObj.getString("f7");
+                    arr.add(imageUri);
+                    break;
+                case 8:
+                    imageUri = jObj.getString("f8");
+                    arr.add(imageUri);
+                    break;
+                case 9:
+                    imageUri = jObj.getString("f9");
+                    arr.add(imageUri);
+                    break;
+                case 10:
+                    imageUri = jObj.getString("f10");
+                    arr.add(imageUri);
+                    break;
+                case 11:
+                    imageUri = jObj.getString("f11");
+                    arr.add(imageUri);
+                    break;
+                case 12:
+                    imageUri = jObj.getString("f12");
+                    arr.add(imageUri);
+                    break;
+            }
+        }
+    }
+
+    public Uri getImageUriOnly(Bitmap inImage) {
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+
+        //storess image to media store/gallery
+        String path = getContext().getFilesDir() + "/MouthpiecesTest";
+        return Uri.parse(path);
+    }
+
+    public void convertAllBase64ToImage(ArrayList<String> arrUri){
+
+        byte[] decodedString;
+        String uriParse;
+        String path = getContext().getFilesDir() + "/MouthpiecesTest";
+
+        for (int i = 0; i < 12; i++)
+        {
+            base64Image = arrUri.get(i);
+            decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+            decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            Uri imageUri = getImageUriOnly(decodedByte);
+            uriParse = imageUri.toString();
+
+            File directory = new File(getContext().getFilesDir() + "/MouthpiecesTest"); // get main folder
+            File file = new File(directory, "f"+i + ".jpg");
+
+            if (!file.exists()) {
+                Log.d("path", file.toString());
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(file);
+                    decodedByte.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.flush();
+                    fos.close();
+                } catch (java.io.IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public void onItemClick(int position) {
 
