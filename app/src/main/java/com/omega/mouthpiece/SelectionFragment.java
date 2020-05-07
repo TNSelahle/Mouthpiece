@@ -286,8 +286,9 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         {
             base64Image = arrUri.get(i);
             decodedString = Base64.decode(base64Image, Base64.DEFAULT);
-            decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            Uri imageUri = getImageUriOnly(decodedByte);
+            Bitmap dByte;
+            dByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            Uri imageUri = getImageUriOnly(dByte);
             uriParse = imageUri.toString();
 
             File directory = new File(getContext().getFilesDir() + "/MouthpiecesTest"); // get main folder
