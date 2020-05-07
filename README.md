@@ -60,8 +60,8 @@ segments to the Neural Network Module.
 - Optimized recording by choose best sensitivity numbers & reduced noise from background
 
 ### Phillip Schulze
-- ....
-- Coded the Animation of the Mouth formations ...
+- Coded the animation functions for each of the following formations:
+	(E,C,D,K,N,S,T,X,Y,Z)
 - Fixed crashing problem
 - Added a autorotate functiom
 
