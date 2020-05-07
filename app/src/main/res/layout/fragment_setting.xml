@@ -24,9 +24,10 @@
 
     <Button
         android:id="@+id/deleteProfileBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="206dp"
         android:layout_height="53dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="Delete voice profile"
@@ -37,10 +38,11 @@
         app:layout_constraintTop_toBottomOf="@+id/themeSwitch" />
 
     <Button
-        android:id="@+id/signInBtn"
+        android:id="@+id/signInBtn2"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="sign in"
@@ -52,16 +54,34 @@
 
     <Button
         android:id="@+id/logOutBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="63dp"
         android:background="@drawable/mybutton"
         android:backgroundTint="@color/main3"
         android:fontFamily="@font/ab_new"
         android:text="LOG OUT"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/helpbtn" />
+
+    <Button
+        android:id="@+id/helpbtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="162dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
+        android:text="Help"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

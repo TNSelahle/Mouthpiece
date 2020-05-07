@@ -163,10 +163,10 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/mybutton"
                 android:backgroundTint="#ee1c31"
                 android:entries="@array/feedback_choices"
                 android:spinnerMode="dropdown"
-                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.281"
                 app:layout_constraintStart_toStartOf="parent"
@@ -206,6 +206,7 @@
 
             <Button
                 android:id="@+id/submitBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="286dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center_horizontal"

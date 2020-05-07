@@ -38,8 +38,8 @@
 
     <TextView
         android:id="@+id/acception_text"
-        android:layout_width="353dp"
-        android:layout_height="70dp"
+        android:layout_width="356dp"
+        android:layout_height="99dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/ab_new"
         android:text="@string/AccecptTxt"
@@ -53,22 +53,24 @@
 
     <Button
         android:id="@+id/Accept_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="359dp"
         android:layout_height="52dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/ab_new"
         android:text="@string/accept_btn"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acception_text"
         tools:text="@string/accept_btn" />
 
     <Button
         android:id="@+id/Decline_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="359dp"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
@@ -86,8 +88,8 @@
 
     <TextView
         android:id="@+id/Notice_descr"
-        android:layout_width="335dp"
-        android:layout_height="123dp"
+        android:layout_width="334dp"
+        android:layout_height="153dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/ab_new"
         android:text="@string/NoticeText"

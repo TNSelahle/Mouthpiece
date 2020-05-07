@@ -18,23 +18,25 @@
             android:id="@+id/btn_choose_image"
             android:layout_width="402dp"
             android:layout_height="52dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/mybutton"
             android:backgroundTint="@color/main3"
             android:fontFamily="@font/ab_new"
             android:onClick="clickHandleUpload"
             android:text="Choose Image"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_nxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.793" />
+            app:layout_constraintTop_toBottomOf="@+id/uImage1" />
 
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="402dp"
             android:layout_height="52dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/mybutton"
             android:backgroundTint="#ee1c31"
@@ -46,14 +48,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_nxt" />
 
         <Button
             android:id="@+id/btn_nxt"
             android:layout_width="402dp"
             android:layout_height="52dp"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/mybutton"
             android:fontFamily="sans-serif"
             android:text="Next"
             android:textColor="@color/white"
@@ -62,7 +65,7 @@
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.6" />
 
         <ImageView
             android:id="@+id/imageView2"

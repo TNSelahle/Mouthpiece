@@ -329,6 +329,7 @@
 
         <Button
             android:id="@+id/confrimButtonAccept"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="230dp"
             android:layout_height="30dp"
             android:layout_marginBottom="45dp"
@@ -343,6 +344,7 @@
 
         <Button
             android:id="@+id/confirmButtonCancel"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="230dp"
             android:layout_height="30dp"
             android:layout_marginBottom="16dp"

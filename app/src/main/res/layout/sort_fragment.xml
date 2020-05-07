@@ -34,6 +34,7 @@
 
     <Button
         android:id="@+id/fragment_button_apply"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="346dp"
         android:layout_height="63dp"
         android:layout_marginTop="64dp"
@@ -48,6 +49,7 @@
 
     <Button
         android:id="@+id/fragment_button_cancel"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="346dp"
         android:layout_height="63dp"
         android:layout_marginTop="24dp"

@@ -14,29 +14,25 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class SettingFragment extends Fragment {
-
     private Switch simpleSwitch1;
     private ConstraintLayout mLinearLayout;
     private Button deleteBtn;
     private Button signIn;
     private Button signOut;
     //public  Boolean isSet;
+//    private Button yourButton;
+
 
    // private Button feedback;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-
-        //
 
         View root = inflater.inflate(R.layout.fragment_setting, container, false);
         View rootV2 = inflater.inflate(R.layout.fragment_landing, container, false);
@@ -45,7 +41,7 @@ public class SettingFragment extends Fragment {
         mLinearLayout = root.findViewById(R.id.viewConstr);
 
         deleteBtn = root.findViewById(R.id.deleteProfileBtn);
-        signIn = root.findViewById(R.id.signInBtn);
+        signIn = root.findViewById(R.id.signInBtn2);
         signOut = root.findViewById(R.id.logOutBtn);
         //feedback = root.findViewById(R.id.feedback);
 
@@ -64,6 +60,7 @@ public class SettingFragment extends Fragment {
                 }
             }
         });
+
 
         return root;
     }
@@ -110,16 +107,9 @@ public class SettingFragment extends Fragment {
         menu.clear();
     }
 
-//        // initiate view's
-
-//        simpleSwitch1 = (Switch) findViewById(R.id.switch2);
-//        simpleSwitch1.setOnCheckedChangeListener(new Switch().OnCheckedChangeListener()) {
-//            if (simpleSwitch1.isChecked()){
-////
-//            }
-//            else{
-//
-//            }
-//        });
+//    public void goToHelp(View view) {
+//        Intent intent = new Intent(SettingFragment.this.getActivity(), HelpFragment.class);
+//        startActivity(intent);
+//    }
    }
 
