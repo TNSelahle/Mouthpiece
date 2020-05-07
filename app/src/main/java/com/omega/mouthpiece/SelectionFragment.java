@@ -119,6 +119,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private void parseJSON(String sortCriteria,String ratingsCriteria)
     {
         //TODO: Use our own hosted API.
+        //TODO: Finish
         String url = "http://102.133.170.83:3000/sharingapi/mouthpiece/downloadAll";
 
         final ArrayList<String> batchImageUri = new ArrayList<String>();

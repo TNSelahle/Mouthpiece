@@ -24,6 +24,7 @@
             android:id="@+id/text_view_creator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
             android:text="Creator Name"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -32,12 +33,14 @@
             android:id="@+id/text_view_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
             android:text="Rating: " />
 
         <TextView
             android:id="@+id/text_view_downloads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
             android:text="@string/downloads" />
     </LinearLayout>
 

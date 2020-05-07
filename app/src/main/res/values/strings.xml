@@ -37,7 +37,7 @@
     <string name="StopRecord">Stop voice recording</string>
     <string name="sign_up">Sign Up</string>
     <string name="mouthpiece">Mouthpiece</string>
-    <string name="skip"><![CDATA[Skip >>]]></string>
+    <string name="skip"><![CDATA[Skip]]></string>
     <string name="confirm_password">Confirm Password</string>
     <string name="email_hint">mouthpiece@gmail.com</string>
     <string name="email_address">Email Address</string>
@@ -129,6 +129,20 @@
     <string name="likes">Likes: </string>
     <string name="select">Select</string>
     <string name="title">Title</string>
+    <string name="help">Do you need Help?</string>
+    <string name="frequently_asked">Here are some frequently asked questions:</string>
+    <string name="question1">How do I create an account?</string>
+    <string name="answer1">Answer: On opening the app, click the Register button, enter the necessary information and click Sign Up.</string>
+    <string name="question2">How to upload mouth pieces?</string>
+    <string name="answer2">Answer: Have all the necessary images needed and </string>
+    <string name="question3">Is it necessary to update the app?</string>
+    <string name="answer3">Answer: To have the newest features available it is recommended to keep the app up to date.</string>
+    <string name="question4">What is Voice Training?</string>
+    <string name="answer4">Answer: To function properly the app must be trained to recognize your speech pattern and behaviour and improve the animation. Go to the Voice Training page and follow the instructions given.</string>
+    <string name="question5">What should I do when my password is forgotten?</string>
+    <string name="answer5">Answer: Click the "Forgot Password" and a reset link will be sent to your email address.</string>
+
+
 
     <string-array name="feedback_choices">
         <item>Design Feedback</item>
