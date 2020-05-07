@@ -232,13 +232,18 @@ public class ImageUploadFragment extends Fragment {
                         case 1:
                             egImage.setImageResource(R.drawable.mouth_formants_1);
                             userImage.setVisibility(userImage.VISIBLE);
-                                break;
+                            break;
                         case 2:
                             egImage.setImageResource(R.drawable.mouth_formants_2);
                             userImage.setVisibility(userImage.INVISIBLE);
                             userImage2.setVisibility(userImage2.VISIBLE);
                             userImage2.bringToFront();
-                            break;
+                            if(userImage.getDrawable()==null)
+                                System.out.println("Empty");
+                            else {
+                                System.out.println("Not NULL");
+                                break;
+                            }
                         case 3:
                             egImage.setImageResource(R.drawable.mouth_formants_3);
                             userImage2.setVisibility(userImage2.INVISIBLE);
