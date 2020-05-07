@@ -49,9 +49,10 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
         String imageURL = currentItem.getImageURL();
         String creatorName = currentItem.getCreator();
         int ratings = currentItem.getRatings();
-
+        int downloads = currentItem.getDownloads();
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewRatings.setText("Ratings: " + ratings);
+        holder.mTextViewDownloads.setText("Downloads: "+ downloads);
         Picasso.with(mContext).load(imageURL).fit().centerInside().into(holder.mImageView);
 
     }
@@ -67,13 +68,13 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
         public ImageView mImageView;
         public TextView mTextViewCreator;
         public TextView mTextViewRatings;
-
+        public TextView mTextViewDownloads;
         public DBViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             mTextViewRatings = itemView.findViewById(R.id.text_view_rating);
-
+            mTextViewDownloads = itemView.findViewById(R.id.text_view_downloads);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,11 +1,14 @@
 package com.omega.mouthpiece;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -63,9 +67,15 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     //Queue for API Calls
     private RequestQueue mRequestQueue;
     //TODO: Test Filter
+    private ProgressBar loading;
     private Button btnFilter;
     private View temp;
     Image preview;
+
+    String base64Image;
+    Bitmap decodedByte;
+    ImageView img;
+   // private ProgressBar loadingSpinner;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -73,14 +83,22 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         View root = inflater.inflate(R.layout.fragment_selection, container, false);
         //Setting up the view for dynamically populating the view through API calls
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
+        loading = (ProgressBar)root.findViewById(R.id.pBar);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //btnFilter=findViewById(R.id.filterButton);
         //creating list and queue for API Calss
         mMouthList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(getActivity());
+
+        //loadingSpinner = root.findViewById(R.id.progressBarFragSelection);
+
         //Calling API call method, to get JSON and parse it.
+//        loadingSpinner.setVisibility(View.VISIBLE);
         parseJSON(getSortDetails(), getSortRatingsDetails());
+    //    loadingSpinner.setVisibility(View.GONE);
+
+
 
 
 
@@ -101,6 +119,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
         return root;
     }
+
+
 
 
     //TODO: Test Filter
@@ -128,6 +148,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                     public void onResponse(JSONObject response) {
                         try {
                             //getting JSON
+
+
                             JSONArray jsonArray = response.getJSONArray("result");
 
                             for(int i = 0; i < jsonArray.length();i++)
@@ -137,13 +159,29 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
                                 System.out.println(imageURL);
+
+                                base64Image = imageURL;
+                                convertBase64ToImage();
+
+                                Log.d("Before URI test", "YE");
+
+                                Uri imageU = getImageUri(/*this.getContext(), */decodedByte);
+
+                                imageURL = imageU.toString();
+
+                                Log.d("URL:", imageURL);
+
                                 String creatorName = hit.getString("name");
                                 int ratings =0;
                                 ratings= hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
+
+                                //mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                                 mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                             }
+
+                            loading.setVisibility(View.GONE);
                             //Sorting
                             mMouthList=sortBy(mMouthList);
                             mMouthList=sortRatings(mMouthList);//This function crashes app, still working on it - Anrich
@@ -163,6 +201,25 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             }
         });
         mRequestQueue.add(request);
+    }
+
+    public void convertBase64ToImage(){
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+    }
+    public Uri getImageUri(/*Context inContext, */Bitmap inImage) {
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+
+        Log.d("Testing:", "123");
+
+        String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), inImage, "your_title", null);
+        //String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 
