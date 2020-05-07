@@ -192,14 +192,7 @@ public class imageConfirmationFragment extends Fragment {
                 getUserInfo();
                 uploadMouthPieces();
                 startActivity(new Intent(getContext(), MainActivity.class));
-                /*
-                UploadMouthFrontFragment fragment4 = new UploadMouthFrontFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment4);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                */
+
             }
         });
 
@@ -228,7 +221,6 @@ public class imageConfirmationFragment extends Fragment {
     //convert an image to base64
     public void convertImages(){
 
-        //String code1, code2, code3, code4, code5, code6, code7, code8, code9, code10, code11, code12;
         mouthpiecesArr = new String[12];
 
 
@@ -329,13 +321,10 @@ public class imageConfirmationFragment extends Fragment {
         mouthpiecesArr[11] = Base64.encodeToString(bb12, Base64.NO_WRAP);
 
 
-        //Log.d("Base64OfImage",mouthpiecesArr[0] + "ENDSHERE");
-
     }
     //function for retrieving the user's username and email for uploading
     public void getUserInfo(){
         //mock data for now
-
         username = "tester";
         email = "testing@gmail.com";
 
@@ -343,16 +332,10 @@ public class imageConfirmationFragment extends Fragment {
         mouthpieceID = 0;
         downloads = 0;
         rating = 0;
-        //dateTime = "08:00 Mon";
+
 
         convertImages();
-        //Log.d("Base64OfImage",mouthpiecesArr[11] + "ENDSHERE");
-        /*
-        mouthpiecesArr = new String[12];
-        for (int i = 0; i < 12; i++){
-            mouthpiecesArr[i] = "testBase64Code" + i;
-        }
-        */
+
 
         try {
             jsonMouthpieceParse = new JSONObject();
@@ -387,9 +370,7 @@ public class imageConfirmationFragment extends Fragment {
             jsonBodyParse.put("mouthpiece_id", mouthpieceID);
             jsonBodyParse.put("downloads", downloads);
             jsonBodyParse.put("rating", rating);
-            //jsonBodyParse.put("dataTime", rating);
             jsonBodyParse.put("formants", jsonMouthpieceParse);
-            //jsonBodyParse.put("formants", jsonMouthpieceParse);
             final String uploadRequestBody = jsonBodyParse.toString();
 
         } catch (JSONException e) {

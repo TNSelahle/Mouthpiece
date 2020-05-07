@@ -65,6 +65,10 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private Button btnFilter;
     private View temp;
     Image preview;
+
+    String base64Image;
+    Bitmap decodedByte;
+    ImageView img;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +103,13 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
 
         return root;
+    }
+
+    public void convertBase64ToImage(){
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.URL_SAFE);
+        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
     }
 
 
@@ -136,6 +147,11 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
                                 System.out.println(imageURL);
+                                //test
+                                base64Image = imageURL;
+                                convertBase64ToImage();
+                                img.setImageBitmap(decodedByte);
+                                //
                                 String creatorName = hit.getString("name");
                                 int ratings = hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
