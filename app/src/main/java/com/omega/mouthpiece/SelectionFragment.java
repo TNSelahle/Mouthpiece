@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -62,6 +63,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     //Queue for API Calls
     private RequestQueue mRequestQueue;
     //TODO: Test Filter
+    private ProgressBar loading;
     private Button btnFilter;
     private View temp;
     Image preview;
@@ -72,6 +74,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         View root = inflater.inflate(R.layout.fragment_selection, container, false);
         //Setting up the view for dynamically populating the view through API calls
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
+        loading = (ProgressBar)root.findViewById(R.id.pBar);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //btnFilter=findViewById(R.id.filterButton);
@@ -80,6 +83,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         mRequestQueue = Volley.newRequestQueue(getActivity());
         //Calling API call method, to get JSON and parse it.
         parseJSON(getSortDetails(), getSortRatingsDetails());
+
+
 
 
 
@@ -127,6 +132,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                     public void onResponse(JSONObject response) {
                         try {
                             //getting JSON
+
+
                             JSONArray jsonArray = response.getJSONArray("result");
 
                             for(int i = 0; i < jsonArray.length();i++)
@@ -142,6 +149,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 //Adding to list
                                 mMouthList.add(new MouthItem(imageURL,creatorName,ratings,downloads));
                             }
+
+                            loading.setVisibility(View.GONE);
                             //Sorting
                             mMouthList=sortBy(mMouthList);
                             mMouthList=sortRatings(mMouthList);//This function crashes app, still working on it - Anrich
