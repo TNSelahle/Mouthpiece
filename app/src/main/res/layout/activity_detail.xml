@@ -11,8 +11,7 @@
         android:id="@+id/image_view_detail"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher"
-        android:contentDescription="@string/TODO" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/text_view_creator_detail"
@@ -21,6 +20,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:text="@string/creator"
+        android:fontFamily="@font/ab_new"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
 
@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/ab_new"
         android:text="@string/likes"
         android:textSize="30sp" />
 
@@ -39,13 +40,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/ab_new"
         android:text="@string/downloads"
         android:textSize="30sp" />
 
     <Button
         android:id="@+id/selectButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="177dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
+        android:textColor="@color/white"
         android:text="@string/select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

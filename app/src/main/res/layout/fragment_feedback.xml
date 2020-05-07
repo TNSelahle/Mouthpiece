@@ -14,8 +14,8 @@
             android:id="@+id/linearlayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="0dp">
 
             <TextView
                 android:id="@+id/feedbackHeader"
@@ -23,6 +23,7 @@
                 android:layout_height="46dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/FeedbackText"
                 android:textColor="#EE1C31"
                 android:textSize="30sp"
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="16dp"
-                android:buttonTint="#ee1c31"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/anonymousTxt" />
 
             <TextView
@@ -83,6 +84,7 @@
                 android:layout_height="27dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/Name"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -113,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/emailTxt"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -144,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/Subject"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -159,10 +163,10 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/mybutton"
                 android:backgroundTint="#ee1c31"
                 android:entries="@array/feedback_choices"
                 android:spinnerMode="dropdown"
-                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.281"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,6 +179,7 @@
                 android:layout_height="32dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/DescriptionText"
                 android:textColor="#EE1C31"
                 android:textSize="24sp"
@@ -201,11 +206,14 @@
 
             <Button
                 android:id="@+id/submitBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="286dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="28dp"
-                android:backgroundTint="#ee1c31"
+                android:background="@drawable/mybutton"
+                android:backgroundTint="@color/main3"
+                android:fontFamily="@font/ab_new"
                 android:text="@string/submitButton"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -214,6 +222,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionFeedback"
                 tools:text="@string/submitButton" />
+
 
 
         </LinearLayout>

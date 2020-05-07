@@ -4,72 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".RegisterPage">
 
-    <EditText
-        android:id="@+id/password2"
-        android:layout_width="359dp"
-        android:layout_height="55dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/icon2"
+        android:layout_width="393dp"
+        android:layout_height="258dp"
+        android:background="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/teamText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintTop_toBottomOf="@+id/mottoText"
+        app:layout_constraintVertical_bias="0.42"
+        app:srcCompat="@drawable/icon01" />
 
     <TextView
-        android:id="@+id/password_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/prompt_password"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/title2"
+        android:layout_width="258dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="164dp"
+        android:fontFamily="@font/blackbill"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/main3"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintTop_toTopOf="@+id/icon2" />
 
     <TextView
         android:id="@+id/confirm_password"
         android:layout_width="wrap_content"
-        android:layout_height="15sp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ab_new"
         android:text="@string/confirm_password"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.574" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="359dp"
-        android:layout_height="55dp"
-        android:autofillHints="password"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:inputType="textPassword"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.65" />
 
     <EditText
         android:id="@+id/email"
@@ -78,6 +58,7 @@
         android:autofillHints="@string/emailAddress"
         android:background="@color/white"
         android:ems="10"
+        android:fontFamily="@font/ab_new"
         android:hint="@string/email_hint"
         android:includeFontPadding="true"
         android:inputType="textEmailAddress"
@@ -89,61 +70,74 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintVertical_bias="0.425" />
 
-    <TextView
-        android:id="@+id/email_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_address"
-        android:textColor="@color/black"
-        android:textSize="13sp"
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="359dp"
+        android:layout_height="55dp"
+        android:autofillHints="password"
+        android:background="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/ab_new"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27" />
+        app:layout_constraintVertical_bias="0.575" />
 
-    <!-- TODO Change font and add the motto-->
+    <EditText
+        android:id="@+id/password2"
+        android:layout_width="359dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/ab_new"
+        android:hint="@string/prompt_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.715" />
 
     <Button
         android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="359dp"
         android:layout_height="60dp"
-        android:background="@color/black"
-        android:enabled="false"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
         android:text="@string/sign_up"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.81" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="260dp"
-        android:layout_height="104dp"
-        android:fontFamily="@font/blackbill"
-        android:text="@string/mouthpiece"
-        android:textAlignment="center"
-        android:textColor="#ee1c31"
-        android:textSize="52sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+    <!-- TODO Change font and add the motto-->
 
     <Button
         android:id="@+id/skip"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/white"
+        android:fontFamily="@font/ab_new"
         android:text="@string/skip"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
@@ -152,29 +146,32 @@
         app:layout_constraintVertical_bias="0.93" />
 
     <TextView
-        android:id="@+id/errorView"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ProgressBar
-        android:id="@+id/pBar"
-        style="?android:attr/progressBarStyleLarge"
+        android:id="@+id/email_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/email_address"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        app:layout_constraintVertical_bias="0.373" />
+
+    <TextView
+        android:id="@+id/password_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/prompt_password"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
 </androidx.constraintlayout.widget.ConstraintLayout>
