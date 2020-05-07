@@ -196,7 +196,7 @@ public class LoginPage extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            //findViewById(R.id.loadingPanel).setVisibility(View.GONE);
 
         }
     }
