@@ -171,7 +171,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 Log.d("URL:", imageURL);
 
                                 String creatorName = hit.getString("name");
-                                int ratings = hit.getInt("rating");
+                                int ratings =0;
+                                ratings= hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
                                 Uri imageU = getImageUri(/*this.getContext(), */decodedByte, creatorName);
@@ -246,6 +247,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         String sort;
         Intent intent = getActivity().getIntent();
         sort=intent.getStringExtra(sortCriteria);
+        //if(sort==null)
+        //    sort="Name";
         return sort;
     }
     private String getSortRatingsDetails()//Function to retrieve the details from the filter page
@@ -253,9 +256,11 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         String ratings;
         Intent intent = getActivity().getIntent();
         ratings=intent.getStringExtra(ratingCriteria);
+        /*if(ratings==null)
+            ratings="2";*/
         return ratings;
     }
-    public class sortByName implements Comparator<MouthItem>
+    public static class sortByName implements Comparator<MouthItem>
     {
         @Override
         public int compare(MouthItem o1, MouthItem o2)
@@ -263,7 +268,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             return o1.getCreator().compareTo(o2.getCreator());
         }
     }
-    public class sortByDownloads implements Comparator<MouthItem>
+    public static class sortByDownloads implements Comparator<MouthItem>
     {
         @Override
         public int compare(MouthItem o1, MouthItem o2)
@@ -282,24 +287,45 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             return oldList;
         else
         {
-            if(sortCriteria=="Name")
+            if(getSortDetails()=="Name") {
                 oldList.sort(new sortByName());
-            else if(sortCriteria=="downloads")
+            }
+            else if(getSortDetails()=="downloads") {
                 oldList.sort(new sortByDownloads());
+            }
         }
         return oldList;
     }
-    private ArrayList<MouthItem> sortRatings(ArrayList<MouthItem> oldList)//Sorts the data by rating, dividing by 100 since the data we're using is temporary and the likes are what we are using as the rating, so will fix when we use real data
+    private ArrayList<MouthItem> sortRatings(ArrayList<MouthItem> oldList)
     {
         if(getSortRatingsDetails()==null || getSortRatingsDetails()=="none")
             return oldList;
         else
         {
-            for(int x=0; x<oldList.size(); x++)
+            int size=oldList.size();
+            //Log.e("Filter: size",Integer.toString(size));
+            int generalCounter=0;
+            int[] removeIndexes = new int[size];
+            for(int i=0; i<size; i++)
+                removeIndexes[i]=-1;
+
+            //Log.e("Filter: size",Integer.toString(size));
+            for(int x=0; x<size; x++)
             {
-                if( (oldList.get(x).getRatings()/100) < Integer.parseInt(getSortRatingsDetails()))
+                //Log.e("Filter: rating",Integer.toString(oldList.get(x).getRatings()));
+                if(oldList.get(x).getRatings() < Integer.parseInt(getSortRatingsDetails()))
                 {
-                    oldList.remove(x);
+                    removeIndexes[generalCounter]=x;
+                    generalCounter++;
+                    //oldList.remove(x);
+                }
+            }
+            for (int a=0; a<size;a++)
+            {
+                if(removeIndexes[a]!=-1)
+                {
+                    oldList.remove(removeIndexes[a]);
+                    size--;
                 }
             }
             return oldList;
