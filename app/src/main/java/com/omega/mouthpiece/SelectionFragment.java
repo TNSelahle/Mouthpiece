@@ -68,7 +68,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private RequestQueue mRequestQueue;
     //TODO: Test Filter
     private ProgressBar loading;
-    private Button btnFilter;
+    private Button filterBtn;
     private View temp;
     Image preview;
 
@@ -97,26 +97,21 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 //        loadingSpinner.setVisibility(View.VISIBLE);
         parseJSON(getSortDetails(), getSortRatingsDetails());
     //    loadingSpinner.setVisibility(View.GONE);
+        filterBtn= (Button)root.findViewById(R.id.filterIcon);
+        if(filterBtn!=null) {
+            filterBtn.setOnClickListener(new View.OnClickListener() {
 
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), filter.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         return root;
     }
 
-
-
-
-    //TODO: Test Filter
-    private void openFilter()
-    {
-        btnFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(getContext(), filter.class);
-                startActivity(intent);
-            }
-        });
-    }
     //API call Method
     private void parseJSON(String sortCriteria,String ratingsCriteria)
     {
@@ -163,7 +158,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                             loading.setVisibility(View.GONE);
                             //Sorting
                             mMouthList=sortBy(mMouthList);
-                            mMouthList=sortRatings(mMouthList);//This function crashes app, still working on it - Anrich
+                            mMouthList=sortRatings(mMouthList);
                             //TODO:OK
                             mDBAdapter = new DBAdapter(getContext(),mMouthList);
                             mRecyclerView.setAdapter(mDBAdapter);

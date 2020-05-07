@@ -58,17 +58,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        filterBtn= (Button)findViewById(R.id.filterIcon);
-        if(filterBtn!=null) {
-            filterBtn.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, filter.class);
-                    startActivity(intent);
-                }
-            });
-        }
     }
 
     public void setActionBarTitle(String title) {
