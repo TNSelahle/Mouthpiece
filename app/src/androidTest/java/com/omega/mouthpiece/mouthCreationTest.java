@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class mouthCreationTest {
     @Rule
-    public ActivityTestRule displaysViewMainAct = new ActivityTestRule(UploadMouthsFrontPage.class, true, true);
+    public ActivityTestRule displaysViewMainAct = new ActivityTestRule(UploadMouthFrontFragment.class, true, true);
     //this checks if everything is displayed from the loading page
     @Test
     public void ViewTest() throws Exception {

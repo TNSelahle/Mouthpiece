@@ -21,7 +21,7 @@
             android:backgroundTint="@color/black"
             android:fontFamily="sans-serif"
             android:onClick="clickHandleUpload"
-            android:text="Choose Image"
+            android:text="@string/choose"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:backgroundTint="#ee1c31"
             android:fontFamily="sans-serif"
             android:onClick="clickHandleCancel"
-            android:text="Cancel"
+            android:text="@string/fragmentButtonCancel"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
             android:layout_height="52dp"
             android:backgroundTint="@color/black"
             android:fontFamily="sans-serif"
-            android:text="Next"
+            android:text="@string/next"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,21 +61,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
             app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btn_click_to_confirm"
-            android:layout_width="402dp"
-            android:layout_height="52dp"
-            android:backgroundTint="@color/black"
-            android:fontFamily="sans-serif"
-            android:text="Click to Confirm"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"
-            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -88,7 +73,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/mouth_formants_1" />
+            app:srcCompat="@drawable/mouth_formants_1"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage1"
@@ -99,7 +85,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage2"
@@ -110,7 +97,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage3"
@@ -121,7 +109,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage4"
@@ -132,7 +121,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage5"
@@ -143,7 +133,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage6"
@@ -154,7 +145,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage7"
@@ -165,7 +157,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage8"
@@ -176,7 +169,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage9"
@@ -187,7 +181,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage10"
@@ -198,7 +193,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage11"
@@ -209,7 +205,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.065"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <ImageView
             android:id="@+id/uImage12"
@@ -221,13 +218,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.063"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/TODO" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="231dp"
             android:layout_height="33dp"
-            android:text="Mouth Shape 1/12"
+            android:text="@string/ms1"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +238,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Image:"
+            android:text="@string/yours"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -251,7 +249,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Make sure to upload the right picture."
+            android:text="@string/makeSure"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -262,7 +260,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shape to upload:"
+            android:text="@string/shapeUp"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

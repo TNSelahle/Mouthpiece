@@ -40,4 +40,5 @@ public class LoadingPage extends AppCompatActivity {
         // start thread
         background.start();
     }
+
 }
