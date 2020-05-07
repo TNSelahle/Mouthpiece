@@ -7,6 +7,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.Volley;
+import com.omega.mouthpiece.ConverterP.SegmentNode;
+import com.omega.mouthpiece.ConverterP.VoiceProfile;
+import com.omega.mouthpiece.NN.Handler;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +32,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
+import com.omega.mouthpiece.NN.*;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -52,6 +57,18 @@ public class LoginPage extends AppCompatActivity {
 
 
         url = "http://102.133.170.83:4000/login";
+        float f = 11111111111111111111111111111111111111F;
+        float[] arr = new float[12];
+        for(int i =0;i<12;i++)
+        {
+            arr[i] = f;
+        }
+        Handler demo = new Handler(getApplicationContext());
+
+        System.out.println(demo.getUserVoiceProfile());
+        SegmentNode s = new SegmentNode(arr);
+        System.out.println(demo.getPhonetic(s));
+
 
 
         Email =findViewById(R.id.username);

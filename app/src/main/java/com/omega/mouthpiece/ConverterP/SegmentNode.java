@@ -7,7 +7,7 @@ public class SegmentNode
     public int label;
 
     public SegmentNode(float[] audio) //audio passed from top-down towards NN
-    {
+        {
         //System.out.println("SegmentNode object created!");
         label = 0;
         this.audio = new float[audio.length];

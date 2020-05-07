@@ -1,15 +1,19 @@
 package com.omega.mouthpiece.NN;
+import android.content.Context;
+
 import com.omega.mouthpiece.ConverterP.*;
 
 public class Handler {
 
     Classifier classifier;
     SegmentNode segment;
+    Context context;
 
-    public Handler()
+    public Handler(Context c)
     {
+        context = c;
         System.out.println("Handler object created!");
-        this.classifier = new Classifier();
+        this.classifier = new Classifier(c);
     }
 
     ///////////////CONVERTER FUNCTIONS///////////////
@@ -23,7 +27,7 @@ public class Handler {
     public void trainVoiceProfile(String id, SegmentNode[] voiceSegments)
     {   /* BritneyChu -- receives 12 segments( has a populated array of float[500] and populated Label in "12-category-formants")*/
         System.out.println("sending filter training data node...");
-        classifier.trainFilter(id,voiceSegments);
+        classifier.trainFilter(id,voiceSegments,context);
     }
 
     public String getUserVoiceProfile()
