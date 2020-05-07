@@ -3,6 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/abeezee</item>
         <item>@font/acme</item>
-        <item>@font/arima_madurai_medium</item>
+<!--        <item>@font/arima_madurai_medium</item>-->
     </array>
 </resources>
