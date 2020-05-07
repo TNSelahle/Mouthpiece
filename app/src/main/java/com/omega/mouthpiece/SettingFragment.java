@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 //import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 //import android.view.ContextThemeWrapper;
@@ -25,8 +26,8 @@ public class SettingFragment extends Fragment {
     private Button deleteBtn;
     private Button signIn;
     private Button signOut;
-    //public  Boolean isSet;
-//    private Button yourButton;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
 
    // private Button feedback;
@@ -41,12 +42,11 @@ public class SettingFragment extends Fragment {
         mLinearLayout = root.findViewById(R.id.viewConstr);
 
         deleteBtn = root.findViewById(R.id.deleteProfileBtn);
-        signIn = root.findViewById(R.id.signInBtn2);
+        signIn = root.findViewById(R.id.settingsLogIn);
         signOut = root.findViewById(R.id.logOutBtn);
         //feedback = root.findViewById(R.id.feedback);
 
         setTheme();
-
 
         simpleSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -60,7 +60,23 @@ public class SettingFragment extends Fragment {
                 }
             }
         });
+        sharedPreferences=getContext().getSharedPreferences("LoginPrefs",getContext().MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+        signOut.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                editor.putString("Email","");
+                editor.putString("Password","");
+                editor.putBoolean("Remember",false);
+                editor.putString("API", "");
+                editor.commit();
 
+                Intent intent = new Intent(getContext(), LoginPage.class);
+                startActivity(intent);
+            }
+        });
 
         return root;
     }
@@ -98,7 +114,6 @@ public class SettingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         //setMode();
-
     }
 
     @Override

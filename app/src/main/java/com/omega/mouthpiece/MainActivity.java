@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -37,13 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Button filterBtn;
-    private String API_key = "ppbTSwLgvaYIx0C6mNQi";
-    private String Email = "kevin@gmail.com";
+    private String API_key = "";
+    private String Email = "";
     private JSONObject jsonBodyParse;
     private String url = "http://102.133.170.83:4000/getUsers";
     private String usernameString;
     private TextView username;
     private TextView email;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
             //check what user is logged in and download necessary folder
         }
+        sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
 
+        Email=sharedPreferences.getString("Email","kevin@gmail.com");
+        API_key=sharedPreferences.getString("API","ppbTSwLgvaYIx0C6mNQi");
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
