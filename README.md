@@ -4,6 +4,15 @@ Android Mouthpiece Application (Omega)
 ## Project Management Tool
 https://app.clubhouse.io/cos-301-team-converter/stories/space/9/everything
 
+## Profiles
+[Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)<br/>
+[Phillip Schulze](https://phillipstemmlar.github.io)<br/>
+[Steven Visser](https://vanillav.github.io/)<br/>
+[Munashe Mujaji](https://munasheghub.github.io/)<br/>
+[Obakeng Seageng](http://obakengseageng.github.io/)<br/>
+[Nthabiseng Tia Mangena](https://tiamangena.github.io/)<br/>
+[Vedha Krishna Velthapu](https://vedha286.github.io/)<br/>
+
 ## Repository Layout
 This is how the converter branch is futher branched
 ```
@@ -60,15 +69,6 @@ segments to the Neural Network Module.
 - Worked on changing VoiceProfile_Trainer.java's audio functionality
 - Coded the Animation of the Mouth formations j, q, u 
 - Lower speaking volume causes animation of mouth to open slightly
-
-## Profiles
-[Pierre du Plessis](https://endlessprogrammer.github.io/pierregduplessis.github.io/)<br/>
-[Phillip Schulze](https://phillipstemmlar.github.io)<br/>
-[Steven Visser](https://vanillav.github.io/)<br/>
-[Munashe Mujaji](https://munasheghub.github.io/)<br/>
-[Obakeng Seageng](http://obakengseageng.github.io/)<br/>
-[Nthabiseng Tia Mangena](https://tiamangena.github.io/)<br/>
-[Vedha Krishna Velthapu](https://vedha286.github.io/)<br/>
 
 ## Guidelines
 Here are a couple of guidelines for this repo
