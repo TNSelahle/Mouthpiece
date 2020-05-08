@@ -7,10 +7,31 @@
     android:background="@color/white"
     tools:context=".RegisterPage">
 
+    <EditText
+        android:id="@+id/email2"
+        android:layout_width="359dp"
+        android:layout_height="55dp"
+        android:autofillHints="@string/emailAddress"
+        android:background="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/ab_new"
+        android:hint="@string/username"
+        android:includeFontPadding="true"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
     <ImageView
         android:id="@+id/icon2"
-        android:layout_width="393dp"
-        android:layout_height="258dp"
+        android:layout_width="409dp"
+        android:layout_height="175dp"
         android:background="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/teamText"
@@ -22,19 +43,21 @@
 
     <TextView
         android:id="@+id/title2"
-        android:layout_width="258dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="164dp"
+        android:layout_width="154dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/blackbill"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/main3"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/icon2" />
+
+    <!-- TODO Change font and add the motto-->
 
     <TextView
         android:id="@+id/confirm_password"
@@ -46,10 +69,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.68" />
 
     <EditText
         android:id="@+id/email"
@@ -68,9 +91,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.327" />
 
     <EditText
         android:id="@+id/password"
@@ -87,9 +111,10 @@
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.612" />
 
     <EditText
         android:id="@+id/password2"
@@ -106,10 +131,10 @@
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.753" />
 
     <Button
         android:id="@+id/button"
@@ -122,12 +147,10 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
-
-    <!-- TODO Change font and add the motto-->
+        app:layout_constraintVertical_bias="0.891" />
 
     <Button
         android:id="@+id/skip"
@@ -140,10 +163,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <TextView
         android:id="@+id/email_title"
@@ -155,10 +178,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <TextView
         android:id="@+id/password_title"
@@ -170,10 +193,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.546" />
 
     <TextView
         android:id="@+id/errorView"
@@ -201,4 +224,20 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/user_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/username"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.409" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -82,7 +82,9 @@ public class DetailActivity extends AppCompatActivity {
         TextView textViewLikes = findViewById(R.id.text_view_like_detail);
         TextView textViewDownloads = findViewById(R.id.text_view_downloads);
 
-        Picasso.with(this).load(imageURL).fit().centerInside().into(imageView);
+        //Picasso.with(this).load(imageURL).fit().centerInside().into(imageView);
+        Picasso.get().load(imageURL).fit().centerInside().into(imageView);
+
         textViewCreator.setText(creatorName);
         textViewLikes.setText("Ratings: " + ratings);
         textViewDownloads.setText("Downloads: "+ downloads);
