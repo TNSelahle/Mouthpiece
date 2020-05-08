@@ -21,7 +21,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 public class imageConfirmationTest {
 
     @Rule
-    public ActivityTestRule displaysViewImageConfirm = new ActivityTestRule(ImageConfirmationUnit.class, true, false);
+    public ActivityTestRule displaysViewImageConfirm = new ActivityTestRule(imageConfirmationFragment.class, true, false);
 
     @Test
     public void confirmButtonTest() throws Exception{

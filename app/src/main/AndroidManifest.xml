@@ -68,30 +68,6 @@
             android:name=".filter"
             android:exported="true" />
 
-        <activity
-            android:name=".ActivityTrainingUnit"
-            android:exported="true" />
-
-        <activity
-            android:name=".ImageUploadFragmentUnitClass"
-            android:exported="true" />
-
-        <activity
-            android:name=".ConverterUnit"
-            android:exported="true" />
-
-        <activity
-            android:name=".ImageConfirmationUnit"
-            android:exported="true" />
-
-        <activity
-            android:name=".LoadingPageUnit"
-            android:exported="true" />
-
-        <activity
-            android:name=".ImageUploadUnit"
-            android:exported="true" />
-
 
         <meta-data
             android:name="preloaded_fonts"

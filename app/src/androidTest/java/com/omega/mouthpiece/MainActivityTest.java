@@ -16,18 +16,19 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
-public class LoadingPageTest {
+public class MainActivityTest {
     @Rule
-    public ActivityTestRule displaysViewLoading = new ActivityTestRule(LoadingPage.class, true, true);
+    public ActivityTestRule displaysViewMainAct = new ActivityTestRule(MainActivity.class, true, true);
     //this checks if everything is displayed from the loading page
     @Test
     public void ViewTest() throws Exception {
-        displaysViewLoading.launchActivity(new Intent());
-        onView(withText(R.string.From)).check(matches(isDisplayed()));
-        onView(withText(R.string.OMEGA)).check(matches(isDisplayed()));
-        onView(withText(R.string.University_of_Pretoria)).check(matches(isDisplayed()));
+        displaysViewMainAct.launchActivity(new Intent());
         onView(withText(R.string.app_name)).check(matches(isDisplayed()));
         onView(withText(R.string.motto)).check(matches(isDisplayed()));
+        onView(withText(R.string.prompt_email)).check(matches(isDisplayed()));
+        onView(withText(R.string.prompt_password)).check(matches(isDisplayed()));
+        onView(withText(R.string.loginB)).check(matches(isDisplayed()));
+        onView(withText(R.string.regViewer)).check(matches(isDisplayed()));
     }
 
 }

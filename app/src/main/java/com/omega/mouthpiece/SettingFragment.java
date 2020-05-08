@@ -2,7 +2,7 @@ package com.omega.mouthpiece;
 
 //import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 //import android.view.ContextThemeWrapper;
@@ -26,8 +26,8 @@ public class SettingFragment extends Fragment {
     private Button deleteBtn;
     private Button signIn;
     private Button signOut;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    //public  Boolean isSet;
+//    private Button yourButton;
 
 
    // private Button feedback;
@@ -42,10 +42,12 @@ public class SettingFragment extends Fragment {
         mLinearLayout = root.findViewById(R.id.viewConstr);
 
         deleteBtn = root.findViewById(R.id.deleteProfileBtn);
-        signIn = root.findViewById(R.id.settingsLogIn);
+        signIn = root.findViewById(R.id.signInBtn2);
         signOut = root.findViewById(R.id.logOutBtn);
         //feedback = root.findViewById(R.id.feedback);
+
         setTheme();
+
 
         simpleSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -59,26 +61,13 @@ public class SettingFragment extends Fragment {
                 }
             }
         });
-        sharedPreferences=getContext().getSharedPreferences("LoginPrefs",getContext().MODE_PRIVATE);
-        editor=sharedPreferences.edit();
-        signOut.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                editor.putString("Email","");
-                editor.putString("Password","");
-                editor.putBoolean("Remember",false);
-                editor.putString("API", "");
-                editor.commit();
 
-                Intent intent = new Intent(getContext(), LoginPage.class);
-                startActivity(intent);
-            }
-        });
 
         return root;
     }
+    ColorStateList cslb = new ColorStateList(new int[][]{{}}, new int[]{R.color.black});
+    ColorStateList cslw = new ColorStateList(new int[][]{{}}, new int[]{R.color.white});
+//.setBackgroundTintList(csl);
 
     public void setTheme() {
         if(GlobalVariableMode.mode == true){
@@ -99,6 +88,7 @@ public class SettingFragment extends Fragment {
             simpleSwitch1.setTextColor(Color.parseColor("#000000"));
             //button colours
             deleteBtn.setBackgroundColor(Color.parseColor("#000000"));
+//            deleteBtn.setBackgroundColor(Color.parseColor("#000000"));
             deleteBtn.setTextColor(Color.parseColor("#FFFFFF"));
             //button colours
             signIn.setBackgroundColor(Color.parseColor("#000000"));
@@ -113,26 +103,13 @@ public class SettingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         //setMode();
+
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        if(sharedPreferences.getString("Email","")=="")
-        {
-            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.GONE);
-            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.GONE);
-        }
-        else
-        {
-            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.VISIBLE);
-            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.VISIBLE);
-        }
     }
 
    }

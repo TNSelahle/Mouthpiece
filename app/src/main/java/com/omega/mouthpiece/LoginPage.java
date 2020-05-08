@@ -42,16 +42,15 @@ public class LoginPage extends AppCompatActivity {
     private String jsonEmail;
     private String jsonPassword;
     private CheckBox rememberMe;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-    private Button skipBtn;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        Button btnSkip = findViewById(R.id.button4);
         url = "http://102.133.170.83:4000/login";
 
 
@@ -60,7 +59,6 @@ public class LoginPage extends AppCompatActivity {
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
         rememberMe = findViewById(R.id.rememberMe);
-        skipBtn = findViewById(R.id.skipBtn);
 
         sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
         editor=sharedPreferences.edit();
@@ -68,7 +66,6 @@ public class LoginPage extends AppCompatActivity {
         //Store auto login preferences:
         String mail=sharedPreferences.getString("Email","");
         String password=sharedPreferences.getString("Password","");
-        String remAPI=sharedPreferences.getString("API","");
         Boolean checked=sharedPreferences.getBoolean("Remember",false);
 
         Email.setText(mail);
@@ -95,7 +92,14 @@ public class LoginPage extends AppCompatActivity {
                 AsyncTask<String, String, String> execute = new CallAPI();
                 execute.execute();
 
+            }
+        });
 
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(i);
             }
         });
 
@@ -105,16 +109,6 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(LoginPage.this, RegisterPage.class);
-                startActivity(intent);
-            }
-        });
-
-        skipBtn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(LoginPage.this, MainActivity.class);
                 startActivity(intent);
             }
         });

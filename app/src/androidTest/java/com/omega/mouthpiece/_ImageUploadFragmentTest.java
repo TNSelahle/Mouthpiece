@@ -17,7 +17,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 @RunWith(AndroidJUnit4.class)
 public class _ImageUploadFragmentTest {
     @Rule
-    public ActivityTestRule displaysViewMainAct = new ActivityTestRule(ImageUploadFragmentUnitClass.class, true, true);
+    public ActivityTestRule displaysViewMainAct = new ActivityTestRule(ImageUploadFragment.class, true, true);
     //this checks if everything is displayed from the loading page
     @Test
     public void ViewTest() throws Exception {
