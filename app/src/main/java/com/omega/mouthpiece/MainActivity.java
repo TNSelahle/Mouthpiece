@@ -128,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                             Email = response.getString("email");
                             username.setText(usernameString);
                             email.setText(Email);
+                            GlobalVariableMode.gUsername = usernameString;
+                            GlobalVariableMode.gEmail = Email;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

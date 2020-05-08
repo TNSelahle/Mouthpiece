@@ -99,8 +99,8 @@ public class imageConfirmationFragment extends Fragment {
     private String urlGetUsers = "http://102.133.170.83:4000/getUsersViaAPI";
     private String urlUpload = "http://102.133.170.83:3000/sharingapi/mouthpiece/upload";
 
-    private String email;
-    private String username;
+    public String email;
+    public String username;
     private Integer mouthpieceID;
     //private String[] mouthpiecesArr;
     String[] mouthpiecesArr;
@@ -338,40 +338,10 @@ public class imageConfirmationFragment extends Fragment {
     public void getUserInfo(){
         //mock data for now
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        try {
 
-            jsonBodyParse = new JSONObject();
-            jsonBodyParse.put("API_key",GlobalVariableMode.gAPI_key);
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlGetUsers, jsonBodyParse,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            System.out.println("Test " + response.toString());
-                            username = response.getString("username");
-                            System.out.println(username);
-                            email = response.getString("email");
-                            System.out.println(email);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        //resultTextView.setText("String Response : "+ response.toString());
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
-
+        username = GlobalVariableMode.gUsername;
+        email = GlobalVariableMode.gEmail;
         //real parse data
         mouthpieceID = 0;
         downloads = 0;
@@ -408,15 +378,53 @@ public class imageConfirmationFragment extends Fragment {
         }
 
     }
+    //private JSONObject jsonBodyParseUser;
     //function for uploading the user created mouthpieces
     public void uploadMouthPieces(){
+
+        /*
+        RequestQueue requestQueueUser = Volley.newRequestQueue(getContext());
+        try {
+
+            jsonBodyParseUser = new JSONObject();
+            jsonBodyParseUser.put("API_key",GlobalVariableMode.gAPI_key);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequestUser = new JsonObjectRequest(Request.Method.POST, urlGetUsers, jsonBodyParseUser,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("Test " + response.toString());
+                            username = response.getString("username");
+                            System.out.println(username);
+                            email = response.getString("email");
+                            System.out.println(email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        //resultTextView.setText("String Response : "+ response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueueUser.add(jsonObjectRequestUser);
+
+         */
+
+
         RequestQueue requestQueueUpload = Volley.newRequestQueue(getContext());
         //send info through
 
         try {
             jsonBodyParse = new JSONObject();
-            System.out.println(username);
-            System.out.println(email);
             jsonBodyParse.put("name", username);
             jsonBodyParse.put("email", email);
             jsonBodyParse.put("mouthpiece_id", mouthpieceID);
