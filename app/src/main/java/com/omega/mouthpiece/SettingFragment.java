@@ -45,7 +45,6 @@ public class SettingFragment extends Fragment {
         signIn = root.findViewById(R.id.settingsLogIn);
         signOut = root.findViewById(R.id.logOutBtn);
         //feedback = root.findViewById(R.id.feedback);
-
         setTheme();
 
         simpleSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -120,6 +119,20 @@ public class SettingFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        if(sharedPreferences.getString("Email","")=="")
+        {
+            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.GONE);
+        }
+        else
+        {
+            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.VISIBLE);
+            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.VISIBLE);
+        }
     }
 
    }
