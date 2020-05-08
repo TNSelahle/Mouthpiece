@@ -81,7 +81,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     Bitmap decodedByte;
     //ArrayList<Bitmap> decodedImages;
     ImageView img;
-   // private ProgressBar loadingSpinner;
+    // private ProgressBar loadingSpinner;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         //Calling API call method, to get JSON and parse it.
 //        loadingSpinner.setVisibility(View.VISIBLE);
         parseJSON(getSortDetails(), getSortRatingsDetails());
-    //    loadingSpinner.setVisibility(View.GONE);
+        //    loadingSpinner.setVisibility(View.GONE);
         filterBtn= (Button)root.findViewById(R.id.filterIcon);
         if(filterBtn!=null) {
             filterBtn.setOnClickListener(new View.OnClickListener() {
