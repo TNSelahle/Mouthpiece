@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Mouthpiece</string>
     <string name="From">From</string>
     <string name="OMEGA">OMEGA</string>
     <string name="University_of_Pretoria">University of Pretoria</string>
@@ -142,6 +141,33 @@
     <string name="question5">What should I do when my password is forgotten?</string>
     <string name="answer5">Answer: Click the "Forgot Password" and a reset link will be sent to your email address.</string>
 
+    <string name="app_name">Mouthpiece</string>
+    <string name="volume_button">Volume</string>
+    <string name="formant_button">Formant</string>
+    <!-- element text -->
+    <string name="action_status_text">Read the sentence below. Tap the microphone to record</string>
+    <string name="delete_icon_label_text">Delete all</string>
+    <string name="play_icon_label_text">Play audio</string>
+    <string name="profile_count_label_text">Profiles created</string>
+    <string name="profile_reading_text">The quick brown fox jumps over the lazy dog</string>
+    <string name="record_icon_label_text">Record</string>
+    <string name="save_button_text">Save</string>
+    <!-- element descriptions -->
+    <string name="action_status_description">Module heading</string>
+    <string name="delete_icon_label_description">Label for delete icon</string>
+    <string name="delete_icon_description">Delete recording icon</string>
+    <string name="play_icon_description">Play recording icon</string>
+    <string name="play_icon_label_description">Label for play icon</string>
+    <string name="profile_count_description">Number of profiles the user has</string>
+    <string name="profile_count_label_description">Label for text displaying number of profiles</string>
+    <string name="profile_reading_description">Sentence read by user</string>
+    <string name="record_icon_label_description">Label for record icon</string>
+    <string name="save_icon_description">Save recording button</string>
+    <string name="start_icon_description">Start recording icon</string>
+    <string name="stop_icon_description">Stop recording icon</string>
+    <!-- runtime text -->
+    <string name="while_recording">Recording&#8230;</string>
+    <string name="Confirm">Confirm</string>
 
 
     <string-array name="feedback_choices">

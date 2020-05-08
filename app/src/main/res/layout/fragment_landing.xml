@@ -39,39 +39,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/icon4" />
 
-    <Button
-        android:id="@+id/btn_record"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="150dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/mybutton"
-        android:fontFamily="@font/ab_new"
-        android:text="@string/volume_based"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnFormant"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_mouth"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnFormant"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="150dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/mybutton"
-        android:fontFamily="@font/ab_new"
-        android:text="@string/formant_based"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_record"
-        app:layout_constraintTop_toBottomOf="@+id/img_mouth"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/img_mouth"
@@ -84,5 +51,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon4"
         tools:srcCompat="@drawable/a0" />
+
+    <Button
+        android:id="@+id/confirm_to_converter"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/Confirm"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnFormant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_mouth"
+        app:layout_constraintVertical_bias="0.282" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
