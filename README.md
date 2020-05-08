@@ -66,8 +66,8 @@ segments to the Neural Network Module.
 - Added a autorotate function
 
 ### Vedha Krishna
-- Worked on changing VoiceProfile_Trainer.java's audio functionality
 - Coded the Animation of the Mouth formations j, q, u 
+- Helped to integrating the AI module
 - Lower speaking volume causes animation of mouth to open slightly
 
 ## Guidelines
