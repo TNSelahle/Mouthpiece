@@ -70,17 +70,23 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
             //check what user is logged in and download necessary folder
         }
-        sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
+        sharedPreferences=getApplicationContext().getSharedPreferences("LoginPrefs",MODE_PRIVATE);
 
         Email=sharedPreferences.getString("Email","kevin@gmail.com");
-        API_key=sharedPreferences.getString("API","null");
+        API_key=sharedPreferences.getString("API","");
 
-        if(API_key=="null")
+
+        String apiTemp = API_key;
+        System.out.println(apiTemp);
+        /*
+        if(API_key=="")
         {
             System.out.println("lmao");
         }
         System.out.println("lmao");
         System.out.println(API_key);
+        */
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -106,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             jsonBodyParse = new JSONObject();
-            jsonBodyParse.put("API_key",API_key);
+            jsonBodyParse.put("API_key",GlobalVariableMode.gAPI_key);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -117,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            System.out.println(response.toString());
+                            System.out.println("Test 2" + response.toString());
                             usernameString = response.getString("username");
                             Email = response.getString("email");
                             username.setText(usernameString);

@@ -96,7 +96,7 @@ public class imageConfirmationFragment extends Fragment {
     private StringRequest feedbackStringRequest;
     private JSONObject jsonBodyParse;
     private JSONObject jsonMouthpieceParse;
-    //private String urlGetUsers = "http://102.133.170.83:5000/getUsers";
+    private String urlGetUsers = "http://102.133.170.83:4000/getUsersViaAPI";
     private String urlUpload = "http://102.133.170.83:3000/sharingapi/mouthpiece/upload";
 
     private String email;
@@ -338,8 +338,39 @@ public class imageConfirmationFragment extends Fragment {
     public void getUserInfo(){
         //mock data for now
 
-        username = "tester";
-        email = "testing@gmail.com";
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        try {
+
+            jsonBodyParse = new JSONObject();
+            jsonBodyParse.put("API_key",GlobalVariableMode.gAPI_key);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlGetUsers, jsonBodyParse,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("Test " + response.toString());
+                            username = response.getString("username");
+                            System.out.println(username);
+                            email = response.getString("email");
+                            System.out.println(email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        //resultTextView.setText("String Response : "+ response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
 
         //real parse data
         mouthpieceID = 0;
@@ -384,6 +415,8 @@ public class imageConfirmationFragment extends Fragment {
 
         try {
             jsonBodyParse = new JSONObject();
+            System.out.println(username);
+            System.out.println(email);
             jsonBodyParse.put("name", username);
             jsonBodyParse.put("email", email);
             jsonBodyParse.put("mouthpiece_id", mouthpieceID);

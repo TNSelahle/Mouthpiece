@@ -123,7 +123,6 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
-
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
@@ -186,6 +185,7 @@ public class LoginPage extends AppCompatActivity {
                                 if(success)
                                 {
                                     APIKey = response.getString("key");
+                                    GlobalVariableMode.gAPI_key = APIKey;
                                     if(rememberMe.isChecked()) {
                                         editor.putString("API", APIKey);
                                         editor.commit();
