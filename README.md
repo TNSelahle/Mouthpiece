@@ -2,7 +2,7 @@
 Android Mouthpiece Application (Omega)
 
 ## Git Landing Page
-[Omega Team Converter Landing Page](https://phillipstemmlar.github.io/omega-converter.github.io/)
+[Omega: Converter Team Landing Page](https://phillipstemmlar.github.io/omega-converter.github.io/)
 
 ## Project Management Tool
 [Clubhouse](https://app.clubhouse.io/cos-301-team-converter/stories/space/9/everything)
