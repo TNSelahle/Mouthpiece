@@ -9,11 +9,11 @@ import java.io.BufferedWriter;
 
 public class VoiceProfile {
     
-    private SegmentNode nodes[] = new SegmentNode[12];
+    private Converter.SegmentNode nodes[] = new Converter.SegmentNode[12];
     private String id;
 
     // This contructor is used to create new voice profiles
-    public VoiceProfile(String newId, SegmentNode[] given){
+    public VoiceProfile(String newId, Converter.SegmentNode[] given){
         this.id = newId;
         if (given.length > 12){
             System.out.println("There are too many nodes in the passed in parameter.");
@@ -48,7 +48,7 @@ public class VoiceProfile {
                     break;
                 }
 
-                SegmentNode temp = new SegmentNode();
+                Converter.SegmentNode temp = new Converter.SegmentNode();
                 String data = reader.nextLine();
                 float[] tempAudio = new float[500];
                 int tempLabel = 0;
@@ -84,7 +84,7 @@ public class VoiceProfile {
         return this.id;
     }
 
-    public SegmentNode[] getNodes(){
+    public Converter.SegmentNode[] getNodes(){
         return this.nodes;
     }
 
