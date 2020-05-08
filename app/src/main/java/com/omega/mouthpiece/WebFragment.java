@@ -1,4 +1,6 @@
 package com.omega.mouthpiece;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +20,8 @@ public class WebFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_website, container, false);
-        mywebview = root.findViewById(R.id.webView);
-        mywebview.loadUrl("http://www.mouthpiece.tech/");
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mouthpiece.tech"));
+        startActivity(browserIntent);
         return root;
     }
 
