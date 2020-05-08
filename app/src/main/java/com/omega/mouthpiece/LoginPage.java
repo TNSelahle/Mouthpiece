@@ -21,7 +21,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -57,25 +59,6 @@ public class LoginPage extends AppCompatActivity {
 
         Button btnSkip = findViewById(R.id.button4);
         url = "http://102.133.170.83:4000/login";
-        /*FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("TAG", "getInstanceId failed", task.getException());
-                            return;
-                        }
-
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-
-                        // Log and toast
-                        String msg = getString(R.string.msg_token_fmt, token);
-                        Log.e("TAG", msg);
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
         Email =findViewById(R.id.username);
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
@@ -124,6 +107,7 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         Register.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -138,7 +122,14 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
 
+    public void onBackPressed() {
+        //do nothing
+        //Prevents the user from going back into the app after they have signed out
+    }
     private class CallAPI extends AsyncTask<String, String, String> {
 
 
@@ -163,7 +154,16 @@ public class LoginPage extends AppCompatActivity {
 
             try {
                 jsonBodyParse = new JSONObject();
-                jsonBodyParse.put("email", jsonEmail);
+
+                if(isValidEmail(jsonEmail))
+                {
+                    jsonBodyParse.put("email", jsonEmail);
+                }
+                else
+                {
+                    jsonBodyParse.put("username", jsonEmail);
+                }
+
                 jsonBodyParse.put("password", jsonPassword);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -178,11 +178,17 @@ public class LoginPage extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
                             //resultTextView.setText("String Response : "+ response.toString());
                             try {
+
                                 success = response.getBoolean("logged");
                                 //System.out.println(success);
                                 if(success)
                                 {
                                     APIKey = response.getString("key");
+                                    GlobalVariableMode.gAPI_key = APIKey;
+                                    if(rememberMe.isChecked()) {
+                                        editor.putString("API", APIKey);
+                                        editor.commit();
+                                    }
                                     Intent main = new Intent(LoginPage.this, MainActivity.class);
                                     LoginPage.this.startActivity(main);
                                 }
@@ -214,6 +220,8 @@ public class LoginPage extends AppCompatActivity {
             else
                 return "fail";
         }
+
+
 
         @Override
         protected void onPostExecute(String result) {
