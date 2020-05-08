@@ -1,4 +1,4 @@
-import NN.*;
+/*import NN.*;
 import Converter.*;
 import java.io.*;
 import java.util.*;
@@ -179,5 +179,5 @@ public class Test {
 		System.out.println("");
 	}
 }
-
+*/
 

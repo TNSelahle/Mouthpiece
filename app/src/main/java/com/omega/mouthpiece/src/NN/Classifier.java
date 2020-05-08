@@ -1,4 +1,5 @@
-package NN;
+
+/*
 import Converter.*;
 import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
 import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
@@ -61,4 +62,4 @@ public class Classifier{ //kept for the NN
     {
 		this.userModel = new VoiceProfile(id);
     }
-}
+}*/

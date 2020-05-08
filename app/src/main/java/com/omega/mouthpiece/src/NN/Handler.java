@@ -1,5 +1,6 @@
-package NN;
-import Converter.*;
+/*package NN;
+
+//import Converter.*;
 
 public class Handler {
 
@@ -22,19 +23,20 @@ public class Handler {
 ///////////////USER MANAGEMENT FUNCTIONS/////////////// 
 	 public void trainVoiceProfile(String id, SegmentNode[] voiceSegments)
     {   /* BritneyChu -- receives 12 segments( has a populated array of float[500] and populated Label in "12-category-formants")*/
-        System.out.println("sending filter training data node...");
+ /*       System.out.println("sending filter training data node...");
         classifier.trainFilter(id,voiceSegments);
     }
 
     public String getUserVoiceProfile()
     {   /*BritneyChu -- User Management Module - Returns the current Voice Profile name.*/
-		System.out.println("creating Voice Profile file export...");
+	/*	System.out.println("creating Voice Profile file export...");
         return classifier.getUserVoiceProfile();
     }
 
     public void replaceUserVoiceProfile(String id)  //////////////////////////////*******//////////////////////////
-    {   /*BritneyChu -- User Management Module - Received file format to replace the classifier's current voice profile. Returns classifier's feedback.*/
-        System.out.println("updating Voice Profile with import...");
+   /* {   /*BritneyChu -- User Management Module - Received file format to replace the classifier's current voice profile. Returns classifier's feedback.*/
+    /*    System.out.println("updating Voice Profile with import...");
         classifier.replaceVoiceProfile(id);
     }
 }
+*/

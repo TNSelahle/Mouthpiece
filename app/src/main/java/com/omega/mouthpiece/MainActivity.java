@@ -32,7 +32,7 @@ import static android.os.Build.VERSION_CODES.N;
 public class MainActivity extends AppCompatActivity {
 
     //------------------------NN Handler-------------------------------------
-    NN_Handler nn_handler = new NN_Handler();
+    //NN_Handler nn_handler = new NN_Handler();
     AnimationDrawable MouthAnimation;
     //------------------------RECORDING VAR----------------------------------
     private MediaRecorder recorder = null;
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     //----------------------------------MOCK NEURAL FUNCTION-----------------------
 
-    public int convert_audio(short[] buffer)
+    public int convert_audio(float[] buffer)
     {
         Random rand = new Random();
         return rand.nextInt(15);
@@ -175,9 +175,10 @@ public class MainActivity extends AppCompatActivity {
     //----------------------------------AUDIO SEGMENT------------------------------
     public int getFormant(float[] buffer) {
         int form = 0;
-        SegmentNode node = new SegmentNode(buffer);
-        node = nn_handler.getPhonetic(node);
-        return node.getLabel();
+       // SegmentNode node = new SegmentNode(buffer); NOT WORKING THUS REPLACED WITH MOCK FUNCTION
+       // node = nn_handler.getPhonetic(node);
+        convert_audio(buffer);
+        return /*node.getLabel();*/ convert_audio(buffer);
     }
     private String open = "";
     //-----------------------------------------------------------------------------
@@ -292,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
             MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
             MouthAnimation.start();
 
-            h2.postDelayed(this, 20);
+            h2.postDelayed(this, 150);
         }
     };
     //---------------------------------------------------------------------------------

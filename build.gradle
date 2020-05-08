@@ -1,8 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-dependencies {
-    // Required -- JUnit 4 framework
-    testİmplementation 'junit:junit:4.12'
-}
 
 buildscript {
     repositories {
