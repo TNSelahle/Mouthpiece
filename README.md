@@ -53,7 +53,7 @@ Here are a couple of guidelines for this repo
 
  # Profiles:
 
-[Kevin Huang](https://kevin-d-h.github.io/)
+[Kevin Huang](https://kevin-d-h.github.io/myCV/)
 
 [Ronald Looi](https://rsl-student.github.io/)
 
