@@ -40,8 +40,8 @@ public class LoginPage extends AppCompatActivity {
     private String jsonEmail;
     private String jsonPassword;
     private CheckBox rememberMe;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,7 @@ public class LoginPage extends AppCompatActivity {
         //Store auto login preferences:
         String mail=sharedPreferences.getString("Email","");
         String password=sharedPreferences.getString("Password","");
+        String remAPI=sharedPreferences.getString("API","");
         Boolean checked=sharedPreferences.getBoolean("Remember",false);
 
         Email.setText(mail);
@@ -110,7 +111,10 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
-
+    public void onBackPressed() {
+        //do nothing
+        //Prevents the user from going back into the app after they have signed out
+    }
     private class CallAPI extends AsyncTask<String, String, String> {
 
 
@@ -155,6 +159,10 @@ public class LoginPage extends AppCompatActivity {
                                 if(success)
                                 {
                                     APIKey = response.getString("key");
+                                    if(rememberMe.isChecked()) {
+                                        editor.putString("API", APIKey);
+                                        editor.commit();
+                                    }
                                     Intent main = new Intent(LoginPage.this, MainActivity.class);
                                     LoginPage.this.startActivity(main);
                                 }
