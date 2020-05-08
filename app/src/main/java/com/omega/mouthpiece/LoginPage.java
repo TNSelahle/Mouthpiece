@@ -89,7 +89,6 @@ public class LoginPage extends AppCompatActivity {
                     editor.commit();
                 }
                 jsonEmail = Email.getText().toString();
-
                 jsonPassword = Password.getText().toString();
                 //login();
 
@@ -181,7 +180,7 @@ public class LoginPage extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
                             //resultTextView.setText("String Response : "+ response.toString());
                             try {
-                                System.out.println(response.toString());
+
                                 success = response.getBoolean("logged");
                                 //System.out.println(success);
                                 if(success)

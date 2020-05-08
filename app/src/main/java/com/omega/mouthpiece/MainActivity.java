@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private String API_key = "";
     private String Email = "";
     private JSONObject jsonBodyParse;
-    private String url = "http://102.133.170.83:4000/getUsers";
+    private String url = "http://102.133.170.83:4000/getUsersViaAPI";
     private String usernameString;
     private TextView username;
     private TextView email;
@@ -73,16 +73,20 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
 
         Email=sharedPreferences.getString("Email","kevin@gmail.com");
-        API_key=sharedPreferences.getString("API","ppbTSwLgvaYIx0C6mNQi");
+        API_key=sharedPreferences.getString("API","null");
 
+        if(API_key=="null")
+        {
+            System.out.println("lmao");
+        }
+        System.out.println("lmao");
+        System.out.println(API_key);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         View headerView = navigationView.getHeaderView(0);
         username = (TextView) headerView.findViewById(R.id.nav_username);
         email =(TextView) headerView.findViewById(R.id.nav_email);
-
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -103,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
             jsonBodyParse = new JSONObject();
             jsonBodyParse.put("API_key",API_key);
-            jsonBodyParse.put("email", Email);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -114,9 +117,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            System.out.println(response.toString());
                             usernameString = response.getString("username");
+                            Email = response.getString("email");
                             username.setText(usernameString);
-                            email.setText("kevin@gmail.com");
+                            email.setText(Email);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
