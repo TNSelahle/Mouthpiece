@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         email =(TextView) headerView.findViewById(R.id.nav_email);
 
 
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

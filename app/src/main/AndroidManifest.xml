@@ -19,7 +19,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".LoadingPage">
+        <activity
+            android:name=".LoadingPage"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,13 +31,13 @@
         <!--Navigation Page-->
         <activity
             android:name="com.omega.mouthpiece.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!--Login Page-->
         <activity
             android:name=".LoginPage"
-            android:theme="@style/AppTheme.NoActionBar"/>
-<!--        <activity android:name=".SettingFragment"/>-->
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--        <activity android:name=".SettingFragment"/>-->
         <!--Register Page-->
         <activity
             android:name=".RegisterPage"
@@ -94,8 +96,8 @@
             android:resource="@array/preloaded_fonts" />
         <!--Feedback page-->
         <!--Setting page-->
-<!--        <activity-->
-<!--            android:name=".SettingFragment" />-->
+        <!--        <activity-->
+        <!--            android:name=".SettingFragment" />-->
 
     </application>
 
