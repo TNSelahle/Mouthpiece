@@ -52,9 +52,12 @@
             android:name=".imageConfirmationFragment"
             android:exported="true" />
         <!--Landing Page-->
+        <activity
+            android:name=".LandingFragment"
+            android:exported="true" />
         <!--Converter-->
         <activity
-            android:name=".Converter"
+            android:name=".ConverterV2Activity"
             android:exported="true" />
         <!--Training-->
         <!--Help page-->

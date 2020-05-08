@@ -12,6 +12,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -358,7 +359,7 @@ public class ConverterV2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activty_converter_v2);
         //------------------------GESTURE DETECTOR-------------------------------
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
         //----------------------RESTORE STATE AFTER ROTATION---------------------
@@ -395,7 +396,7 @@ public class ConverterV2Activity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
         ImageView mouthImage = findViewById(R.id.img_mouth);
-        mouthImage.setBackgroundResource(R.drawable.open_mouth);
+
         MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
 
         //---------------------------RECORDING SYSTEM-----------------------------

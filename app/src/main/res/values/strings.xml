@@ -167,6 +167,7 @@
     <string name="stop_icon_description">Stop recording icon</string>
     <!-- runtime text -->
     <string name="while_recording">Recording&#8230;</string>
+    <string name="Confirm">Confirm</string>
 
 
     <string-array name="feedback_choices">

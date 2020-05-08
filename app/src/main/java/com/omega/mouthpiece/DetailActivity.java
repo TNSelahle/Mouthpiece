@@ -3,6 +3,8 @@ package com.omega.mouthpiece;
 import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Bitmap;
@@ -96,9 +98,8 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-
-                Intent intent = new Intent(DetailActivity.this, Converter.class);
-                startActivity(intent);
+            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+            startActivity(intent);
             }
         });
     }

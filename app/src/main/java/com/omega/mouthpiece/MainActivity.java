@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "This file exists", Toast.LENGTH_SHORT).show();
             //check what user is logged in and download necessary folder
         }
+
+
         sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
 
         Email=sharedPreferences.getString("Email","kevin@gmail.com");
