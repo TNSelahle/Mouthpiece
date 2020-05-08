@@ -26,7 +26,6 @@ public class VoiceProfile {
         for (int i = 0; i < nodes.length; i++){
             // This should more than likely be replaced with a deep copy to ensure that we
             // will not replace the nodes data on accident
-            // But fuck it.
             this.nodes[i] = given[i];
         }
     }
@@ -90,7 +89,6 @@ public class VoiceProfile {
 
     // Use this method to save the profile
     // TODO: This whole thing should probably be wrapped inside a single try catch
-    // But I wrote it like this already so fuck it. Atleast now we will know where it breaks if it does.
     public String saveProfile() {
         BufferedWriter out = null;
         try {
