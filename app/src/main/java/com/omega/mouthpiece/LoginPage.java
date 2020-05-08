@@ -48,7 +48,7 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        Button btnSkip = findViewById(R.id.button4);
         url = "http://102.133.170.83:4000/login";
 
 
@@ -90,12 +90,16 @@ public class LoginPage extends AppCompatActivity {
                 AsyncTask<String, String, String> execute = new CallAPI();
                 execute.execute();
 
-
-
-
             }
         });
 
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
         Register.setOnClickListener(new View.OnClickListener()
         {
             @Override

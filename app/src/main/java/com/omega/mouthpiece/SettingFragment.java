@@ -2,6 +2,7 @@ package com.omega.mouthpiece;
 
 //import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 //import android.view.ContextThemeWrapper;
@@ -64,6 +65,9 @@ public class SettingFragment extends Fragment {
 
         return root;
     }
+    ColorStateList cslb = new ColorStateList(new int[][]{{}}, new int[]{R.color.black});
+    ColorStateList cslw = new ColorStateList(new int[][]{{}}, new int[]{R.color.white});
+//.setBackgroundTintList(csl);
 
     public void setTheme() {
         if(GlobalVariableMode.mode == true){
@@ -84,6 +88,7 @@ public class SettingFragment extends Fragment {
             simpleSwitch1.setTextColor(Color.parseColor("#000000"));
             //button colours
             deleteBtn.setBackgroundColor(Color.parseColor("#000000"));
+//            deleteBtn.setBackgroundColor(Color.parseColor("#000000"));
             deleteBtn.setTextColor(Color.parseColor("#FFFFFF"));
             //button colours
             signIn.setBackgroundColor(Color.parseColor("#000000"));
