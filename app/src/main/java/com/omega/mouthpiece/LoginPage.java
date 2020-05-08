@@ -7,14 +7,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -48,10 +57,8 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        Button btnSkip = findViewById(R.id.button4);
         url = "http://102.133.170.83:4000/login";
-
-
         Email =findViewById(R.id.username);
         Password =findViewById(R.id.password);
         Login = findViewById(R.id.loginButton);
@@ -90,9 +97,14 @@ public class LoginPage extends AppCompatActivity {
                 AsyncTask<String, String, String> execute = new CallAPI();
                 execute.execute();
 
+            }
+        });
 
-
-
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(i);
             }
         });
 
@@ -110,7 +122,14 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
 
+    public void onBackPressed() {
+        //do nothing
+        //Prevents the user from going back into the app after they have signed out
+    }
     private class CallAPI extends AsyncTask<String, String, String> {
 
 
@@ -126,7 +145,7 @@ public class LoginPage extends AppCompatActivity {
             super.onPreExecute();
 
             // Display the progress bar.
-            findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
+            //findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -135,7 +154,16 @@ public class LoginPage extends AppCompatActivity {
 
             try {
                 jsonBodyParse = new JSONObject();
-                jsonBodyParse.put("email", jsonEmail);
+
+                if(isValidEmail(jsonEmail))
+                {
+                    jsonBodyParse.put("email", jsonEmail);
+                }
+                else
+                {
+                    jsonBodyParse.put("username", jsonEmail);
+                }
+
                 jsonBodyParse.put("password", jsonPassword);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -150,11 +178,17 @@ public class LoginPage extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(), "String Response : "+ response.toString(), Toast.LENGTH_SHORT).show();
                             //resultTextView.setText("String Response : "+ response.toString());
                             try {
+
                                 success = response.getBoolean("logged");
                                 //System.out.println(success);
                                 if(success)
                                 {
                                     APIKey = response.getString("key");
+                                    GlobalVariableMode.gAPI_key = APIKey;
+                                    if(rememberMe.isChecked()) {
+                                        editor.putString("API", APIKey);
+                                        editor.commit();
+                                    }
                                     Intent main = new Intent(LoginPage.this, MainActivity.class);
                                     LoginPage.this.startActivity(main);
                                 }
@@ -187,6 +221,8 @@ public class LoginPage extends AppCompatActivity {
                 return "fail";
         }
 
+
+
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
@@ -196,7 +232,7 @@ public class LoginPage extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            //findViewById(R.id.loadingPanel).setVisibility(View.GONE);
 
         }
     }

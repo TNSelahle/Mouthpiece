@@ -89,18 +89,18 @@ public class imageConfirmationFragment extends Fragment {
     Bundle imageBundle = new Bundle(); // retrieve image data from previous activity
     Button btnAccept;
     Button btnCancel;
-    String encodeImage; // converts image(s) to base64
+    ArrayList<Drawable> imgArray;
 
     //API variables
     private RequestQueue feedbackRequestQueue;
     private StringRequest feedbackStringRequest;
     private JSONObject jsonBodyParse;
     private JSONObject jsonMouthpieceParse;
-    //private String urlGetUsers = "http://102.133.170.83:5000/getUsers";
+    private String urlGetUsers = "http://102.133.170.83:4000/getUsersViaAPI";
     private String urlUpload = "http://102.133.170.83:3000/sharingapi/mouthpiece/upload";
 
-    private String email;
-    private String username;
+    public String email;
+    public String username;
     private Integer mouthpieceID;
     //private String[] mouthpiecesArr;
     String[] mouthpiecesArr;
@@ -175,9 +175,11 @@ public class imageConfirmationFragment extends Fragment {
             vImage11_Th.setImageURI(imageUri);
             writeToStorage(vImage11_Th, "mouth11");
 
+
             imageUri = imageBundle.getParcelable("imageChJSh");
             vImage12_Ch_J_Sh.setImageURI(imageUri);
             writeToStorage(vImage12_Ch_J_Sh, "mouth12");
+
         }
 
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
@@ -336,9 +338,10 @@ public class imageConfirmationFragment extends Fragment {
     public void getUserInfo(){
         //mock data for now
 
-        username = "tester";
-        email = "testing@gmail.com";
 
+
+        username = GlobalVariableMode.gUsername;
+        email = GlobalVariableMode.gEmail;
         //real parse data
         mouthpieceID = 0;
         downloads = 0;
@@ -375,8 +378,48 @@ public class imageConfirmationFragment extends Fragment {
         }
 
     }
+    //private JSONObject jsonBodyParseUser;
     //function for uploading the user created mouthpieces
     public void uploadMouthPieces(){
+
+        /*
+        RequestQueue requestQueueUser = Volley.newRequestQueue(getContext());
+        try {
+
+            jsonBodyParseUser = new JSONObject();
+            jsonBodyParseUser.put("API_key",GlobalVariableMode.gAPI_key);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequestUser = new JsonObjectRequest(Request.Method.POST, urlGetUsers, jsonBodyParseUser,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("Test " + response.toString());
+                            username = response.getString("username");
+                            System.out.println(username);
+                            email = response.getString("email");
+                            System.out.println(email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        //resultTextView.setText("String Response : "+ response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Error getting response" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueueUser.add(jsonObjectRequestUser);
+
+         */
+
+
         RequestQueue requestQueueUpload = Volley.newRequestQueue(getContext());
         //send info through
 
@@ -412,19 +455,19 @@ public class imageConfirmationFragment extends Fragment {
 
     }
 
-
     //function to store images into internal storage before uploading for the apps specific use only
-    public void writeToStorage(ImageView iV_Var,String fileName)
+    public void writeToStorage(ImageView iVar, String name)
     {
-
-        BitmapDrawable bitmapDraw = (BitmapDrawable) iV_Var.getDrawable();
-        Bitmap bitmap = bitmapDraw.getBitmap();
-
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
         File directory = new File(cw.getFilesDir() + "/MouthpiecesTest"); // get main folder
 
+        BitmapDrawable bitmapDraw = (BitmapDrawable) iVar.getDrawable();
+        Bitmap bitmap = bitmapDraw.getBitmap();
+
+        File file = new File(directory, name + ".jpg");
+
+        directory.mkdir();
         // TODO: get a new subfolder for each new upload
-        File file = new File(directory, fileName + ".jpg");
 
         if (!file.exists()) {
             Log.d("path", file.toString());
@@ -437,6 +480,27 @@ public class imageConfirmationFragment extends Fragment {
             } catch (java.io.IOException e) {
                 e.printStackTrace();
             }
+        }
+        else
+        {
+            FileOutputStream fosRedo = null;
+            try {
+                fosRedo = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fosRedo);
+                fosRedo.flush();
+                fosRedo.close();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    public void checkIfFolderExists(File filePath, int folerIteration){
+        while(filePath.exists())
+        {
+            filePath = new File(getContext().getFilesDir(), "MouthpiecesTest" + folerIteration++);
         }
     }
 

@@ -53,7 +53,8 @@ public class DBAdapter extends RecyclerView.Adapter<DBAdapter.DBViewHolder> {
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewRatings.setText("Ratings: " + ratings);
         holder.mTextViewDownloads.setText("Downloads: "+ downloads);
-        Picasso.with(mContext).load(imageURL).fit().centerInside().into(holder.mImageView);
+        //Picasso.with(mContext).load(imageURL).fit().centerInside().into(holder.mImageView);
+        Picasso.get().load(imageURL).fit().centerInside().into(holder.mImageView);
 
     }
 

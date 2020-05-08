@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +44,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -55,7 +60,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     public static final String EXTRA_CREATOR = "creatorName";
     public static final String EXTRA_LIKES = "ratings";
     public static final String EXTRA_DOWNLOADS = "downloads";
-
+    public static final String EXTRA_POSITION = "position";
 
 
     //Base View to display items
@@ -74,6 +79,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
     String base64Image;
     Bitmap decodedByte;
+    //ArrayList<Bitmap> decodedImages;
     ImageView img;
    // private ProgressBar loadingSpinner;
     @Override
@@ -118,6 +124,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         //TODO: Use our own hosted API.
         String url = "http://102.133.170.83:3000/sharingapi/mouthpiece/downloadAll";
 
+        final ArrayList<String> batchImageUri = new ArrayList<String>();
+
         //GET request
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -136,14 +144,18 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
 
+                                // gets all mouth shapes
+                                //getAllImageUriIntoArray(batchImageUri, array);
 
                                 base64Image = imageURL;
                                 convertBase64ToImage();
 
+                                //adds "all" mouth shaps downloaded into internal storage
+                                //convertAllBase64ToImage(batchImageUri);
 
 
                                 String creatorName = hit.getString("name");
-                                int ratings =0;
+                                int ratings = 0;
                                 ratings= hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
@@ -181,19 +193,18 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-
     }
+
     public Uri getImageUri(Bitmap inImage, String n) {
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
 
+        //storess image to media store/gallery
         String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), inImage, n, null);
         return Uri.parse(path);
     }
-
 
     public void onItemClick(int position) {
 
@@ -204,6 +215,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
         detailIntent.putExtra(EXTRA_LIKES, clickedItem.getRatings());
         detailIntent.putExtra(EXTRA_DOWNLOADS, clickedItem.getDownloads());
+        detailIntent.putExtra(EXTRA_POSITION, position);
         startActivity(detailIntent);
     }
     private String getSortDetails()//Function to retrieve the details from the filter page
@@ -295,6 +307,10 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             return oldList;
         }
     }
+
+
+
+
 }
 
 
