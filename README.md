@@ -63,7 +63,7 @@ segments to the Neural Network Module.
 - Coded the animation functions for each of the following formations:
 	(E,C,D,K,N,S,T,X,Y,Z)
 - Fixed crashing problem
-- Added a autorotate functiom
+- Added a autorotate function
 
 ### Vedha Krishna
 - Worked on changing VoiceProfile_Trainer.java's audio functionality
