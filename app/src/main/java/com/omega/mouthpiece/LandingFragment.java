@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -131,6 +132,7 @@ public class LandingFragment extends Fragment {
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
         ImageView mouthImage = root.findViewById(R.id.img_mouth);
+        mouthImage.setImageURI(Uri.parse(getActivity().getFilesDir() + "/Mouthpieces/f0.jpg"));
         mouthImage.setBackgroundResource(R.drawable.open_mouth);
         MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
 

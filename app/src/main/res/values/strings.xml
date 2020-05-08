@@ -169,7 +169,6 @@
     <string name="while_recording">Recording&#8230;</string>
 
 
-
     <string-array name="feedback_choices">
         <item>Design Feedback</item>
         <item>Application Bugs</item>
