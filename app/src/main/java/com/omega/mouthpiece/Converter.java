@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,6 +23,8 @@ import java.io.IOException;
 public class Converter extends AppCompatActivity{
 
     AnimationDrawable MouthAnimation;
+    //Uri uriStreamImage = Uri.parse(this.getFilesDir() + "/MouthpiecesTest/mouth1.jpg");
+
     //------------------------RECORDING VAR----------------------------------
     private MediaRecorder recorder = null;
     private static final String LOG_TAG = "AudioRecordTest";

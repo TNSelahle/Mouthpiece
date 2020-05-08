@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,7 +60,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     public static final String EXTRA_CREATOR = "creatorName";
     public static final String EXTRA_LIKES = "ratings";
     public static final String EXTRA_DOWNLOADS = "downloads";
-
+    public static final String EXTRA_POSITION = "position";
 
 
     //Base View to display items
@@ -119,7 +122,6 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
     private void parseJSON(String sortCriteria,String ratingsCriteria)
     {
         //TODO: Use our own hosted API.
-        //TODO: Finish
         String url = "http://102.133.170.83:3000/sharingapi/mouthpiece/downloadAll";
 
         final ArrayList<String> batchImageUri = new ArrayList<String>();
@@ -142,15 +144,18 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
                                 JSONObject array  =  hit.getJSONObject("formants");
                                 String imageURL = array.getString("f0");
 
-                                getAllImageUriIntoArray(batchImageUri, array);// gets all mouth shapes
+                                // gets all mouth shapes
+                                //getAllImageUriIntoArray(batchImageUri, array);
 
                                 base64Image = imageURL;
                                 convertBase64ToImage();
-                                convertAllBase64ToImage(batchImageUri);
+
+                                //adds "all" mouth shaps downloaded into internal storage
+                                //convertAllBase64ToImage(batchImageUri);
 
 
                                 String creatorName = hit.getString("name");
-                                int ratings =0;
+                                int ratings = 0;
                                 ratings= hit.getInt("rating");
                                 int downloads = hit.getInt("downloads");
                                 //Adding to list
@@ -201,114 +206,6 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         return Uri.parse(path);
     }
 
-    public void getAllImageUriIntoArray(ArrayList<String> arr, JSONObject jObj) throws JSONException {
-        String imageUri = "";
-
-        for(int i = 0; i < 12; i++)
-        {
-            //String imageURL0 = array.getString("f0");
-            switch(i)
-            {
-                case 0:
-                    imageUri = jObj.getString("f" + i);
-                    arr.add(imageUri);
-                    break;
-                case 1:
-                    imageUri = jObj.getString("f1");
-                    arr.add(imageUri);
-                    break;
-                case 2:
-                    imageUri = jObj.getString("f2");
-                    arr.add(imageUri);
-                    break;
-                case 3:
-                    imageUri = jObj.getString("f3");
-                    arr.add(imageUri);
-                    break;
-                case 4:
-                    imageUri = jObj.getString("f4");
-                    arr.add(imageUri);
-                    break;
-                case 5:
-                    imageUri = jObj.getString("f5");
-                    arr.add(imageUri);
-                    break;
-                case 6:
-                    imageUri = jObj.getString("f6");
-                    arr.add(imageUri);
-                    break;
-                case 7:
-                    imageUri = jObj.getString("f7");
-                    arr.add(imageUri);
-                    break;
-                case 8:
-                    imageUri = jObj.getString("f8");
-                    arr.add(imageUri);
-                    break;
-                case 9:
-                    imageUri = jObj.getString("f9");
-                    arr.add(imageUri);
-                    break;
-                case 10:
-                    imageUri = jObj.getString("f10");
-                    arr.add(imageUri);
-                    break;
-                case 11:
-                    imageUri = jObj.getString("f11");
-                    arr.add(imageUri);
-                    break;
-                case 12:
-                    imageUri = jObj.getString("f12");
-                    arr.add(imageUri);
-                    break;
-            }
-        }
-    }
-
-    public Uri getImageUriOnly(Bitmap inImage) {
-
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-
-
-        //storess image to media store/gallery
-        String path = getContext().getFilesDir() + "/MouthpiecesTest";
-        return Uri.parse(path);
-    }
-
-    public void convertAllBase64ToImage(ArrayList<String> arrUri){
-
-        byte[] decodedString;
-        String uriParse;
-        String path = getContext().getFilesDir() + "/MouthpiecesTest";
-
-        for (int i = 0; i < 12; i++)
-        {
-            base64Image = arrUri.get(i);
-            decodedString = Base64.decode(base64Image, Base64.DEFAULT);
-            Bitmap dByte;
-            dByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            Uri imageUri = getImageUriOnly(dByte);
-            uriParse = imageUri.toString();
-
-            File directory = new File(getContext().getFilesDir() + "/MouthpiecesTest"); // get main folder
-            File file = new File(directory, "f"+i + ".jpg");
-
-            if (!file.exists()) {
-                Log.d("path", file.toString());
-                FileOutputStream fos = null;
-                try {
-                    fos = new FileOutputStream(file);
-                    decodedByte.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                    fos.flush();
-                    fos.close();
-                } catch (java.io.IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     public void onItemClick(int position) {
 
         Intent detailIntent = new Intent(getContext(), DetailActivity.class);
@@ -318,6 +215,7 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
         detailIntent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
         detailIntent.putExtra(EXTRA_LIKES, clickedItem.getRatings());
         detailIntent.putExtra(EXTRA_DOWNLOADS, clickedItem.getDownloads());
+        detailIntent.putExtra(EXTRA_POSITION, position);
         startActivity(detailIntent);
     }
     private String getSortDetails()//Function to retrieve the details from the filter page
@@ -409,6 +307,10 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
             return oldList;
         }
     }
+
+
+
+
 }
 
 
