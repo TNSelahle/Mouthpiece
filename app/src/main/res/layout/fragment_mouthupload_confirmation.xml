@@ -1,0 +1,374 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/image2_L"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape2"
+            android:onClick="mouth2_L"
+            app:layout_constraintBottom_toTopOf="@+id/image5_FV"
+            app:layout_constraintEnd_toStartOf="@+id/image3_O"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/image1_AEI" />
+
+        <ImageView
+            android:id="@+id/image5_FV"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape5"
+            android:onClick="mouth5_FV"
+            app:layout_constraintBottom_toTopOf="@+id/image8_U"
+            app:layout_constraintEnd_toStartOf="@+id/image6_QW"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toEndOf="@+id/image4_CDGKNSTXYZ" />
+
+        <ImageView
+            android:id="@+id/image3_O"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape3"
+            android:onClick="mouth3_O"
+            app:layout_constraintBottom_toTopOf="@+id/image6_QW"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/image6_QW"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape6"
+            android:onClick="mouth6_QW"
+            app:layout_constraintBottom_toTopOf="@+id/image9_Ee"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/image1_AEI"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape1"
+            android:onClick="mouth1_AEI"
+            app:layout_constraintBottom_toTopOf="@+id/image4_CDGKNSTXYZ"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/image4_CDGKNSTXYZ"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape4"
+            android:onClick="mouth4_CDGK"
+            app:layout_constraintBottom_toTopOf="@+id/image7_BMP"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/image7_BMP"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape7"
+            android:onClick="mouth7_BMP"
+            app:layout_constraintBottom_toTopOf="@+id/image10_R"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/image12_ChJSh"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="110dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape12"
+            android:onClick="mouth12_ChJSh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/image11_Th"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginBottom="110dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape11"
+            android:onClick="mouth11_Th"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image10_R" />
+
+        <ImageView
+            android:id="@+id/image10_R"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="110dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape10"
+            android:onClick="mouth10_R"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape2"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image2_L"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textConfirm3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="85dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape3"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image3_O"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textConfirmation" />
+
+        <TextView
+            android:id="@+id/textConfirm6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="70dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape6"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image6_QW"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape5"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image5_FV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm4"
+            android:layout_width="165dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape4"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image4_CDGKNSTXYZ"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape7"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image7_BMP"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape8"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image8_U"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape9"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image9_Ee"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape10"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image10_R"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape11"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image11_Th"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="55dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape12"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image12_ChJSh"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/image9_Ee"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape9"
+            android:onClick="mouth9_Ee"
+            app:layout_constraintBottom_toTopOf="@+id/image12_ChJSh"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="33dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/confirmation"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/textConfirm2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textConfirm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="34dp"
+            android:fontFamily="@font/ab_new"
+            android:text="@string/mouthShape1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/image1_AEI"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textConfirmation"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/image8_U"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="30dp"
+            android:background="#333138"
+            android:contentDescription="@string/mouthShape8"
+            android:onClick="mouth8_U"
+            app:layout_constraintBottom_toTopOf="@+id/image11_Th"
+            app:layout_constraintEnd_toStartOf="@+id/image9_Ee"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image7_BMP" />
+
+        <Button
+            android:id="@+id/confrimButtonAccept"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/ab_new"
+            android:onClick="accept"
+            android:text="@string/accept"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/confirmButtonCancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/confirmButtonCancel"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/mybutton"
+            android:backgroundTint="@color/main3"
+            android:fontFamily="@font/ab_new"
+            android:onClick="cancel"
+            android:text="@android:string/cancel"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+

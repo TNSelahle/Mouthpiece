@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trainingConstraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.omega.mouthpiece.TrainingFragment">
+
+
+    <TextView
+        android:id="@+id/voiceTrainingHeading"
+        android:layout_width="317dp"
+        android:layout_height="57dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="@string/vTraining"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#EE1C31"
+        android:textSize="42sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/vTraining"
+        tools:visibility="visible" />
+
+
+
+    <VideoView
+        android:id="@+id/videoGif"
+        android:layout_width="195dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/enableTrainingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recordingTimer"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/enableTrainingButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="112dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/PromptToTrain"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonetic_Pangrams_Read_Text"
+        app:layout_constraintVertical_bias="0.785" />
+
+    <Button
+        android:id="@+id/stopVoiceRecording"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="356dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mybutton"
+        android:backgroundTint="@color/main3"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/StopRecord"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enableTrainingButton" />
+
+    <Button
+        android:id="@+id/testAudioRec"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/ab_new"
+        android:text="@string/TestTXT"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopVoiceRecording"
+        tools:text="@string/TestTXT" />
+
+    <TextView
+        android:id="@+id/tvPleaseRead"
+        android:layout_width="357dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="530dp"
+        android:fontFamily="@font/ab_new"
+        android:gravity="center_horizontal"
+        android:text="@string/PleaseReadText"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#EE1C31"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voiceTrainingHeading"
+        app:layout_constraintVertical_bias="0.136"
+        tools:text="@string/PleaseReadText"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/phonetic_Pangrams_Read_Text"
+        android:layout_width="312dp"
+        android:layout_height="153dp"
+        android:ems="10"
+        android:fontFamily="@font/ab_new"
+
+        android:gravity="start|top"
+        android:text="@string/Phonetic_Pangram_Read"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPleaseRead"
+        app:layout_constraintVertical_bias="0.055"
+        tools:visibility="visible" />
+
+    <Chronometer
+        android:id="@+id/recordingTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ab_new"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonetic_Pangrams_Read_Text" />
+</androidx.constraintlayout.widget.ConstraintLayout>
