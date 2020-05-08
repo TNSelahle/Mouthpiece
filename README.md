@@ -26,7 +26,7 @@ Sharing-API:
 
 [Tebogo Selahle](https://www.linkedin.com/in/tebogo-selahle)
 
-[Anrich Hildebrand](https://anrich96.github.io/)
+[Anrich Hildebrand](https://www.linkedin.com/in/AnrichHildebrand/)
 
 [Anika Van Rensburg](https://www.linkedin.com/in/anika-van-rensburg-4a47331a9/)
 
