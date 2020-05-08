@@ -89,7 +89,7 @@ public class imageConfirmationFragment extends Fragment {
     Bundle imageBundle = new Bundle(); // retrieve image data from previous activity
     Button btnAccept;
     Button btnCancel;
-    String encodeImage; // converts image(s) to base64
+    ArrayList<Drawable> imgArray;
 
     //API variables
     private RequestQueue feedbackRequestQueue;
@@ -175,9 +175,11 @@ public class imageConfirmationFragment extends Fragment {
             vImage11_Th.setImageURI(imageUri);
             writeToStorage(vImage11_Th, "mouth11");
 
+
             imageUri = imageBundle.getParcelable("imageChJSh");
             vImage12_Ch_J_Sh.setImageURI(imageUri);
             writeToStorage(vImage12_Ch_J_Sh, "mouth12");
+
         }
 
         btnAccept = root.findViewById(R.id.confrimButtonAccept);
@@ -412,39 +414,18 @@ public class imageConfirmationFragment extends Fragment {
 
     }
 
-
     //function to store images into internal storage before uploading for the apps specific use only
-    public void writeToStorage(ImageView iV_Var,String fileName)
+    public void writeToStorage(ImageView iVar, String name)
     {
-//        int folderNum = 0;
-//        String folderName = "Mouthpieces " + folderNum;
-//        boolean fileCreated = false;
-
-        BitmapDrawable bitmapDraw = (BitmapDrawable) iV_Var.getDrawable();
-        Bitmap bitmap = bitmapDraw.getBitmap();
-
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
         File directory = new File(cw.getFilesDir() + "/MouthpiecesTest"); // get main folder
-//      File imageFolder = new File(directory.getPath() + "/" + folderName );
-        File file = new File(directory, fileName + ".jpg");
-/*
-        Toast.makeText(getActivity(), directory.getPath(), Toast.LENGTH_SHORT).show();
 
-        if(!imageFolder.exists())
-        {
-            imageFolder.mkdir();
-            fileCreated = true;
-        }
-        else
-        {
+        BitmapDrawable bitmapDraw = (BitmapDrawable) iVar.getDrawable();
+        Bitmap bitmap = bitmapDraw.getBitmap();
 
-            folderNum++;
-            folderName = "Mouthpieces " + folderNum;
-            imageFolder = new File(directory.getPath() + "/" + folderName);
-        }
+        File file = new File(directory, name + ".jpg");
 
-*/
-
+        directory.mkdir();
         // TODO: get a new subfolder for each new upload
 
         if (!file.exists()) {
@@ -458,6 +439,27 @@ public class imageConfirmationFragment extends Fragment {
             } catch (java.io.IOException e) {
                 e.printStackTrace();
             }
+        }
+        else
+        {
+            FileOutputStream fosRedo = null;
+            try {
+                fosRedo = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fosRedo);
+                fosRedo.flush();
+                fosRedo.close();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    public void checkIfFolderExists(File filePath, int folerIteration){
+        while(filePath.exists())
+        {
+            filePath = new File(getContext().getFilesDir(), "MouthpiecesTest" + folerIteration++);
         }
     }
 
