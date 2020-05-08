@@ -76,7 +76,8 @@ public class SelectionFragment extends Fragment implements DBAdapter.OnItemClick
 
     String base64Image;
     Bitmap decodedByte;
-
+    //ArrayList<Bitmap> decodedImages;
+    ImageView img;
    // private ProgressBar loadingSpinner;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

@@ -1,42 +1,39 @@
 package com.omega.mouthpiece;
 
-import android.content.Context;
+//import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
+//import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+//import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class SettingFragment extends Fragment {
-
     private Switch simpleSwitch1;
     private ConstraintLayout mLinearLayout;
     private Button deleteBtn;
     private Button signIn;
     private Button signOut;
-    //public  Boolean isSet;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
 
    // private Button feedback;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-
-        //
 
         View root = inflater.inflate(R.layout.fragment_setting, container, false);
         View rootV2 = inflater.inflate(R.layout.fragment_landing, container, false);
@@ -45,12 +42,10 @@ public class SettingFragment extends Fragment {
         mLinearLayout = root.findViewById(R.id.viewConstr);
 
         deleteBtn = root.findViewById(R.id.deleteProfileBtn);
-        signIn = root.findViewById(R.id.signInBtn);
+        signIn = root.findViewById(R.id.settingsLogIn);
         signOut = root.findViewById(R.id.logOutBtn);
         //feedback = root.findViewById(R.id.feedback);
-
         setTheme();
-
 
         simpleSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -62,6 +57,23 @@ public class SettingFragment extends Fragment {
                     GlobalVariableMode.mode = false;
                     setTheme();
                 }
+            }
+        });
+        sharedPreferences=getContext().getSharedPreferences("LoginPrefs",getContext().MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+        signOut.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                editor.putString("Email","");
+                editor.putString("Password","");
+                editor.putBoolean("Remember",false);
+                editor.putString("API", "");
+                editor.commit();
+
+                Intent intent = new Intent(getContext(), LoginPage.class);
+                startActivity(intent);
             }
         });
 
@@ -101,7 +113,6 @@ public class SettingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         //setMode();
-
     }
 
     @Override
@@ -110,16 +121,19 @@ public class SettingFragment extends Fragment {
         menu.clear();
     }
 
-//        // initiate view's
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        if(sharedPreferences.getString("Email","")=="")
+        {
+            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.GONE);
+        }
+        else
+        {
+            getActivity().findViewById(R.id.deleteProfileBtn).setVisibility(View.VISIBLE);
+            getActivity().findViewById(R.id.settingsLogIn).setVisibility(View.VISIBLE);
+        }
+    }
 
-//        simpleSwitch1 = (Switch) findViewById(R.id.switch2);
-//        simpleSwitch1.setOnCheckedChangeListener(new Switch().OnCheckedChangeListener()) {
-//            if (simpleSwitch1.isChecked()){
-////
-//            }
-//            else{
-//
-//            }
-//        });
    }
 

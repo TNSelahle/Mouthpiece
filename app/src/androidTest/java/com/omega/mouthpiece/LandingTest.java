@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class LandingTest {
     @Rule
-    public ActivityTestRule displaysViewLanding = new ActivityTestRule(LandingFragment.class, true, false);
+    public ActivityTestRule displaysViewLanding = new ActivityTestRule(ConverterUnit.class, true, false);
 
     @Test
     public void volumeButtonTest() throws Exception{

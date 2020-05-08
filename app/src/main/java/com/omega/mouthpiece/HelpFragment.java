@@ -18,8 +18,6 @@ public class HelpFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_help, container, false);
-        WebView mywebview = root.findViewById(R.id.webView);
-        mywebview.loadUrl("https://www.microsoft.com/en-us/software-download/faq");
         return root;
     }
 

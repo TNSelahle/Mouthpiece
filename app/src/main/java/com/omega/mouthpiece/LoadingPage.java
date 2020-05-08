@@ -3,11 +3,13 @@ package com.omega.mouthpiece;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
 public class LoadingPage extends AppCompatActivity {
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +23,15 @@ public class LoadingPage extends AppCompatActivity {
 
                         try {
                             // Thread will sleep for 5 seconds
-                            sleep(2*1000);
+                            sleep(3*1000);
                             // After 5 seconds redirect to another intent
-                            Intent intent = new Intent(LoadingPage.this, LoginPage.class);
+                            sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
+                            String remAPI=sharedPreferences.getString("API","");
+                            Intent intent;
+                            if(remAPI=="")
+                                intent = new Intent(LoadingPage.this, LoginPage.class);
+                            else
+                                intent = new Intent(LoadingPage.this,MainActivity.class);
                             startActivity(intent);
 
                             //Remove activity

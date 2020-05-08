@@ -40,8 +40,9 @@ public class LoginPage extends AppCompatActivity {
     private String jsonEmail;
     private String jsonPassword;
     private CheckBox rememberMe;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private Button skipBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class LoginPage extends AppCompatActivity {
         Login = findViewById(R.id.loginButton);
         Register = findViewById(R.id.registerButton);
         rememberMe = findViewById(R.id.rememberMe);
+        skipBtn = findViewById(R.id.skipBtn);
 
         sharedPreferences=getSharedPreferences("LoginPrefs",MODE_PRIVATE);
         editor=sharedPreferences.edit();
@@ -64,6 +66,7 @@ public class LoginPage extends AppCompatActivity {
         //Store auto login preferences:
         String mail=sharedPreferences.getString("Email","");
         String password=sharedPreferences.getString("Password","");
+        String remAPI=sharedPreferences.getString("API","");
         Boolean checked=sharedPreferences.getBoolean("Remember",false);
 
         Email.setText(mail);
@@ -106,11 +109,24 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+        skipBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
 
-
+    public void onBackPressed() {
+        //do nothing
+        //Prevents the user from going back into the app after they have signed out
+    }
     private class CallAPI extends AsyncTask<String, String, String> {
 
 
@@ -126,7 +142,7 @@ public class LoginPage extends AppCompatActivity {
             super.onPreExecute();
 
             // Display the progress bar.
-            findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
+            //findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -155,6 +171,10 @@ public class LoginPage extends AppCompatActivity {
                                 if(success)
                                 {
                                     APIKey = response.getString("key");
+                                    if(rememberMe.isChecked()) {
+                                        editor.putString("API", APIKey);
+                                        editor.commit();
+                                    }
                                     Intent main = new Intent(LoginPage.this, MainActivity.class);
                                     LoginPage.this.startActivity(main);
                                 }
@@ -196,7 +216,7 @@ public class LoginPage extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            //findViewById(R.id.loadingPanel).setVisibility(View.GONE);
 
         }
     }

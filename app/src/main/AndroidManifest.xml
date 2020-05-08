@@ -26,38 +26,77 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Login Page-->
-        <activity
-            android:name=".LoginPage"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <!--Register Page-->
-        <activity
-            android:name=".RegisterPage"
-            android:theme="@style/AppTheme.NoActionBar" />
         <!--Navigation Page-->
         <activity
             android:name="com.omega.mouthpiece.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-
-
+        <!--Login Page-->
+        <activity
+            android:name=".LoginPage"
+            android:theme="@style/AppTheme.NoActionBar"/>
+<!--        <activity android:name=".SettingFragment"/>-->
+        <!--Register Page-->
+        <activity
+            android:name=".RegisterPage"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--MouthSelection-->
         <activity android:name=".DetailActivity" />
         <!--MouthCreation-->
+        <activity
+            android:name=".ImageUploadFragment"
+            android:exported="true" />
+        <activity
+            android:name=".imageConfirmationFragment"
+            android:exported="true" />
         <!--Landing Page-->
         <!--Converter-->
         <activity
             android:name=".Converter"
             android:exported="true" />
         <!--Training-->
-        <!--Webview-->
+        <!--Help page-->
+        <activity
+            android:name=".HelpFragment"
+            android:label="@string/app_name" />
         <!--Filter-->
         <activity
             android:name=".filter"
             android:exported="true" />
+
+        <activity
+            android:name=".ActivityTrainingUnit"
+            android:exported="true" />
+
+        <activity
+            android:name=".ImageUploadFragmentUnitClass"
+            android:exported="true" />
+
+        <activity
+            android:name=".ConverterUnit"
+            android:exported="true" />
+
+        <activity
+            android:name=".ImageConfirmationUnit"
+            android:exported="true" />
+
+        <activity
+            android:name=".LoadingPageUnit"
+            android:exported="true" />
+
+        <activity
+            android:name=".ImageUploadUnit"
+            android:exported="true" />
+
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <!--Feedback page-->
         <!--Setting page-->
+<!--        <activity-->
+<!--            android:name=".SettingFragment" />-->
+
     </application>
 
 
