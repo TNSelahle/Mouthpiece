@@ -148,7 +148,7 @@ public class RegisterPage extends AppCompatActivity {
                             Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                             try {
                                 /*!!!!!!!NEED TO UPDATE THE LINE BELOW TO ADD THE USERNAME ONCE IT IS ADDED TO REGISTER PAGE!!!*/
-                                SendNewUserCreated(email.getText().toString(),"Username Here");
+                                SendNewUserCreated(email.getText().toString(),email.getText().toString());
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
