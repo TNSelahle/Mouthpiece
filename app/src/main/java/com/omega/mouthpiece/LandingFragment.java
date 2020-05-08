@@ -38,7 +38,8 @@ public class LandingFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_landing, container, false);
         Button btnConfirmToC2 = root.findViewById(R.id.confirm_to_converter);
-
+        ImageView mouthImage = root.findViewById(R.id.img_mouth);
+        mouthImage.setBackgroundResource(R.drawable.open_mouth);
         btnConfirmToC2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

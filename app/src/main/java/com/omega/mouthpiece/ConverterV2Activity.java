@@ -396,7 +396,7 @@ public class ConverterV2Activity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //---------------------------ANIMATION INIT------------------------------
         ImageView mouthImage = findViewById(R.id.img_mouth);
-
+        mouthImage.setBackgroundResource(R.drawable.open_mouth);
         MouthAnimation = (AnimationDrawable) mouthImage.getBackground();
 
         //---------------------------RECORDING SYSTEM-----------------------------
